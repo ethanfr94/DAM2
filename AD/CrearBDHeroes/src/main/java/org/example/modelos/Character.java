@@ -1,16 +1,17 @@
 package org.example.modelos;
 
-public class characters {
+public class Character {
+    private Integer id;
     private String name;
     private String powers;
     private String company;
     private String origin;
     private Integer isHeroe;
 
-    public characters() {
+    public Character() {
     }
 
-    public characters(String name, String origin, String company, String powers, Integer isHeroe) {
+    public Character(String name, String origin, String company, String powers, Integer isHeroe) {
         this.name = name;
         this.origin = origin;
         this.company = company;
@@ -18,6 +19,12 @@ public class characters {
         this.isHeroe = isHeroe;
     }
 
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
@@ -61,7 +68,8 @@ public class characters {
     @Override
     public String toString() {
         return "characters{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", powers='" + powers + '\'' +
                 ", company='" + company + '\'' +
                 ", origin='" + origin + '\'' +

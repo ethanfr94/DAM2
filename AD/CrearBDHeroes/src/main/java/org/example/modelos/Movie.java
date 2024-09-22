@@ -1,21 +1,28 @@
 package org.example.modelos;
 
-public class movies {
+public class Movie {
+    private Integer id;
     private String title;
     private Integer duration;
     private Integer year;
     private String producer;
 
-    public movies() {
+    public Movie() {
     }
 
-    public movies(String title, Integer duration, Integer year, String producer) {
+    public Movie(String title, Integer duration, Integer year, String producer) {
         this.title = title;
         this.duration = duration;
         this.year = year;
         this.producer = producer;
     }
 
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public String getTitle() {
         return title;
     }
@@ -51,7 +58,8 @@ public class movies {
     @Override
     public String toString() {
         return "movies{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", duration=" + duration +
                 ", year=" + year +
                 ", producer='" + producer + '\'' +

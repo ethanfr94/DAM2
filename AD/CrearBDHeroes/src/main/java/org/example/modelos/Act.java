@@ -1,16 +1,16 @@
 package org.example.modelos;
 
-public class acts {
+public class Act {
     private Integer character_id;
     private Integer movie_id;
     private Integer minutes;
     private boolean main;
     private String actor;
 
-    public acts() {
+    public Act() {
     }
 
-    public acts(Integer character_id, Integer movie_id, Integer minutes, boolean main, String actor) {
+    public Act(Integer character_id, Integer movie_id, Integer minutes, boolean main, String actor) {
         this.character_id = character_id;
         this.movie_id = movie_id;
         this.minutes = minutes;
