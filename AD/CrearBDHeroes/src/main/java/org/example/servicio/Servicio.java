@@ -149,13 +149,11 @@ public class Servicio {
 
     public static int modOrigen() {
         Scanner t = new Scanner(System.in);
-        Character p = new Character();
+
         System.out.println("Introduce nombre del personaje");
         String nombre = t.nextLine();
         System.out.println("Introduce nuevo origen");
         String origen = t.nextLine();
-        p.setName(nombre);
-        p.setOrigin(origen);
 
         int n = -1;
         PreparedStatement st = null;
@@ -163,8 +161,8 @@ public class Servicio {
             String sql = "update table characters set origin = ? where name = ?";
             try {
                 st = BD.getConexion().prepareStatement(sql);
-                st.setString(1, p.getOrigin());
-                st.setString(2, p.getName());
+                st.setString(1, nombre);
+                st.setString(2,origen);
                 n = st.executeUpdate();
                 System.out.println(n + " lineas afectadas.");
             } catch (Exception e) {
@@ -178,13 +176,10 @@ public class Servicio {
 
     public static int modAnio() {
         Scanner t = new Scanner(System.in);
-        Movie m = new Movie();
         System.out.println("Introduce id de la pelicula");
         int idpeli = Integer.parseInt(t.nextLine());
         System.out.println("Introduce nuevo año");
         int anio = Integer.parseInt(t.nextLine());
-        m.setId(idpeli);
-        m.setYear(anio);
 
         int n = -1;
         PreparedStatement st = null;
@@ -192,8 +187,8 @@ public class Servicio {
             String sql = "update table movies set year = ? where id = ?";
             try {
                 st = BD.getConexion().prepareStatement(sql);
-                st.setInt(1, m.getYear());
-                st.setInt(2, m.getId());
+                st.setInt(1, anio);
+                st.setInt(2, idpeli);
                 n = st.executeUpdate();
                 System.out.println(n + " lineas afectadas.");
             } catch (Exception e) {
@@ -207,13 +202,10 @@ public class Servicio {
 
     public static int eliminarActuacion() {
         Scanner t = new Scanner(System.in);
-        Act a = new Act();
         System.out.println("Introduce id del personaje");
         int id = Integer.parseInt(t.nextLine());
         System.out.println("introduce id de la pelicula");
         int idpeli = Integer.parseInt(t.nextLine());
-        a.setMovie_id(idpeli);
-        a.setCharacter_id(id);
 
         int n = -1;
         PreparedStatement st = null;
@@ -221,8 +213,8 @@ public class Servicio {
             String sql = "delete from acts where movie_id = ? and character_id = ?";
             try {
                 st = BD.getConexion().prepareStatement(sql);
-                st.setInt(1, a.getMovie_id());
-                st.setInt(2, a.getCharacter_id());
+                st.setInt(1, idpeli);
+                st.setInt(2, id);
                 n = st.executeUpdate();
                 System.out.println(n + " lineas afectadas.");
             } catch (Exception e) {
@@ -236,10 +228,8 @@ public class Servicio {
 
     public static int eliminarPelicula() {
         Scanner t = new Scanner(System.in);
-        Movie m = new Movie();
         System.out.println("Introduce titulo de la pelicula");
         String titulo = t.nextLine();
-        m.setTitle(titulo);
 
         int n = -1;
         PreparedStatement st = null;
@@ -247,7 +237,7 @@ public class Servicio {
             String sql = "delete from movies where title = ?";
             try {
                 st = BD.getConexion().prepareStatement(sql);
-                st.setString(1, m.getTitle());
+                st.setString(1, titulo);
                 n = st.executeUpdate();
                 System.out.println(n + " lineas afectadas.");
             } catch (Exception e) {
