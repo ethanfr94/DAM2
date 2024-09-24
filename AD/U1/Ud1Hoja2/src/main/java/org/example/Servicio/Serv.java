@@ -2,6 +2,8 @@ package org.example.Servicio;
 
 import org.example.Conexion.Conn;
 
+import java.sql.*;
+
 public class Serv {
 
     public static void menu() {
@@ -37,6 +39,22 @@ public class Serv {
     }
 
     private static void listPelis(){
+        String sql = "select * from movies;";
+        Statement st = null;
+        ResultSet rs = null;
+        if(Conn.getConexion()!=null){
+                try {
+                    st = Conn.getConexion().createStatement();
+                    rs = st.executeQuery(sql);
+                    while (rs.next()) {
+                        }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
 
+
+
+
+        }
     }
 }
