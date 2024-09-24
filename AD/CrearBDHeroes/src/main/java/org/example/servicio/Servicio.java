@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class Servicio {
 
     public static void menu() {
+        init();
         int op;
         do {
             System.out.println("1.Añadir pelicula\n" +
@@ -30,11 +31,14 @@ public class Servicio {
                 case 2 -> addActuacion();
                 case 3 -> addPersonaje();
                 case 4 -> modOrigen();
-                case 5 -> modAnio();
+                case 5 -> modAnioPeli();
                 case 6 -> eliminarActuacion();
                 case 7 -> eliminarPelicula();
                 case 8 -> renombrarProductora();
-                case 0 -> System.out.println("cerrando el programa");
+                case 0 -> {
+                    System.out.println("cerrando el programa");
+                    BD.cerrar();
+                }
                 default -> System.out.println("opcion no valida");
             }
         } while (op != 0);
@@ -63,7 +67,7 @@ public class Servicio {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             } finally {
-                BD.cerrar();
+                cerrarStatement(st);
             }
         }
         return n;
@@ -100,7 +104,7 @@ public class Servicio {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             } finally {
-                BD.cerrar();
+                cerrarStatement(st);
             }
         }
         return n;
@@ -141,7 +145,7 @@ public class Servicio {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             } finally {
-                BD.cerrar();
+                cerrarStatement(st);
             }
         }
         return n;
@@ -168,13 +172,13 @@ public class Servicio {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             } finally {
-                BD.cerrar();
+                cerrarStatement(st);
             }
         }
         return n;
     }
 
-    public static int modAnio() {
+    public static int modAnioPeli() {
         Scanner t = new Scanner(System.in);
         System.out.println("Introduce id de la pelicula");
         int idpeli = Integer.parseInt(t.nextLine());
@@ -194,7 +198,7 @@ public class Servicio {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             } finally {
-                BD.cerrar();
+                cerrarStatement(st);
             }
         }
         return n;
@@ -220,7 +224,7 @@ public class Servicio {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             } finally {
-                BD.cerrar();
+                cerrarStatement(st);
             }
         }
         return n;
@@ -243,7 +247,7 @@ public class Servicio {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             } finally {
-                BD.cerrar();
+                cerrarStatement(st);
             }
         }
         return n;
@@ -269,7 +273,7 @@ public class Servicio {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             } finally {
-                BD.cerrar();
+                cerrarStatement(st);
             }
         }
         return n;
@@ -278,8 +282,9 @@ public class Servicio {
     public static void eliminarTablas() {
         if (BD.getConexion() != null) {
             String sql = "drop table if exists characters;";
+            Statement st = null;
             try {
-                Statement st = BD.getConexion().createStatement();
+                st = BD.getConexion().createStatement();
                 int n = st.executeUpdate(sql);
                 sql = "drop table if exists movies;";
                 int m = st.executeUpdate(sql);
@@ -289,7 +294,7 @@ public class Servicio {
                 System.out.println("hola");
                 System.out.println(e.getMessage());
             } finally {
-                BD.cerrar();
+                cerrarStatement(st);
             }
 
         } else {
@@ -326,15 +331,16 @@ public class Servicio {
                     "actor TEXT,\n" +
                     "FOREIGN KEY (character_id) REFERENCES characters(id),\n" +
                     "FOREIGN KEY (movie_id) REFERENCES movies(id));";
+            Statement st = null;
             try {
-                Statement st = BD.getConexion().createStatement();
+                st = BD.getConexion().createStatement();
                 int n = st.executeUpdate(sql);
                 int m = st.executeUpdate(sql1);
                 int b = st.executeUpdate(sql2);
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             } finally {
-                BD.cerrar();
+               cerrarStatement(st);
             }
 
         } else {
@@ -372,16 +378,16 @@ public class Servicio {
                     "(8, 3, 85, 1, 'Ryan Reynolds','Deadpool en Deadpool')," +
                     "(9, 4, 110, 1, 'Jason Momoa' ,'Aquaman en Aquaman')," +
                     "(5, 1, 45, 0, 'Scarlett Johansson','Black Widow en The Avengers');";
+            Statement st = null;
             try {
-
-                Statement st = BD.getConexion().createStatement();
+                st = BD.getConexion().createStatement();
                 int n = st.executeUpdate(sql);
                 int m = st.executeUpdate(sql1);
                 int b = st.executeUpdate(sql2);
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             } finally {
-                BD.cerrar();
+                cerrarStatement(st);
             }
         } else {
             System.out.println("conexion fallida");
@@ -396,6 +402,16 @@ public class Servicio {
         crearTablas();
         introDatos();
 
+    }
+
+    public static void cerrarStatement(Statement st){
+        if(st!=null){
+            try{
+                st.close();
+            }catch (SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
 
