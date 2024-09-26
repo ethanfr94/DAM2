@@ -1,6 +1,7 @@
 package org.example.Modelos;
 
 public class Acts {
+    private int id;
     private Charac charac;
     private Mov mov;
     private Integer minutes;
@@ -16,6 +17,14 @@ public class Acts {
         this.minutes = minutes;
         this.main = main;
         this.actor = actor;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Charac getCharac() {
