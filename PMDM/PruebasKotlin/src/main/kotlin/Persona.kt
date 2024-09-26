@@ -4,7 +4,7 @@ open class Persona(protected var nombre:String="Sin nombre", protected var edad:
     internal fun setNombre(nombre:String){
         this.nombre=nombre
     }
-    internal fun getNombre():String{
+    open internal fun getNombre():String{
         return this.nombre
     }
     internal fun setEdad(edad:Int){
@@ -23,5 +23,8 @@ class deportista(nombre:String, edad:Int?, private var deporte:String="petanca")
     }
     fun getDeporte():String{
         return this.deporte
+    }
+    override fun getNombre():String{
+        return "Deportista: "+super.getNombre()
     }
 }
