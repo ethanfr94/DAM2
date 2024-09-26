@@ -13,10 +13,11 @@ public class BD {
             if (connection != null) {
                 return connection;
             }
-            String userHome = System.getProperty("user.home");
-            String url = "jdbc:sqlite:"+userHome+"\\DB\\Heroes.db";
+            //String userHome = System.getProperty("user.home");
+            //String url = "jdbc:sqlite:"+userHome+"\\DB\\Heroes.db";
             //String url = "jdbc:sqlite:D:\\Usuarios\\dam2\\Desktop\\DB\\Heroes.db";
             //String url = "jdbc:sqlite:C:\\Users\\usuario\\Desktop/Heroes.db";
+            String url = "jdbc:sqlite:C:Heroes.db";
 
             try {
                 connection = DriverManager.getConnection(url);
