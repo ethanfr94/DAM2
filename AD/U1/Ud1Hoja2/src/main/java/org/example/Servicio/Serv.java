@@ -26,14 +26,14 @@ public class Serv {
                     "9 Obtener películas sin personajes cargados");
             op = Integer.parseInt(System.console().readLine());
             switch (op) {
-                case 1 -> listaPelis();
-                case 2 -> listaPersonajes();
+                case 1 -> verPelis(listaPelis());
+                case 2 -> verPersonajes(listaPersonajes());
                 case 3 -> heroeVillano();
-                case 4 -> Actuaciones();
-                case 5 -> sinProductora();
-                case 6 -> intervenciones();
-                case 7 -> masAntigua();
-                case 8 -> porActor();
+                case 4 ->
+                case 5 ->
+                case 6 ->
+                case 7 ->
+                case 8 ->
                 case 9 ->
                 case 0 -> {
                     System.out.println("cerrando el programa");
@@ -44,7 +44,7 @@ public class Serv {
         } while (op != 0);
     }
 
-    private static void listaPelis() {
+    private static List<Mov> listaPelis() {
         List<Mov> pelis = new ArrayList<>();
         String sql = "select * from movies;";
         Statement st = null;
@@ -54,12 +54,7 @@ public class Serv {
                 st = Conn.getConexion().createStatement();
                 rs = st.executeQuery(sql);
                 while (rs.next()) {
-                    Mov m = new Mov();
-                    m.setId(rs.getInt("id"));
-                    m.setTitle(rs.getString("title"));
-                    m.setDuration(rs.getInt("duration"));
-                    m.setYear(rs.getInt("year"));
-                    m.setProducer(rs.getString("producer"));
+                    Mov m = rsToMov(rs);
                     pelis.add(m);
                 }
             } catch (SQLException e) {
@@ -68,9 +63,10 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
+        return pelis;
     }
 
-    private static void listaPersonajes() {
+    private static List<Charac> listaPersonajes() {
         List<Charac> ch = new ArrayList<>();
         String sql = "select * from characters;";
         Statement st = null;
@@ -80,13 +76,7 @@ public class Serv {
                 st = Conn.getConexion().createStatement();
                 rs = st.executeQuery(sql);
                 while (rs.next()) {
-                    Charac pers = new Charac();
-                    pers.setId(rs.getInt("id"));
-                    pers.setName(rs.getString("name"));
-                    pers.setPowers(rs.getString("powers"));
-                    pers.setCompany(rs.getString("company"));
-                    pers.setOrigin(rs.getString("origin"));
-                    pers.setIsHeroe(rs.getInt("isHeroe"));
+                    Charac pers = rsToCharac(rs);
                     ch.add(pers);
                 }
             } catch (SQLException e) {
@@ -95,9 +85,10 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
+        return ch;
     }
 
-    private static void listaActuaciones() {
+    private static List<Acts> listaActuaciones() {
         List<Acts> act = new ArrayList<>();
         String sql = "select * from acts;";
         Statement st = null;
@@ -107,19 +98,7 @@ public class Serv {
                 st = Conn.getConexion().createStatement();
                 rs = st.executeQuery(sql);
                 while (rs.next()) {
-                    Acts a = new Acts();
-                    Mov m = new Mov();
-                    Charac c = new Charac();
-                    a.setId(rs.getInt("id"));
-                    int peli = rs.getInt("movie_id");
-                    m = moviePorId(peli);
-                    a.setMov(m);
-                    int pers = rs.getInt("character_id");
-                    c = characterPorId(pers);
-                    a.setCharac(c);
-                    a.setMinutes(rs.getInt("minutes"));
-                    a.setMain(rs.getBoolean("main"));
-                    a.setActor(rs.getString("actor"));
+                    Acts a = rsToActs(rs);
                     act.add(a);
                 }
             } catch (SQLException e) {
@@ -128,6 +107,58 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
+        return act;
+    }
+
+    public static Mov rsToMov(ResultSet rs) {
+        Mov m = new Mov();
+        try {
+            m.setId(rs.getInt("id"));
+            m.setTitle(rs.getString("title"));
+            m.setDuration(rs.getInt("duration"));
+            m.setYear(rs.getInt("year"));
+            m.setProducer(rs.getString("producer"));
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return m;
+    }
+
+    public static Charac rsToCharac(ResultSet rs) {
+        Charac c = new Charac();
+        try {
+            c.setId(rs.getInt("id"));
+            c.setName(rs.getString("name"));
+            c.setPowers(rs.getString("powers"));
+            c.setCompany(rs.getString("company"));
+            c.setOrigin(rs.getString("origin"));
+            c.setIsHeroe(rs.getInt("isHeroe"));
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
+
+    public static Acts rsToActs(ResultSet rs) {
+        Acts a = new Acts();
+        try {
+            a.setId(rs.getInt("id"));
+            Mov m = new Mov();
+            Charac c = new Charac();
+            a.setId(rs.getInt("id"));
+            int peli = rs.getInt("movie_id");
+            m = moviePorId(peli);
+            a.setMov(m);
+            int pers = rs.getInt("character_id");
+            c = characterPorId(pers);
+            a.setCharac(c);
+            a.setMinutes(rs.getInt("minutes"));
+            a.setMain(rs.getBoolean("main"));
+            a.setActor(rs.getString("actor"));
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return a;
     }
 
     private static void verPelis(List <Mov> pelis) {
@@ -140,7 +171,7 @@ public class Serv {
     private static void verPersonajes(List <Charac> ch) {
         for (Charac c : ch) {
             System.out.printf("%-4d %-15s %-50s %-15s %-15s %-s",
-                    c.getId(), c.getName(), c.getPowers(), c.getCompany(), c.getOrigin(), c.getIsHeroe()==1? "Heroe" : "Villano");
+                    c.getId(), c.getName(), c.getPowers(), c.getCompany(), c.getOrigin().equals(null)?"sin cargar":c.getOrigin(), c.getIsHeroe()==1? "Heroe" : "Villano");
         }
     }
 
@@ -154,17 +185,17 @@ public class Serv {
         Scanner t = new Scanner(System.in);
         System.out.println("Introduce el id del personaje");
         int n = Integer.parseInt(t.nextLine());
-        String sql = "select name, isHeroe from characters where id = " + n + ";";
-        Statement st = null;
+        String sql = "select * from characters where id = ?;";
+        PreparedStatement st = null;
         ResultSet rs = null;
         if (Conn.getConexion() != null) {
             try {
-                st = Conn.getConexion().createStatement();
-                rs = st.executeQuery(sql);
+                st = Conn.getConexion().prepareStatement(sql);
+                st.setInt(1, n);
+                rs = st.executeQuery();
                 while (rs.next()) {
-                    String name = rs.getString("name");
-                    String isHero = rs.getInt("isHeroe") == 1 ? "Heroe" : "Villano";
-                    System.out.println(name + " - " + isHero);
+                   Charac c = rsToCharac(rs);
+                    System.out.println(c.getName() + " - " + (c.getIsHeroe() == 1 ? "Heroe" : "Villano"));
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
