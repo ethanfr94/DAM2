@@ -6,6 +6,7 @@ import org.example.Servicio.Serv;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        Serv.init();
         Serv.menu();
     }
 }
