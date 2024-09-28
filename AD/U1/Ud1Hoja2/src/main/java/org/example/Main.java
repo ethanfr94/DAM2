@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.Funciones.Func;
 import org.example.Servicio.Serv;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -7,6 +8,6 @@ import org.example.Servicio.Serv;
 public class Main {
     public static void main(String[] args) {
         Serv.init();
-        Serv.menu();
+        Func.menu();
     }
 }
