@@ -148,7 +148,7 @@ public class Serv {
                 st.setInt(1, n);
                 rs = st.executeQuery();
                 while (rs.next()) {
-                   Charac c = rsToCharac(rs);
+                    Charac c = rsToCharac(rs);
                     System.out.println(c.getName() + " - " + (c.getIsHeroe() == 1 ? "Heroe" : "Villano"));
                 }
             } catch (SQLException e) {
@@ -180,6 +180,7 @@ public class Serv {
             }
         }
     }
+
     public static List<Mov> masAntigua() {
         List<Mov> pelis = new ArrayList<>();
         String sql = "select id, title, duration, year, producer from movies where year = (select min(year) from movies);";
@@ -211,9 +212,9 @@ public class Serv {
         StringTokenizer st = new StringTokenizer(aux, " ");
         while (st.hasMoreTokens()) {
             String temp = st.nextToken();
-            String nombre = temp.substring(0,1).toUpperCase().concat(temp.substring(1).toLowerCase());
+            String nombre = temp.substring(0, 1).toUpperCase().concat(temp.substring(1).toLowerCase());
             temp = st.nextToken();
-            String apellido = temp.substring(0,1).toUpperCase().concat(temp.substring(1).toLowerCase());
+            String apellido = temp.substring(0, 1).toUpperCase().concat(temp.substring(1).toLowerCase());
             actor = nombre + " " + apellido;
         }
         String sql = "select movies.id, movies.title, movies.duration, movies.year, movies.producer from movies inner join acts on acts.movie_id=movies.id where actor = ?;";
@@ -328,11 +329,11 @@ public class Serv {
         }
     }
 
-    public static void cerrarStatement(Statement st){
-        if(st!=null){
-            try{
+    public static void cerrarStatement(Statement st) {
+        if (st != null) {
+            try {
                 st.close();
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -372,32 +373,32 @@ public class Serv {
             try {
                 st = Conn.getConexion().createStatement();
                 String sql = """
-                    create table characters (\
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name TEXT NOT NULL,
-                    powers TEXT,
-                    company TEXT,
-                    origin TEXT,
-                    isHeroe INTEGER CHECK (isHeroe IN (0, 1)));""";
+                        create table characters (\
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        name TEXT NOT NULL,
+                        powers TEXT,
+                        company TEXT,
+                        origin TEXT,
+                        isHeroe INTEGER CHECK (isHeroe IN (0, 1)));""";
                 st.executeUpdate(sql);
                 sql = """
-                    create table movies (\
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    title TEXT NOT NULL,
-                    duration INTEGER,
-                    year INTEGER,
-                    producer TEXT);""";
+                        create table movies (\
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        title TEXT NOT NULL,
+                        duration INTEGER,
+                        year INTEGER,
+                        producer TEXT);""";
                 st.executeUpdate(sql);
                 sql = """
-                    CREATE TABLE acts (\
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    character_id INTEGER NOT NULL,
-                    movie_id INTEGER NOT NULL, \
-                    minutes_in_movie INTEGER,
-                    main_character BOOLEAN NOT NULL,
-                    actor TEXT,
-                    FOREIGN KEY (character_id) REFERENCES characters(id),
-                    FOREIGN KEY (movie_id) REFERENCES movies(id));""";
+                        CREATE TABLE acts (\
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        character_id INTEGER NOT NULL,
+                        movie_id INTEGER NOT NULL, \
+                        minutes_in_movie INTEGER,
+                        main_character BOOLEAN NOT NULL,
+                        actor TEXT,
+                        FOREIGN KEY (character_id) REFERENCES characters(id),
+                        FOREIGN KEY (movie_id) REFERENCES movies(id));""";
                 st.executeUpdate(sql);
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
