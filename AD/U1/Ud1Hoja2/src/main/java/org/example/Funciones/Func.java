@@ -22,7 +22,8 @@ public class Func {
                     6 Obtener número de personajes por película
                     7 Obtener película más antigua
                     8 Obtener películas por actor
-                    9 Obtener películas sin personajes cargados""");
+                    9 Obtener películas sin personajes cargados
+                    0 Salir del programa""");
             op = Integer.parseInt(System.console().readLine());
             switch (op) {
                 case 1 -> verPelis(Serv.listaPelis());
