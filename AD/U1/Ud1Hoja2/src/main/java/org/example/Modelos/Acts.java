@@ -11,8 +11,8 @@ public class Acts {
     public Acts() {
     }
 
-    public Acts(Integer movie_id, Integer character_id, Integer minutes, boolean main, String actor) {
-        this.mov = mov;
+    public Acts(Mov m, Charac charac, Integer minutes, boolean main, String actor) {
+        this.mov = m;
         this.charac = charac;
         this.minutes = minutes;
         this.main = main;
