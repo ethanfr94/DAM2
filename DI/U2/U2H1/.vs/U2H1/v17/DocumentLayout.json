@@ -3,8 +3,7 @@
   "WorkspaceRootPath": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U2H1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{61B1C3CF-8F83-4F4E-8052-66EF69E6C85F}|U2H1\\U2H1.csproj|d:\\usuarios\\dam2\\desktop\\dam\\di\\u2\\u2h1\\u2h1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61B1C3CF-8F83-4F4E-8052-66EF69E6C85F}|U2H1\\U2H1.csproj|solutionrelative:u2h1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U2H2\\U2H2\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,13 +19,13 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U2H1\\U2H1\\Program.cs",
-              "RelativeDocumentMoniker": "U2H1\\Program.cs",
-              "ToolTip": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U2H1\\U2H1\\Program.cs",
-              "RelativeToolTip": "U2H1\\Program.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAAAGcAAABSAAAA",
+              "DocumentMoniker": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U2H2\\U2H2\\Program.cs",
+              "RelativeDocumentMoniker": "..\\U2H2\\U2H2\\Program.cs",
+              "ToolTip": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U2H2\\U2H2\\Program.cs",
+              "RelativeToolTip": "..\\U2H2\\U2H2\\Program.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAAEMAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T15:03:36.228Z",
+              "WhenOpened": "2024-10-01T14:13:17.952Z",
               "EditorCaption": ""
             }
           ]
