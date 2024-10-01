@@ -46,7 +46,8 @@ public class Func {
                     6.Grupos sin canciones
                     7.Los ultimos 5 votos
                     8.Eliminar canciones de un grupo
-                    9.Modificar datos de grupo""");
+                    9.Modificar datos de grupo
+                    0.Salir""");
 
             op = Integer.parseInt(new Scanner(System.in).nextLine());
             switch (op){
@@ -57,25 +58,31 @@ public class Func {
                     verCanciones(Serv.listarCanciones());
                     break;
                 case 3:
-                    verCancionesGrupo(Serv.numCancionesGrupo());
+                    verCancionesGrupos(Serv.numCancionesGrupo());
                     break;
                 case 4:
-                    //cancionesGrupo();
+                    cancionesGrupo();
                     break;
                 case 5:
-                    //cincoMasVotadas();
+                    cincoMasVotadas();
                     break;
                 case 6:
-                    //gruposSinCanciones();
+                    gruposSinCanciones();
                     break;
                 case 7:
-                    //ultimosVotos();
+                    ultimosVotos(Serv.ultimosVotos());
                     break;
                 case 8:
                     //eliminarCancionesGrupo();
                     break;
                 case 9:
                     //modificarGrupo();
+                    break;
+                case 0:
+                    System.out.println("adios");
+                    break;
+                default:
+                    System.out.println("opcion no valida");
                     break;
             }
         }while (op != 0);
@@ -85,25 +92,57 @@ public class Func {
         for (Grupo g : gr) {
             System.out.println(g.getCodgrupo() + " " + g.getNombre() + " " + g.getLocalidad() + " " + g.getEstilo());
         }
+        System.out.println();
     }
 
-    private static void verCanciones(ArrayList<Cancion> ca){
-        Grupo aux = ca.get(0).getGrupo();
-        System.out.println(aux.getNombre());
-        for (Cancion c : ca) {
-            if (!aux.equals(c.getGrupo())){
-                aux = c.getGrupo();
-                System.out.println(aux.getNombre());
+    private static void verCanciones(Map<String,ArrayList<Cancion>> ca){
+        for (Map.Entry<String, ArrayList<Cancion>> entry : ca.entrySet()) {
+            System.out.println(entry.getKey());
+            for (Cancion c : entry.getValue()) {
+                System.out.println("\t"+c.getTitulo());
             }
-            System.out.println("\t"+c.getTitulo());
         }
+        System.out.println();
     }
 
-    private static void verCancionesGrupo(Map<String, Integer> map){
+    private static void verCancionesGrupos(Map<String, Integer> map){
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());
         }
+        System.out.println();
     }
 
+    private static void cancionesGrupo() {
+        Scanner t = new Scanner(System.in);
+        System.out.println("introduce el grupo");
+        String grupo = t.nextLine();
+        List<Cancion> canciones = Serv.CancionesGrupo(grupo);
+        for (Cancion c : canciones) {
+            System.out.println(c.getNumCancion() + " " + c.getTitulo() + " " + c.getDuracion());
+        }
+        System.out.println();
+    }
 
+    public static void cincoMasVotadas(){
+        List<Cancion> canciones = Serv.masVotadas();
+        for (Cancion c : canciones) {
+            System.out.println(c.getTitulo() + " - " + c.getGrupo().getNombre());
+        }
+        System.out.println();
+    }
+
+    public static void gruposSinCanciones(){
+        List<Grupo> grupos = Serv.gruposSinCanciones();
+        for (Grupo g : grupos) {
+            System.out.println(g.getNombre());
+        }
+        System.out.println();
+    }
+
+    public static void ultimosVotos(Map<String, String> votos){
+        for (Map.Entry<String, String> entry : votos.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+        System.out.println();
+    }
 }
