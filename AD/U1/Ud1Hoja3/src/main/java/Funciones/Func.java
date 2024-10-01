@@ -7,6 +7,7 @@ import Servicio.Serv;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -86,12 +87,15 @@ public class Func {
         }
     }
 
-    private static void verCanciones(List<Cancion> ca){
+    private static void verCanciones(ArrayList<Cancion> ca){
+        Grupo aux = ca.get(0).getGrupo();
+        System.out.println(aux.getNombre());
         for (Cancion c : ca) {
-            System.out.println(c.getGrupo().getNombre());
-                for (Cancion cancion : ca) {
-                    if(cancion.getGrupo()==c.getGrupo())System.out.println(cancion.getTitulo());
-                }
+            if (!aux.equals(c.getGrupo())){
+                aux = c.getGrupo();
+                System.out.println(aux.getNombre());
+            }
+            System.out.println("\t"+c.getTitulo());
         }
     }
 

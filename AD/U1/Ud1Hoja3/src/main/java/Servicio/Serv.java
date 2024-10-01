@@ -40,7 +40,7 @@ public class Serv {
 
     public static List<Grupo> listarGrupos(){
         Connection c = Conn.getConexion();
-        List<Grupo> grupos = new ArrayList<>();
+        ArrayList<Grupo> grupos = new ArrayList<>();
         if (c != null) {
             String sql = "select codgrupo, nombre, localidad, estilo from grupos order by codgrupo";
             try (Statement st = c.createStatement(); ResultSet rs = st.executeQuery(sql);) {
@@ -60,9 +60,9 @@ public class Serv {
         return grupos;
     }
 
-    public static List<Cancion> listarCanciones(){
+    public static ArrayList<Cancion> listarCanciones(){
         Connection c = Conn.getConexion();
-        List<Cancion> canciones = new ArrayList<>();
+        ArrayList<Cancion> canciones = new ArrayList<>();
         ResultSet rs = null;
         Statement st = null;
         if (c != null) {
