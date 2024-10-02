@@ -3,6 +3,7 @@ package org.example;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -14,6 +15,7 @@ public class Main {
         //ejecuta(args[0]);
         //ejecuta2(args);
         //ip();
+        aleatorios();
     }
 
     //ejercicio 1 Realiza un programa en Java que ejecute el comando ipconfig a través de la
@@ -21,7 +23,8 @@ public class Main {
     private static void ipconfig() {
         Runtime runtime = Runtime.getRuntime();
         Process process = null;
-        String com = "ipconfig";//llamamos al cmd para que ejecute el comando ipconfig
+        String com = "cmd /c ipconfig";//llamamos al cmd para que ejecute el comando ipconfig
+        System.out.println("ejecutamos el proceso hijo");
         try {
             process = runtime.exec(com); //ejecutamos el comando
             InputStream is = process.getInputStream();  //obtenemos la salida del comando
@@ -42,7 +45,7 @@ public class Main {
     public static void calculator() {
         Runtime runtime = Runtime.getRuntime();
         Process process = null;
-        String com = "calc";//llamamos al cmd para que ejecute el comando calc
+        String com = "calc";//llamamos al cmd para que el proceso hijo ejecute el comando calc
         try {
             process = runtime.exec(com); //ejecutamos el comando
             // esperamos a que el proceso se termine y mostramos el mensaje
@@ -101,10 +104,10 @@ public class Main {
             System.out.println("Error: No se ha introducido ningún parametro");
             System.exit(-1);
         }
-        if (com.length > 10) {
+        else if (com.length > 10) {
             System.out.println("Error: demasiados parametros");
             System.exit(-1);
-        }
+        } else {
         Runtime runtime = Runtime.getRuntime();
         try {
             for (int i = 0; i < com.length; i++) {
@@ -115,6 +118,7 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
+        }
     }
 
     //ejercicio 6 Realizar un programa en Java que obtenga la dirección IP del ordenador y la
@@ -123,7 +127,7 @@ public class Main {
     private static void ip() {
         Runtime runtime = Runtime.getRuntime();
         Process process = null;
-        String com = "ipconfig";
+        String com = "cmd c/ ipconfig";
         try {
             process = runtime.exec(com);
             InputStream is = process.getInputStream();
@@ -155,4 +159,30 @@ public class Main {
     //  pantalla
     //III. Cuando el proceso padre reciba la palabra “fin”, finalizará la ejecución del
     //  hijo y procederá a finalizar su ejecución
+    private static void aleatorios() {
+        Runtime runtime = Runtime.getRuntime();
+        Process process = null;
+        String com = "java -jar C:\\Users\\josea\\IdeaProjects\\Practica1.1\\out\\artifacts\\Aleatorios_jar\\Aleatorios.jar";
+        try {
+            do {
+                System.out.println("Escribe una linea, fin para finalizar el programa");
+                String msg = new Scanner(System.in).nextLine();
+                if (msg.equals("fin")) {
+                    System.exit(0);
+                } else {
+                    process = runtime.exec(com);
+                    InputStream is = process.getInputStream();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        System.out.println(line);
+                    }
+                    br.close();
+                }
+            }while (true);
+        } catch (Exception e) {
+            System.err.println("Error:" + e.getMessage());
+            System.exit(-1);
+        }
+    }
 }
