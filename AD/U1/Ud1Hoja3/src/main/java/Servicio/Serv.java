@@ -7,6 +7,7 @@ import Modelo.Usuario;
 import Modelo.Votos;
 
 import java.sql.*;
+import java.sql.Date;
 import java.util.*;
 
 public class Serv {
@@ -272,28 +273,140 @@ public class Serv {
         //Conn.cerrar(conn);
         return votos;
     }
-//////////////////////////////////////////////////////////////////////////////////////////////
-    public static boolean eliminarPorGrupo(String grupo){
+
+    public static int eliminarPorGrupo(String grupo){
         Connection conn = Conn.getConexion();
-        boolean eliminado = false;
-        int n = -1;
+        int nv = -1;
+        int nc = -1;
+        Grupo g = grupoPorNombre(grupo);
         if (conn != null) {
-            String sql = "delete from canciones where grupo = (select codgrupo from grupos where nombre = ?)";
-            try (PreparedStatement st = Conn.getConexion().prepareStatement(sql);) {
-                st.setString(1, grupo);
-                n = st.executeUpdate();
-                if (n > 0) {
-                    eliminado = true;
+            if(g!=null){
+                String sql = "delete from votos where cancion in (select numcancion from canciones where grupo = ?)";
+                try (PreparedStatement st = Conn.getConexion().prepareStatement(sql);) {
+                    st.setInt(1, g.getCodgrupo());
+                    nv = st.executeUpdate();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getErrorCode());
                 }
-            } catch (SQLException ex) {
-                System.out.println(ex.getErrorCode());
+                if(nv>0) {
+                    sql = "delete from canciones where grupo = ?";
+                    try (PreparedStatement st = Conn.getConexion().prepareStatement(sql);) {
+                        st.setInt(1, g.getCodgrupo());
+                        nc = st.executeUpdate();
+
+                    } catch (SQLException ex) {
+                        System.out.println(ex.getErrorCode());
+                    }
+                }
+            }
+
+        }
+        //Conn.cerrar(conn);
+        return nc;
+    }
+
+    public static int modificarPorGrupo(Grupo grupo){
+        Connection conn = Conn.getConexion();
+        Grupo g = grupoPorNombre(grupo.getNombre());
+        int n= -1;
+        String campo = "";
+        String nombre = "";
+        String localidad = "";
+        String estilo = "";
+        boolean esgrupo = false;
+        int annoGrab = 0;
+        Date fechaEstreno = null;
+        String compania = "";
+        if (conn != null) {
+            if(g!=null){
+                System.out.println("""
+                Introduce el campo a modificar
+                1.nombre
+                2.localidad
+                3.estilo
+                4.esgrupo
+                5.annoGrab
+                6.fechaEstreno
+                7.compania""");
+                int op = Integer.parseInt(new Scanner(System.in).nextLine());
+                switch (op){
+                    case 1:
+                        System.out.println("Introduce el nuevo nombre");
+                        nombre = new Scanner(System.in).nextLine();
+                        campo = "nombre";
+                        break;
+                    case 2:
+                        System.out.println("Introduce la nueva localidad");
+                        localidad = new Scanner(System.in).nextLine();
+                        campo = "localidad";
+                        break;
+                    case 3:
+                        System.out.println("Introduce el nuevo estilo");
+                        estilo = new Scanner(System.in).nextLine();
+                        campo = "estilo";
+                        break;
+                    case 4:
+                        System.out.println("Introduce si es grupo o no");
+                        esgrupo = Boolean.parseBoolean(new Scanner(System.in).nextLine());
+                        campo = "esgrupo";
+                        break;
+                    case 5:
+                        System.out.println("Introduce el nuevo año de grabacion");
+                        annoGrab = Integer.parseInt(new Scanner(System.in).nextLine());
+                        campo = "annoGrab";
+                        break;
+                    case 6:
+                        System.out.println("Introduce la nueva fecha de estreno (yyyy-MM-dd)");
+                        fechaEstreno = Date.valueOf(new Scanner(System.in).nextLine());
+                        campo = "fechaEstreno";
+                        break;
+                    case 7:
+                        System.out.println("Introduce la nueva compañia");
+                        compania = new Scanner(System.in).nextLine();
+                        campo = "compania";
+                        break;
+                    default:
+                        System.out.println("opcion no valida");
+                        break;
+                }
+                String sql = "update grupos set ? = ? where codgrupo = ?";
+                try (PreparedStatement st = Conn.getConexion().prepareStatement(sql);) {
+                    st.setString(1, campo);
+                    switch (op){
+                        case 1:
+                            st.setString(2, nombre);
+                            break;
+                        case 2:
+                            st.setString(2, localidad);
+                            break;
+                        case 3:
+                            st.setString(2, estilo);
+                            break;
+                        case 4:
+                            st.setBoolean(2, esgrupo);
+                            break;
+                        case 5:
+                            st.setInt(2, annoGrab);
+                            break;
+                        case 6:
+                            st.setDate(2, fechaEstreno);
+                            break;
+                        case 7:
+                            st.setString(2, compania);
+                            break;
+                    }
+                    st.setInt(3, g.getCodgrupo());
+                    n = st.executeUpdate();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getErrorCode());
+                }
             }
         }
         //Conn.cerrar(conn);
-        return eliminado;
+        return n;
     }
 
-    /*public static Grupo grupoPorNombre(String grupo){
+    public static Grupo grupoPorNombre(String grupo){
         Connection c = Conn.getConexion();
         Grupo g = null;
         if (c != null) {
@@ -318,7 +431,7 @@ public class Serv {
             }
         }
         return g;
-    }*/
+    }
 
 
     private static boolean cerrar(ResultSet rs, Statement st) {
@@ -327,32 +440,6 @@ public class Serv {
             if (rs != null) {
                 rs.close();
             }
-            if (st != null) {
-                st.close();
-            }
-            cerrado = true;
-        } catch (SQLException ex) {
-            System.out.println(ex.getErrorCode());
-        }
-        return cerrado;
-    }
-    private static boolean cerrar(ResultSet rs) {
-        boolean cerrado = false;
-        try {
-            if (rs != null) {
-                rs.close();
-            }
-            cerrado = true;
-        } catch (SQLException ex) {
-            System.out.println(ex.getErrorCode());
-        }
-        return cerrado;
-    }
-
-    private static boolean cerrar(Statement st) {
-        boolean cerrado = false;
-        try {
-
             if (st != null) {
                 st.close();
             }

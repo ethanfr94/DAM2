@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class Func {
 
-    public Usuario saveUser(){
+    public Usuario saveUser() {
         Scanner t = new Scanner(System.in);
         System.out.println("introduce usuario");
         String user = t.nextLine();
@@ -34,7 +34,7 @@ public class Func {
         return u;
     }
 
-    public static void menu(){
+    public static void menu() {
         int op;
         do {
             System.out.println("""
@@ -50,7 +50,7 @@ public class Func {
                     0.Salir""");
 
             op = Integer.parseInt(new Scanner(System.in).nextLine());
-            switch (op){
+            switch (op) {
                 case 1:
                     verGrupos(Serv.listarGrupos());
                     break;
@@ -73,10 +73,10 @@ public class Func {
                     ultimosVotos(Serv.ultimosVotos());
                     break;
                 case 8:
-                    //eliminarCancionesGrupo();
+                    eliminarCancionesGrupo();
                     break;
                 case 9:
-                    //modificarGrupo();
+                    modificarDatosGrupo();
                     break;
                 case 0:
                     System.out.println("adios");
@@ -85,27 +85,27 @@ public class Func {
                     System.out.println("opcion no valida");
                     break;
             }
-        }while (op != 0);
+        } while (op != 0);
     }
 
-    private static void verGrupos(List<Grupo> gr){
+    private static void verGrupos(List<Grupo> gr) {
         for (Grupo g : gr) {
             System.out.println(g.getCodgrupo() + " " + g.getNombre() + " " + g.getLocalidad() + " " + g.getEstilo());
         }
         System.out.println();
     }
 
-    private static void verCanciones(Map<String,ArrayList<Cancion>> ca){
+    private static void verCanciones(Map<String, ArrayList<Cancion>> ca) {
         for (Map.Entry<String, ArrayList<Cancion>> entry : ca.entrySet()) {
             System.out.println(entry.getKey());
             for (Cancion c : entry.getValue()) {
-                System.out.println("\t"+c.getTitulo());
+                System.out.println("\t" + c.getTitulo());
             }
         }
         System.out.println();
     }
 
-    private static void verCancionesGrupos(Map<String, Integer> map){
+    private static void verCancionesGrupos(Map<String, Integer> map) {
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());
         }
@@ -123,7 +123,7 @@ public class Func {
         System.out.println();
     }
 
-    public static void cincoMasVotadas(){
+    public static void cincoMasVotadas() {
         List<Cancion> canciones = Serv.masVotadas();
         for (Cancion c : canciones) {
             System.out.println(c.getTitulo() + " - " + c.getGrupo().getNombre());
@@ -131,7 +131,7 @@ public class Func {
         System.out.println();
     }
 
-    public static void gruposSinCanciones(){
+    public static void gruposSinCanciones() {
         List<Grupo> grupos = Serv.gruposSinCanciones();
         for (Grupo g : grupos) {
             System.out.println(g.getNombre());
@@ -139,10 +139,30 @@ public class Func {
         System.out.println();
     }
 
-    public static void ultimosVotos(Map<String, String> votos){
+    public static void ultimosVotos(Map<String, String> votos) {
         for (Map.Entry<String, String> entry : votos.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());
         }
         System.out.println();
+    }
+
+    public static void eliminarCancionesGrupo() {
+
+        Scanner t = new Scanner(System.in);
+        System.out.println("introduce el grupo");
+        String grupo = t.nextLine();
+        System.out.println("se han eliminado " + Serv.eliminarPorGrupo(grupo) + " filas");
+    }
+
+    public static void modificarDatosGrupo() {
+        Scanner t = new Scanner(System.in);
+        System.out.println("introduce el grupo");
+        String grupo = t.nextLine();
+        Grupo g = Serv.grupoPorNombre(grupo);
+        if (g != null) {
+            System.out.println("grupo: " + g.getNombre() + " estilo: " + g.getEstilo() + " año de primera grabacion: " + g.getAnnoGrab() + " fecha primera actuacion: " + g.getFechaEstreno() + " localidad: " + g.getLocalidad() + " compañia: " + g.getCompania());
+            int n = Serv.modificarPorGrupo(g);
+            System.out.println("se han modificado " + n + " filas");
+        }
     }
 }
