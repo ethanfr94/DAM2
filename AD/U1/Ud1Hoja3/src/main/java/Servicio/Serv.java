@@ -125,11 +125,11 @@ public class Serv {
     }
 
     public static ArrayList<Cancion> CancionesGrupo(String grupo){
-        Connection conn = Conn.getConexion();
+        Connection c = Conn.getConexion();
         ArrayList<Cancion> canciones = new ArrayList<>();
         ResultSet rs = null;
         PreparedStatement st = null;
-        if (conn != null) {
+        if (c != null) {
             String sql = "select numcancion, titulo, duracion, total_votos, grupo, grupos.nombre from canciones inner join grupos on grupo=codgrupo where nombre = ?";
             try {
                 st = Conn.getConexion().prepareStatement(sql);
@@ -152,16 +152,16 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
-        //Conn.cerrar(conn);
+        //Conn.cerrar(c);
         return canciones;
     }
 
     public static Grupo grupoPorId(int codGrupo){
-        Connection conn = Conn.getConexion();
+        Connection c = Conn.getConexion();
         Grupo g = null;
         PreparedStatement st = null;
         ResultSet rs = null;
-        if (conn != null) {
+        if (c != null) {
             String sql = "select codgrupo, nombre, localidad, estilo, esgrupo, annoGrab, fechaEstreno, compania from grupos where codgrupo = ?";
             try {
                 st = Conn.getConexion().prepareStatement(sql);
@@ -188,11 +188,11 @@ public class Serv {
     }
 
     public static ArrayList<Cancion> masVotadas(){
-        Connection conn = Conn.getConexion();
+        Connection c = Conn.getConexion();
         ArrayList<Cancion> canciones = new ArrayList<>();
         ResultSet rs = null;
         PreparedStatement st = null;
-        if (conn != null) {
+        if (c != null) {
 
             String sql = "select numcancion, titulo, duracion, total_votos, grupo from canciones order by total_votos desc limit 5";
             try {
@@ -215,16 +215,16 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
-        //Conn.cerrar(conn);
+        //Conn.cerrar(c);
         return canciones;
     }
 
     public static ArrayList<Grupo> gruposSinCanciones(){
-        Connection conn = Conn.getConexion();
+        Connection c = Conn.getConexion();
         ArrayList<Grupo> grupos = new ArrayList<>();
         ResultSet rs = null;
         Statement st = null;
-        if (conn != null) {
+        if (c != null) {
             String sql = "select codgrupo, nombre, localidad, estilo from grupos where codgrupo not in (select grupo from canciones)";
             try {
                 st = Conn.getConexion().createStatement();
@@ -245,16 +245,16 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
-        //Conn.cerrar(conn);
+
         return grupos;
     }
 
     public static Map<String,String> ultimosVotos(){
-        Connection conn = Conn.getConexion();
+        Connection c = Conn.getConexion();
         Map<String,String> votos = new LinkedHashMap<>();
         ResultSet rs = null;
         Statement st = null;
-        if (conn != null) {
+        if (c != null) {
             String sql = "select cancion, usuario, fecha, numcancion, titulo, codgrupo, grupo, grupos.nombre from votos inner join canciones on cancion=numcancion inner join grupos on codgrupo=grupo order by fecha desc limit 5";
             try {
                 st = Conn.getConexion().createStatement();
@@ -270,7 +270,7 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
-        //Conn.cerrar(conn);
+        //Conn.cerrar(c);
         return votos;
     }
 
@@ -369,36 +369,36 @@ public class Serv {
                         System.out.println("opcion no valida");
                         break;
                 }
-                String sql = "update grupos set ? = ? where codgrupo = ?";
+                String sql = "update grupos set "+campo+" = ? where codgrupo = ?";
                 try (PreparedStatement st = Conn.getConexion().prepareStatement(sql);) {
-                    st.setString(1, campo);
                     switch (op){
                         case 1:
-                            st.setString(2, nombre);
+                            st.setString(1, nombre);
                             break;
                         case 2:
-                            st.setString(2, localidad);
+                            st.setString(1, localidad);
                             break;
                         case 3:
-                            st.setString(2, estilo);
+                            st.setString(1, estilo);
                             break;
                         case 4:
-                            st.setBoolean(2, esgrupo);
+                            st.setBoolean(1, esgrupo);
                             break;
                         case 5:
-                            st.setInt(2, annoGrab);
+                            st.setInt(1, annoGrab);
                             break;
                         case 6:
-                            st.setDate(2, fechaEstreno);
+                            st.setDate(1, fechaEstreno);
                             break;
                         case 7:
-                            st.setString(2, compania);
+                            st.setString(1, compania);
                             break;
                     }
-                    st.setInt(3, g.getCodgrupo());
+                    st.setInt(2, g.getCodgrupo());
                     n = st.executeUpdate();
                 } catch (SQLException ex) {
                     System.out.println(ex.getErrorCode());
+                    System.out.println(ex.getMessage());
                 }
             }
         }
@@ -432,6 +432,8 @@ public class Serv {
         }
         return g;
     }
+
+
 
 
     private static boolean cerrar(ResultSet rs, Statement st) {

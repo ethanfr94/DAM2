@@ -13,11 +13,11 @@ public class Conn {
         if (connection == null) {
             Properties prop = new Properties();
             prop.put("user", "root");
-            prop.put("password", "mysql");//contraseña instituto "mysql"
+            prop.put("password", "root");//contraseña instituto "mysql"
             prop.put("useSSL", false);
             prop.put("useUnicode", true);
             prop.put("serverTimezone", "UTC");
-            String url = "jdbc:mysql://localhost:3307/concursomusica";//cambiar puerto
+            String url = "jdbc:mysql://localhost:3306/concursomusica";//cambiar puerto
 
             try {
                 connection = DriverManager.getConnection(url, prop);
