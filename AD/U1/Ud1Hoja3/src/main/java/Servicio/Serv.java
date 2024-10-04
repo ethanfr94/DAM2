@@ -400,8 +400,7 @@ public class Serv {
         return g;
     }
 
-
-
+    //select user from usuarios where user = ? and contraseña = md5(?);
 
     private static boolean cerrar(ResultSet rs, Statement st) {
         boolean cerrado = false;
