@@ -263,12 +263,13 @@ Console.WriteLine("La suma de los elementos de la matriz es de "+suma);
 
 // 14. Escribe una matriz de 2x3 (2 filas y 3 columnas) y calcule la suma de cada fila y de cada columna.
 
-int[,] matriz = new int[2, 3];
+/*
+int[,] matriz = new int[2,3];
 int[] sumaFilas = new int[2];
 int[] sumaColumnas = new int[3];
 for (int i = 0; i < matriz.GetLength(0); i++)
 {
-    for (int j = 0; j < matriz.GetLength(i); j++)
+    for (int j = 0; j < matriz.GetLength(1); j++)
     {
         Console.WriteLine("Introduce el número de la fila " + (i + 1) + " y columna " + (j + 1));
         matriz[i, j] = Convert.ToInt32(Console.ReadLine());
@@ -276,4 +277,17 @@ for (int i = 0; i < matriz.GetLength(0); i++)
         sumaColumnas[j] += matriz[i, j];
     }
 }
-
+for (int i = 0; i < matriz.GetLength(0); i++)
+{
+    for (int j = 0; j < matriz.GetLength(1); j++)
+    {
+        Console.Write(matriz[i, j] + " ");
+    }
+    Console.WriteLine();
+}
+Console.WriteLine("La suma de la primera fila es de: " + sumaFilas[0]);
+Console.WriteLine("La suma de la segunda fila es de: " + sumaFilas[1]);
+Console.WriteLine("La suma de la primera columna es de: " + sumaColumnas[0]);
+Console.WriteLine("La suma de la segunda columna es de: " + sumaColumnas[1]);
+Console.WriteLine("La suma de la tercera columna es de: " + sumaColumnas[2]);
+*/

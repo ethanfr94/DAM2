@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U1H2\\U1H2\\U1H2.csproj": {}
+    "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U2H2\\U1H2\\U1H2.csproj": {}
   },
   "projects": {
-    "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U1H2\\U1H2\\U1H2.csproj": {
+    "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U2H2\\U1H2\\U1H2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U1H2\\U1H2\\U1H2.csproj",
+        "projectUniqueName": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U2H2\\U1H2\\U1H2.csproj",
         "projectName": "U1H2",
-        "projectPath": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U1H2\\U1H2\\U1H2.csproj",
+        "projectPath": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U2H2\\U1H2\\U1H2.csproj",
         "packagesPath": "D:\\Usuarios\\dam2\\.nuget\\packages\\",
-        "outputPath": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U1H2\\U1H2\\obj\\",
+        "outputPath": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U2H2\\U1H2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
