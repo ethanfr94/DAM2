@@ -184,7 +184,7 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
-        Conn.cerrar();
+        //Conn.cerrar();
         return g;
     }
 
@@ -284,8 +284,10 @@ public class Serv {
             if(g!=null){
                 String sql = "delete from votos where cancion in (select numcancion from canciones where grupo = ?)";
                 try (PreparedStatement st = Conn.getConexion().prepareStatement(sql);) {
+                    conn.setAutoCommit(false);//modo transaccional
                     st.setInt(1, g.getCodgrupo());
                     nv = st.executeUpdate();
+                    conn.commit();
                 } catch (SQLException ex) {
                     System.out.println(ex.getErrorCode());
                 }
@@ -372,6 +374,7 @@ public class Serv {
                 }
                 String sql = "update grupos set "+campo+" = ? where codgrupo = ?";
                 try (PreparedStatement st = Conn.getConexion().prepareStatement(sql);) {
+                    conn.setAutoCommit(false);//modo transaccional
                     switch (op){
                         case 1:
                             st.setString(1, nombre);
@@ -397,6 +400,7 @@ public class Serv {
                     }
                     st.setInt(2, g.getCodgrupo());
                     n = st.executeUpdate();
+                    conn.commit();
                 } catch (SQLException ex) {
                     System.out.println(ex.getErrorCode());
                     System.out.println(ex.getMessage());
@@ -431,7 +435,7 @@ public class Serv {
                 System.out.println(ex.getErrorCode());
             }
         }
-        Conn.cerrar();
+        //Conn.cerrar();
         return g;
     }
 
