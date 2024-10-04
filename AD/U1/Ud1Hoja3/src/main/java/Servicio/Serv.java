@@ -30,10 +30,10 @@ public class Serv {
                     add = true;
                 }
             } catch (SQLException ex) {
-                System.out.println(ex.getErrorCode());
+                System.out.println("Error: "+ex.getErrorCode()+ex.getMessage());
             }
         }
-        //Conn.cerrar(c);
+        Conn.cerrar();
         return add;
     }
 
@@ -56,7 +56,7 @@ public class Serv {
                     grupos.add(g);
                 }
             } catch (SQLException ex) {
-                System.out.println(ex.getErrorCode());
+                System.out.println("Error: "+ex.getErrorCode()+ex.getMessage());
             }finally {
                 cerrar(rs, st);
             }
@@ -91,8 +91,7 @@ public class Serv {
                     }
                 }
             } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-                System.out.println(ex.getErrorCode());
+                System.out.println("Error: "+ex.getErrorCode()+ex.getMessage());
             } finally {
                 cerrar(rs, st);
             }
@@ -115,8 +114,7 @@ public class Serv {
                     grupos.put(rs.getString("nombre"), rs.getInt("canciones"));
                 }
             } catch (SQLException ex) {
-                System.out.println(ex.getErrorCode());
-            } finally {
+                System.out.println("Error: "+ex.getErrorCode()+ex.getMessage());            } finally {
                 cerrar(rs, st);
             }
         }
@@ -145,9 +143,7 @@ public class Serv {
                     canciones.add(can);
                 }
             } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-                System.out.println(ex.getErrorCode());
-                throw new RuntimeException(ex);
+                System.out.println("Error: "+ex.getErrorCode()+ex.getMessage());
             } finally {
                 cerrar(rs, st);
             }
@@ -177,14 +173,14 @@ public class Serv {
                         g.setAnnoGrab(rs.getInt("annoGrab"));
                         g.setFechaEstreno(rs.getDate("fechaEstreno"));
                         g.setCompania(rs.getString("compania"));
+                    }else {
+                        System.out.println("No existe el grupo");
                     }
             } catch (SQLException ex) {
-                System.out.println(ex.getErrorCode());
-            } finally {
+                System.out.println("Error: "+ex.getErrorCode()+ex.getMessage());            } finally {
                 cerrar(rs, st);
             }
         }
-        //Conn.cerrar();
         return g;
     }
 
@@ -209,9 +205,7 @@ public class Serv {
                     canciones.add(can);
                 }
             } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-                System.out.println(ex.getErrorCode());
-                throw new RuntimeException(ex);
+                System.out.println("Error: "+ex.getErrorCode()+ex.getMessage());
             } finally {
                 cerrar(rs, st);
             }
@@ -239,9 +233,7 @@ public class Serv {
                     grupos.add(g);
                 }
             } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-                System.out.println(ex.getErrorCode());
-                throw new RuntimeException(ex);
+                System.out.println("Error: "+ex.getErrorCode()+ex.getMessage());
             } finally {
                 cerrar(rs, st);
             }
@@ -264,9 +256,7 @@ public class Serv {
                     votos.put(rs.getString("usuario"), rs.getString("titulo"));
                 }
             } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-                System.out.println(ex.getErrorCode());
-                throw new RuntimeException(ex);
+                System.out.println("Error: "+ex.getErrorCode()+ex.getMessage());
             } finally {
                 cerrar(rs, st);
             }
@@ -289,7 +279,7 @@ public class Serv {
                     nv = st.executeUpdate();
                     conn.commit();
                 } catch (SQLException ex) {
-                    System.out.println(ex.getErrorCode());
+                    System.out.println("Error: "+ex.getErrorCode()+ex.getMessage());
                 }
                 if(nv>0) {
                     sql = "delete from canciones where grupo = ?";
@@ -298,7 +288,7 @@ public class Serv {
                         nc = st.executeUpdate();
 
                     } catch (SQLException ex) {
-                        System.out.println(ex.getErrorCode());
+                        System.out.println("Error: "+ex.getErrorCode()+ex.getMessage());;
                     }
                 }
             }
@@ -322,88 +312,58 @@ public class Serv {
         String compania = "";
         if (conn != null) {
             if(g!=null){
-                System.out.println("""
-                Introduce el campo a modificar
-                1.nombre
-                2.localidad
-                3.estilo
-                4.esgrupo
-                5.annoGrab
-                6.fechaEstreno
-                7.compania""");
+                System.out.println("Introduce el campo a modificar\n1.nombre\n2.localidad\n3.estilo\n"
+                        +"4.esgrupo\n5.annoGrab\n6.fechaEstreno\n7.compania");
                 int op = Integer.parseInt(new Scanner(System.in).nextLine());
                 switch (op){
                     case 1:
                         System.out.println("Introduce el nuevo nombre");
                         nombre = new Scanner(System.in).nextLine();
                         campo = "nombre";
-                        break;
                     case 2:
                         System.out.println("Introduce la nueva localidad");
                         localidad = new Scanner(System.in).nextLine();
                         campo = "localidad";
-                        break;
                     case 3:
                         System.out.println("Introduce el nuevo estilo");
                         estilo = new Scanner(System.in).nextLine();
                         campo = "estilo";
-                        break;
                     case 4:
                         System.out.println("Introduce si es grupo o no");
                         esgrupo = Boolean.parseBoolean(new Scanner(System.in).nextLine());
                         campo = "esgrupo";
-                        break;
                     case 5:
                         System.out.println("Introduce el nuevo año de grabacion");
                         annoGrab = Integer.parseInt(new Scanner(System.in).nextLine());
                         campo = "annoGrab";
-                        break;
                     case 6:
                         System.out.println("Introduce la nueva fecha de estreno (yyyy-MM-dd)");
                         fechaEstreno = Date.valueOf(new Scanner(System.in).nextLine());
                         campo = "fechaEstreno";
-                        break;
                     case 7:
                         System.out.println("Introduce la nueva compañia");
                         compania = new Scanner(System.in).nextLine();
                         campo = "compania";
-                        break;
                     default:
                         System.out.println("opcion no valida");
-                        break;
                 }
                 String sql = "update grupos set "+campo+" = ? where codgrupo = ?";
                 try (PreparedStatement st = Conn.getConexion().prepareStatement(sql);) {
                     conn.setAutoCommit(false);//modo transaccional
                     switch (op){
-                        case 1:
-                            st.setString(1, nombre);
-                            break;
-                        case 2:
-                            st.setString(1, localidad);
-                            break;
-                        case 3:
-                            st.setString(1, estilo);
-                            break;
-                        case 4:
-                            st.setBoolean(1, esgrupo);
-                            break;
-                        case 5:
-                            st.setInt(1, annoGrab);
-                            break;
-                        case 6:
-                            st.setDate(1, fechaEstreno);
-                            break;
-                        case 7:
-                            st.setString(1, compania);
-                            break;
+                        case 1: st.setString(1, nombre);
+                        case 2: st.setString(1, localidad);
+                        case 3: st.setString(1, estilo);
+                        case 4: st.setBoolean(1, esgrupo);
+                        case 5: st.setInt(1, annoGrab);
+                        case 6: st.setDate(1, fechaEstreno);
+                        case 7: st.setString(1, compania);
                     }
                     st.setInt(2, g.getCodgrupo());
                     n = st.executeUpdate();
                     conn.commit();
                 } catch (SQLException ex) {
-                    System.out.println(ex.getErrorCode());
-                    System.out.println(ex.getMessage());
+                    System.out.println("Error: "+ex.getErrorCode()+ex.getMessage());
                 }
             }
         }
@@ -429,13 +389,14 @@ public class Serv {
                         g.setAnnoGrab(rs.getInt("annoGrab"));
                         g.setFechaEstreno(rs.getDate("fechaEstreno"));
                         g.setCompania(rs.getString("compania"));
+                    }else{
+                        System.out.println("No existe el grupo");
                     }
                 }
             } catch (SQLException ex) {
-                System.out.println(ex.getErrorCode());
+                System.out.println("Error: "+ex.getErrorCode()+ex.getMessage());
             }
         }
-        //Conn.cerrar();
         return g;
     }
 
@@ -453,7 +414,7 @@ public class Serv {
             }
             cerrado = true;
         } catch (SQLException ex) {
-            System.out.println(ex.getErrorCode());
+            System.out.println("Error: "+ex.getErrorCode()+ex.getMessage());
         }
         return cerrado;
     }
