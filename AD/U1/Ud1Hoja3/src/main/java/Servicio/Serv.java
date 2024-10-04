@@ -61,7 +61,7 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
-        //Conn.cerrar(c);
+        Conn.cerrar();
         return grupos;
     }
 
@@ -97,7 +97,7 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
-        //Conn.cerrar(c);
+        Conn.cerrar();
         return canciones;
     }
 
@@ -120,7 +120,7 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
-        //Conn.cerrar(c);
+        Conn.cerrar();
         return grupos;
     }
 
@@ -152,7 +152,7 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
-        //Conn.cerrar(c);
+        Conn.cerrar();
         return canciones;
     }
 
@@ -184,6 +184,7 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
+        Conn.cerrar();
         return g;
     }
 
@@ -215,7 +216,7 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
-        //Conn.cerrar(c);
+        Conn.cerrar();
         return canciones;
     }
 
@@ -245,7 +246,7 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
-
+        Conn.cerrar();
         return grupos;
     }
 
@@ -270,7 +271,7 @@ public class Serv {
                 cerrar(rs, st);
             }
         }
-        //Conn.cerrar(c);
+        Conn.cerrar();
         return votos;
     }
 
@@ -301,7 +302,7 @@ public class Serv {
             }
 
         }
-        //Conn.cerrar(conn);
+        Conn.cerrar();
         return nc;
     }
 
@@ -402,7 +403,7 @@ public class Serv {
                 }
             }
         }
-        //Conn.cerrar(conn);
+        Conn.cerrar();
         return n;
     }
 
@@ -430,6 +431,7 @@ public class Serv {
                 System.out.println(ex.getErrorCode());
             }
         }
+        Conn.cerrar();
         return g;
     }
 
