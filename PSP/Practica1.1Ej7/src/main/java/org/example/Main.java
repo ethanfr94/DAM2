@@ -20,43 +20,36 @@ public class Main {
 //  hijo y procederá a finalizar su ejecución
 
     public static void main(String[] args) {
-        aleat();
-    }
-
-    public static void aleat() {
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader bw = new BufferedReader(isr);
         String entrada = null;
         Runtime r = Runtime.getRuntime();
         Process p = null;
-        String com = "java -jar C:\\Users\\usuario\\Desktop\\DAM\\PSP\\Practica1.1Ej7\\src";
+        String com = "java -jar src\\Aleatorio.jar";
         try {
             p = r.exec(com);
             InputStream is = p.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             OutputStream os = p.getOutputStream();
-
-            String linea;
             System.out.println("Introduce texto (fin para terminar):");
-            while((entrada = bw.readLine()) != null && !entrada.equals("fin")) {
+            while((entrada = bw.readLine()) != null && !entrada.equalsIgnoreCase("fin")) {
                 entrada = entrada + "\n";
                 os.write(entrada.getBytes());
                 os.flush();
-                linea = br.readLine();
-                System.out.println("Numero aleatorio: " + linea);
+                System.out.println("Numero aleatorio: " +br.readLine() );
             }
             entrada += "\n";
             os.write(entrada.getBytes());
             os.flush();
             os.close();
+            int exitVal = p.waitFor();
+            System.out.println("Valor de salida: " + exitVal);
         }
         catch (IOException ex){
-            System.out.println(ex.getMessage());
+            System.out.println("error: "+ex.getMessage());
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
-
     }
 }
 
