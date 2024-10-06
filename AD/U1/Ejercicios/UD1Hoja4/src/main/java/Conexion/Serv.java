@@ -68,10 +68,10 @@ public class Serv {
                 }
                 canciones.add(c);
             }
-            st.close();
-            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            cerrar(rs, st);
         }
         Conn.cerrar();
         return canciones;
@@ -82,16 +82,12 @@ public class Serv {
         Connection con = Conn.getConexion();
         Statement st = null;
         ResultSet rs = null;
-        ResultSet rs1 = null;
-        ResultSet rs2 = null;
-        ResultSet rs3 = null;
-        ResultSet rs4 = null;
         String nuevo = "";
         String viejo = "";
         int cancion = 0;
         try {
             st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            rs = st.executeQuery("SELECT usuario,fecha,cancion FROM votos ORDER BY fecha DESC LIMIT 10");
+            rs = st.executeQuery("SELECT usuario, fecha, cancion FROM votos ORDER BY fecha DESC LIMIT 10");
             while (rs.next()) {
                 viejo = rs.getString("usuario");
                 cancion = rs.getInt("cancion");
@@ -103,41 +99,95 @@ public class Serv {
                             nuevo = t.nextLine();
                             rs.updateString("usuario",nuevo);
                             rs.updateRow();
-                            rs1 = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '"+viejo+"'");
-                            if(rs1.next()){
-                                int numvotos1 = rs1.getInt("numvotos");
-                                rs1.updateInt("numvotos",numvotos1-1);
-                                rs1.updateRow();
-                            }
-                            rs2 = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '"+nuevo+"'");
-                            if (rs2.next()){
-                                int numvotos2 = rs2.getInt("numvotos");
-                                rs2.updateInt("numvotos",numvotos2+1);
-                                rs2.updateRow();
-                            }
+                            restaVotosUsuario(viejo);
+                            sumaVotosUsuario(nuevo);
+                            break;
                         }catch (SQLException e){
                             System.out.println("Error: "+e.getErrorCode()+e.getMessage());
                         }
                     case 2:
                         rs.deleteRow();
-                        rs3 = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '"+viejo+"'");
-                        if(rs3.next()){
-                            int numvotos = rs3.getInt("numvotos");
-                            rs3.updateInt("numvotos",numvotos-1);
-                            rs3.updateRow();
-                        }
-                        rs4 = st.executeQuery("SELECT numcancion, total_votos FROM canciones where numcancion = '"+cancion+"'");
-                        if(rs4.next()){
-                            int totalvotos = rs4.getInt("total_votos");
-                            rs4.updateInt("total_votos",totalvotos-1);
-                            rs4.updateRow();
-                        }
+                        restaVotosUsuario(viejo);
+                        restaVotosCancion(cancion);
+                        break;
+                    default:
+                        System.out.println("no se ha realizado ninguna accion");
+                        break;
                 };
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        cerrar(rs, st);
         Conn.cerrar();
+    }
+
+
+
+    public static boolean restaVotosUsuario(String user) {
+        Connection con = Conn.getConexion();
+        Statement st = null;
+        ResultSet rs = null;
+        boolean ok = false;
+        try {
+            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            rs = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '" + user + "'");
+            if (rs.next()) {
+                int numvotos = rs.getInt("numvotos")-1;
+                rs.updateInt("numvotos", numvotos);
+                rs.updateRow();
+                ok = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            cerrar(rs, st);
+        }
+        return ok;
+    }
+
+    public static boolean sumaVotosUsuario(String user) {
+        Connection con = Conn.getConexion();
+        Statement st = null;
+        ResultSet rs = null;
+        boolean ok = false;
+        try {
+            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            rs = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '" + user + "'");
+            if (rs.next()) {
+                int numvotos = rs.getInt("numvotos")+1;
+                rs.updateInt("numvotos", numvotos);
+                rs.updateRow();
+                ok = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            cerrar(rs, st);
+        }
+        return ok;
+    }
+
+    public static boolean restaVotosCancion(int cancion) {
+        Connection con = Conn.getConexion();
+        Statement st = null;
+        ResultSet rs = null;
+        boolean ok = false;
+        try {
+            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            rs = st.executeQuery("SELECT numcancion, total_votos FROM canciones where numcancion = '" + cancion + "'");
+            if (rs.next()) {
+                int totalvotos = rs.getInt("total_votos")-1;
+                rs.updateInt("total_votos", totalvotos);
+                rs.updateRow();
+                ok = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            cerrar(rs, st);
+        }
+        return ok;
     }
 
     private static boolean cerrar (ResultSet rs, Statement st){
