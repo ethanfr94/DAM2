@@ -34,6 +34,8 @@ public class Serv {
                 g.setFechaEstreno(rs.getDate("fechaEstreno"));
                 g.setCompania(rs.getString("compania"));
             }
+            st.close();
+            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -66,6 +68,8 @@ public class Serv {
                 }
                 canciones.add(c);
             }
+            st.close();
+            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -76,11 +80,6 @@ public class Serv {
     public static void ultioms10Votos() {
         Scanner t = new Scanner(System.in);
         Connection con = Conn.getConexion();
-        try {
-            con.setAutoCommit(false);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
         Statement st = null;
         ResultSet rs = null;
         ResultSet rs1 = null;
@@ -96,7 +95,7 @@ public class Serv {
             while (rs.next()) {
                 viejo = rs.getString("usuario");
                 cancion = rs.getInt("cancion");
-                System.out.println("Usuario: " + rs.getString("usuario")+" - Cancion: "+rs.getInt("cancion"));
+                System.out.println("Usuario: " + viejo+" - Cancion: "+cancion);
                 switch(Func.opcionUsuario()){
                     case 1:
                         System.out.println("Introduce el nuevo usuario");
@@ -104,80 +103,41 @@ public class Serv {
                             nuevo = t.nextLine();
                             rs.updateString("usuario",nuevo);
                             rs.updateRow();
-                            rs = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '"+viejo+"'");
-                            rs.updateInt("numvotos",rs.getInt("numvotos")-1);
-                            rs.updateRow();
-                            rs = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '"+nuevo+"'");
-                            rs.updateInt("numvotos",rs.getInt("numvotos")+1);
-                            rs.updateRow();
-
+                            rs1 = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '"+viejo+"'");
+                            if(rs1.next()){
+                                int numvotos1 = rs1.getInt("numvotos");
+                                rs1.updateInt("numvotos",numvotos1-1);
+                                rs1.updateRow();
+                            }
+                            rs2 = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '"+nuevo+"'");
+                            if (rs2.next()){
+                                int numvotos2 = rs2.getInt("numvotos");
+                                rs2.updateInt("numvotos",numvotos2+1);
+                                rs2.updateRow();
+                            }
                         }catch (SQLException e){
                             System.out.println("Error: "+e.getErrorCode()+e.getMessage());
                         }
-                        break;
                     case 2:
                         rs.deleteRow();
-                        rs = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '"+viejo+"'");
-                        rs.updateInt("numvotos",rs.getInt("numvotos")-1);
-                        rs.updateRow();
-                        rs = st.executeQuery("SELECT numcancion, total_votos FROM canciones where numcancion = '"+cancion+"'");
-                        rs.updateInt("total_votos",rs.getInt("total_votos")-1);
-                        rs.updateRow();
-                        break;
+                        rs3 = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '"+viejo+"'");
+                        if(rs3.next()){
+                            int numvotos = rs3.getInt("numvotos");
+                            rs3.updateInt("numvotos",numvotos-1);
+                            rs3.updateRow();
+                        }
+                        rs4 = st.executeQuery("SELECT numcancion, total_votos FROM canciones where numcancion = '"+cancion+"'");
+                        if(rs4.next()){
+                            int totalvotos = rs4.getInt("total_votos");
+                            rs4.updateInt("total_votos",totalvotos-1);
+                            rs4.updateRow();
+                        }
                 };
             }
-            con.commit();
         } catch (Exception e) {
             e.printStackTrace();
         }
         Conn.cerrar();
-    }
-
-
-
-    public static Cancion cancionPorId(int id) {
-        Connection con = Conn.getConexion();
-        Cancion c = new Cancion();
-        Statement st = null;
-        String sql = "SELECT numcancion, grupo, duracion, titulo, total_votos FROM canciones WHERE numcancion = " + id;
-        ResultSet rs = null;
-        try {
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
-            if (rs.next()) {
-                c.setNumCancion(rs.getInt("numcancion"));
-                c.setGrupo(grupoPorId(rs.getInt("grupo")));
-                c.setDuracion(rs.getTime("duracion"));
-                c.setTitulo(rs.getString("titulo"));
-                c.setVotos(rs.getInt("total_votos"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return c;
-    }
-
-    public static Usuario usuarioPorUser(String us) {
-        Connection con = Conn.getConexion();
-        Usuario u = new Usuario();
-        Statement st = null;
-        String sql = "SELECT user, contraseña, nombre, apellidos, fechanac,numvotos FROM usuarios WHERE user = '" + us + "'";
-        ResultSet rs = null;
-        try {
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
-            if (rs.next()) {
-                u.setUser(rs.getString("user"));
-                u.setPassword(rs.getString("contraseña"));
-                u.setNombre(rs.getString("nombre"));
-                u.setApellidos(rs.getString("apellidos"));
-                u.setFnac(rs.getDate("fechanac").toLocalDate());
-                u.setNumVotos(rs.getInt("numvotos"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return u;
     }
 
     private static boolean cerrar (ResultSet rs, Statement st){
