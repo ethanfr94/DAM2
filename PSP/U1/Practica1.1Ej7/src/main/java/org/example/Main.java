@@ -43,7 +43,7 @@ public class Main {
             os.flush();
             os.close();
             int exitVal = p.waitFor();
-            System.out.println("Valor de salida: " + exitVal);
+            System.out.println("Valor salida: " + exitVal);
         }
         catch (IOException ex){
             System.out.println("error: "+ex.getMessage());
