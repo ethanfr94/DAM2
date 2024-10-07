@@ -23,7 +23,7 @@ class programa
 
 //1. Crea una clase Figuras y varias clases derivadas para calcular el área y el perímetro de rectángulo, triángulo, cuadrado, rombo y trapecio. 
 
-class Figuras
+abstract class Figuras
 {
     protected double b {  get; set; }
     protected double h {  get; set; }
@@ -33,11 +33,7 @@ class Figuras
         this.b = b;
         this.h = h;
     }
-    public virtual double area()
-    {
-        return 0;
-    
-    }
+    public abstract double area();
 
 }
 
@@ -110,11 +106,9 @@ class Trapecio : Figuras
 
 //2. Crea una clase Animal y dos clases derivadas, Perro y Gato, que implementen un método HacerSonido().
 //3. Crea una lista Animal y añade diferentes tipos de animales. Usa polimorfismo para llamar al método HacerSonido().
-class animal
-{    public virtual void sonidoAnimal()
-    {
-        Console.WriteLine("los animales emiten sonidos");
-    }
+abstract class animal
+{
+    public abstract void sonidoAnimal();
 }
 
     class perro : animal
