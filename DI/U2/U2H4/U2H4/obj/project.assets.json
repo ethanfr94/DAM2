@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Usuarios\\dam2\\source\\repos\\U2H4\\U2H4\\U2H4.csproj",
+      "projectUniqueName": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U2H4\\U2H4\\U2H4.csproj",
       "projectName": "U2H4",
-      "projectPath": "D:\\Usuarios\\dam2\\source\\repos\\U2H4\\U2H4\\U2H4.csproj",
+      "projectPath": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U2H4\\U2H4\\U2H4.csproj",
       "packagesPath": "D:\\Usuarios\\dam2\\.nuget\\packages\\",
-      "outputPath": "D:\\Usuarios\\dam2\\source\\repos\\U2H4\\U2H4\\obj\\",
+      "outputPath": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\U2H4\\U2H4\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
