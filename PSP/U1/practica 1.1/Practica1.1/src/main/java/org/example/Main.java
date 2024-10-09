@@ -11,9 +11,9 @@ public class Main {
         // calculator();
         // command(args[0]);
         // ejecuta(args[0]);
-        ejecuta2(args);
+        // ejecuta2(args);
         // ip();
-        // aleatorios();
+        aleatorios();
     }
 
     // ejercicio 1 Realiza un programa en Java que ejecute el comando ipconfig a
@@ -181,7 +181,7 @@ public class Main {
         String entrada = null;
         Runtime r = Runtime.getRuntime();
         Process p = null;
-        String com = "java -jar C:\\Users\\usuario\\Desktop\\DAM\\PSP\\U1\\Practica1.1\\Aleatorio.jar";
+        String com = "java -jar src\\Aleatorio.jar";
         try {
             p = r.exec(com);// ejecutamos el comando
             InputStream is = p.getInputStream();// obtenemos la salida hacia el proceso hijo
