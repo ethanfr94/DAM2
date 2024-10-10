@@ -100,11 +100,11 @@ fun Area2(modifier: Modifier){
     val arraycont = arrayOf("tormenta", "hulk", "strange", "catwoman", "manhatan")
     Row(
         modifier
-            .fillMaxWidth()
-            .background(Color(0xFFFF8B4B))
-            .padding(10.dp),
-        horizontalArrangement = Arrangement.Start,
-        verticalAlignment = Alignment.CenterVertically)
+            .fillMaxWidth()// ancho de la fila
+            .background(Color(0xFFFF8B4B))// color de fondo
+            .padding(10.dp),// margen
+        horizontalArrangement = Arrangement.SpaceEvenly,// distribucion de los elementos
+        verticalAlignment = Alignment.CenterVertically)// alineacion vertical
     {
         for (i in 0..imagenes.size-1){
             ImagenCircular(imagenes[i], arraycont[i])
@@ -116,11 +116,12 @@ fun Area2(modifier: Modifier){
 @Composable
 fun ImagenCircular(img: Int, des: String) {
     Image(painter = painterResource(id = img),
-        contentDescription = des,
-        contentScale = ContentScale.Crop,
+        contentDescription = des,// descripcion de la imagen
+        contentScale = ContentScale.Crop,// escala de la imagen
         modifier = Modifier
-            .size(60.dp)
-            .clip(CircleShape))
+            .size(60.dp)// tamaño de la imagen
+            .clip(CircleShape)// forma de la imagen circular
+            )
 }
 
 @Composable
