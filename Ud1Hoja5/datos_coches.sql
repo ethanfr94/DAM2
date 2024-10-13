@@ -1,7 +1,7 @@
 CREATE DATABASE DatosCoches; 
 USE DatosCoches;
 CREATE TABLE PROPIETARIOS (DNI VARCHAR(10), Nombre VARCHAR(40), Edad INTEGER, UNIQUE KEY(DNI));
-CREATE TABLE COCHES (Matricula VARCHAR(10) , Marca VARCHAR(20), Precio INTEGER, DNI VARCHAR (10), UNIQUE KEY(Matricula), FOREIGN KEY (DNI) References Propietarios(DNI));
+CREATE TABLE COCHES (Matricula VARCHAR(10) , Marca VARCHAR(20), Precio INTEGER , DNI VARCHAR (10), UNIQUE KEY(Matricula), FOREIGN KEY (DNI) References Propietarios(DNI));
  INSERT INTO Propietarios values('1A','Pepe',30);
  INSERT INTO Propietarios values('1B','Ana',40);
  INSERT INTO Propietarios values('1C','Maria',50); 
