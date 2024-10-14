@@ -52,8 +52,8 @@ public class Serv {
         String sql = "SELECT numcancion, grupo, duracion, titulo, total_votos FROM canciones WHERE grupo = " + grupo.getCodgrupo();
         ResultSet rs = null;
         try {
-            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            rs = st.executeQuery(sql);
+            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);// Para poder actualizar el ResultSet con los nuevos datos
+            rs = st.executeQuery(sql);// Busca las canciones del grupo
             while (rs.next()) {
                 Cancion c = new Cancion();
                 c.setNumCancion(rs.getInt("numcancion"));
@@ -61,12 +61,12 @@ public class Serv {
                 c.setDuracion(rs.getTime("duracion"));
                 c.setTitulo(rs.getString("titulo"));
                 c.setVotos(rs.getInt("total_votos"));
-                if (Func.opcionVotos(c).toUpperCase().charAt(0) == 'S') {
+                if (Func.opcionVotos(c).toUpperCase().charAt(0) == 'S') {// Si el usuario quiere votar la cancion se suma un voto
                     rs.updateInt("total_votos", rs.getInt("total_votos") + 1);
-                    c.setVotos(c.getVotos()+1);
-                    rs.updateRow();
+                    c.setVotos(c.getVotos()+1);// Actualiza el objeto cancion con el nuevo valor de votos
+                    rs.updateRow();// Actualiza la fila con los nuevos datos
                 }
-                canciones.add(c);
+                canciones.add(c);// Añade la cancion a la lista
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,29 +86,29 @@ public class Serv {
         String viejo = "";
         int cancion = 0;
         try {
-            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);// Para poder actualizar el ResultSet con los nuevos datos
             rs = st.executeQuery("SELECT usuario, fecha, cancion FROM votos ORDER BY fecha DESC LIMIT 10");
             while (rs.next()) {
                 viejo = rs.getString("usuario");
                 cancion = rs.getInt("cancion");
                 System.out.println("Usuario: " + viejo+" - Cancion: "+cancion);
-                switch(Func.opcionUsuario()){
+                switch(Func.opcionUsuario()){// Opcion para modificar el usuario
                     case 1:
                         System.out.println("Introduce el nuevo usuario");
                         try {
                             nuevo = t.nextLine();
-                            rs.updateString("usuario",nuevo);
-                            rs.updateRow();
-                            restaVotosUsuario(viejo);
-                            sumaVotosUsuario(nuevo);
+                            rs.updateString("usuario",nuevo);// Actualiza el campo usuario con el nuevo valor
+                            rs.updateRow();// Actualiza la fila con los nuevos datos
+                            restaVotosUsuario(viejo);// Resta un voto al usuario viejo
+                            sumaVotosUsuario(nuevo);// Suma un voto al usuario nuevo
                             break;
                         }catch (SQLException e){
                             System.out.println("Error: "+e.getErrorCode()+e.getMessage());
                         }
                     case 2:
-                        rs.deleteRow();
-                        restaVotosUsuario(viejo);
-                        restaVotosCancion(cancion);
+                        rs.deleteRow();// Borra la fila actual
+                        restaVotosUsuario(viejo);// Resta un voto al usuario
+                        restaVotosCancion(cancion);// Resta un voto a la cancion
                         break;
                     default:
                         System.out.println("no se ha realizado ninguna accion");
@@ -130,12 +130,12 @@ public class Serv {
         ResultSet rs = null;
         boolean ok = false;
         try {
-            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            rs = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '" + user + "'");
+            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);// Para poder actualizar el ResultSet con los nuevos datos
+            rs = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '" + user + "'");// Busca el usuario
             if (rs.next()) {
-                int numvotos = rs.getInt("numvotos")-1;
-                rs.updateInt("numvotos", numvotos);
-                rs.updateRow();
+                int numvotos = rs.getInt("numvotos")-1;// Resta un voto al usuario
+                rs.updateInt("numvotos", numvotos);// Actualiza el campo numvotos con el nuevo valor
+                rs.updateRow();// Actualiza la fila con los nuevos datos
                 ok = true;
             }
         } catch (Exception e) {
@@ -152,12 +152,12 @@ public class Serv {
         ResultSet rs = null;
         boolean ok = false;
         try {
-            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            rs = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '" + user + "'");
+            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);// Para poder actualizar el ResultSet con los nuevos datos
+            rs = st.executeQuery("SELECT user, numvotos FROM usuarios where user = '" + user + "'");// Busca el usuario
             if (rs.next()) {
-                int numvotos = rs.getInt("numvotos")+1;
-                rs.updateInt("numvotos", numvotos);
-                rs.updateRow();
+                int numvotos = rs.getInt("numvotos")+1;// Suma un voto al usuario
+                rs.updateInt("numvotos", numvotos);// Actualiza el campo numvotos con el nuevo valor
+                rs.updateRow();// Actualiza la fila con los nuevos datos
                 ok = true;
             }
         } catch (Exception e) {
@@ -174,12 +174,12 @@ public class Serv {
         ResultSet rs = null;
         boolean ok = false;
         try {
-            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            rs = st.executeQuery("SELECT numcancion, total_votos FROM canciones where numcancion = '" + cancion + "'");
+            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);// Para poder actualizar el ResultSet con los nuevos datos
+            rs = st.executeQuery("SELECT numcancion, total_votos FROM canciones where numcancion = '" + cancion + "'");// Busca la cancion
             if (rs.next()) {
-                int totalvotos = rs.getInt("total_votos")-1;
-                rs.updateInt("total_votos", totalvotos);
-                rs.updateRow();
+                int totalvotos = rs.getInt("total_votos")-1;// Resta un voto a la cancion
+                rs.updateInt("total_votos", totalvotos);// Actualiza el campo total_votos con el nuevo valor
+                rs.updateRow();// Actualiza la fila con los nuevos datos
                 ok = true;
             }
         } catch (Exception e) {

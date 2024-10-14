@@ -18,21 +18,21 @@ public class Main {
 
 
     private static void ejecutarScript(){
-        String ruta = "heroes_postgres.sql";
-        Connection con = Conn.get_conexion();
-        try (Statement statement = con.createStatement()) {
-            con.setAutoCommit(false);
+        String ruta = "heroes_postgres.sql";// Ruta del script
+        Connection con = Conn.get_conexion();// Conexión a la base de datos
+        try (Statement statement = con.createStatement()) {// Ejecución del script
+            con.setAutoCommit(false);// Deshabilitar el autocommit
             String script = "";
-            for (String line : Files.readAllLines(Paths.get(ruta))) {
-                script += line;
+            for (String line : Files.readAllLines(Paths.get(ruta))) {// Leer el script
+                script += line;// Concatenar las líneas del script
             }
-            System.out.println(script);
-            statement.execute(script);
-            con.commit();
+            System.out.println(script);// Mostrar el script
+            statement.execute(script);// Ejecutar el script
+            con.commit();// Confirmar la transacción
         } catch (Exception e) {
             e.printStackTrace();
             try {
-                con.rollback();
+                con.rollback();// Deshacer la transacción en caso de error
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }

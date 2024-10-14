@@ -3,13 +3,9 @@ package org.example;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     /*EJERCICIO 1 Realiza un programa que lee el fichero script datos_coches.sql y:
@@ -35,15 +31,15 @@ public class Main {
     }
 
     private static void ejecutarScript(Connection connection, String filePath) {
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath));
-             Statement statement = connection.createStatement()) {
-            StringBuilder sql = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath));// creamos un buffer para leer el archivo
+             Statement statement = connection.createStatement()) {// creamos un statement para ejecutar las sentencias
+            StringBuilder sql = new StringBuilder();// creamos un stringbuilder para concatenar las sentencias
             String line;
-            while ((line = br.readLine()) != null) {
-                sql.append(line);
-                if (line.trim().endsWith(";")) {
-                    statement.execute(sql.toString());
-                    sql.setLength(0);
+            while ((line = br.readLine()) != null) {// leemos el archivo línea a línea
+                sql.append(line);// añadimos la línea al stringbuilder
+                if (line.trim().endsWith(";")) {// si la línea termina en ; es que es una sentencia sql
+                    statement.execute(sql.toString());// ejecutamos la sentencia
+                    sql.setLength(0);// vaciamos el stringbuilder
                 }
             }
         } catch (Exception e) {
@@ -53,16 +49,16 @@ public class Main {
 
     private static void exescript(){
         String ruta = "..\\datos_coches.sql";
-        String script;
-        Connection con = Conn.getConexion();
-        try(BufferedReader br= new BufferedReader(new FileReader(ruta)); Statement st = con.createStatement();){
+        String script;//variable para guardar las lineas del script
+        Connection con = Conn.getConexion();//creamos la conexion
+        try(BufferedReader br= new BufferedReader(new FileReader(ruta)); Statement st = con.createStatement();){//creamos el buffer para leer el archivo
 
-            StringBuilder sb = new StringBuilder();
-            while((script = br.readLine()) != null){
-                sb.append(script);
-                if (script.trim().endsWith(";")) {
-                    st.execute(sb.toString());
-                    sb.setLength(0);
+            StringBuilder sb = new StringBuilder();// creamos un stringbuilder para concatenar las sentencias
+            while((script = br.readLine()) != null){// leemos el archivo línea a línea
+                sb.append(script);// añadimos la línea al stringbuilder
+                if (script.trim().endsWith(";")) {// si la línea termina en ; es que es una sentencia sql
+                    st.execute(sb.toString());// ejecutamos la sentencia
+                    sb.setLength(0);// vaciamos el stringbuilder
                 }
             }
             System.out.println(sb);
