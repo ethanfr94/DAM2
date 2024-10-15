@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Ud2Hoja7/1.0.0": {
+        "runtime": {
+          "Ud2Hoja7.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Ud2Hoja7/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
