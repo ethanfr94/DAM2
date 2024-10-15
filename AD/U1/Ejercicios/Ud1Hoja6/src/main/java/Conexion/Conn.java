@@ -1,4 +1,4 @@
-package org.example;
+package Conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,7 +7,7 @@ import java.util.Properties;
 public class Conn {
     private static Connection conexion = null;
 
-    public static Connection get_conexion() {
+    public static Connection getConexion() {
         Properties properties = new Properties();
         Connection conexion = null;
         properties.setProperty("user", "postgres");
@@ -17,13 +17,13 @@ public class Conn {
         properties.setProperty("serverTimezone", "UTC");
         properties.setProperty("allowMultiQueries", "true");
         try {
-            conexion = DriverManager.getConnection("jdbc:postgresql://192.168.1.151:5432/heroes", properties);
+            conexion = DriverManager.getConnection("jdbc:postgresql://192.168.1.142:5432/heroes", properties);
         } catch (Exception e) {
             System.out.println("Connection failed");
         }
 
         if (conexion == null) {
-            String url = "jdbc:postgresql://10.0.22.27:5432/heroes";
+            String url = "jdbc:postgresql://192.168.1.142:5432/heroes";
             String user = "postgres";
             String password = "postgres";
             try {
