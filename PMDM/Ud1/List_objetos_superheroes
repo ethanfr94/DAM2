@@ -1,0 +1,122 @@
+val superheroes = listOf(
+    Superheroe(
+        nombre = "Spider-Man",
+        poderes = "Super fuerza, agilidad, sentido arácnido",
+        descripcion = "Un joven con poderes arácnidos que lucha contra el crimen en Nueva York.",
+        urlImagen = "https://example.com/spiderman.jpg"
+    ),
+    Superheroe(
+        nombre = "Iron Man",
+        poderes = "Traje con tecnología avanzada, inteligencia superior",
+        descripcion = "Un genio multimillonario que usa un traje de alta tecnología para combatir el mal.",
+        urlImagen = "https://example.com/ironman.jpg"
+    ),
+    Superheroe(
+        nombre = "Captain America",
+        poderes = "Fuerza y velocidad mejoradas, manejo de escudo",
+        descripcion = "Un super soldado que lucha por la justicia con su indestructible escudo.",
+        urlImagen = "https://example.com/captainamerica.jpg"
+    ),
+    Superheroe(
+        nombre = "Thor",
+        poderes = "Dios del trueno, manejo de Mjolnir",
+        descripcion = "El dios asgardiano del trueno, protector de los Nueve Reinos.",
+        urlImagen = "https://example.com/thor.jpg"
+    ),
+    Superheroe(
+        nombre = "Hulk",
+        poderes = "Fuerza sobrehumana, regeneración acelerada",
+        descripcion = "Un científico que se transforma en un monstruo verde de fuerza incomparable.",
+        urlImagen = "https://example.com/hulk.jpg"
+    ),
+    Superheroe(
+        nombre = "Black Widow",
+        poderes = "Experta en combate cuerpo a cuerpo, sigilo",
+        descripcion = "Una agente rusa entrenada para el espionaje y la lucha.",
+        urlImagen = "https://example.com/blackwidow.jpg"
+    ),
+    Superheroe(
+        nombre = "Doctor Strange",
+        poderes = "Magia, manipulación del tiempo",
+        descripcion = "El Hechicero Supremo, maestro de las artes místicas.",
+        urlImagen = "https://example.com/doctorstrange.jpg"
+    ),
+    Superheroe(
+        nombre = "Scarlet Witch",
+        poderes = "Manipulación de la realidad, telequinesis",
+        descripcion = "Una poderosa mutante con la habilidad de alterar la realidad.",
+        urlImagen = "https://example.com/scarletwitch.jpg"
+    ),
+    Superheroe(
+        nombre = "Black Panther",
+        poderes = "Fuerza sobrehumana, agilidad mejorada",
+        descripcion = "El rey de Wakanda, defensor de su nación y portador del manto de la Pantera Negra.",
+        urlImagen = "https://example.com/blackpanther.jpg"
+    ),
+    Superheroe(
+        nombre = "Ant-Man",
+        poderes = "Reducción de tamaño, comunicación con insectos",
+        descripcion = "Un ladrón convertido en héroe con la habilidad de cambiar de tamaño.",
+        urlImagen = "https://example.com/antman.jpg"
+    ),
+    Superheroe(
+        nombre = "Captain Marvel",
+        poderes = "Fuerza cósmica, vuelo, energía fotónica",
+        descripcion = "Una heroína intergaláctica con poderes cósmicos inmensos.",
+        urlImagen = "https://example.com/captainmarvel.jpg"
+    ),
+    Superheroe(
+        nombre = "Hawkeye",
+        poderes = "Precisión absoluta con el arco",
+        descripcion = "Un maestro arquero con habilidades de combate cuerpo a cuerpo.",
+        urlImagen = "https://example.com/hawkeye.jpg"
+    ),
+    Superheroe(
+        nombre = "Vision",
+        poderes = "Densidad variable, rayo de la gema de la mente",
+        descripcion = "Un androide creado con la Gema de la Mente que busca comprender la humanidad.",
+        urlImagen = "https://example.com/vision.jpg"
+    ),
+    Superheroe(
+        nombre = "War Machine",
+        poderes = "Traje de combate con armamento pesado",
+        descripcion = "El mejor amigo de Tony Stark, equipado con un traje de guerra de alta tecnología.",
+        urlImagen = "https://example.com/warmachine.jpg"
+    ),
+    Superheroe(
+        nombre = "Falcon",
+        poderes = "Vuelo con alas mecánicas, combate cuerpo a cuerpo",
+        descripcion = "Un soldado con alas mecánicas y gran sentido de la justicia.",
+        urlImagen = "https://example.com/falcon.jpg"
+    ),
+    Superheroe(
+        nombre = "Winter Soldier",
+        poderes = "Fuerza mejorada, brazo cibernético",
+        descripcion = "Un antiguo amigo de Captain America convertido en super soldado con un oscuro pasado.",
+        urlImagen = "https://example.com/wintersoldier.jpg"
+    ),
+    Superheroe(
+        nombre = "Star-Lord",
+        poderes = "Habilidades de combate, manejo de armas",
+        descripcion = "El líder de los Guardianes de la Galaxia, conocido por su actitud desenfadada.",
+        urlImagen = "https://example.com/starlord.jpg"
+    ),
+    Superheroe(
+        nombre = "Gamora",
+        poderes = "Habilidades de combate y sigilo",
+        descripcion = "La mujer más peligrosa del universo, entrenada para la guerra.",
+        urlImagen = "https://example.com/gamora.jpg"
+    ),
+    Superheroe(
+        nombre = "Rocket Raccoon",
+        poderes = "Experto en armas y tácticas, gran inteligencia",
+        descripcion = "Un mapache modificado genéticamente, experto en tecnología y armamento.",
+        urlImagen = "https://example.com/rocketraccoon.jpg"
+    ),
+    Superheroe(
+        nombre = "Groot",
+        poderes = "Control sobre la vegetación, regeneración",
+        descripcion = "Un ser arbóreo con la capacidad de manipular sus extremidades y regenerarse.",
+        urlImagen = "https://example.com/groot.jpg"
+    )
+)
