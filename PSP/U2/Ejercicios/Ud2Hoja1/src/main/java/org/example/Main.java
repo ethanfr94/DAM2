@@ -14,9 +14,7 @@ public class Main {
         //implementa Runnable
         Tic tic = new Tic();
         Tac tac = new Tac();
-        Thread t1 = new Thread(tic);
-        Thread t2 = new Thread(tac);
-        t1.start();
-        t2.start();
+        new Thread(tic).start();
+        new Thread(tac).start();
     }
 }
