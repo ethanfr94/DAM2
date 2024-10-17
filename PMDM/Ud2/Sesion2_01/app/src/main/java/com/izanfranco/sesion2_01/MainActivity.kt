@@ -92,26 +92,29 @@ fun ListaColumn(){
 }
 @Composable
 fun FilaSHeroe(name: String) {
-    val contexto = LocalContext.current
-    var isChecked by remember { mutableStateOf(false) }
-    Row (verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Color(0xFF8899FF), shape = RoundedCornerShape(8.dp))
+    val contexto = LocalContext.current//Contexto actual
+    var isChecked by remember { mutableStateOf(false) }//Estado del checkbox
+    Row (verticalAlignment = Alignment.CenterVertically,//Alineación vertical
+        modifier = Modifier//Modificador
+            .fillMaxWidth()//Ocupa todo el ancho
+            .background(Color(0xFF8899FF), shape = RoundedCornerShape(8.dp))//Color de fondo y borde redondeado
             ) {
-        Text(text = name,
-            fontSize = 20.sp,
+        Text(text = name,//Texto del superhéroe
+            fontSize = 20.sp,//Tamaño de fuente
             color = Color.White,
             modifier = Modifier
-                .weight(1f)
-                .padding(16.dp)
+                .weight(1f)//Peso del texto en la fila (1f es todo el ancho)
+                .padding(16.dp)//Espacio alrededor del texto
         )
 
 
 
-        Checkbox(checked = isChecked,
-            onCheckedChange = {checked-> isChecked = checked
-            Toast(contexto,"superheroe $name seleccionado",Toast.LENGTH_SHORT).show()
+        Checkbox(checked = isChecked,//Estado del checkbox
+            onCheckedChange = {checked->
+                isChecked = checked//Cambia el estado del checkbox
+                val msg = if (checked) "$name marcado" else "$name desmarcado"//Mensaje a mostrar
+            Toast.makeText(contexto,msg,Toast.LENGTH_SHORT).show()//Muestra el mensaje en una notificación durante 2 segundos
+                //contexto significa que se muestra en la actividad actual
             })
 
 
