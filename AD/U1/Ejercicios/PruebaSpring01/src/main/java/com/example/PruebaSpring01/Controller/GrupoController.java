@@ -24,7 +24,7 @@ public class GrupoController {
     public String createGrupo(@RequestBody Grupo grupo){//RequestBody indica que el objeto viene en formato json
         int result = grupoRepository.save(grupo);
         if(result == 1){
-            return "Grupo creado con exito";
+            return "Grupo "+grupo.getNombre()+" creado con exito";
         }
         return "Error al crear el grupo";
     }
