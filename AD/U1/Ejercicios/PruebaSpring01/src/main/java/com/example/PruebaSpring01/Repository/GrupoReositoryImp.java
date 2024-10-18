@@ -56,6 +56,7 @@ public class GrupoReositoryImp implements GrupoRepository{
 
     @Override
     public int deleteById(int id) {
+
         return jdbcTemplate.update("delete from grupos where codGrupo = ?", id);
     }
 
@@ -99,7 +100,7 @@ public class GrupoReositoryImp implements GrupoRepository{
         Grupo exisitingGrupo = findById(id);
         if(exisitingGrupo != null){
             deleteById(id);
-            return ResponseEntity.noContent().build();//Si el grupo se elimina devolvemos un 204
+            return ResponseEntity.ok().build();//Si el grupo se elimina devolvemos un 200
         }
         else{
             return ResponseEntity.notFound().build();//Si el grupo no existe devolvemos un 404
