@@ -7,10 +7,10 @@ import java.util.List;
 public interface GrupoRepository {
     List<Grupo> findAll();
     Grupo findById(int id);
-    Grupo findByLocalidad(String localidad);
+    List<Grupo> findByLocalidad(String localidad);
     int save(Grupo grupo);
     int update(Grupo grupo);
-    int delete(int id);
+    int deleteById(int id);
 
 }
 
