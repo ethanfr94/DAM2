@@ -103,12 +103,13 @@ public class CancionRepositoryImp implements CancionRepository {
     private static class CancionRowMapper implements RowMapper<Cancion> {
         @Override
         public Cancion mapRow(ResultSet rs, int rowNum) throws SQLException {
-
+            Grupo grupo = new Grupo();
             Cancion cancion = new Cancion();
             cancion.setNumCancion(rs.getInt("numCancion"));
             cancion.setTitulo(rs.getString("titulo"));
             cancion.setDuracion(rs.getInt("duracion"));
-            cancion.setGrupo(GrupoReositoryImp);//crear grupo nuevo y solo asignarle el codigo de cancion
+            grupo.setCodGrupo(rs.getInt("grupo"));
+            cancion.setGrupo(grupo);
             cancion.setTotal_votos(rs.getInt("total_votos"));
             return cancion;
         }
