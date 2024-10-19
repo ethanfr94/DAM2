@@ -1,0 +1,16 @@
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\bin\Debug\net8.0-windows\Ud2Hoja5.exe
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\bin\Debug\net8.0-windows\Ud2Hoja5.deps.json
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\bin\Debug\net8.0-windows\Ud2Hoja5.runtimeconfig.json
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\bin\Debug\net8.0-windows\Ud2Hoja5.dll
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\bin\Debug\net8.0-windows\Ud2Hoja5.pdb
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\obj\Debug\net8.0-windows\Ud2Hoja5.Form1.resources
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\obj\Debug\net8.0-windows\Ud2Hoja5.csproj.GenerateResource.cache
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\obj\Debug\net8.0-windows\Ud2Hoja5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\obj\Debug\net8.0-windows\Ud2Hoja5.AssemblyInfoInputs.cache
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\obj\Debug\net8.0-windows\Ud2Hoja5.AssemblyInfo.cs
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\obj\Debug\net8.0-windows\Ud2Hoja5.csproj.CoreCompileInputs.cache
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\obj\Debug\net8.0-windows\Ud2Hoja5.dll
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\obj\Debug\net8.0-windows\refint\Ud2Hoja5.dll
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\obj\Debug\net8.0-windows\Ud2Hoja5.pdb
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\obj\Debug\net8.0-windows\Ud2Hoja5.genruntimeconfig.cache
+C:\Users\usuario\source\repos\Ud2Hoja5\Ud2Hoja5\obj\Debug\net8.0-windows\ref\Ud2Hoja5.dll
