@@ -1,4 +1,6 @@
-﻿namespace U2Hoja8
+﻿using Ud2Hoja8;
+
+namespace U2Hoja8
 {
     partial class Form1
     {
@@ -20,6 +22,7 @@
             base.Dispose(disposing);
         }
 
+        private Calculadora calculadora = new Calculadora();
 
         #region Windows Form Designer generated code
 
@@ -29,7 +32,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            txtPantalla = new TextBox();
             btn7 = new Button();
             btn8 = new Button();
             btn9 = new Button();
@@ -49,14 +51,8 @@
             btnMR = new Button();
             btnigual = new Button();
             btn0 = new Button();
+            label1 = new Label();
             SuspendLayout();
-            // 
-            // txtPantalla
-            // 
-            txtPantalla.Location = new Point(12, 23);
-            txtPantalla.Name = "txtPantalla";
-            txtPantalla.Size = new Size(217, 23);
-            txtPantalla.TabIndex = 0;
             // 
             // btn7
             // 
@@ -156,6 +152,7 @@
             btndiv.TabIndex = 11;
             btndiv.Text = "/";
             btndiv.UseVisualStyleBackColor = true;
+            btndiv.Click += btndiv_Click;
             // 
             // btnmulti
             // 
@@ -165,6 +162,7 @@
             btnmulti.TabIndex = 12;
             btnmulti.Text = "*";
             btnmulti.UseVisualStyleBackColor = true;
+            btnmulti.Click += btnmulti_Click;
             // 
             // btnresta
             // 
@@ -174,6 +172,7 @@
             btnresta.TabIndex = 13;
             btnresta.Text = "-";
             btnresta.UseVisualStyleBackColor = true;
+            btnresta.Click += btnresta_Click;
             // 
             // btnsuma
             // 
@@ -183,6 +182,7 @@
             btnsuma.TabIndex = 14;
             btnsuma.Text = "+";
             btnsuma.UseVisualStyleBackColor = true;
+            btnsuma.Click += btnsuma_Click;
             // 
             // btnMS
             // 
@@ -220,6 +220,7 @@
             btnigual.TabIndex = 18;
             btnigual.Text = "=";
             btnigual.UseVisualStyleBackColor = true;
+            btnigual.Click += btnigual_Click;
             // 
             // btn0
             // 
@@ -230,11 +231,23 @@
             btn0.Text = "0";
             btn0.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            label1.BackColor = Color.White;
+            label1.BorderStyle = BorderStyle.Fixed3D;
+            label1.Location = new Point(12, 18);
+            label1.Name = "label1";
+            label1.Size = new Size(217, 38);
+            label1.TabIndex = 20;
+            label1.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(241, 197);
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(245, 198);
+            Controls.Add(label1);
             Controls.Add(btn0);
             Controls.Add(btnigual);
             Controls.Add(btnMR);
@@ -254,16 +267,13 @@
             Controls.Add(btn9);
             Controls.Add(btn8);
             Controls.Add(btn7);
-            Controls.Add(txtPantalla);
             Name = "Form1";
-            Text = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Calculadora";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private TextBox txtPantalla;
         private Button btn7;
         private Button btn8;
         private Button btn9;
@@ -283,5 +293,6 @@
         private Button btnMR;
         private Button btnigual;
         private Button btn0;
+        private Label label1;
     }
 }
