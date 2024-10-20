@@ -1,0 +1,17 @@
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\bin\Debug\net8.0-windows\Ud2Hoja8.exe
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\bin\Debug\net8.0-windows\Ud2Hoja8.deps.json
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\bin\Debug\net8.0-windows\Ud2Hoja8.runtimeconfig.json
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\bin\Debug\net8.0-windows\Ud2Hoja8.dll
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\bin\Debug\net8.0-windows\Ud2Hoja8.pdb
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\obj\Debug\net8.0-windows\U2Hoja8.Form1.resources
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\obj\Debug\net8.0-windows\Ud2Hoja8.csproj.GenerateResource.cache
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\obj\Debug\net8.0-windows\Ud2Hoja8.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\obj\Debug\net8.0-windows\Ud2Hoja8.AssemblyInfoInputs.cache
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\obj\Debug\net8.0-windows\Ud2Hoja8.AssemblyInfo.cs
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\obj\Debug\net8.0-windows\Ud2Hoja8.csproj.CoreCompileInputs.cache
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\obj\Debug\net8.0-windows\Ud2Hoja8.sourcelink.json
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\obj\Debug\net8.0-windows\Ud2Hoja8.dll
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\obj\Debug\net8.0-windows\refint\Ud2Hoja8.dll
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\obj\Debug\net8.0-windows\Ud2Hoja8.pdb
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\obj\Debug\net8.0-windows\Ud2Hoja8.genruntimeconfig.cache
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2Hoja8\Ud2Hoja8\obj\Debug\net8.0-windows\ref\Ud2Hoja8.dll
