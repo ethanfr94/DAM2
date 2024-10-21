@@ -48,7 +48,7 @@
             label2 = new Label();
             txtTitulo = new TextBox();
             txtMsg = new TextBox();
-            label3 = new Label();
+            lblRes = new Label();
             btnMostrar = new Button();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -264,14 +264,14 @@
             txtMsg.Size = new Size(330, 23);
             txtMsg.TabIndex = 12;
             // 
-            // label3
+            // lblRes
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(12, 355);
-            label3.Name = "label3";
-            label3.Size = new Size(106, 15);
-            label3.TabIndex = 13;
-            label3.Text = "Resultado Mensaje";
+            lblRes.AutoSize = true;
+            lblRes.Location = new Point(12, 355);
+            lblRes.Name = "lblRes";
+            lblRes.Size = new Size(106, 15);
+            lblRes.TabIndex = 13;
+            lblRes.Text = "Resultado Mensaje";
             // 
             // btnMostrar
             // 
@@ -290,7 +290,7 @@
             AutoSize = true;
             ClientSize = new Size(452, 382);
             Controls.Add(btnMostrar);
-            Controls.Add(label3);
+            Controls.Add(lblRes);
             Controls.Add(txtMsg);
             Controls.Add(txtTitulo);
             Controls.Add(label2);
@@ -335,7 +335,7 @@
         private Label label2;
         private TextBox txtTitulo;
         private TextBox txtMsg;
-        private Label label3;
+        private Label lblRes;
         private Button btnMostrar;
     }
 }

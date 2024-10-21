@@ -5,6 +5,7 @@ namespace Ud2Hoja9
 
         private MessageBoxButtons botones = MessageBoxButtons.OK;
         private MessageBoxIcon iconos = MessageBoxIcon.None;
+        private String result = "Ha seleccionado: ";
 
         public Form1()
         {
@@ -52,6 +53,40 @@ namespace Ud2Hoja9
 
         private void Iconos_checkedChange(object sender, EventArgs e)
         {
+            RadioButton btn = sender as RadioButton;
+            if (btn != null && btn.Checked)
+            {
+                switch (btn.Name)
+                {
+                    case "rdoAsterisco":
+                        iconos = MessageBoxIcon.Asterisk;
+                        break;
+                    case "rdoError":
+                        iconos = MessageBoxIcon.Error;
+                        break;
+                    case "rdoExclamacion":
+                        iconos = MessageBoxIcon.Exclamation;
+                        break;
+                    case "rdoInfo":
+                        iconos = MessageBoxIcon.Information;
+                        break;
+                    case "rdoMano":
+                        iconos = MessageBoxIcon.Hand;
+                        break;
+                    case "rdoAviso":
+                        iconos = MessageBoxIcon.Warning;
+                        break;
+                    case "rdoPregunta":
+                        iconos = MessageBoxIcon.Question;
+                        break;
+                    case "rdoAlto":
+                        iconos = MessageBoxIcon.Stop;
+                        break;
+
+
+                }
+            }
+            /*
             if (rdoError.Checked) { iconos = MessageBoxIcon.Error; }
             else if (rdoInfo.Checked) { iconos = MessageBoxIcon.Information; }
             else if (rdoAviso.Checked) { iconos = MessageBoxIcon.Warning; }
@@ -60,13 +95,38 @@ namespace Ud2Hoja9
             else (rdoMano.Checked) { iconos = MessageBoxIcon.Hand; }
             else (rdoAlto.Checked) { iconos = MessageBoxIcon.Stop; }
             else (rdoExclamacion.Checked) { iconos = MessageBoxIcon.Exclamation; }
-
+            */
 
         }
 
         private void btnMostrar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(txtMsg.Text, txtTitulo.Text, botones, iconos);
+            DialogResult res = MessageBox.Show(txtMsg.Text, txtTitulo.Text, botones, iconos);
+            switch (res)
+            {
+                case DialogResult.OK:
+                    result += "OK";
+                    break;
+                case DialogResult.Cancel:
+                    result += "Cancelar";
+                    break;
+                case DialogResult.Yes:
+                    result += "Si";
+                    break;
+                case DialogResult.No:
+                    result += "No";
+                    break;
+                case DialogResult.Abort:
+                    result += "Abortar";
+                    break;
+                case DialogResult.Retry:
+                    result += "Reintentar";
+                    break;
+                case DialogResult.Ignore:
+                    result += "Ignorar";
+                    break;
+            }       
+            lblRes.Text = result;
         }
     }
 }
