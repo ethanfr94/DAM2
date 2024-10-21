@@ -24,9 +24,9 @@ namespace Ud2Hoja8
                     _cache = _visor;
                 }
                 else
-                {
-                    Calcular();
-                    _cache = _visor;
+                {   
+                    Calcular();                 
+                    _cache = _visor;                    
                 }
                 operacion = value;
             }
