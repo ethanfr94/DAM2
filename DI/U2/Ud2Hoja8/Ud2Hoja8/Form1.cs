@@ -1,42 +1,96 @@
+
 using Ud2Hoja8;
 
 namespace U2Hoja8
 {
     public partial class Form1 : Form
     {
+        private Calculadora _calculadora = new Calculadora();
+        private Boolean reiniciarVisor = true;
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void button15_Click(object sender, EventArgs e)
-        {
 
+
+        private void numero_click(object sender, EventArgs e)
+        {
+            Button boton = (Button)sender;//casting de sender a Button para poder acceder a las propiedades del boton
+
+            if (reiniciarVisor)
+            {
+                if(txtvisor.Text == "0")
+                {
+                    if(boton.Text == ",")
+                    {
+                        txtvisor.Text = "0,";
+                        reiniciarVisor = false;
+                    }
+                    else
+                    {
+                        txtvisor.Text = boton.Text;
+                        reiniciarVisor = false;
+                    }
+                }
+                else
+                {
+                    txtvisor.Text = boton.Text;
+                    reiniciarVisor = false;
+                }
+                
+            }
+            else{
+                txtvisor.Text += boton.Text;
+            }
         }
 
-        private void btndiv_Click(object sender, EventArgs e)
+        private void operacion_click(object sender, EventArgs e)
         {
-            calculadora.Operacion = OperacionEnum.Division;
+            Button boton = (Button)sender;
+
+            switch (boton.Text)
+            {
+                case "+":
+                    _calculadora.Operacion = OperacionEnum.Suma;
+                    break;
+                case "-":
+                    _calculadora.Operacion = OperacionEnum.Resta;
+                    break;
+                case "*":
+                    _calculadora.Operacion = OperacionEnum.Multiplicacion;
+                    break;
+                case "/":
+                    _calculadora.Operacion = OperacionEnum.Division;
+                    break;
+                case "=":
+                    _calculadora.Calcular();
+                    break;
+            }
         }
 
-        private void btnmulti_Click(object sender, EventArgs e)
+        private void btnMR_Click(object sender, EventArgs e)
         {
-            calculadora.Operacion = OperacionEnum.Multiplicacion;
+            txtvisor.Text = _calculadora.memoria.ToString();
         }
 
-        private void btnresta_Click(object sender, EventArgs e)
+        private void btnclear_Click(object sender, EventArgs e)
         {
-            calculadora.Operacion = OperacionEnum.Resta;
+            _calculadora.Borrar();
+            txtvisor.Text = "0";
         }
 
-        private void btnsuma_Click(object sender, EventArgs e)
+        private void btnMS_Click(object sender, EventArgs e)
         {
-            calculadora.Operacion = OperacionEnum.Suma;
+            _calculadora.memoria = float.Parse(txtvisor.Text);
         }
 
-        private void btnigual_Click(object sender, EventArgs e)
+        private void btncoma_Click(object sender, EventArgs e)
         {
-            calculadora.Calcular();
+            if(!txtvisor.Text.Contains(","))
+            {
+                txtvisor.Text += ",";
+            }
         }
     }
 }

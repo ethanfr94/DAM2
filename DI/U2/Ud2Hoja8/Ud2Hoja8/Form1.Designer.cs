@@ -51,7 +51,7 @@ namespace U2Hoja8
             btnMR = new Button();
             btnigual = new Button();
             btn0 = new Button();
-            label1 = new Label();
+            txtvisor = new TextBox();
             SuspendLayout();
             // 
             // btn7
@@ -62,6 +62,7 @@ namespace U2Hoja8
             btn7.TabIndex = 1;
             btn7.Text = "7";
             btn7.UseVisualStyleBackColor = true;
+            btn7.Click += numero_click;
             // 
             // btn8
             // 
@@ -71,6 +72,7 @@ namespace U2Hoja8
             btn8.TabIndex = 2;
             btn8.Text = "8";
             btn8.UseVisualStyleBackColor = true;
+            btn8.Click += numero_click;
             // 
             // btn9
             // 
@@ -80,6 +82,7 @@ namespace U2Hoja8
             btn9.TabIndex = 3;
             btn9.Text = "9";
             btn9.UseVisualStyleBackColor = true;
+            btn9.Click += numero_click;
             // 
             // btn4
             // 
@@ -89,6 +92,7 @@ namespace U2Hoja8
             btn4.TabIndex = 4;
             btn4.Text = "4";
             btn4.UseVisualStyleBackColor = true;
+            btn4.Click += numero_click;
             // 
             // btn5
             // 
@@ -98,6 +102,7 @@ namespace U2Hoja8
             btn5.TabIndex = 5;
             btn5.Text = "5";
             btn5.UseVisualStyleBackColor = true;
+            btn5.Click += numero_click;
             // 
             // btn6
             // 
@@ -107,6 +112,7 @@ namespace U2Hoja8
             btn6.TabIndex = 6;
             btn6.Text = "6";
             btn6.UseVisualStyleBackColor = true;
+            btn6.Click += numero_click;
             // 
             // btn1
             // 
@@ -116,6 +122,7 @@ namespace U2Hoja8
             btn1.TabIndex = 7;
             btn1.Text = "1";
             btn1.UseVisualStyleBackColor = true;
+            btn1.Click += numero_click;
             // 
             // btn2
             // 
@@ -125,6 +132,7 @@ namespace U2Hoja8
             btn2.TabIndex = 8;
             btn2.Text = "2";
             btn2.UseVisualStyleBackColor = true;
+            btn2.Click += numero_click;
             // 
             // btn3
             // 
@@ -134,6 +142,7 @@ namespace U2Hoja8
             btn3.TabIndex = 9;
             btn3.Text = "3";
             btn3.UseVisualStyleBackColor = true;
+            btn3.Click += numero_click;
             // 
             // btnpunto
             // 
@@ -141,8 +150,9 @@ namespace U2Hoja8
             btnpunto.Name = "btnpunto";
             btnpunto.Size = new Size(35, 24);
             btnpunto.TabIndex = 10;
-            btnpunto.Text = ".";
+            btnpunto.Text = ",";
             btnpunto.UseVisualStyleBackColor = true;
+            btnpunto.Click += btncoma_Click;
             // 
             // btndiv
             // 
@@ -152,7 +162,7 @@ namespace U2Hoja8
             btndiv.TabIndex = 11;
             btndiv.Text = "/";
             btndiv.UseVisualStyleBackColor = true;
-            btndiv.Click += btndiv_Click;
+            btndiv.Click += operacion_click;
             // 
             // btnmulti
             // 
@@ -162,7 +172,7 @@ namespace U2Hoja8
             btnmulti.TabIndex = 12;
             btnmulti.Text = "*";
             btnmulti.UseVisualStyleBackColor = true;
-            btnmulti.Click += btnmulti_Click;
+            btnmulti.Click += operacion_click;
             // 
             // btnresta
             // 
@@ -172,7 +182,7 @@ namespace U2Hoja8
             btnresta.TabIndex = 13;
             btnresta.Text = "-";
             btnresta.UseVisualStyleBackColor = true;
-            btnresta.Click += btnresta_Click;
+            btnresta.Click += operacion_click;
             // 
             // btnsuma
             // 
@@ -182,7 +192,7 @@ namespace U2Hoja8
             btnsuma.TabIndex = 14;
             btnsuma.Text = "+";
             btnsuma.UseVisualStyleBackColor = true;
-            btnsuma.Click += btnsuma_Click;
+            btnsuma.Click += operacion_click;
             // 
             // btnMS
             // 
@@ -192,7 +202,7 @@ namespace U2Hoja8
             btnMS.TabIndex = 15;
             btnMS.Text = "MS";
             btnMS.UseVisualStyleBackColor = true;
-            btnMS.Click += button15_Click;
+            btnMS.Click += btnMS_Click;
             // 
             // btnclear
             // 
@@ -202,6 +212,7 @@ namespace U2Hoja8
             btnclear.TabIndex = 16;
             btnclear.Text = "C";
             btnclear.UseVisualStyleBackColor = true;
+            btnclear.Click += btnclear_Click;
             // 
             // btnMR
             // 
@@ -211,6 +222,7 @@ namespace U2Hoja8
             btnMR.TabIndex = 17;
             btnMR.Text = "MR";
             btnMR.UseVisualStyleBackColor = true;
+            btnMR.Click += btnMR_Click;
             // 
             // btnigual
             // 
@@ -220,7 +232,6 @@ namespace U2Hoja8
             btnigual.TabIndex = 18;
             btnigual.Text = "=";
             btnigual.UseVisualStyleBackColor = true;
-            btnigual.Click += btnigual_Click;
             // 
             // btn0
             // 
@@ -230,16 +241,15 @@ namespace U2Hoja8
             btn0.TabIndex = 19;
             btn0.Text = "0";
             btn0.UseVisualStyleBackColor = true;
+            btn0.Click += numero_click;
             // 
-            // label1
+            // txtvisor
             // 
-            label1.BackColor = Color.White;
-            label1.BorderStyle = BorderStyle.Fixed3D;
-            label1.Location = new Point(12, 18);
-            label1.Name = "label1";
-            label1.Size = new Size(217, 38);
-            label1.TabIndex = 20;
-            label1.TextAlign = ContentAlignment.MiddleRight;
+            txtvisor.Location = new Point(12, 26);
+            txtvisor.Name = "txtvisor";
+            txtvisor.Size = new Size(217, 23);
+            txtvisor.TabIndex = 20;
+            txtvisor.TextAlign = HorizontalAlignment.Right;
             // 
             // Form1
             // 
@@ -247,7 +257,7 @@ namespace U2Hoja8
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(245, 198);
-            Controls.Add(label1);
+            Controls.Add(txtvisor);
             Controls.Add(btn0);
             Controls.Add(btnigual);
             Controls.Add(btnMR);
@@ -270,7 +280,9 @@ namespace U2Hoja8
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Calculadora";
+            Click += operacion_click;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -293,6 +305,6 @@ namespace U2Hoja8
         private Button btnMR;
         private Button btnigual;
         private Button btn0;
-        private Label label1;
+        private TextBox txtvisor;
     }
 }

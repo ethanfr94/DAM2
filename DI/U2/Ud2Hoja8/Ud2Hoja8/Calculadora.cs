@@ -12,7 +12,7 @@ namespace Ud2Hoja8
         private float _cache;
         private float _visor { get; set; }
         private OperacionEnum operacion;
-        private float memoria;
+        public float memoria { get; set; }
 
         public OperacionEnum Operacion
         {
