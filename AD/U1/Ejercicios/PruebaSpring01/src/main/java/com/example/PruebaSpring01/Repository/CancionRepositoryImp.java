@@ -107,7 +107,7 @@ public class CancionRepositoryImp implements CancionRepository {
             Cancion cancion = new Cancion();
             cancion.setNumCancion(rs.getInt("numCancion"));
             cancion.setTitulo(rs.getString("titulo"));
-            cancion.setDuracion(rs.getInt("duracion"));
+            cancion.setDuracion(rs.getTime("duracion"));
             grupo.setCodGrupo(rs.getInt("grupo"));
             cancion.setGrupo(grupo);
             cancion.setTotal_votos(rs.getInt("total_votos"));

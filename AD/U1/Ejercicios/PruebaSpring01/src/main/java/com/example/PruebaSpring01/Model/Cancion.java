@@ -1,9 +1,11 @@
 package com.example.PruebaSpring01.Model;
 
+import java.sql.Time;
+
 public class Cancion {
     private int numCancion;
     private String titulo;
-    private int duracion;
+    private Time duracion;
     private Grupo grupo;
     private int total_votos;
 
@@ -23,11 +25,11 @@ public class Cancion {
         this.titulo = titulo;
     }
 
-    public int getDuracion() {
+    public Time getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(int duracion) {
+    public void setDuracion(Time duracion) {
         this.duracion = duracion;
     }
 
