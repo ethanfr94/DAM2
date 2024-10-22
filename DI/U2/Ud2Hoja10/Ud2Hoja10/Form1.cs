@@ -187,9 +187,12 @@ namespace Ud2Hoja10
         {
             FormBuscar f3 = new FormBuscar();
             f3.Show();
-            if(txtContenido.Text.Contains(f3.Busqueda))//Si el texto contiene la busqueda realizada se selecciona el texto
+            String busq = f3.Busqueda;
+            if(txtContenido.Text.Contains(busq))//Si el texto contiene la busqueda realizada se selecciona el texto
             {
-                txtContenido.Select(txtContenido.Text.IndexOf(f3.Busqueda), f3.Busqueda.Length);// el primer parametro es la posicion del texto a seleccionar y el segundo la longitud del texto a seleccionar
+                int index = txtContenido.Text.IndexOf(busq);//Obtenemos la posicion del texto a buscar
+                txtContenido.Select(index,busq.Length);// el primer parametro es la posicion del texto a seleccionar y el segundo la longitud del texto a seleccionar
+                txtContenido.ScrollToCaret();//Hace scroll hasta la posicion del texto seleccionado
             }
             else
             {
