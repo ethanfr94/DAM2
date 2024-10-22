@@ -38,14 +38,14 @@
             toolStripSeparator1 = new ToolStripSeparator();
             tsmiSalir = new ToolStripMenuItem();
             edicionToolStripMenuItem = new ToolStripMenuItem();
-            deshacerToolStripMenuItem = new ToolStripMenuItem();
+            tsmiDeshacer = new ToolStripMenuItem();
             toolStripSeparator2 = new ToolStripSeparator();
-            cortarToolStripMenuItem = new ToolStripMenuItem();
-            copiarToolStripMenuItem = new ToolStripMenuItem();
-            pegarToolStripMenuItem = new ToolStripMenuItem();
-            eliminarToolStripMenuItem = new ToolStripMenuItem();
+            tsmiCortar = new ToolStripMenuItem();
+            tsmiCopiar = new ToolStripMenuItem();
+            tsmiPegar = new ToolStripMenuItem();
+            tsmiEliminar = new ToolStripMenuItem();
             toolStripSeparator3 = new ToolStripSeparator();
-            buscarToolStripMenuItem = new ToolStripMenuItem();
+            tsmiBuscar = new ToolStripMenuItem();
             buscarSiguienteToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator4 = new ToolStripSeparator();
             seleccionarTodoToolStripMenuItem = new ToolStripMenuItem();
@@ -78,7 +78,7 @@
             // 
             tsmiNuevo.Name = "tsmiNuevo";
             tsmiNuevo.ShortcutKeys = Keys.Control | Keys.N;
-            tsmiNuevo.Size = new Size(180, 22);
+            tsmiNuevo.Size = new Size(158, 22);
             tsmiNuevo.Text = "Nuevo";
             tsmiNuevo.Click += tsmiNuevo_Click;
             // 
@@ -86,107 +86,121 @@
             // 
             tsmiAbrir.Name = "tsmiAbrir";
             tsmiAbrir.ShortcutKeys = Keys.Control | Keys.A;
-            tsmiAbrir.Size = new Size(180, 22);
+            tsmiAbrir.Size = new Size(158, 22);
             tsmiAbrir.Text = "Abrir";
+            tsmiAbrir.Click += tsmiAbrir_Click;
             // 
             // tsmiGuardar
             // 
             tsmiGuardar.Image = (Image)resources.GetObject("tsmiGuardar.Image");
             tsmiGuardar.Name = "tsmiGuardar";
             tsmiGuardar.ShortcutKeys = Keys.Control | Keys.G;
-            tsmiGuardar.Size = new Size(180, 22);
+            tsmiGuardar.Size = new Size(158, 22);
             tsmiGuardar.Text = "Guardar";
+            tsmiGuardar.Click += tsmiGuardar_Click;
             // 
             // tsmiGuardarComo
             // 
             tsmiGuardarComo.Name = "tsmiGuardarComo";
-            tsmiGuardarComo.Size = new Size(180, 22);
+            tsmiGuardarComo.Size = new Size(158, 22);
             tsmiGuardarComo.Text = "Guardar Como";
+            tsmiGuardarComo.Click += tsmiGuardarComo_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(177, 6);
+            toolStripSeparator1.Size = new Size(155, 6);
             // 
             // tsmiSalir
             // 
             tsmiSalir.Name = "tsmiSalir";
-            tsmiSalir.Size = new Size(180, 22);
+            tsmiSalir.Size = new Size(158, 22);
             tsmiSalir.Text = "Salir";
+            tsmiSalir.Click += tsmiSalir_Click;
             // 
             // edicionToolStripMenuItem
             // 
-            edicionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { deshacerToolStripMenuItem, toolStripSeparator2, cortarToolStripMenuItem, copiarToolStripMenuItem, pegarToolStripMenuItem, eliminarToolStripMenuItem, toolStripSeparator3, buscarToolStripMenuItem, buscarSiguienteToolStripMenuItem, toolStripSeparator4, seleccionarTodoToolStripMenuItem });
+            edicionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tsmiDeshacer, toolStripSeparator2, tsmiCortar, tsmiCopiar, tsmiPegar, tsmiEliminar, toolStripSeparator3, tsmiBuscar, buscarSiguienteToolStripMenuItem, toolStripSeparator4, seleccionarTodoToolStripMenuItem });
             edicionToolStripMenuItem.Name = "edicionToolStripMenuItem";
             edicionToolStripMenuItem.Size = new Size(58, 20);
             edicionToolStripMenuItem.Text = "Edicion";
             // 
-            // deshacerToolStripMenuItem
+            // tsmiDeshacer
             // 
-            deshacerToolStripMenuItem.Name = "deshacerToolStripMenuItem";
-            deshacerToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Z;
-            deshacerToolStripMenuItem.Size = new Size(169, 22);
-            deshacerToolStripMenuItem.Text = "Deshacer";
+            tsmiDeshacer.Image = (Image)resources.GetObject("tsmiDeshacer.Image");
+            tsmiDeshacer.Name = "tsmiDeshacer";
+            tsmiDeshacer.ShortcutKeys = Keys.Control | Keys.Z;
+            tsmiDeshacer.Size = new Size(180, 22);
+            tsmiDeshacer.Text = "Deshacer";
+            tsmiDeshacer.Click += tsmiDeshacer_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(166, 6);
+            toolStripSeparator2.Size = new Size(177, 6);
             // 
-            // cortarToolStripMenuItem
+            // tsmiCortar
             // 
-            cortarToolStripMenuItem.Name = "cortarToolStripMenuItem";
-            cortarToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.X;
-            cortarToolStripMenuItem.Size = new Size(169, 22);
-            cortarToolStripMenuItem.Text = "Cortar";
+            tsmiCortar.Image = (Image)resources.GetObject("tsmiCortar.Image");
+            tsmiCortar.Name = "tsmiCortar";
+            tsmiCortar.ShortcutKeys = Keys.Control | Keys.X;
+            tsmiCortar.Size = new Size(180, 22);
+            tsmiCortar.Text = "Cortar";
+            tsmiCortar.Click += tsmiCortar_Click;
             // 
-            // copiarToolStripMenuItem
+            // tsmiCopiar
             // 
-            copiarToolStripMenuItem.Name = "copiarToolStripMenuItem";
-            copiarToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.C;
-            copiarToolStripMenuItem.Size = new Size(169, 22);
-            copiarToolStripMenuItem.Text = "Copiar";
+            tsmiCopiar.Image = (Image)resources.GetObject("tsmiCopiar.Image");
+            tsmiCopiar.Name = "tsmiCopiar";
+            tsmiCopiar.ShortcutKeys = Keys.Control | Keys.C;
+            tsmiCopiar.Size = new Size(180, 22);
+            tsmiCopiar.Text = "Copiar";
+            tsmiCopiar.Click += tsmiCopiar_Click;
             // 
-            // pegarToolStripMenuItem
+            // tsmiPegar
             // 
-            pegarToolStripMenuItem.Name = "pegarToolStripMenuItem";
-            pegarToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.V;
-            pegarToolStripMenuItem.Size = new Size(169, 22);
-            pegarToolStripMenuItem.Text = "Pegar";
+            tsmiPegar.Image = (Image)resources.GetObject("tsmiPegar.Image");
+            tsmiPegar.Name = "tsmiPegar";
+            tsmiPegar.ShortcutKeys = Keys.Control | Keys.V;
+            tsmiPegar.Size = new Size(180, 22);
+            tsmiPegar.Text = "Pegar";
+            tsmiPegar.Click += tsmiPegar_Click;
             // 
-            // eliminarToolStripMenuItem
+            // tsmiEliminar
             // 
-            eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            eliminarToolStripMenuItem.ShortcutKeys = Keys.Delete;
-            eliminarToolStripMenuItem.Size = new Size(169, 22);
-            eliminarToolStripMenuItem.Text = "Eliminar";
+            tsmiEliminar.Name = "tsmiEliminar";
+            tsmiEliminar.ShortcutKeys = Keys.Delete;
+            tsmiEliminar.Size = new Size(180, 22);
+            tsmiEliminar.Text = "Eliminar";
+            tsmiEliminar.Click += tsmiEliminar_Click;
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(166, 6);
+            toolStripSeparator3.Size = new Size(177, 6);
             // 
-            // buscarToolStripMenuItem
+            // tsmiBuscar
             // 
-            buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
-            buscarToolStripMenuItem.Size = new Size(169, 22);
-            buscarToolStripMenuItem.Text = "Buscar";
+            tsmiBuscar.Name = "tsmiBuscar";
+            tsmiBuscar.Size = new Size(180, 22);
+            tsmiBuscar.Text = "Buscar";
+            tsmiBuscar.Click += tsmiBuscar_Click;
             // 
             // buscarSiguienteToolStripMenuItem
             // 
             buscarSiguienteToolStripMenuItem.Name = "buscarSiguienteToolStripMenuItem";
-            buscarSiguienteToolStripMenuItem.Size = new Size(169, 22);
+            buscarSiguienteToolStripMenuItem.Size = new Size(180, 22);
             buscarSiguienteToolStripMenuItem.Text = "Buscar Siguiente";
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(166, 6);
+            toolStripSeparator4.Size = new Size(177, 6);
             // 
             // seleccionarTodoToolStripMenuItem
             // 
             seleccionarTodoToolStripMenuItem.Name = "seleccionarTodoToolStripMenuItem";
-            seleccionarTodoToolStripMenuItem.Size = new Size(169, 22);
+            seleccionarTodoToolStripMenuItem.Size = new Size(180, 22);
             seleccionarTodoToolStripMenuItem.Text = "Seleccionar Todo";
             // 
             // formatoToolStripMenuItem
@@ -203,12 +217,14 @@
             ajusteDeTexToolStripMenuItem.Name = "ajusteDeTexToolStripMenuItem";
             ajusteDeTexToolStripMenuItem.Size = new Size(153, 22);
             ajusteDeTexToolStripMenuItem.Text = "Ajuste de texto";
+            ajusteDeTexToolStripMenuItem.Click += ajusteDeTexToolStripMenuItem_Click;
             // 
             // fuenteToolStripMenuItem
             // 
             fuenteToolStripMenuItem.Name = "fuenteToolStripMenuItem";
             fuenteToolStripMenuItem.Size = new Size(153, 22);
             fuenteToolStripMenuItem.Text = "Fuente";
+            fuenteToolStripMenuItem.Click += fuenteToolStripMenuItem_Click;
             // 
             // ayudaToolStripMenuItem
             // 
@@ -222,6 +238,7 @@
             acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             acercaDeToolStripMenuItem.Size = new Size(135, 22);
             acercaDeToolStripMenuItem.Text = "Acerca de...";
+            acercaDeToolStripMenuItem.Click += acercaDeToolStripMenuItem_Click;
             // 
             // txtContenido
             // 
@@ -260,14 +277,14 @@
         private ToolStripMenuItem edicionToolStripMenuItem;
         private ToolStripMenuItem formatoToolStripMenuItem;
         private ToolStripMenuItem ayudaToolStripMenuItem;
-        private ToolStripMenuItem deshacerToolStripMenuItem;
+        private ToolStripMenuItem tsmiDeshacer;
         private ToolStripSeparator toolStripSeparator2;
-        private ToolStripMenuItem cortarToolStripMenuItem;
-        private ToolStripMenuItem copiarToolStripMenuItem;
-        private ToolStripMenuItem pegarToolStripMenuItem;
-        private ToolStripMenuItem eliminarToolStripMenuItem;
+        private ToolStripMenuItem tsmiCortar;
+        private ToolStripMenuItem tsmiCopiar;
+        private ToolStripMenuItem tsmiPegar;
+        private ToolStripMenuItem tsmiEliminar;
         private ToolStripSeparator toolStripSeparator3;
-        private ToolStripMenuItem buscarToolStripMenuItem;
+        private ToolStripMenuItem tsmiBuscar;
         private ToolStripMenuItem buscarSiguienteToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripMenuItem seleccionarTodoToolStripMenuItem;

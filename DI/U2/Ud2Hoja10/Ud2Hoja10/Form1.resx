@@ -121,10 +121,48 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tsmiDeshacer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7BAAAOwQG4kWvtAAAAxElE
+        QVQ4T+WQMQ7CMBRDKwQbI3vSFjpkzYoa4EQwMPcscAtWOADcgAkkVgZW8K9cksJAK8HEk74U/9hulehr
+        xHF857EkTdMhdivMCXPDHJRSc+dcl5Y6YQGME631BVPgrI0xfZxzzBa+jbW2R6unKgjCeXlRp4P9Dt4F
+        tUcKgrDj+g14pvDuKT1S8CksZFk2gOdK6UHBUUpeh9dPkiQZYX+mbA++XqBgTdmO6o3kL7hqDkJjhmdc
+        NecfwwLCS3l1yl8RRQ8lWD5cFXlVdgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="tsmiCortar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7BAAAOwQG4kWvtAAABA0lE
+        QVQ4T62SzWrCUBSE767FdiFKGhIj+X8XS/Fn6UaXuipdiqiPIT6FLfQp9Dlst927cwbGbJLgFTowcM53
+        z9wcLjFV8jyvobJQFatUlmUPcRwv1RYCW/FMbb04FEXRPgzDSMiwJrO6gEJgjMBarUG9IVN7Wxh+ROgz
+        TdNunucd1F/Wb3AVQtMkSRZ8D9QTYXu5rvuETY4IHx3HeRa+TwifabX3Ceu/YP2D7ArbC1/+gGfwHH4X
+        tlMQBC2Evn3fb+Mdmtdax/XC2m9Y9xeBP3grzL9wB5P94MJX4bI4gME+hkashcl56QAewifhshjikC4o
+        But4SVxPwyfUPeFa/g8y5gKj5EDykeQXjgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="tsmiCopiar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7BAAAOwQG4kWvtAAAAWklE
+        QVQ4T2OgGVBUVFwBxPvx4BVQpdgBSJGUlJQwLgyShyrFDkgyAMh5AMT/8eAHhAz4LycnJ4kLg+RHDRgM
+        BoA0oGFESgRyCBoAVYodUMMAgikRqpTagIEBAABneZFeCA6HAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="tsmiPegar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7BAAAOwQG4kWvtAAAAjklE
+        QVQ4T+1ROw6EIBSkcyutbfiFm+ntNlbqfTyEvc4zQ0EEsdxiJ3khzC/hoXIwxnystZNzbsf5DSE0lN4B
+        wRHBGcEW54L7QKkOmA8ZCbJgjRwtecCwRWNlNkZSiKi17msjPkZS/GaB976jXEeugHxpuekyhSwUZJ8m
+        /BWM+Bdcxtu2yb8rKAHGh29U6gTU+IJ6Q3OUsgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="tsmiGuardar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7AAAAOwAFq1okJAAAAgUlE
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA68AAAOvAGVvHJJAAAAgUlE
         QVQ4T2OgDojZ+YAhdtd/IvFHhujdDlCdUACSiN4uCcbIbHQMNmC3P0PMrldAS52guoGAFANAdMyOYKAB
         n6C6gYBUA2BsOKCqATG7HoH52DBIjqABxGKsBsTs3ABkH8WLQWpwGgBSALMBF4apGTUAzYCYXaRkJggG
         6aEcMDAAAF9SLgyxVO/SAAAAAElFTkSuQmCC
