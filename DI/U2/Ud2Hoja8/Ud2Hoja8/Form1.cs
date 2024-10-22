@@ -22,7 +22,12 @@ namespace U2Hoja8
             {
                 if(txtvisor.Text == "0")
                 {
-                    if(boton.Text == ",")
+                    if (boton.Text == "0")
+                    {
+                        txtvisor.Text = "0";
+                        reiniciarVisor = true;
+                    }
+                    if (boton.Text == ",")
                     {
                         txtvisor.Text = "0,";
                         reiniciarVisor = false;
@@ -53,15 +58,19 @@ namespace U2Hoja8
             {
                 case "+":
                     _calculadora.Operacion = OperacionEnum.Suma;
+                    calculadora.Cache = float.Parse(txtvisor.Text);
                     break;
                 case "-":
                     _calculadora.Operacion = OperacionEnum.Resta;
+                    calculadora.Cache = float.Parse(txtvisor.Text);
                     break;
                 case "*":
                     _calculadora.Operacion = OperacionEnum.Multiplicacion;
+                    calculadora.Cache = float.Parse(txtvisor.Text);
                     break;
                 case "/":
                     _calculadora.Operacion = OperacionEnum.Division;
+                    calculadora.Cache = float.Parse(txtvisor.Text);
                     break;
                 case "=":
                     _calculadora.Calcular();

@@ -10,9 +10,27 @@ namespace Ud2Hoja8
     internal class Calculadora
     {
         private float _cache;
-        private float _visor { get; set; }
+        private float _visor;
         private OperacionEnum operacion;
-        public float memoria { get; set; }
+        private float memoria;
+
+        public float Visor
+        {
+            get { return _visor; }
+            set { _visor = value; }
+        }
+
+        public float Cache
+        {
+            get { return _cache; }
+            set { _cache = value; }
+        }
+
+        public float memoria1
+        {
+            get { return memoria; }
+            set { memoria = value; }
+        }
 
         public OperacionEnum Operacion
         {
