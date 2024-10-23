@@ -69,12 +69,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AffirmationsApp() {
     val layoutDirection = LocalLayoutDirection.current
+
     Surface (
         modifier = Modifier
             .fillMaxSize()
             .statusBarsPadding()
             .padding(
-                start = WindowInsets.safeDrawing
+                start = WindowInsets.safeDrawing// esta es la linea que se agrega para que el padding sea correcto
                     .asPaddingValues()
                     .calculateStartPadding(layoutDirection),
                 end = WindowInsets.safeDrawing
