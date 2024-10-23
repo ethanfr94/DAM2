@@ -118,4 +118,6 @@ fun BotonConImagen(imageResId: Int, onClick: () -> Unit) {
     }
 }
 
+
+
 //cambiar la stories de arriba por un textfield para elegir el numero de la imagen a mostrar
