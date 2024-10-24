@@ -1,51 +1,36 @@
 package org.example;
 
 public class Cola {
-    private int numero;
+    private int num;
+    private boolean hay = false; //inicialmente cola vacia
 
-    public int getNumero() {
-        return numero;
-    }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
+    public synchronized int get() {
 
-    private boolean disponible = false; //inicialmente cola vacia
-
-    public  synchronized int get() {
-
-            try {
-
-                while (!disponible) { //hay numero en la cola?
-                    wait(); //espera hasta que haya numero
-                }
-                --numero; //se consume el numero
-                disponible = false; //se pone cola vacia
-                notify(); //notifica al productor
-                return numero; //se devuelve
-
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            while (!hay) { //hay numero en la cola?
+                try{
+                    wait(); //espera
+                }catch (Exception e){}
             }
+            hay = false; //se pone cola vacia
+            notify(); //notifica a productor
+            return num; //se devuelve
+
+        //return (-1); //no hay numero disponible, cola vacia
     }
 
-    public synchronized void put() {
 
-            try {
+    public synchronized void put (int valor) {
 
-                while(disponible) {
-                    wait(); //espera hasta que se consuma el numero
-                }
-                numero++; //coloca valor en la cola
-                disponible = true; //disponible para consumir, cola llena
-                notify(); //notifica al consumidor
-
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            while (hay) { //hay numero en la cola?
+                try{
+                    wait(); //espera
+                }catch (Exception e){}
             }
+            num = valor; //coloca valor en la cola
+            hay = true; //disponible para consumir, cola llena
+            notify(); //notifica a consumidor
 
-
-        }
+    }
 
 }

@@ -9,17 +9,11 @@ public class Cons extends Thread {
     }
     public void run() {
         int valor = 0;
-        for (int i = 0; i>=0; i++) {
-
-            try {
-                sleep(100);
-                valor = cola.get(); //recoge el numero
-                System.out.println(i+"=>Consumidor Existencias: "+cola.getNumero()+"-------------------------------");
-                sleep(100);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+        for (int i = 0; i<5000; i++) {
+            valor = cola.get(); //recoge el numero
+            System.out.println(i+"=>Consumidor : " + n + ", consume: "+ valor);
         }
+
     }
 }
 
