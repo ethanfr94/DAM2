@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Entity
 public class Empleado {
     @Id
-    //@GeneratedValue
+    @GeneratedValue
     private long id;
     private String nombre;
     private String oficio;

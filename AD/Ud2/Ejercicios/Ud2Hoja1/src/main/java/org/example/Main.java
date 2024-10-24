@@ -45,8 +45,8 @@ public class Main {
 
     private static Empleado nuevoEmpleado(Scanner t) {
         Empleado emp = new Empleado();
-        System.out.println("Introduce el id del empleado");
-        emp.setId(Long.parseLong(t.nextLine()));
+        /*System.out.println("Introduce el id del empleado");
+        emp.setId(Long.parseLong(t.nextLine()));*/
         System.out.println("Introduce el nombre del empleado");
         emp.setNombre(t.nextLine());
         System.out.println("Introduce el oficio del empleado");
