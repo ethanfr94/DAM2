@@ -1,9 +1,6 @@
 package org.example.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -11,22 +8,21 @@ import java.time.LocalDate;
 public class Empleado {
     @Id // solo con ID hay que asignarle valor al id
     @GeneratedValue(strategy = GenerationType.IDENTITY)// la id se genera autoincrementada para cada tabla
-    //@GeneratedValue(strategy = GenerationType.AUTO) = @GeneratedValue -- la id se genera autoincremenatada sobre la base de datos completa (todas las tablas)
     private long id;
+    @Column(length = 45, nullable = false)
     private String nombre;
+    @Column(length = 30)
     private String oficio;
+    @Column(name = "fecha_alta")
     private LocalDate fechaAlta;
-    private double salario;
+    @Embedded
+    private Sueldo salario;
 
     public Empleado() {
     }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getNombre() {
@@ -53,11 +49,12 @@ public class Empleado {
         this.fechaAlta = fechaAlta;
     }
 
-    public double getSalario() {
+    public Sueldo getSalario() {
         return salario;
     }
 
-    public void setSalario(double salario) {
+    public void setSalario(Sueldo salario) {
         this.salario = salario;
     }
+
 }
