@@ -59,6 +59,7 @@
             Controls.Add(label1);
             Controls.Add(lblAyuda);
             Name = "FormAyuda";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Ayuda";
             ResumeLayout(false);
             PerformLayout();

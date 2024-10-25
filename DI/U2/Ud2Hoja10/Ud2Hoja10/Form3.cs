@@ -26,8 +26,16 @@ namespace Ud2Hoja10
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            busqueda = txtBuscar.Text;
-            this.Close();
+            if(txtBuscar.Text == "")
+            {
+                MessageBox.Show("Introduce un texto a buscar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else {
+                busqueda = txtBuscar.Text;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+                
+            }
         }
     }
 }

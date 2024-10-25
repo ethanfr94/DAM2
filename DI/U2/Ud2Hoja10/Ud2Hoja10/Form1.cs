@@ -160,12 +160,12 @@ namespace Ud2Hoja10
 
         private void tsmiDeshacer_Click(object sender, EventArgs e)
         {
-            if(txtContenido.CanUndo) txtContenido.Undo();
+            if (txtContenido.CanUndo) txtContenido.Undo();
         }
 
         private void tsmiCortar_Click(object sender, EventArgs e)
         {
-            if(txtContenido.SelectedText.Length>0) txtContenido.Cut();//Corta el texto seleccionado
+            if (txtContenido.SelectedText.Length > 0) txtContenido.Cut();//Corta el texto seleccionado
         }
 
         private void tsmiCopiar_Click(object sender, EventArgs e)
@@ -175,7 +175,7 @@ namespace Ud2Hoja10
 
         private void tsmiPegar_Click(object sender, EventArgs e)
         {
-            if(Clipboard.ContainsText()) txtContenido.Paste();//Pega el texto seleccionado
+            if (Clipboard.ContainsText()) txtContenido.Paste();//Pega el texto seleccionado
         }
 
         private void tsmiEliminar_Click(object sender, EventArgs e)
@@ -183,22 +183,67 @@ namespace Ud2Hoja10
             if (txtContenido.SelectedText.Length > 0) txtContenido.SelectedText = "";//Elimina el texto seleccionado
         }
 
+        private String busq = "";
+        private int pos = 0;
+        private int posFinal = 0;
+
         private void tsmiBuscar_Click(object sender, EventArgs e)
         {
             FormBuscar f3 = new FormBuscar();
-            f3.Show();
-            String busq = f3.Busqueda;
-            if(txtContenido.Text.Contains(busq))//Si el texto contiene la busqueda realizada se selecciona el texto
+            if (f3.ShowDialog() == DialogResult.OK)
             {
-                int index = txtContenido.Text.IndexOf(busq);//Obtenemos la posicion del texto a buscar
-                txtContenido.Select(index,busq.Length);// el primer parametro es la posicion del texto a seleccionar y el segundo la longitud del texto a seleccionar
-                txtContenido.ScrollToCaret();//Hace scroll hasta la posicion del texto seleccionado
+                busq = f3.Busqueda;
+                if (busq != "")//Si la busqueda no esta vacia se busca el texto en el contenido del archivo
+                {
+                    if (txtContenido.Text.Contains(busq))//Si el texto contiene la busqueda realizada se selecciona el texto
+                    {
+                        pos = txtContenido.Text.IndexOf(busq);//Obtenemos la posicion del texto a buscar
+                        posFinal = pos + busq.Length;
+                        if (pos != -1)
+                        {
+                            txtContenido.Select(pos, busq.Length);// el primer parametro es la posicion del texto a seleccionar y el segundo la longitud del texto a seleccionar
+                            txtContenido.ScrollToCaret();//Hace scroll hasta la posicion del texto seleccionado
+                        }
+                        else
+                        {
+                            MessageBox.Show("Texto no encontrado");
+                            pos = 0;
+                            posFinal = 0;
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Texto no encontrado");
+                    }
+                }
+
             }
             else
             {
-                MessageBox.Show("Texto no encontrado");
+                MessageBox.Show("No se ha realizado la busqueda");
             }
 
+
+
+
+        }
+
+        private void btnBuscarSiguiente_Click(object sender, EventArgs e)
+        {
+            if (busq != "")//Si la busqueda no esta vacia se busca el texto en el contenido del archivo                           
+            {    
+                int inicio = txtContenido.Text.IndexOf(busq, posFinal);
+                if (pos != -1)
+                {
+                    txtContenido.Select(inicio, busq.Length);// el primer parametro es la posicion del texto a seleccionar y el segundo la longitud del texto a seleccionar
+                    txtContenido.ScrollToCaret();//Hace scroll hasta la posicion del texto seleccionado
+                }
+                else
+                {
+                    MessageBox.Show("No hay mas coincidencias");
+                }
+            }
         }
     }
 }

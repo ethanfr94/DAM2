@@ -46,7 +46,7 @@
             tsmiEliminar = new ToolStripMenuItem();
             toolStripSeparator3 = new ToolStripSeparator();
             tsmiBuscar = new ToolStripMenuItem();
-            buscarSiguienteToolStripMenuItem = new ToolStripMenuItem();
+            btnBuscarSiguiente = new ToolStripMenuItem();
             toolStripSeparator4 = new ToolStripSeparator();
             seleccionarTodoToolStripMenuItem = new ToolStripMenuItem();
             formatoToolStripMenuItem = new ToolStripMenuItem();
@@ -120,7 +120,7 @@
             // 
             // edicionToolStripMenuItem
             // 
-            edicionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tsmiDeshacer, toolStripSeparator2, tsmiCortar, tsmiCopiar, tsmiPegar, tsmiEliminar, toolStripSeparator3, tsmiBuscar, buscarSiguienteToolStripMenuItem, toolStripSeparator4, seleccionarTodoToolStripMenuItem });
+            edicionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tsmiDeshacer, toolStripSeparator2, tsmiCortar, tsmiCopiar, tsmiPegar, tsmiEliminar, toolStripSeparator3, tsmiBuscar, btnBuscarSiguiente, toolStripSeparator4, seleccionarTodoToolStripMenuItem });
             edicionToolStripMenuItem.Name = "edicionToolStripMenuItem";
             edicionToolStripMenuItem.Size = new Size(58, 20);
             edicionToolStripMenuItem.Text = "Edicion";
@@ -186,11 +186,12 @@
             tsmiBuscar.Text = "Buscar";
             tsmiBuscar.Click += tsmiBuscar_Click;
             // 
-            // buscarSiguienteToolStripMenuItem
+            // btnBuscarSiguiente
             // 
-            buscarSiguienteToolStripMenuItem.Name = "buscarSiguienteToolStripMenuItem";
-            buscarSiguienteToolStripMenuItem.Size = new Size(180, 22);
-            buscarSiguienteToolStripMenuItem.Text = "Buscar Siguiente";
+            btnBuscarSiguiente.Name = "btnBuscarSiguiente";
+            btnBuscarSiguiente.Size = new Size(180, 22);
+            btnBuscarSiguiente.Text = "Buscar Siguiente";
+            btnBuscarSiguiente.Click += btnBuscarSiguiente_Click;
             // 
             // toolStripSeparator4
             // 
@@ -257,6 +258,7 @@
             Controls.Add(txtContenido);
             Controls.Add(menuStrip1);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Bloc de Notas";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -285,7 +287,7 @@
         private ToolStripMenuItem tsmiEliminar;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem tsmiBuscar;
-        private ToolStripMenuItem buscarSiguienteToolStripMenuItem;
+        private ToolStripMenuItem btnBuscarSiguiente;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripMenuItem seleccionarTodoToolStripMenuItem;
         private ToolStripMenuItem ajusteDeTexToolStripMenuItem;

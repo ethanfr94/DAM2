@@ -69,6 +69,7 @@
             Controls.Add(txtBuscar);
             Controls.Add(label1);
             Name = "FormBuscar";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Buscar";
             ResumeLayout(false);
             PerformLayout();
