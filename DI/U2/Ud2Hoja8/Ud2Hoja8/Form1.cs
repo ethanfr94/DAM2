@@ -16,37 +16,35 @@ namespace U2Hoja8
 
         private void numero_click(object sender, EventArgs e)
         {
-            Button boton = (Button)sender;//casting de sender a Button para poder acceder a las propiedades del boton
-
             if (reiniciarVisor)
             {
-                if(txtvisor.Text == "0")
-                {
-                    if (boton.Text == "0")
-                    {
-                        txtvisor.Text = "0";
-                        reiniciarVisor = true;
-                    }
-                    if (boton.Text == ",")
-                    {
-                        txtvisor.Text = "0,";
-                        reiniciarVisor = false;
-                    }
-                    else
-                    {
-                        txtvisor.Text = boton.Text;
-                        reiniciarVisor = false;
-                    }
-                }
-                else
-                {
-                    txtvisor.Text = boton.Text;
-                    reiniciarVisor = false;
-                }
-                
+                txtvisor.Text = "0";
+                reiniciarVisor = false;
             }
-            else{
+            Button boton = (Button)sender;//casting de sender a Button para poder acceder a las propiedades del boton
+            if (txtvisor.Text.Equals("0"))
+            {
+                txtvisor.Text = "";
                 txtvisor.Text += boton.Text;
+                _calculadora.Visor = float.Parse(txtvisor.Text);
+                reiniciarVisor = false;
+            }            
+            else
+            {                
+                txtvisor.Text += boton.Text;
+                _calculadora.Visor = float.Parse(txtvisor.Text);
+            }
+        }
+        private void btncoma_Click(object sender, EventArgs e)
+        {
+            if (txtvisor.Text.Equals("0"))
+            {
+                txtvisor.Text = "0,";
+                reiniciarVisor = false;
+            }
+            if (!txtvisor.Text.Contains(","))
+            {
+                txtvisor.Text += ",";
             }
         }
 
@@ -57,49 +55,56 @@ namespace U2Hoja8
             switch (boton.Text)
             {
                 case "+":
+                    _calculadora.Visor = float.Parse(txtvisor.Text);
                     _calculadora.Operacion = OperacionEnum.Suma;
-                    calculadora.Cache = float.Parse(txtvisor.Text);
                     break;
                 case "-":
+                    _calculadora.Visor = float.Parse(txtvisor.Text);
                     _calculadora.Operacion = OperacionEnum.Resta;
-                    calculadora.Cache = float.Parse(txtvisor.Text);
                     break;
                 case "*":
+                    _calculadora.Visor = float.Parse(txtvisor.Text);
                     _calculadora.Operacion = OperacionEnum.Multiplicacion;
-                    calculadora.Cache = float.Parse(txtvisor.Text);
                     break;
                 case "/":
+                    _calculadora.Visor = float.Parse(txtvisor.Text);
                     _calculadora.Operacion = OperacionEnum.Division;
-                    calculadora.Cache = float.Parse(txtvisor.Text);
-                    break;
-                case "=":
-                    _calculadora.Calcular();
                     break;
             }
+            _calculadora.Visor = 0;
+            reiniciarVisor = true;
         }
 
+        private void btnigual_Click(object sender, EventArgs e)
+        {
+            _calculadora.Calcular();
+            txtvisor.Text = _calculadora.Visor.ToString();
+            _calculadora.Visor = 0;
+            reiniciarVisor = true;
+        }
+
+        private void btnMS_Click(object sender, EventArgs e)
+        {
+            _calculadora.memoria = float.Parse(txtvisor.Text);
+            reiniciarVisor = true;
+        }
         private void btnMR_Click(object sender, EventArgs e)
         {
             txtvisor.Text = _calculadora.memoria.ToString();
+            _calculadora.Visor = float.Parse(txtvisor.Text);
         }
 
         private void btnclear_Click(object sender, EventArgs e)
         {
             _calculadora.Borrar();
             txtvisor.Text = "0";
+
         }
 
-        private void btnMS_Click(object sender, EventArgs e)
-        {
-            _calculadora.memoria = float.Parse(txtvisor.Text);
-        }
+        
 
-        private void btncoma_Click(object sender, EventArgs e)
-        {
-            if(!txtvisor.Text.Contains(","))
-            {
-                txtvisor.Text += ",";
-            }
-        }
+       
+
+        
     }
 }

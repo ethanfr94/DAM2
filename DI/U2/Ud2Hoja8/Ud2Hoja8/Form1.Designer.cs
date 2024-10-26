@@ -232,6 +232,7 @@ namespace U2Hoja8
             btnigual.TabIndex = 18;
             btnigual.Text = "=";
             btnigual.UseVisualStyleBackColor = true;
+            btnigual.Click += btnigual_Click;
             // 
             // btn0
             // 
@@ -249,6 +250,7 @@ namespace U2Hoja8
             txtvisor.Name = "txtvisor";
             txtvisor.Size = new Size(217, 23);
             txtvisor.TabIndex = 20;
+            txtvisor.Text = "0";
             txtvisor.TextAlign = HorizontalAlignment.Right;
             // 
             // Form1

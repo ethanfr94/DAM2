@@ -12,7 +12,7 @@ namespace Ud2Hoja8
         private float _cache;
         private float _visor;
         private OperacionEnum operacion;
-        private float memoria;
+        private float _memoria;
 
         public float Visor
         {
@@ -26,10 +26,10 @@ namespace Ud2Hoja8
             set { _cache = value; }
         }
 
-        public float memoria1
+        public float memoria
         {
-            get { return memoria; }
-            set { memoria = value; }
+            get { return _memoria; }
+            set { _memoria = value; }
         }
 
         public OperacionEnum Operacion
@@ -70,7 +70,7 @@ namespace Ud2Hoja8
                     }
                     else
                     {
-                        _visor = 0;
+                        MessageBox.Show("No se puede dividir por 0","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     }
                     break;
                 case OperacionEnum.SinOperacion:
@@ -84,6 +84,7 @@ namespace Ud2Hoja8
             _cache = 0;
             _visor = 0;
             operacion = OperacionEnum.SinOperacion;
+            memoria = 0;
         }
     }
 }
