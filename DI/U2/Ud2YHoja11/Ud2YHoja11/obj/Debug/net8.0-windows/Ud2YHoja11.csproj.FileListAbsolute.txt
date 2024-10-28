@@ -1,0 +1,17 @@
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\bin\Debug\net8.0-windows\Ud2YHoja11.exe
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\bin\Debug\net8.0-windows\Ud2YHoja11.deps.json
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\bin\Debug\net8.0-windows\Ud2YHoja11.runtimeconfig.json
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\bin\Debug\net8.0-windows\Ud2YHoja11.dll
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\bin\Debug\net8.0-windows\Ud2YHoja11.pdb
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\obj\Debug\net8.0-windows\Ud2YHoja11.Form1.resources
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\obj\Debug\net8.0-windows\Ud2YHoja11.csproj.GenerateResource.cache
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\obj\Debug\net8.0-windows\Ud2YHoja11.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\obj\Debug\net8.0-windows\Ud2YHoja11.AssemblyInfoInputs.cache
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\obj\Debug\net8.0-windows\Ud2YHoja11.AssemblyInfo.cs
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\obj\Debug\net8.0-windows\Ud2YHoja11.csproj.CoreCompileInputs.cache
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\obj\Debug\net8.0-windows\Ud2YHoja11.sourcelink.json
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\obj\Debug\net8.0-windows\Ud2YHoja11.dll
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\obj\Debug\net8.0-windows\refint\Ud2YHoja11.dll
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\obj\Debug\net8.0-windows\Ud2YHoja11.pdb
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\obj\Debug\net8.0-windows\Ud2YHoja11.genruntimeconfig.cache
+C:\Users\usuario\Desktop\DAM\DI\U2\Ud2YHoja11\Ud2YHoja11\obj\Debug\net8.0-windows\ref\Ud2YHoja11.dll
