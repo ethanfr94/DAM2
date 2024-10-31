@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{B6A92E89-B10C-4EC6-A7BF-6029D5E4F2E5}|Ud2Hoja8.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6A92E89-B10C-4EC6-A7BF-6029D5E4F2E5}|Ud2Hoja8.csproj|c:\\users\\usuario\\desktop\\dam\\di\\u2\\ud2hoja8\\ud2hoja8\\calculadora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A92E89-B10C-4EC6-A7BF-6029D5E4F2E5}|Ud2Hoja8.csproj|solutionrelative:calculadora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B6A92E89-B10C-4EC6-A7BF-6029D5E4F2E5}|Ud2Hoja8.csproj|C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ud2Hoja8\\Ud2Hoja8\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B6A92E89-B10C-4EC6-A7BF-6029D5E4F2E5}|Ud2Hoja8.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6A92E89-B10C-4EC6-A7BF-6029D5E4F2E5}|Ud2Hoja8.csproj|c:\\users\\usuario\\desktop\\dam\\di\\u2\\ud2hoja8\\ud2hoja8\\calculadora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6A92E89-B10C-4EC6-A7BF-6029D5E4F2E5}|Ud2Hoja8.csproj|solutionrelative:calculadora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,12 +26,12 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Form1.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ud2Hoja8\\Ud2Hoja8\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ud2Hoja8\\Ud2Hoja8\\Form1.cs [Dise\u00F1o]*",
-              "RelativeToolTip": "Form1.cs [Dise\u00F1o]*",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ud2Hoja8\\Ud2Hoja8\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-21T13:26:09.303Z",
               "EditorCaption": " [Dise\u00F1o]"
@@ -42,22 +42,22 @@
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ud2Hoja8\\Ud2Hoja8\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ud2Hoja8\\Ud2Hoja8\\Form1.cs*",
-              "RelativeToolTip": "Form1.cs*",
-              "ViewState": "AgIAACQAAAAAAAAAAADwv0IAAAAqAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ud2Hoja8\\Ud2Hoja8\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAIwGoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-20T15:03:36.4Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Calculadora.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ud2Hoja8\\Ud2Hoja8\\Calculadora.cs",
               "RelativeDocumentMoniker": "Calculadora.cs",
               "ToolTip": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ud2Hoja8\\Ud2Hoja8\\Calculadora.cs",
               "RelativeToolTip": "Calculadora.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAcwFYAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAcwEEAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-20T14:01:46.543Z",
               "EditorCaption": ""

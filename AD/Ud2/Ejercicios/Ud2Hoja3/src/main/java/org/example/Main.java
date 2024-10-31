@@ -1,5 +1,4 @@
 package org.example;
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -34,15 +33,22 @@ public class Main {
         System.out.println("Introduce la localidad del departamento");
         d.setLocalidad(t.nextLine());
         String nombre = "";
-         do {
+        try {
+            do {
             Empleado e = nuevoEmpleado();
-            nombre = e.getNombre();
-            if (!nombre.equals("")) {
-                d.getEmpleados().add(e);
-                em.persist(e);
-                break;
-            }
-        }while (true);
+
+                nombre = e.getNombre();
+                if (nombre.equals("")) {
+                    break;
+                } else {
+                    d.getEmpleados().add(e);
+                    em.persist(e);
+                }
+
+            }while (!nombre.equals(""));
+         } catch (NullPointerException ex) {
+        System.out.println("Error al introducir el empleado");
+    }
         em.persist(d);
 
         em.getTransaction().commit();
@@ -58,21 +64,25 @@ public class Main {
         /*System.out.println("Introduce el id del empleado");
         emp.setId(Long.parseLong(t.nextLine()));*/
         System.out.println("Introduce el nombre del empleado");
-        emp.setNombre(t.nextLine());
-        System.out.println("Introduce el oficio del empleado");
-        emp.setOficio(t.nextLine());
-        System.out.println("Introduce la fecha de alta del empleado");
-        System.out.println("Introduce el dia");
-        int dia = Integer.parseInt(t.nextLine());
-        System.out.println("Introduce el mes");
-        int mes = Integer.parseInt(t.nextLine());
-        System.out.println("Introduce el año");
-        int anio = Integer.parseInt(t.nextLine());
-        emp.setFechaAlta(java.time.LocalDate.of(anio, mes, dia));
-        System.out.println("Introduce el salario del empleado");
-        Sueldo s = new Sueldo();
-        s.setSalario(Double.parseDouble(t.nextLine()));
-        emp.setSalario(s);
+        String nombre = t.nextLine();
+        if(!nombre.equals("")) {
+            emp.setNombre(nombre);
+            System.out.println("Introduce el oficio del empleado");
+            emp.setOficio(t.nextLine());
+            System.out.println("Introduce la fecha de alta del empleado");
+            System.out.println("Introduce el dia");
+            int dia = Integer.parseInt(t.nextLine());
+            System.out.println("Introduce el mes");
+            int mes = Integer.parseInt(t.nextLine());
+            System.out.println("Introduce el año");
+            int anio = Integer.parseInt(t.nextLine());
+            emp.setFechaAlta(java.time.LocalDate.of(anio, mes, dia));
+            System.out.println("Introduce el salario del empleado");
+            Sueldo s = new Sueldo();
+            s.setSalario(Double.parseDouble(t.nextLine()));
+            emp.setSalario(s);
+        }
+
         return emp;
     }
 }
