@@ -1,12 +1,53 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\EjemploListas\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7A470DEE-583A-4B55-91BC-4E1BC0C3E6F1}|EjemploListas\\EjemploListas.csproj|d:\\usuarios\\dam2\\desktop\\dam\\di\\u2\\ejemplolistas\\ejemplolistas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A470DEE-583A-4B55-91BC-4E1BC0C3E6F1}|EjemploListas\\EjemploListas.csproj|solutionrelative:ejemplolistas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A470DEE-583A-4B55-91BC-4E1BC0C3E6F1}|EjemploListas\\EjemploListas.csproj|d:\\usuarios\\dam2\\desktop\\dam\\di\\u2\\ejemplolistas\\ejemplolistas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7A470DEE-583A-4B55-91BC-4E1BC0C3E6F1}|EjemploListas\\EjemploListas.csproj|solutionrelative:ejemplolistas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\EjemploListas\\EjemploListas\\Form1.cs",
+              "RelativeDocumentMoniker": "EjemploListas\\Form1.cs",
+              "ToolTip": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\EjemploListas\\EjemploListas\\Form1.cs",
+              "RelativeToolTip": "EjemploListas\\Form1.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAnwB4AAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T14:42:31.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\EjemploListas\\EjemploListas\\Form1.cs",
+              "RelativeDocumentMoniker": "EjemploListas\\Form1.cs",
+              "ToolTip": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\EjemploListas\\EjemploListas\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "EjemploListas\\Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T14:41:56.263Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
