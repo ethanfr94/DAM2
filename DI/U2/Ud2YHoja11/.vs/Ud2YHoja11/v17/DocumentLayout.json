@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ud2YHoja11\\",
+  "WorkspaceRootPath": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\Ud2YHoja11\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C7FE4444-FAA8-41BB-A6E7-AEFDBA63FE21}|Ud2YHoja11\\Ud2YHoja11.csproj|c:\\users\\usuario\\desktop\\dam\\di\\u2\\ud2yhoja11\\ud2yhoja11\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C7FE4444-FAA8-41BB-A6E7-AEFDBA63FE21}|Ud2YHoja11\\Ud2YHoja11.csproj|d:\\usuarios\\dam2\\desktop\\dam\\di\\u2\\ud2yhoja11\\ud2yhoja11\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C7FE4444-FAA8-41BB-A6E7-AEFDBA63FE21}|Ud2YHoja11\\Ud2YHoja11.csproj|solutionrelative:ud2yhoja11\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7FE4444-FAA8-41BB-A6E7-AEFDBA63FE21}|Ud2YHoja11\\Ud2YHoja11.csproj|c:\\users\\usuario\\desktop\\dam\\di\\u2\\ud2yhoja11\\ud2yhoja11\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C7FE4444-FAA8-41BB-A6E7-AEFDBA63FE21}|Ud2YHoja11\\Ud2YHoja11.csproj|d:\\usuarios\\dam2\\desktop\\dam\\di\\u2\\ud2yhoja11\\ud2yhoja11\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C7FE4444-FAA8-41BB-A6E7-AEFDBA63FE21}|Ud2YHoja11\\Ud2YHoja11.csproj|solutionrelative:ud2yhoja11\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -24,9 +24,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ud2YHoja11\\Ud2YHoja11\\Form1.cs",
+              "DocumentMoniker": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\Ud2YHoja11\\Ud2YHoja11\\Form1.cs",
               "RelativeDocumentMoniker": "Ud2YHoja11\\Form1.cs",
-              "ToolTip": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ud2YHoja11\\Ud2YHoja11\\Form1.cs",
+              "ToolTip": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\Ud2YHoja11\\Ud2YHoja11\\Form1.cs",
               "RelativeToolTip": "Ud2YHoja11\\Form1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -37,9 +37,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ud2YHoja11\\Ud2YHoja11\\Form1.cs",
+              "DocumentMoniker": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\Ud2YHoja11\\Ud2YHoja11\\Form1.cs",
               "RelativeDocumentMoniker": "Ud2YHoja11\\Form1.cs",
-              "ToolTip": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ud2YHoja11\\Ud2YHoja11\\Form1.cs [Dise\u00F1o]",
+              "ToolTip": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\Ud2YHoja11\\Ud2YHoja11\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "Ud2YHoja11\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-28T16:32:52.753Z",
