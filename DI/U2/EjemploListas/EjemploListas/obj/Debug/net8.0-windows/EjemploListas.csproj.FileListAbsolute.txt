@@ -1,0 +1,17 @@
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\bin\Debug\net8.0-windows\EjemploListas.exe
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\bin\Debug\net8.0-windows\EjemploListas.deps.json
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\bin\Debug\net8.0-windows\EjemploListas.runtimeconfig.json
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\bin\Debug\net8.0-windows\EjemploListas.dll
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\bin\Debug\net8.0-windows\EjemploListas.pdb
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\obj\Debug\net8.0-windows\EjemploListas.Form1.resources
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\obj\Debug\net8.0-windows\EjemploListas.csproj.GenerateResource.cache
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\obj\Debug\net8.0-windows\EjemploListas.GeneratedMSBuildEditorConfig.editorconfig
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\obj\Debug\net8.0-windows\EjemploListas.AssemblyInfoInputs.cache
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\obj\Debug\net8.0-windows\EjemploListas.AssemblyInfo.cs
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\obj\Debug\net8.0-windows\EjemploListas.csproj.CoreCompileInputs.cache
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\obj\Debug\net8.0-windows\EjemploListas.sourcelink.json
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\obj\Debug\net8.0-windows\EjemploListas.dll
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\obj\Debug\net8.0-windows\refint\EjemploListas.dll
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\obj\Debug\net8.0-windows\EjemploListas.pdb
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\obj\Debug\net8.0-windows\EjemploListas.genruntimeconfig.cache
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\EjemploListas\EjemploListas\obj\Debug\net8.0-windows\ref\EjemploListas.dll
