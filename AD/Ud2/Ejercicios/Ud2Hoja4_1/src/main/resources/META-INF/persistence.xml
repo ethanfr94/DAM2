@@ -4,6 +4,8 @@
              version="2.2">
     <persistence-unit name="miUnidadDePersistencia">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!-- Clases que serán mapeadas por JPA -->
+        <!-- con la version 2.2 de JPA no es necesario especificar las clases aqui-->
         <class>org.example.modelo.Empleado</class>
         <class>org.example.modelo.Departamento</class>
         <class>org.example.modelo.Estudio</class>
