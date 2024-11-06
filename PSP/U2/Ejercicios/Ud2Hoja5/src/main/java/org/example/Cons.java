@@ -4,14 +4,13 @@ import java.util.concurrent.Semaphore;
 
 public class Cons extends Thread {
     private Cola cola;
-    private int n;
+    private String msg;
     Semaphore prod;
     Semaphore cons;
     Semaphore mutex;
 
-    public Cons (Cola c, int n, Semaphore prod, Semaphore cons, Semaphore mutex){
+    public Cons (Cola c, Semaphore prod, Semaphore cons, Semaphore mutex){
         cola = c;
-        this.n =n;
         this.prod = prod;
         this.cons = cons;
         this.mutex = mutex;
@@ -21,13 +20,15 @@ public class Cons extends Thread {
             try {
                 cons.acquire();
                 mutex.acquire();
-                n = cola.get(); //obtiene el numero
-                System.out.println("Consumidor : " + n + ", consume: "+ n);
+                msg = cola.get(); //obtiene el numero
+                System.out.println(msg);
                 mutex.release();
                 prod.release();
+                sleep(500);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+
         }
     }
 }

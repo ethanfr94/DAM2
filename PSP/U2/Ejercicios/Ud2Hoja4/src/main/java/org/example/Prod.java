@@ -30,6 +30,7 @@ public class Prod extends Thread {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
+
             }
         }
 }
