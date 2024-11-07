@@ -5,7 +5,6 @@ import java.util.concurrent.Semaphore;
 public class Cons extends Thread {
 
     private Cola cola;
-    private String msg;
 
     public Cons (Cola c){
         cola = c;
@@ -13,8 +12,7 @@ public class Cons extends Thread {
 
     public void run() {
         for (int i = 0; i < 20; i++) {
-            msg = cola.get();
-            System.out.println(msg);
+            System.out.println(cola.get());
             try {
                 sleep(500);
             } catch (InterruptedException e) {
