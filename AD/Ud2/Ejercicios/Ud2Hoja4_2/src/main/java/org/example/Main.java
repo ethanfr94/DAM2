@@ -37,17 +37,17 @@ public class Main {
         d.getEmpleados().add(emp1);
         em.persist(emp1);
 
-        emp1.addEstudio(e, LocalDate.of(2022, 11, 30), em);
+        emp1.addEstudio(e, LocalDate.of(2022, 11, 30));
 
         Empleado emp2 = new Empleado("Ramon", "Analista", java.time.LocalDate.now(),2000.0);
 
         d.getEmpleados().add(emp2);
         em.persist(emp2);
-        emp2.addEstudio(e, LocalDate.of(2020, 12, 31), em);
+        emp2.addEstudio(e, LocalDate.of(2020, 12, 31));
 
 
         Empleado emp3 = new Empleado("Pedro", "Tester", java.time.LocalDate.now(),1500.0);
-        emp3.addEstudio(e, LocalDate.of(2020, 10, 21), em);
+        emp3.addEstudio(e, LocalDate.of(2020, 10, 21));
         d.getEmpleados().add(emp3);
         em.persist(emp3);
 

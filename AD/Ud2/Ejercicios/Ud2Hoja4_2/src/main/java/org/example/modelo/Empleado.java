@@ -21,7 +21,7 @@ public class Empleado {
     private LocalDate fechaAlta;
     @Embedded
     private Sueldo salario;
-    @OneToMany(mappedBy = "empleado")
+    @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmpleadoEstudio> estudios = new ArrayList<>();
 
     public Empleado() {
@@ -76,14 +76,13 @@ public class Empleado {
         return estudios;
     }
 
-    public void addEstudio(Estudio estudio, LocalDate fechaFin, EntityManager em) {
+    public void addEstudio(Estudio estudio, LocalDate fechaFin) {
         EmpleadoEstudio ee = new EmpleadoEstudio();
         ee.setEmpleado(this);
         ee.setEstudio(estudio);
         ee.setFechaFin(fechaFin);
         estudios.add(ee);
         estudio.getEmpleados().add(ee);
-        em.persist(ee);
     }
 
     public void removeEstudio(Estudio estudio, EntityManager em) {

@@ -19,7 +19,7 @@ public class Estudio {
     private String codEstudio;
     @Column(length = 45, nullable = false)
     private String nombre;
-    @OneToMany(mappedBy = "estudio")
+    @OneToMany(mappedBy = "estudio", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmpleadoEstudio> empleados = new ArrayList<>();
 
 
