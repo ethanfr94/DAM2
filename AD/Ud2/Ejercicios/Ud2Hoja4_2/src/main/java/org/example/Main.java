@@ -8,6 +8,7 @@ import org.example.modelo.Empleado;
 import org.example.modelo.Estudio;
 import org.example.modelo.Sueldo;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -31,20 +32,22 @@ public class Main {
         d.setLocalidad("Torrelavega");
         em.persist(d);
 
-        Empleado emp1 = new Empleado("Manolo", "palista", java.time.LocalDate.now(),1000.0);
-        emp1.addEstudio(e);
+        Empleado emp1 = new Empleado("Manolo", "Desarrollador", java.time.LocalDate.now(),1000.0);
+
         d.getEmpleados().add(emp1);
         em.persist(emp1);
 
+        emp1.addEstudio(e, LocalDate.of(2022, 11, 30), em);
 
-        Empleado emp2 = new Empleado("Ramon", "Chofer", java.time.LocalDate.now(),2000.0);
-        emp2.addEstudio(e);
+        Empleado emp2 = new Empleado("Ramon", "Analista", java.time.LocalDate.now(),2000.0);
+
         d.getEmpleados().add(emp2);
         em.persist(emp2);
+        emp2.addEstudio(e, LocalDate.of(2020, 12, 31), em);
 
 
-        Empleado emp3 = new Empleado("Pedro", "Gestor", java.time.LocalDate.now(),4000.0);
-        emp3.addEstudio(e);
+        Empleado emp3 = new Empleado("Pedro", "Tester", java.time.LocalDate.now(),1500.0);
+        emp3.addEstudio(e, LocalDate.of(2020, 10, 21), em);
         d.getEmpleados().add(emp3);
         em.persist(emp3);
 
