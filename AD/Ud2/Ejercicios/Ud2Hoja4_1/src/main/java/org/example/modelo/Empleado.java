@@ -22,9 +22,9 @@ public class Empleado {
     private Sueldo salario;
     @ManyToMany
     @JoinTable(
-            name = "empleados_estudios",
-            joinColumns = @JoinColumn(name = "empleado_id"),
-            inverseJoinColumns = @JoinColumn(name = "estudio_id")
+            name = "empleados_estudios", // nombre de la tabla intermedia
+            joinColumns = @JoinColumn(name = "empleado_id"), // nombre de la columna de la tabla intermedia que hace referencia a la tabla actual
+            inverseJoinColumns = @JoinColumn(name = "estudio_id") // nombre de la columna de la tabla intermedia que hace referencia a la tabla con la que se relaciona
     )
     private List<Estudio> estudios = new ArrayList<>();
 
