@@ -7,6 +7,15 @@ import java.util.concurrent.Semaphore;
 public class Main {
     public static void main(String[] args) {
 
+        Cola cola = new Cola();
+        Prod p = new Prod(cola);
+        Cons c = new Cons(cola);
+        p.start();
+        c.start();
+
+
+        // asi seria con semaforos
+        /*
         Semaphore prod = new Semaphore(1);
         Semaphore cons = new Semaphore(0);
         Semaphore mutex = new Semaphore(1);
@@ -17,6 +26,8 @@ public class Main {
 
         p.start();
         c.start();
+        */
+
 
     }
 }

@@ -3,8 +3,28 @@ package org.example;
 import java.util.concurrent.Semaphore;
 
 public class Cons extends Thread {
+
     private Cola cola;
     private String msg;
+
+    public Cons (Cola c){
+        cola = c;
+    }
+
+    public void run() {
+        for (int i = 0; i < 20; i++) {
+            msg = cola.get();
+            System.out.println(msg);
+            try {
+                sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    // asi seria con semaforos
+    /*
     Semaphore prod;
     Semaphore cons;
     Semaphore mutex;
@@ -31,5 +51,6 @@ public class Cons extends Thread {
 
         }
     }
+    */
 }
 

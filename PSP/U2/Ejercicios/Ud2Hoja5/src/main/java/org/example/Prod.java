@@ -6,6 +6,29 @@ public class Prod extends Thread {
 
         private Cola cola;
         private String msg;
+
+        public Prod (Cola c){
+            cola = c;
+        }
+
+        public void run() {
+            for (int i = 0; i < 20; i++) {
+                if(i%2==0){
+                    msg = "PING";
+                }else{
+                    msg = "\tPONG";
+                }
+                cola.put(msg);
+                try {
+                    sleep(500);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+    // asi seria con semaforos
+        /*
         Semaphore prod;
         Semaphore cons;
         Semaphore mutex;
@@ -37,4 +60,5 @@ public class Prod extends Thread {
 
             }
         }
+        */
 }
