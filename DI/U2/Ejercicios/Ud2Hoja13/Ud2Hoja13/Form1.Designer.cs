@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             splitContainer1 = new SplitContainer();
             treeView1 = new TreeView();
             listView1 = new ListView();
-            clmNombre = new ColumnHeader();
-            clmFecha = new ColumnHeader();
-            clmTamanio = new ColumnHeader();
+            imageList = new ImageList(components);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -59,35 +59,31 @@
             // 
             // treeView1
             // 
-            treeView1.Location = new Point(0, -1);
+            treeView1.Location = new Point(3, 3);
             treeView1.Name = "treeView1";
-            treeView1.Size = new Size(170, 451);
+            treeView1.Size = new Size(167, 443);
             treeView1.TabIndex = 0;
+            treeView1.BeforeExpand += treeView1_BeforeExpand;
+            treeView1.AfterSelect += treeView1_AfterSelect;
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { clmNombre, clmFecha, clmTamanio });
-            listView1.Location = new Point(-1, 0);
+            listView1.Location = new Point(-1, 3);
             listView1.Name = "listView1";
-            listView1.Size = new Size(457, 449);
+            listView1.Size = new Size(454, 443);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
+            listView1.ColumnClick += listView1_ColumnClick;
             // 
-            // clmNombre
+            // imageList
             // 
-            clmNombre.Text = "Nombre";
-            clmNombre.Width = 150;
-            // 
-            // clmFecha
-            // 
-            clmFecha.Text = "Fecha de modificacion";
-            clmFecha.Width = 150;
-            // 
-            // clmTamanio
-            // 
-            clmTamanio.Text = "Tamaño";
-            clmTamanio.Width = 150;
+            imageList.ColorDepth = ColorDepth.Depth32Bit;
+            imageList.ImageStream = (ImageListStreamer)resources.GetObject("imageList.ImageStream");
+            imageList.TransparentColor = Color.Transparent;
+            imageList.Images.SetKeyName(0, "FolderClosed.png");
+            imageList.Images.SetKeyName(1, "FolderOpened.png");
+            imageList.Images.SetKeyName(2, "Document.png");
             // 
             // Form1
             // 
@@ -109,8 +105,6 @@
         private SplitContainer splitContainer1;
         private TreeView treeView1;
         private ListView listView1;
-        private ColumnHeader clmNombre;
-        private ColumnHeader clmFecha;
-        private ColumnHeader clmTamanio;
+        private ImageList imageList;
     }
 }
