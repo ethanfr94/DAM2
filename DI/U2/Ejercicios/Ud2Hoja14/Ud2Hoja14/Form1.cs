@@ -36,9 +36,11 @@ namespace Ud2Hoja14
 
         private void peliculaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
             ListaPeliculaForm listaPeliculaForm = new ListaPeliculaForm();
             listaPeliculaForm.MdiParent = this;
             listaPeliculaForm.Show();
+
         }
     }
 }

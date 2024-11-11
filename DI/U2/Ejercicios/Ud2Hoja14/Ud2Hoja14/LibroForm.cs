@@ -36,7 +36,10 @@ namespace Ud2Hoja14
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            
+            Libro libro = new Libro();
+            libro.Titulo = txtTituloLibro.Text;
+            libro.Anio = int.Parse(txtAnioLibro.Text);
+            libro.Autor = txtAutorLibro.Text;
             DialogResult = DialogResult.OK;
 
         }
