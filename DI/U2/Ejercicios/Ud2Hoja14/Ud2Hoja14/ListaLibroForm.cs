@@ -19,7 +19,16 @@ namespace Ud2Hoja14
 
         private void crearToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            Libro libro = new Libro();
+            LibroForm libroForm = new LibroForm(libro);
+            libroForm.ShowDialog();
+            if (libroForm.DialogResult == DialogResult.OK)
+            {
+                ListViewItem item = new ListViewItem(libro.Titulo);
+                item.SubItems.Add(libro.Anio.ToString());
+                item.SubItems.Add(libro.Autor);
+                listView1.Items.Add(item);
+            }
         }
     }
 }

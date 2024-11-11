@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ud2Hoja13")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad71c66d07ad2b4acf3ecc7f6cf8664e5b9a0e69")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+761daf82bfedf24e15c89645937fc7ec3c4200ba")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ud2Hoja13")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ud2Hoja13")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
