@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\EjemploMdi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CE5C978F-D98B-452E-9C82-47A189279FBD}|EjemploMdi\\EjemploMdi.csproj|d:\\usuarios\\dam2\\desktop\\dam\\di\\u2\\ejemplomdi\\ejemplomdi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE5C978F-D98B-452E-9C82-47A189279FBD}|EjemploMdi\\EjemploMdi.csproj|solutionrelative:ejemplomdi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE5C978F-D98B-452E-9C82-47A189279FBD}|EjemploMdi\\EjemploMdi.csproj|d:\\usuarios\\dam2\\desktop\\dam\\di\\u2\\ejemplomdi\\ejemplomdi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CE5C978F-D98B-452E-9C82-47A189279FBD}|EjemploMdi\\EjemploMdi.csproj|solutionrelative:ejemplomdi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE5C978F-D98B-452E-9C82-47A189279FBD}|EjemploMdi\\EjemploMdi.csproj|d:\\usuarios\\dam2\\desktop\\dam\\di\\u2\\ejemplomdi\\ejemplomdi\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CE5C978F-D98B-452E-9C82-47A189279FBD}|EjemploMdi\\EjemploMdi.csproj|solutionrelative:ejemplomdi\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE5C978F-D98B-452E-9C82-47A189279FBD}|EjemploMdi\\EjemploMdi.csproj|d:\\usuarios\\dam2\\desktop\\dam\\di\\u2\\ejemplomdi\\ejemplomdi\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE5C978F-D98B-452E-9C82-47A189279FBD}|EjemploMdi\\EjemploMdi.csproj|solutionrelative:ejemplomdi\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\EjemploMdi\\EjemploMdi\\Form1.cs",
+              "RelativeDocumentMoniker": "EjemploMdi\\Form1.cs",
+              "ToolTip": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\EjemploMdi\\EjemploMdi\\Form1.cs",
+              "RelativeToolTip": "EjemploMdi\\Form1.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAgwB8AAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T14:16:55.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form2.cs",
+              "DocumentMoniker": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\EjemploMdi\\EjemploMdi\\Form2.cs",
+              "RelativeDocumentMoniker": "EjemploMdi\\Form2.cs",
+              "ToolTip": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\EjemploMdi\\EjemploMdi\\Form2.cs",
+              "RelativeToolTip": "EjemploMdi\\Form2.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T14:16:20.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form2.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\EjemploMdi\\EjemploMdi\\Form2.cs",
+              "RelativeDocumentMoniker": "EjemploMdi\\Form2.cs",
+              "ToolTip": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\EjemploMdi\\EjemploMdi\\Form2.cs [Dise\u00F1o]",
+              "RelativeToolTip": "EjemploMdi\\Form2.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T14:15:50.577Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\EjemploMdi\\EjemploMdi\\Form1.cs",
+              "RelativeDocumentMoniker": "EjemploMdi\\Form1.cs",
+              "ToolTip": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\EjemploMdi\\EjemploMdi\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "EjemploMdi\\Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T14:10:25.671Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
