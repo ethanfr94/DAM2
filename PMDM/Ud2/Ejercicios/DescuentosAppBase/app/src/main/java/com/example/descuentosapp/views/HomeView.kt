@@ -1,11 +1,11 @@
 package com.example.descuentosapp.views
 
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -55,38 +55,51 @@ fun ContentHomeView(paddingValues: PaddingValues) {
         //verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        var precio by remember { mutableStateOf("") }
-        var descuento by remember { mutableStateOf("") }
+        var precio by remember { mutableStateOf("") } //precio inicial
+        var descuento by remember { mutableStateOf("") } //descuento inicial
+        var totalDescuento by remember { mutableStateOf(0.0) } //totalDescuento inicial
+        var precioFinal by remember { mutableStateOf(0.0) } //precioDescuento inicial
+        var showDialog by remember { mutableStateOf(false) } //showDialog inicial
 
 
         TwoCards(
             title1 = "Total",
-          //  number1 = totalDescuento,
-            number1=0.0,
+            number1 = totalDescuento,
             title2 = "Descuento",
-         //   number2 = precioDescuento
-            number2=0.0
+            number2 = precioFinal
         )
 
         MainTextField(value = precio, onValueChange = { precio = it }, label = "Precio")
         SpaceH()
         MainTextField(value = descuento, onValueChange = { descuento = it }, label = "Descuento %")
         SpaceH(10.dp)
-        MainButton(text = "Generar descuento") {
-            if(precio != "" && descuento != ""){
-                Toast.makeText(context,"Hay que calcular descuento con la funcion",
-                    Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(context,"los datos están incompletos",
-                    Toast.LENGTH_SHORT).show()
+        MainButton(text = "Generar descuento") { // al pulsar el boton se ejecuta la funcion
+            if (precio.isNotEmpty() && descuento.isNotEmpty()) { //si los campos no estan vacios se ejecuta
+                precioFinal = calcularPrecio(precio.toDouble(), descuento.toDouble()) // se calcula el totalDescuento y se guarda en la variable
+                totalDescuento = calcularDescuento(precio.toDouble(), descuento.toDouble()) // se calcula el precioDescuento y se guarda en la variable
+            } else {
+                showDialog = true
             }
         }
         SpaceH()
         MainButton(text = "Limpiar", color = Color.Red) {
-            Toast.makeText(context,"has pulsado limpiar",
-                Toast.LENGTH_SHORT).show()
+            precio = ""
+            descuento = ""
+            totalDescuento = 0.0
+            precioFinal = 0.0
         }
-
+        if (showDialog) {
+            AlertDialog(
+                onDismissRequest = { },
+                confirmButton = {
+                    MainButton(text = "Aceptar") {
+                        showDialog = false
+                    }
+                },
+                title = { Text(text = "Alerta") },
+                text = { Text(text = "Debes escribir el precio y el descuento") }
+            )
+        }
     }
 }
 

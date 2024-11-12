@@ -24,11 +24,30 @@ namespace Ud2Hoja14
             libroForm.ShowDialog();
             if (libroForm.DialogResult == DialogResult.OK)
             {
+                libro.Titulo = libroForm.Titulo;
+                libro.Autor = libroForm.Autor;
+                libro.Anio = libroForm.Anio;
                 ListViewItem item = new ListViewItem(libro.Titulo);
                 item.SubItems.Add(libro.Anio.ToString());
                 item.SubItems.Add(libro.Autor);
                 listView1.Items.Add(item);
+
             }
+        }
+
+        private void borrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                listView1.Items.Remove(listView1.SelectedItems[0]);
+            }
+        }
+
+        private void verToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Libro libro = new Libro();
+            LibroForm libroForm = new LibroForm(libro);
+            libroForm.ShowDialog();
         }
     }
 }

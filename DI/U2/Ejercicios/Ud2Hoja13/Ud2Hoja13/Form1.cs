@@ -19,8 +19,8 @@ namespace Ud2Hoja13
             treeView1.BeforeExpand += treeView1_BeforeExpand;//Asignamos el evento BeforeExpand al control TreeView
             treeView1.AfterSelect += treeView1_AfterSelect;//Asignamos el evento AfterSelect al control TreeView
 
-            TreeNode nodoRaiz = new TreeNode("C:", 0, 1);//Creamos el nodo raíz con la etiqueta "C:" y la imagen correspondiente
-            nodoRaiz.Tag = new DirectoryInfo("C:");//Asignamos al nodo raíz el directorio raíz "C:"
+            TreeNode nodoRaiz = new TreeNode("C:\\", 0, 1);//Creamos el nodo raíz con la etiqueta "C:" y la imagen correspondiente
+            nodoRaiz.Tag = new DirectoryInfo("C:\\");//Asignamos al nodo raíz el directorio raíz "C:"
             nodoRaiz.Nodes.Add(new TreeNode());//Añadimos un nodo hijo vacío al nodo raíz
             treeView1.Nodes.Add(nodoRaiz);//Añadimos el nodo raíz al control TreeView
         }
@@ -51,6 +51,7 @@ namespace Ud2Hoja13
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            listView1.SmallImageList = imageList;//Asignamos la lista de imágenes al control ListView
             DirectoryInfo directory = (DirectoryInfo)e.Node.Tag;//Directorio asociado al nodo seleccionado
             listView1.Items.Clear();//Limpiamos los elementos del control ListView
 
@@ -66,6 +67,7 @@ namespace Ud2Hoja13
 
                 foreach (FileInfo f in directory.GetFiles())//Recorremos los archivos del directorio
                 {
+                    
                     ListViewItem item = new ListViewItem(f.Name, 2);//Creamos un nuevo elemento con el nombre del archivo y la imagen correspondiente
                     item.SubItems.Add(f.LastWriteTime.ToString());//Añadimos la fecha de modificación del archivo
                     item.SubItems.Add(f.Length.ToString());//Añadimos el tamaño del archivo
@@ -90,25 +92,21 @@ namespace Ud2Hoja13
             listView1.ColumnClick += listView1_ColumnClick;//Asignamos el evento ColumnClick al control ListView
         }
 
+
+        private bool asc = true;
         
 
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             lvis.Col = e.Column;
-            
-            if(lvis.Col == 0)
-            {
-                
+            asc = !asc;
+            if(asc) {
+                lvis.Order = SortOrder.Ascending;
             }
-            else if (lvis.Col == 1)
+            else
             {
-                
+                lvis.Order = SortOrder.Descending;
             }
-            else if (lvis.Col == 2)
-            {
-                 
-            }
-
 
             listView1.Sort();
         }

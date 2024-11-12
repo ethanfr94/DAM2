@@ -39,8 +39,8 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
             topBar = {
                 CenterAlignedTopAppBar(
                     title = {TitleBar(texto = "TOP BAR") },
-                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.onPrimaryContainer))
+                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors( // color de la barra
+                        containerColor = MaterialTheme.colorScheme.onPrimaryContainer)) // color de la barra
             },
             //floatingActionButton = { ActionButton() }
         ){
@@ -51,13 +51,13 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 
     @Composable
-    fun ContentHomeView(navController: NavController) {
-        val num = 123
-        val user = "Izan"
+    fun ContentHomeView(navController: NavController) { // se le pasa el navController para poder navegar entre vistas
+        val num = 4556
+        val user = "PEPE"
         Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally
+            modifier = Modifier.fillMaxSize(), // ocupa todo el espacio
+            verticalArrangement = Arrangement.Center, // centrado vertical
+            horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally // centrado horizontal
         ){
             TitleView(name = "Home")
             EspacioVertical(20.dp)
@@ -65,6 +65,9 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
             })
         }
     }
+
+
+
 
     @Composable
     fun ActionButton() {
@@ -74,8 +77,8 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
             contentColor = MaterialTheme.colorScheme.primary
         ){
             Icon(
-                imageVector = Icons.Filled.Add,
-                contentDescription = "Agregar"
+                imageVector = Icons.Filled.Add, // icono de añadir en la parte inferior derecha
+                contentDescription = "Agregar" // descripción del icono de añadir
             )
         }
     }

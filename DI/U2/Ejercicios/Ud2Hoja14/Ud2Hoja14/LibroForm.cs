@@ -12,6 +12,27 @@ namespace Ud2Hoja14
 {
     public partial class LibroForm : Form
     {
+
+        private Libro _libro = new Libro();
+
+        public String Titulo
+        {
+            get { return txtTituloLibro.Text; }
+            set { txtTituloLibro.Text = value; }
+        }
+
+        public int Anio
+        {
+            get { return int.Parse(txtAnioLibro.Text); }
+            set { txtAnioLibro.Text = value.ToString(); }
+        }
+
+        public String Autor
+        {
+            get { return txtAutorLibro.Text; }
+            set { txtAutorLibro.Text = value; }
+        }
+
         private LibroForm()
         {
             InitializeComponent();
@@ -20,13 +41,13 @@ namespace Ud2Hoja14
         public LibroForm(Libro libro)
         {
             InitializeComponent();
-            txtTituloLibro.Text = libro.Titulo;
-            txtAnioLibro.Text = libro.Anio.ToString();
-            txtAutorLibro.Text = libro.Autor;
-            DialogResult = DialogResult.Cancel;
+            txtTituloLibro.Text = "";
+            txtAnioLibro.Text = "";
+            txtAutorLibro.Text = "";
+            _libro = libro;
         }
 
-        private void btnBorrar_Click(object sender, EventArgs e)
+        public void btnBorrar_Click(object sender, EventArgs e)
         {
             txtTituloLibro.Text = "";
             txtAnioLibro.Text = "";
@@ -34,14 +55,15 @@ namespace Ud2Hoja14
 
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        public void btnAceptar_Click(object sender, EventArgs e)
         {
-            Libro libro = new Libro();
-            libro.Titulo = txtTituloLibro.Text;
-            libro.Anio = int.Parse(txtAnioLibro.Text);
-            libro.Autor = txtAutorLibro.Text;
+            _libro.Titulo = txtTituloLibro.Text;
+            _libro.Anio = int.Parse(txtAnioLibro.Text);
+            _libro.Autor = txtAutorLibro.Text;
             DialogResult = DialogResult.OK;
 
         }
+
+        
     }
 }
