@@ -5,6 +5,7 @@ public class Cliente extends Thread{
     private String nombre;
     private Cuenta cuenta;
     private int cantidad;
+    private boolean fin = false;
 
     public Cliente(String nombre, Cuenta cuenta){
         this.nombre = nombre;
@@ -16,22 +17,29 @@ public class Cliente extends Thread{
         return cantidad;
     }
 
-    public void run(){
+    public void run() {
+
             try {
+
                 for (int i = 0; i < 4; i++) {
 
-                    if (i % 2 == 0) {
-                        cuenta.ingreso(aleatorio(), nombre);
-                        sleep(500);
-                    }else{
-                        cuenta.reintegro(aleatorio(), nombre);
-                        sleep(500);
+                    if(!cuenta.getFin()){
+                        if (i % 2 == 0) {
+                            cuenta.ingreso(aleatorio(), nombre);
+                            sleep(500);
+                        } else {
+                            cuenta.reintegro(aleatorio(), nombre);
+                            sleep(500);
+                        }
+                    }else {
+                        break;
                     }
+
                 }
 
-            }catch (InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-    }
 
+    }
 }

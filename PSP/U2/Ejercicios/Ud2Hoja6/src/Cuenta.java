@@ -1,6 +1,7 @@
 public class Cuenta {
     private int saldo;
     private int maximo;
+    private boolean fin = false;
 
     public Cuenta(int saldo, int maximo) {
         this.saldo = saldo;
@@ -11,6 +12,17 @@ public class Cuenta {
         return saldo;
     }
 
+    public int getMaximo() {
+        return maximo;
+    }
+
+    public boolean getFin() {
+        return fin;
+    }
+
+    public void setFin(boolean fin) {
+        this.fin = fin;
+    }
 
     public synchronized void ingreso(int cantidad, String n) {
         System.out.println("\n"+n+"--intento de ingrerso de " + cantidad + "€");
@@ -19,7 +31,7 @@ public class Cuenta {
             System.out.println( "Ingreso de " + cantidad + "€. Saldo actual: " + saldo + "€");
         }else{
             System.out.println("Ingreso máximo superado");
-            System.exit(1);
+            fin = true;
         }
 
     }
@@ -31,7 +43,7 @@ public class Cuenta {
             System.out.println( "Retirada de " + cantidad + "€. Saldo actual: " + saldo + "€");
         }else{
             System.out.println("Saldo insuficiente");
-            System.exit(1);
+            fin = true;
         }
 
     }
