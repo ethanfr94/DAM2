@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e1e8628b-b816-4292-9b33-c6728da4795e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/.vs/Ud2Hoja12/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/.vs/Ud2Hoja12/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/.vs/Ud2Hoja12/FileContentIndex/7c51a64a-9796-4ccf-9e8c-bdb4f75b13f2.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/.vs/Ud2Hoja12/FileContentIndex/7f8c1252-3daf-47d4-bf68-f9997b370317.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/.vs/Ud2Hoja12/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/.vs/Ud2Hoja12/v17/.futdcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/.vs/Ud2Hoja12/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/.vs/Ud2Hoja12/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/Debug/net8.0-windows/Ud2Hoja12.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/Debug/net8.0-windows/Ud2Hoja12.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/Debug/net8.0-windows/Ud2Hoja12.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/Debug/net8.0-windows/Ud2Hoja12.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/Debug/net8.0-windows/Ud2Hoja12.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/Debug/net8.0-windows/Ud2Hoja12.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/Debug/net8.0-windows/Ud2Hoja12.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/Debug/net8.0-windows/Ud2Hoja12.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/Ud2Hoja12.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/Ud2Hoja12.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/Ud2Hoja12.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/Ud2Hoja12.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja12/Ud2Hoja12/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/CopilotIndices/0.2.1653.9816/CodeChunks.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/CopilotIndices/0.2.1653.9816/CodeChunks.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/CopilotIndices/0.2.1653.9816/SemanticSymbols.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/CopilotIndices/0.2.1653.9816/SemanticSymbols.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/CopilotIndices/0.2.1653.9816/SemanticSymbols.db-shm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/CopilotIndices/0.2.1653.9816/SemanticSymbols.db-wal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/FileContentIndex/07d781ad-0160-4dfa-a1a0-dc56803a72b3.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/v17/.futdcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/v17/DocumentLayout.backup.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/v17/DocumentLayout.backup.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/.vs/Ud2Hoja13/v17/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/Form1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/bin/Debug/net8.0-windows/Ud2Hoja13.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/bin/Debug/net8.0-windows/Ud2Hoja13.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/bin/Debug/net8.0-windows/Ud2Hoja13.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/bin/Debug/net8.0-windows/Ud2Hoja13.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/bin/Debug/net8.0-windows/Ud2Hoja13.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/Ud2Hoja13.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/Ud2Hoja13.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/Ud2Hoja13.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/Ud2Hoja13.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/Ud2Hoja13.Form1.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/Ud2Hoja13.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/Ud2Hoja13.csproj.GenerateResource.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/Ud2Hoja13.designer.runtimeconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/Ud2Hoja13.designer.runtimeconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/Ud2Hoja13.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/Ud2Hoja13.genruntimeconfig.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/Ud2Hoja13.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/Ud2Hoja13.sourcelink.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/ref/Ud2Hoja13.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/Debug/net8.0-windows/refint/Ud2Hoja13.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja13/Ud2Hoja13/obj/project.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/ProjectEvaluation/ud2hoja14.metadata.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/ProjectEvaluation/ud2hoja14.metadata.v9.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/ProjectEvaluation/ud2hoja14.projects.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/ProjectEvaluation/ud2hoja14.projects.v9.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/ProjectEvaluation/ud2hoja14.strings.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/ProjectEvaluation/ud2hoja14.strings.v9.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/CopilotIndices/0.2.1653.9816/CodeChunks.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/CopilotIndices/0.2.1653.9816/CodeChunks.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/CopilotIndices/0.2.1653.9816/SemanticSymbols.db-shm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/CopilotIndices/0.2.1653.9816/SemanticSymbols.db-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/CopilotIndices/0.2.1653.9816/SemanticSymbols.db-wal" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/CopilotIndices/0.2.1653.9816/SemanticSymbols.db-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/FileContentIndex/5bdfb656-e284-48d6-84a7-53609bbd58bb.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/FileContentIndex/b6f8998f-b3c2-46ef-b020-15691d7821a8.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/v17/.futdcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/v17/DocumentLayout.backup.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/v17/DocumentLayout.backup.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/.vs/Ud2Hoja14/v17/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/LibroForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/LibroForm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/ListaLibroForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/ListaLibroForm.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/ListaLibroForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/ListaLibroForm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/ListaLibroForm.resx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/ListaLibroForm.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/ListaPeliculaForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/ListaPeliculaForm.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/ListaPeliculaForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/ListaPeliculaForm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/ListaPeliculaForm.resx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/ListaPeliculaForm.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/PeliculaForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/PeliculaForm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/bin/Debug/net8.0-windows/Ud2Hoja14.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/bin/Debug/net8.0-windows/Ud2Hoja14.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/bin/Debug/net8.0-windows/Ud2Hoja14.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/bin/Debug/net8.0-windows/Ud2Hoja14.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/bin/Debug/net8.0-windows/Ud2Hoja14.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/bin/Debug/net8.0-windows/Ud2Hoja14.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.csproj.GenerateResource.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/Ud2Hoja14.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/ref/Ud2Hoja14.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/ref/Ud2Hoja14.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/refint/Ud2Hoja14.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DI/U2/Ejercicios/Ud2Hoja14/Ud2Hoja14/obj/Debug/net8.0-windows/refint/Ud2Hoja14.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/descuentosapp/views/HomeView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/descuentosapp/views/HomeView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sesion2_05/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Sesion2_05/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sesion2_05/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Sesion2_05/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sesion2_05/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Sesion2_05/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sesion2_05/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Sesion2_05/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sesion2_05/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Sesion2_05/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sesion2_05/app/src/main/java/com/izanfranco/sesion2_05/Navigation/NavManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Sesion2_05/app/src/main/java/com/izanfranco/sesion2_05/Navigation/NavManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sesion2_05/app/src/main/java/com/izanfranco/sesion2_05/Views/HomeView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Sesion2_05/app/src/main/java/com/izanfranco/sesion2_05/Views/HomeView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sesion2_05/.idea/Sesion2_05.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sesion2_05/.idea/caches/deviceStreaming.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sesion2_05/.idea/deploymentTargetSelector.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sesion2_05/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sesion2_05/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sesion2_05/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Sesion2_05/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\usuario\.android\avd\Pixel_9_Pro_XL_API_34.avd)]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2olFWkDgidZB6TlEF26Gw9Okrfs" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "Gradle.Upgrade Gradle wrapper.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/usuario/Desktop/DAM/PMDM/Ud2/Ejercicios/DescuentosAppBase"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="DescuentosApp.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Hybrid>
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e1e8628b-b816-4292-9b33-c6728da4795e" name="Changes" comment="" />
+      <created>1731436288743</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731436288743</updated>
+    </task>
+    <servers />
+  </component>
+</project>
