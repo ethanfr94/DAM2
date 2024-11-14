@@ -91,21 +91,17 @@ namespace Ud2Hoja13
             listView1.Columns.Add("Tamaño", 150);//Añadimos una columna con el nombre "Tamaño"
             listView1.ColumnClick += listView1_ColumnClick;//Asignamos el evento ColumnClick al control ListView
         }
-
-
-        private bool asc = true;
-        
-
+               
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            lvis.Col = e.Column;
-            asc = !asc;
-            if(asc) {
-                lvis.Order = SortOrder.Ascending;
+            if(e.Column == lvis.Col)
+            {
+                lvis.Order = lvis.Order == SortOrder.Ascending? SortOrder.Descending : SortOrder.Ascending;
             }
             else
             {
-                lvis.Order = SortOrder.Descending;
+                lvis.Col = e.Column;
+                lvis.Order = lvis.Order == SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending;
             }
 
             listView1.Sort();
