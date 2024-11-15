@@ -1,6 +1,6 @@
 ﻿namespace Ud2Hoja14
 {
-    partial class Form1
+    partial class Contenedor
     {
         /// <summary>
         ///  Required designer variable.
@@ -74,14 +74,14 @@
             // libroToolStripMenuItem
             // 
             libroToolStripMenuItem.Name = "libroToolStripMenuItem";
-            libroToolStripMenuItem.Size = new Size(180, 22);
+            libroToolStripMenuItem.Size = new Size(120, 22);
             libroToolStripMenuItem.Text = "Libros";
             libroToolStripMenuItem.Click += libroToolStripMenuItem_Click;
             // 
             // peliculaToolStripMenuItem
             // 
             peliculaToolStripMenuItem.Name = "peliculaToolStripMenuItem";
-            peliculaToolStripMenuItem.Size = new Size(180, 22);
+            peliculaToolStripMenuItem.Size = new Size(120, 22);
             peliculaToolStripMenuItem.Text = "Peliculas";
             peliculaToolStripMenuItem.Click += peliculaToolStripMenuItem_Click;
             // 
@@ -95,7 +95,7 @@
             // cascadaToolStripMenuItem
             // 
             cascadaToolStripMenuItem.Name = "cascadaToolStripMenuItem";
-            cascadaToolStripMenuItem.Size = new Size(180, 22);
+            cascadaToolStripMenuItem.Size = new Size(129, 22);
             cascadaToolStripMenuItem.Text = "Cascada";
             cascadaToolStripMenuItem.Click += cascadaToolStripMenuItem_Click;
             // 
@@ -103,17 +103,17 @@
             // 
             verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
             verticalToolStripMenuItem.Size = new Size(180, 22);
-            verticalToolStripMenuItem.Text = "Vertical";
+            verticalToolStripMenuItem.Text = "Mosaico Vertical";
             verticalToolStripMenuItem.Click += verticalToolStripMenuItem_Click;
             // 
             // horizontalToolStripMenuItem
             // 
             horizontalToolStripMenuItem.Name = "horizontalToolStripMenuItem";
             horizontalToolStripMenuItem.Size = new Size(180, 22);
-            horizontalToolStripMenuItem.Text = "Horizontal";
+            horizontalToolStripMenuItem.Text = "Mosaico Horizontal";
             horizontalToolStripMenuItem.Click += horizontalToolStripMenuItem_Click;
             // 
-            // Form1
+            // Contenedor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -121,7 +121,7 @@
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
-            Name = "Form1";
+            Name = "Contenedor";
             Text = "Form1";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

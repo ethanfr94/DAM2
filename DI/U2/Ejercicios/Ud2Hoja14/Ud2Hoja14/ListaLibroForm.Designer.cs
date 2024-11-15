@@ -70,13 +70,14 @@
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
+            listView1.ContextMenuStrip = contextMenuStrip1;
             listView1.Dock = DockStyle.Fill;
             listView1.FullRowSelect = true;
             listView1.GridLines = true;
             listView1.Location = new Point(0, 24);
             listView1.MultiSelect = false;
             listView1.Name = "listView1";
-            listView1.Size = new Size(639, 327);
+            listView1.Size = new Size(639, 198);
             listView1.TabIndex = 1;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -99,26 +100,26 @@
             // 
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { crearToolStripMenuItem1, verToolStripMenuItem, borrarToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(181, 92);
+            contextMenuStrip1.Size = new Size(107, 70);
             // 
             // crearToolStripMenuItem1
             // 
             crearToolStripMenuItem1.Name = "crearToolStripMenuItem1";
-            crearToolStripMenuItem1.Size = new Size(180, 22);
+            crearToolStripMenuItem1.Size = new Size(106, 22);
             crearToolStripMenuItem1.Text = "Crear";
             crearToolStripMenuItem1.Click += crearToolStripMenuItem_Click;
             // 
             // verToolStripMenuItem
             // 
             verToolStripMenuItem.Name = "verToolStripMenuItem";
-            verToolStripMenuItem.Size = new Size(180, 22);
+            verToolStripMenuItem.Size = new Size(106, 22);
             verToolStripMenuItem.Text = "Ver";
             verToolStripMenuItem.Click += verToolStripMenuItem_Click;
             // 
             // borrarToolStripMenuItem
             // 
             borrarToolStripMenuItem.Name = "borrarToolStripMenuItem";
-            borrarToolStripMenuItem.Size = new Size(180, 22);
+            borrarToolStripMenuItem.Size = new Size(106, 22);
             borrarToolStripMenuItem.Text = "Borrar";
             borrarToolStripMenuItem.Click += borrarToolStripMenuItem_Click;
             // 
@@ -126,7 +127,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(639, 351);
+            ClientSize = new Size(639, 222);
             Controls.Add(listView1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;

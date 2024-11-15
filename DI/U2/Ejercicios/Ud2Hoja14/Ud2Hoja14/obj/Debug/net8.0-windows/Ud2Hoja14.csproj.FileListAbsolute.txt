@@ -3,7 +3,6 @@ D:\Usuarios\dam2\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\bin\Debug\net8
 D:\Usuarios\dam2\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\bin\Debug\net8.0-windows\Ud2Hoja14.runtimeconfig.json
 D:\Usuarios\dam2\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\bin\Debug\net8.0-windows\Ud2Hoja14.dll
 D:\Usuarios\dam2\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\bin\Debug\net8.0-windows\Ud2Hoja14.pdb
-D:\Usuarios\dam2\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\obj\Debug\net8.0-windows\Ud2Hoja14.Form1.resources
 D:\Usuarios\dam2\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\obj\Debug\net8.0-windows\Ud2Hoja14.ListaLibroForm.resources
 D:\Usuarios\dam2\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\obj\Debug\net8.0-windows\Ud2Hoja14.csproj.GenerateResource.cache
 D:\Usuarios\dam2\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\obj\Debug\net8.0-windows\Ud2Hoja14.GeneratedMSBuildEditorConfig.editorconfig
@@ -39,3 +38,7 @@ C:\Users\usuario\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\obj\Debug\net8
 C:\Users\usuario\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\obj\Debug\net8.0-windows\Ud2Hoja14.pdb
 C:\Users\usuario\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\obj\Debug\net8.0-windows\Ud2Hoja14.genruntimeconfig.cache
 C:\Users\usuario\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\obj\Debug\net8.0-windows\ref\Ud2Hoja14.dll
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\obj\Debug\net8.0-windows\Ud2Hoja14.ListaPeliculaForm.resources
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\obj\Debug\net8.0-windows\Ud2Hoja14.PeliculaForm.resources
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\obj\Debug\net8.0-windows\Ud2Hoja14.Properties.Resources.resources
+D:\Usuarios\dam2\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\obj\Debug\net8.0-windows\Ud2Hoja14.Contenedor.resources
