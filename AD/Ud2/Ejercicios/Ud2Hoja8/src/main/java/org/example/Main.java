@@ -128,16 +128,6 @@ public class Main {
                     }
                 }
                 case 5 -> {
-                    Alumno al = new Alumno();
-                    al.setId(11);
-                    al.setNombre("Pepe");
-                    al.setNotaMedia();
-                    Curso c = em.find(Curso.class, "1DAM");
-                    al.setCurso(c);
-                    em.getTransaction().begin();
-                    em.persist(al);
-                    em.getTransaction().commit();
-
                     System.out.println("Introduce el id del alumno");
                     int id = Integer.parseInt(t.nextLine());
                     Alumno a = em.find(Alumno.class, id);
