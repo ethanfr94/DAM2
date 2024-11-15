@@ -2,9 +2,6 @@ package org.example.Modelo;
 
 import jakarta.persistence.*;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 @Entity
 @NamedQueries({@NamedQuery(name = "Curso.findAll", query = "select c from Curso c")})
 @Table(name = "curso")
@@ -19,9 +16,6 @@ public class Curso {
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "tutor_id", nullable = false)
     private Profesor tutor;
-
-    @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY)
-    private Set<Alumno> alumnos = new LinkedHashSet<>();
 
     public String getId() {
         return id;
@@ -47,12 +41,5 @@ public class Curso {
         this.tutor = tutor;
     }
 
-    public Set<Alumno> getAlumnos() {
-        return alumnos;
-    }
-
-    public void setAlumnos(Set<Alumno> alumnos) {
-        this.alumnos = alumnos;
-    }
 
 }

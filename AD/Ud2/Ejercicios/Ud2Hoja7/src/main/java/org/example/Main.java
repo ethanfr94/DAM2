@@ -10,6 +10,7 @@ import org.example.Modelo.Profesor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,11 +23,12 @@ public class Main {
 
         do {
             System.out.println("""
+                    
                     1.DATOS DEL ALUMNO
                     2.DATOS DEL CURSO
                     3.LISTADO DE CURSOS
                     4.LISTADO DE ALUMNOS DEL CURSO
-                    0.SALIR
+                    0.SALIR                    
                     """);
             op = Integer.parseInt(t.nextLine());
             switch (op) {
@@ -34,47 +36,30 @@ public class Main {
                     System.out.println("Introduce el id del alumno");
                     int id = Integer.parseInt(t.nextLine());
                     Alumno a = em.find(Alumno.class, id);
-                    System.out.println(a.getNombre()+" -- "+a.getCurso().getId()+" -- "+a.getNotaMedia());
+                    System.out.println(a.getNombre() + " -- " + a.getCurso().getId() + " -- " + a.getNotaMedia());
                 }
                 case 2 -> {
                     System.out.println("Introduce el id del curso");
                     String id = t.nextLine();
                     Curso c = em.find(Curso.class, id);
-                    System.out.println(c.getNombre()+" -- "+c.getTutor().getNombre());
+                    System.out.println(c.getNombre() + " -- " + c.getTutor().getNombre());
                 }
                 case 3 -> {
                     System.out.println("Listado de cursos");
-                    boolean hayCursos = true;
-                    int cursos = 1;
-                    while (hayCursos) {
-                        Curso c = em.find(Curso.class, cursos++);
-                        if (c != null) {
-                            System.out.println(c.getNombre()+" -- "+c.getTutor().getNombre());
-                        } else {
-                            hayCursos = false;
-                        }
+                    List<Curso> cursos = em.createNamedQuery("Curso.findAll", Curso.class).getResultList();
+                    for (Curso c : cursos) {
+                        System.out.println(c.getId() + " -- " + c.getNombre() + " -- " + c.getTutor().getNombre());
                     }
-
-
                 }
                 case 4 -> {
                     System.out.println("Listado de alumnos del curso");
                     String cursoId = t.nextLine();
-                    if(em.find(Curso.class, cursoId) != null){
-                        boolean hayAlumnos = true;
-                        int alumnos = 1;
-                        while (hayAlumnos) {
-                            Alumno a = em.find(Alumno.class, alumnos++);
-                            if (a != null) {
-                                if(a.getCurso().getId().equals(cursoId)){
-                                    System.out.println(a.getNombre()+" -- "+a.getNotaMedia());
-                                }
-                            } else {
-                                hayAlumnos = false;
-                            }
+                    Curso c = em.find(Curso.class, cursoId);
+                    if (c != null) {
+                        Set<Alumno> alumnos = c.getAlumnos();
+                        for (Alumno a : alumnos) {
+                            System.out.println(a.getId() + " -- " + a.getNombre() + " -- " + a.getNotaMedia());
                         }
-                    }else{
-                        System.out.println("Curso no encontrado");
                     }
                 }
                 case 0 -> {
@@ -84,7 +69,7 @@ public class Main {
                     System.out.println("Opcion no valida");
                 }
             }
-        }while (op != 0);
+        } while (op != 0) ;
 
         em.close();
         emf.close();
