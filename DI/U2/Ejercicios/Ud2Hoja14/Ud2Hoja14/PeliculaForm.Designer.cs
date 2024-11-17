@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             btnAceptarPelicula = new Button();
-            btnBorrarPelicula = new Button();
+            btnCancelar = new Button();
             label1 = new Label();
             txtTituloPelicula = new TextBox();
             txtGeneroPelicula = new TextBox();
@@ -47,14 +47,15 @@
             btnAceptarPelicula.Text = "Aceptar";
             btnAceptarPelicula.UseVisualStyleBackColor = true;
             // 
-            // btnBorrarPelicula
+            // btnCancelar
             // 
-            btnBorrarPelicula.Location = new Point(296, 100);
-            btnBorrarPelicula.Name = "btnBorrarPelicula";
-            btnBorrarPelicula.Size = new Size(75, 23);
-            btnBorrarPelicula.TabIndex = 1;
-            btnBorrarPelicula.Text = "Borrar";
-            btnBorrarPelicula.UseVisualStyleBackColor = true;
+            btnCancelar.Location = new Point(296, 100);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.TabIndex = 1;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // label1
             // 
@@ -115,7 +116,7 @@
             Controls.Add(label2);
             Controls.Add(txtTituloPelicula);
             Controls.Add(label1);
-            Controls.Add(btnBorrarPelicula);
+            Controls.Add(btnCancelar);
             Controls.Add(btnAceptarPelicula);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "PeliculaForm";
@@ -127,7 +128,7 @@
         #endregion
 
         private Button btnAceptarPelicula;
-        private Button btnBorrarPelicula;
+        private Button btnCancelar;
         private Label label1;
         private TextBox txtTituloPelicula;
         private TextBox txtGeneroPelicula;

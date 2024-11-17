@@ -81,6 +81,7 @@
             listView1.TabIndex = 1;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
+            listView1.DoubleClick += listView1_DoubleClick;
             // 
             // columnHeader1
             // 

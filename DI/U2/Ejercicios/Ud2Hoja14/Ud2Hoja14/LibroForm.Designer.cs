@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnBorrarLibro = new Button();
+            btnCancel = new Button();
             btnAceptarLibro = new Button();
             txtTituloLibro = new TextBox();
             txtAutorLibro = new TextBox();
@@ -38,44 +38,44 @@
             label3 = new Label();
             SuspendLayout();
             // 
-            // btnBorrar
+            // btnCancel
             // 
-            btnBorrarLibro.Location = new Point(294, 99);
-            btnBorrarLibro.Name = "btnBorrar";
-            btnBorrarLibro.Size = new Size(75, 23);
-            btnBorrarLibro.TabIndex = 0;
-            btnBorrarLibro.Text = "Borrar";
-            btnBorrarLibro.UseVisualStyleBackColor = true;
-            btnBorrarLibro.Click += btnBorrar_Click;
+            btnCancel.Location = new Point(294, 99);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 0;
+            btnCancel.Text = "Cancelar";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
-            // btnAceptar
+            // btnAceptarLibro
             // 
             btnAceptarLibro.Location = new Point(207, 99);
-            btnAceptarLibro.Name = "btnAceptar";
+            btnAceptarLibro.Name = "btnAceptarLibro";
             btnAceptarLibro.Size = new Size(75, 23);
             btnAceptarLibro.TabIndex = 1;
             btnAceptarLibro.Text = "Aceptar";
             btnAceptarLibro.UseVisualStyleBackColor = true;
             btnAceptarLibro.Click += btnAceptar_Click;
             // 
-            // txtTitulo
+            // txtTituloLibro
             // 
             txtTituloLibro.Location = new Point(55, 12);
-            txtTituloLibro.Name = "txtTitulo";
+            txtTituloLibro.Name = "txtTituloLibro";
             txtTituloLibro.Size = new Size(314, 23);
             txtTituloLibro.TabIndex = 2;
             // 
-            // txtAutor
+            // txtAutorLibro
             // 
             txtAutorLibro.Location = new Point(55, 70);
-            txtAutorLibro.Name = "txtAutor";
+            txtAutorLibro.Name = "txtAutorLibro";
             txtAutorLibro.Size = new Size(314, 23);
             txtAutorLibro.TabIndex = 5;
             // 
-            // txtAnio
+            // txtAnioLibro
             // 
             txtAnioLibro.Location = new Point(55, 41);
-            txtAnioLibro.Name = "txtAnio";
+            txtAnioLibro.Name = "txtAnioLibro";
             txtAnioLibro.Size = new Size(314, 23);
             txtAnioLibro.TabIndex = 6;
             // 
@@ -111,7 +111,7 @@
             AcceptButton = btnAceptarLibro;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            CancelButton = btnBorrarLibro;
+            CancelButton = btnCancel;
             ClientSize = new Size(378, 129);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -120,7 +120,7 @@
             Controls.Add(txtAutorLibro);
             Controls.Add(txtTituloLibro);
             Controls.Add(btnAceptarLibro);
-            Controls.Add(btnBorrarLibro);
+            Controls.Add(btnCancel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "LibroForm";
             Text = "Libro";
@@ -130,7 +130,7 @@
 
         #endregion
 
-        private Button btnBorrarLibro;
+        private Button btnCancel;
         private Button btnAceptarLibro;
         private TextBox txtTituloLibro;
         private TextBox txtAutorLibro;

@@ -29,7 +29,7 @@ public class Main {
                     3.AÑADIR O MODIFICAR CURSO
                     4.MODIFICAR TUTOR DE CURSO
                     5.ELIMINAR ALUMNO
-                    0.SALIR                    
+                    0.SALIR
                     """);
             op = Integer.parseInt(t.nextLine());
             switch (op) {

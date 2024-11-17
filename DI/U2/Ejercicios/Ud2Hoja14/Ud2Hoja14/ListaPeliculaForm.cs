@@ -12,6 +12,7 @@ namespace Ud2Hoja14
 {
     public partial class ListaPeliculaForm : Form
     {
+        public static List<Pelicula> peliculas = new List<Pelicula>();
         public ListaPeliculaForm()
         {
             InitializeComponent();
@@ -19,19 +20,11 @@ namespace Ud2Hoja14
 
         private void crearToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Pelicula pelicula = new Pelicula();
-            PeliculaForm peliculaForm = new PeliculaForm(pelicula);
-            peliculaForm.ShowDialog();
-            if (peliculaForm.DialogResult == DialogResult.OK)
+            Pelicula pelic = new Pelicula();
+            PeliculaForm form = new PeliculaForm(pelic, 0);
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                pelicula.Titulo = peliculaForm.Titulo;
-                pelicula.Genero = peliculaForm.Genero;
-                pelicula.Anio = peliculaForm.Anio;
-                ListViewItem item = new ListViewItem(pelicula.Titulo);
-                item.SubItems.Add(pelicula.Anio.ToString());
-                item.SubItems.Add(pelicula.Genero);
-                listView1.Items.Add(item);
-
+                refresca();
             }
         }
 
@@ -39,16 +32,57 @@ namespace Ud2Hoja14
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                listView1.Items.Remove(listView1.SelectedItems[0]);
+                ListViewItem item = listView1.SelectedItems[0]; 
+                DialogResult result = MessageBox.Show("¿Estás seguro de que quieres borrar la película?", "Borrar", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    Pelicula pelic = (Pelicula)item.Tag;
+                    peliculas.Remove(pelic);
+                    refresca();
+                }
             }
         }
 
         private void verToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Pelicula pelicula = new Pelicula();
-            PeliculaForm peliculaForm = new PeliculaForm(pelicula);
-            peliculaForm.ShowDialog();
+            if (listView1.SelectedItems.Count > 0)
+            {
+                ListViewItem item = listView1.SelectedItems[0]; // Obtiene el item seleccionado
+                Pelicula pelic = (Pelicula)item.Tag; // Obtiene la pelicula asociada al item
+                PeliculaForm form = new PeliculaForm(pelic, 1); // Crea un formulario de pelicula con la pelicula seleccionada
+                form.ShowDialog();
+            }
 
+        }
+
+        private void ContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ContextMenuStrip menu = sender as ContextMenuStrip;
+            bool itemSelected = listView1.SelectedItems.Count > 0; // Comprueba si hay un item seleccionado
+            menu.Items[0].Enabled = !itemSelected; // Crear
+            menu.Items[1].Enabled = itemSelected;  // Ver
+            menu.Items[2].Enabled = itemSelected;  // Borrar
+        }
+
+        private void refresca()
+        {
+            listView1.Items.Clear();
+            foreach (Pelicula pelic in peliculas)
+            {
+                if (pelic != null)
+                {
+                    ListViewItem item = new ListViewItem(pelic.Titulo);     //Añadimos el titulo de la pelicula a la lista
+                    item.SubItems.Add(pelic.Anio.ToString());//Añadimos el año de la pelicula a la lista
+                    item.SubItems.Add(pelic.Genero);    //Añadimos el genero de la pelicula a la lista
+                    item.Tag = pelic; 
+                    listView1.Items.Add(item);
+                }
+            }
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            verToolStripMenuItem_Click(sender, e);
         }
     }
 }

@@ -13,57 +13,55 @@ namespace Ud2Hoja14
     public partial class LibroForm : Form
     {
 
-        private Libro _libro = new Libro();
+        private Libro _libro;
+        private int estado;
 
-        public String Titulo
-        {
-            get { return txtTituloLibro.Text; }
-            set { txtTituloLibro.Text = value; }
-        }
-
-        public int Anio
-        {
-            get { return int.Parse(txtAnioLibro.Text); }
-            set { txtAnioLibro.Text = value.ToString(); }
-        }
-
-        public String Autor
-        {
-            get { return txtAutorLibro.Text; }
-            set { txtAutorLibro.Text = value; }
-        }
 
         private LibroForm()
         {
             InitializeComponent();
         }
 
-        public LibroForm(Libro libro)
+        public LibroForm(Libro libro, int estado) : this()
         {
-            InitializeComponent();
-            txtTituloLibro.Text = "";
-            txtAnioLibro.Text = "";
-            txtAutorLibro.Text = "";
+            this.estado = estado;
+            if (estado > 0)
+            {
+                txtTituloLibro.Enabled = false;
+                txtAutorLibro.Enabled = false;
+                txtAnioLibro.Enabled = false;
+            }
             _libro = libro;
+            txtTituloLibro.Text = _libro.Titulo;
+            txtAnioLibro.Text = _libro.Anio.ToString();
+            txtAutorLibro.Text = _libro.Autor;
+            DialogResult = DialogResult.Cancel;
         }
 
-        public void btnBorrar_Click(object sender, EventArgs e)
-        {
-            txtTituloLibro.Text = "";
-            txtAnioLibro.Text = "";
-            txtAutorLibro.Text = "";
 
-        }
 
         public void btnAceptar_Click(object sender, EventArgs e)
         {
-            _libro.Titulo = txtTituloLibro.Text;
-            _libro.Anio = int.Parse(txtAnioLibro.Text);
-            _libro.Autor = txtAutorLibro.Text;
-            DialogResult = DialogResult.OK;
+            if (estado > 0)
+            {
+                DialogResult = DialogResult.Cancel;
+                return;
+            }
+            else
+            {
+                _libro = new Libro();
+                _libro.Titulo = txtTituloLibro.Text;
+                _libro.Autor = txtAutorLibro.Text;
+                _libro.Anio = Convert.ToInt32(txtAnioLibro.Text);
+                ListaLibroForm.libros.Add(_libro);
+                DialogResult = DialogResult.OK;
+            }
 
         }
 
-        
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
     }
 }
