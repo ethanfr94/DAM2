@@ -20,7 +20,7 @@ public class Gallina extends Thread{
 
     public void run(){
         for(int i = 0; i < 365; i++){
-            int random = (int) (Math.random() * 24);
+            int random = (int) (Math.random() * 24)+1;
             try {
                 sleep(random);
                 ponerHuevo();
