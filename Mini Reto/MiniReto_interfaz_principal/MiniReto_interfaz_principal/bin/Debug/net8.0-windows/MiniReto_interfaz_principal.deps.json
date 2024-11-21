@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "MiniReto_interfaz_principal/1.0.0": {
+        "runtime": {
+          "MiniReto_interfaz_principal.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MiniReto_interfaz_principal/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

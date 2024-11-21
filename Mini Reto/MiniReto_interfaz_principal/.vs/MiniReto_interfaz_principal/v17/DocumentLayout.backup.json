@@ -1,0 +1,152 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|c:\\users\\usuario\\desktop\\mini_reto_di\\minireto_interfaz_principal\\minireto_interfaz_principal\\addproyecto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|solutionrelative:minireto_interfaz_principal\\addproyecto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|c:\\users\\usuario\\desktop\\mini_reto_di\\minireto_interfaz_principal\\minireto_interfaz_principal\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|solutionrelative:minireto_interfaz_principal\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|c:\\users\\usuario\\desktop\\mini_reto_di\\minireto_interfaz_principal\\minireto_interfaz_principal\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|solutionrelative:minireto_interfaz_principal\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|c:\\users\\usuario\\desktop\\mini_reto_di\\minireto_interfaz_principal\\minireto_interfaz_principal\\addprofesor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|solutionrelative:minireto_interfaz_principal\\addprofesor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|c:\\users\\usuario\\desktop\\mini_reto_di\\minireto_interfaz_principal\\minireto_interfaz_principal\\addalumno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|solutionrelative:minireto_interfaz_principal\\addalumno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|c:\\users\\usuario\\desktop\\mini_reto_di\\minireto_interfaz_principal\\minireto_interfaz_principal\\addproyecto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|solutionrelative:minireto_interfaz_principal\\addproyecto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|c:\\users\\usuario\\desktop\\mini_reto_di\\minireto_interfaz_principal\\minireto_interfaz_principal\\addprofesor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|solutionrelative:minireto_interfaz_principal\\addprofesor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|c:\\users\\usuario\\desktop\\mini_reto_di\\minireto_interfaz_principal\\minireto_interfaz_principal\\addalumno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F65D607-A971-4158-A5D3-7737C61C3652}|MiniReto_interfaz_principal\\MiniReto_interfaz_principal.csproj|solutionrelative:minireto_interfaz_principal\\addalumno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Principal.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\Principal.cs",
+              "RelativeDocumentMoniker": "MiniReto_interfaz_principal\\Principal.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\Principal.cs",
+              "RelativeToolTip": "MiniReto_interfaz_principal\\Principal.cs",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAWwLkAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T13:17:42.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Principal.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\Principal.cs",
+              "RelativeDocumentMoniker": "MiniReto_interfaz_principal\\Principal.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\Principal.cs [Dise\u00F1o]",
+              "RelativeToolTip": "MiniReto_interfaz_principal\\Principal.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T13:17:36.824Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AddAlumno.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\AddAlumno.cs",
+              "RelativeDocumentMoniker": "MiniReto_interfaz_principal\\AddAlumno.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\AddAlumno.cs",
+              "RelativeToolTip": "MiniReto_interfaz_principal\\AddAlumno.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAwwDoAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T13:13:46.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AddAlumno.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\AddAlumno.cs",
+              "RelativeDocumentMoniker": "MiniReto_interfaz_principal\\AddAlumno.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\AddAlumno.cs [Dise\u00F1o]",
+              "RelativeToolTip": "MiniReto_interfaz_principal\\AddAlumno.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T13:13:44.844Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AddProfesor.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\AddProfesor.cs",
+              "RelativeDocumentMoniker": "MiniReto_interfaz_principal\\AddProfesor.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\AddProfesor.cs",
+              "RelativeToolTip": "MiniReto_interfaz_principal\\AddProfesor.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowC0AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T13:00:59.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AddProfesor.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\AddProfesor.cs",
+              "RelativeDocumentMoniker": "MiniReto_interfaz_principal\\AddProfesor.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\AddProfesor.cs [Dise\u00F1o]",
+              "RelativeToolTip": "MiniReto_interfaz_principal\\AddProfesor.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T13:00:56.716Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddProyecto.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\AddProyecto.cs",
+              "RelativeDocumentMoniker": "MiniReto_interfaz_principal\\AddProyecto.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\AddProyecto.cs*",
+              "RelativeToolTip": "MiniReto_interfaz_principal\\AddProyecto.cs*",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAUwBMAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T12:55:21.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AddProyecto.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\AddProyecto.cs",
+              "RelativeDocumentMoniker": "MiniReto_interfaz_principal\\AddProyecto.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\MiniReto_interfaz_principal\\MiniReto_interfaz_principal\\AddProyecto.cs [Dise\u00F1o]*",
+              "RelativeToolTip": "MiniReto_interfaz_principal\\AddProyecto.cs [Dise\u00F1o]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T12:58:13.32Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
