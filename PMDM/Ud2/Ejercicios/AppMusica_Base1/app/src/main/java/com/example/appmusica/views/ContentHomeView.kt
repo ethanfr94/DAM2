@@ -29,8 +29,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
+import com.bumptech.glide.integration.compose.placeholder
 import com.example.appmusica.Model.Reflexion
 import com.example.appmusica.Model.audiosMusicales
+import com.example.appmusica.Model.audiosMusicalesExt
 import com.example.appmusica.Model.getReflexionDelDia
 import com.example.appmusica.R
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
@@ -70,6 +74,7 @@ fun FrasedelDia(){
     }
 }
 
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun AudioMasReciente(){
     Box(modifier = Modifier.fillMaxWidth()){
@@ -86,11 +91,21 @@ fun AudioMasReciente(){
                 )
                 ){
                 val audioMasReciente = audiosMusicales.maxBy { it.fecha }
-                Image(
+                val audioMasRecienteExt = audiosMusicalesExt.maxBy { it.fecha }
+                GlideImage(
+                    model = audioMasRecienteExt.urlImagen,
+                    contentDescription = "Imagen del audio más reciente",
+                    modifier = Modifier.fillMaxSize(),   //ocupa todo el espacio disponible
+                    contentScale = ContentScale.Crop,   //escalado
+                    // agregado de placeholder de carga y de error (opcional)
+                    //loading = placeholder(R.drawable.leon_benavente_baile_existencialista),
+                    //failure = placeholder(R.drawable.archivo_error)
+                )
+                /*Image(
                     painter = painterResource(id = audioMasReciente.imagen),
                     contentDescription = "Imagen del audio mas reciente",
                     contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize())
+                    modifier = Modifier.fillMaxSize())*/
                 IconButton(
                     onClick = {},
                     modifier = Modifier

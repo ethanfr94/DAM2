@@ -29,7 +29,7 @@ namespace Ud2Hoja15
             emp.Apellidos = txtApellidos.Text;
             emp.edad = int.Parse(txtEdad.Text);
             emp.departamento = txtDept.Text;
-            Principal.Empleados.Add(emp);
+            Principal.empleados.Add(emp);
         }
     }
 }

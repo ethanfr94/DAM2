@@ -43,7 +43,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 21);
+            label1.Location = new Point(18, 10);
             label1.Name = "label1";
             label1.Size = new Size(51, 15);
             label1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 51);
+            label2.Location = new Point(18, 40);
             label2.Name = "label2";
             label2.Size = new Size(51, 15);
             label2.TabIndex = 1;
@@ -61,7 +61,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 83);
+            label3.Location = new Point(18, 72);
             label3.Name = "label3";
             label3.Size = new Size(33, 15);
             label3.TabIndex = 2;
@@ -70,7 +70,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 115);
+            label4.Location = new Point(18, 104);
             label4.Name = "label4";
             label4.Size = new Size(83, 15);
             label4.TabIndex = 3;
@@ -78,35 +78,35 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(114, 18);
+            txtNombre.Location = new Point(120, 7);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(250, 23);
             txtNombre.TabIndex = 4;
             // 
             // txtApellidos
             // 
-            txtApellidos.Location = new Point(114, 48);
+            txtApellidos.Location = new Point(120, 37);
             txtApellidos.Name = "txtApellidos";
             txtApellidos.Size = new Size(250, 23);
             txtApellidos.TabIndex = 5;
             // 
             // txtDept
             // 
-            txtDept.Location = new Point(114, 112);
+            txtDept.Location = new Point(120, 101);
             txtDept.Name = "txtDept";
             txtDept.Size = new Size(250, 23);
             txtDept.TabIndex = 6;
             // 
             // txtEdad
             // 
-            txtEdad.Location = new Point(114, 80);
+            txtEdad.Location = new Point(120, 69);
             txtEdad.Name = "txtEdad";
             txtEdad.Size = new Size(250, 23);
             txtEdad.TabIndex = 7;
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(196, 142);
+            btnAceptar.Location = new Point(202, 131);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(75, 23);
             btnAceptar.TabIndex = 8;
@@ -116,7 +116,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(289, 142);
+            btnCancelar.Location = new Point(295, 131);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 9;
@@ -128,7 +128,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(382, 172);
+            ClientSize = new Size(382, 162);
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
             Controls.Add(txtEdad);

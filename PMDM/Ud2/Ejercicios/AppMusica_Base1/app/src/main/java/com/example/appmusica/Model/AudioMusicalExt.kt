@@ -7,56 +7,50 @@ data class AudioMusicalExt(
     val titulo:String,
     val artist:String,
     val urlImagen : String,
-    val urlAudio:String,
+    //val urlAudio:String,
     val fecha: LocalDate,
     val estrellas:Double)
 
 val audiosMusicalesExt = listOf(
-    AudioMusical(
+    AudioMusicalExt(
         titulo = "El Encuentro",
         artist = "Vetusta Morla",
-        urlImagen = "",
-        urlAudio = "",
+        urlImagen = "https://live.staticflickr.com/65535/50547142131_7fcab7e0db_q_d.jpg",
         fecha = LocalDate.of(2024, 11, 4),
         estrellas = 4.6
     ),
-    AudioMusical(
+    AudioMusicalExt(
         titulo = "Baile Existencialista",
         artist = "León Benavente",
-        urlImagen = R.drawable.leon_benavente_baile_existencialista,
-        urlAudio = 2,
+        urlImagen = "https://www.flickr.com/photos/martij27/8557689211/sizes/sq/",
         fecha = LocalDate.of(2024, 11, 5),
         estrellas = 4.7
     ),
-    AudioMusical(
+    AudioMusicalExt(
         titulo = "Devenir Paisaje",
         artist = "Fin del Mundo",
-        urlImagen = R.drawable.fin_del_mundo_devenir_paisaje,
-        urlAudio = 3,
+        urlImagen = "https://live.staticflickr.com/2482/3703337927_693368f57e_q_d.jpg",
         fecha = LocalDate.of(2024, 11, 12),
         estrellas = 4.6
     ),
-    AudioMusical(
+    AudioMusicalExt(
         titulo = "Brujería!",
         artist = "Judeline",
-        urlImagen = R.drawable.judeline_brujeria,
-        urlAudio = 4,
+        urlImagen = "https://live.staticflickr.com/5323/6937747562_68cfd7857d_w_d.jpg",
         fecha = LocalDate.of(2024, 11, 8),
         estrellas = 4.4
     ),
-    AudioMusical(
+    AudioMusicalExt(
         titulo = "Nos Volveremos a Ver",
         artist = "La La Love You",
-        urlImagen = R.drawable.la_la_love_you_nos_volveremos_a_ver,
-        urlAudio = 5,
+        urlImagen = "https://live.staticflickr.com/63/201488691_135c463130_q_d.jpg",
         fecha = LocalDate.of(2024, 11, 6),
         estrellas = 4.6
     ),
-    AudioMusical(
+    AudioMusicalExt(
         titulo = "Tenemos la respuesta",
         artist = "ELYELLA feat. Lori Meyers",
-        urlImagen = R.drawable.elyella_tenemos_la_respuesta,
-        urlAudio = 6,
+        urlImagen = "https://www.flickr.com/photos/andrelaine/4373558858/sizes/sq/",
         fecha = LocalDate.of(2024, 11, 10),
         estrellas = 4.5
     )

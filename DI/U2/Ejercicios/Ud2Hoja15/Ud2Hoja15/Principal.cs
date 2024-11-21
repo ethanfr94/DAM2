@@ -2,17 +2,16 @@ namespace Ud2Hoja15
 {
     public partial class Principal : Form
     {
-        List<Empleado> empleados = new List<Empleado>();s
+        public static List<Empleado> empleados = new List<Empleado>();
 
-        public List<Empleado> Empleados
-        {
-            get { return empleados; }
-            set { empleados = value; }
-        }
+
+
 
         public Principal()
         {
             InitializeComponent();
+            tsmiEdit.Enabled = false;
+            tsmiBorrar.Enabled = false;
         }
 
         private void tsmiAdd_Click(object sender, EventArgs e)

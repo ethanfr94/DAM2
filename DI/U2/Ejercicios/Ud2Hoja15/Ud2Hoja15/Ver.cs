@@ -15,6 +15,21 @@ namespace Ud2Hoja15
         public Ver()
         {
             InitializeComponent();
+            cargaLista();
+        }
+
+        private void cargaLista()
+        {
+            lstEmpleados.Items.Clear();
+            foreach (Empleado emp in Principal.empleados)
+            {
+                lstEmpleados.Items.Add(emp.Nombre + " " + emp.Apellidos);
+            }
+        }
+
+        private void lstEmpleados_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
