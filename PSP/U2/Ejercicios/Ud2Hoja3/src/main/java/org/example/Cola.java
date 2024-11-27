@@ -1,6 +1,7 @@
 package org.example;
 
-public class Cola {
+public class
+.Cola {
     private int num;
     private boolean hay = false; //inicialmente cola vacia
 
