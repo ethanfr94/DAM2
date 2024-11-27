@@ -54,7 +54,7 @@ namespace ProjectStore
         }
 
         // Obtiene un profesor específico por su ID.
-        public async Task<Profesor> ObtenerProfesorIndividual(int id)
+        public async Task<Profesor> ObtenerProfesorIndividual(string id)
         {
             try
             {
@@ -108,7 +108,7 @@ namespace ProjectStore
         }
 
         // Obtiene un alumno específico por su ID.
-        public async Task<Alumno> ObtenerAlumnoIndividual(int id)
+        public async Task<Alumno> ObtenerAlumnoIndividual(string id)
         {
             try
             {
@@ -144,7 +144,7 @@ namespace ProjectStore
         }
 
         // Obtiene un ciclo específico por su ID.
-        public async Task<Ciclo> ObtenerCicloIndividual(int id)
+        public async Task<Ciclo> ObtenerCicloIndividual(string id)
         {
             try
             {
@@ -186,13 +186,13 @@ namespace ProjectStore
         }
 
         // Actualiza un alumno con un ID específico.
-        public async Task<bool> ActualizarAlumno(int id, Alumno alumno)
+        public async Task<bool> ActualizarAlumno(string id, Alumno alumno)
         {
             return await ActualizarEntidad($"http://localhost:4000/actualizarAlumno{id}", alumno);
         }
 
         // Actualiza un profesor con un ID específico.
-        public async Task<bool> ActualizarProfesor(int id, Profesor profesor)
+        public async Task<bool> ActualizarProfesor(string id, Profesor profesor)
         {
             return await ActualizarEntidad($"http://localhost:4000/actualizarProfesor{id}", profesor);
         }

@@ -19,22 +19,22 @@ namespace ProjectStore
             InitializeComponent();
             prof = p;
             this.Text = prof.Nombre + " " + prof.Apellidos;
-            esAdmin(p);            
-            
+            esAdmin(p);
+
         }
 
         private void esAdmin(Profesor p)
         {
             if (p.Admin)
             {
-                 addAlumnoToolStripMenuItem.Visible = true;
+                addAlumnoToolStripMenuItem.Visible = true;
                 addProfesorToolStripMenuItem.Visible = true;
                 addProyectosToolStripMenuItem.Visible = true;
                 modificarAlumnoToolStripMenuItem.Visible = true;
                 modificarProfesorToolStripMenuItem.Visible = true;
-                modificarProyectosToolStripMenuItem.Visible = true;          
+                modificarProyectosToolStripMenuItem.Visible = true;
             }
-            
+
         }
 
         // Evento para visualizar los ciclos
@@ -93,7 +93,7 @@ namespace ProjectStore
             {
                 cargaProfesores();
             }
-            
+
         }
 
         // Método para cargar los profesores en el ListView
@@ -182,7 +182,7 @@ namespace ProjectStore
             ltvListaPrincipal.Columns.Add("Ciclo", 35);
             ltvListaPrincipal.Columns.Add("Tutor", 35);
             proyectos = await new ConexionApi().ObtenerProyectos();
-            
+
             if (proyectos != null)
             {
                 cargaProyectos();
@@ -195,7 +195,7 @@ namespace ProjectStore
             ltvListaPrincipal.Items.Clear();
             foreach (Proyecto proyecto in proyectos)
             {
-                ListViewItem item = new ListViewItem(proyecto.Id);
+                ListViewItem item = new ListViewItem(proyecto.Id.ToString());
                 item.SubItems.Add(proyecto.Nombre);
                 item.SubItems.Add(proyecto.Tipo.ToString());
                 item.SubItems.Add("");
@@ -273,7 +273,7 @@ namespace ProjectStore
             }
             if (DialogResult == DialogResult.OK)
             {
-               
+
                 profesores = await new ConexionApi().ObtenerProfesor();
                 cargaProfesores();
             }
@@ -281,7 +281,11 @@ namespace ProjectStore
 
         private async void modificarAlumnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (Alumno al in alumnos)
+            string id = ltvListaPrincipal.SelectedItems[0].SubItems[0].Text;
+            Alumno alu = await new ConexionApi().ObtenerAlumnoIndividual(id);
+
+            MessageBox.Show(alu.Nombre);   
+            /*foreach (Alumno al in alumnos)
             {
                 if (al.Id == ltvListaPrincipal.SelectedItems[0].SubItems[0].Text)
                 {
@@ -293,13 +297,13 @@ namespace ProjectStore
             {
                 alumnos = await new ConexionApi().ObtenerAlumnos();
                 cargaAlumnos();
-            }
+            }*/
         }
         private async void modificarProyectosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (Proyecto p in proyectos)
             {
-                if (p.Id == ltvListaPrincipal.SelectedItems[0].SubItems[0].Text)
+                if (p.Id.Equals(ltvListaPrincipal.SelectedItems[0].SubItems[0].Text))
                 {
                     ModProyecto modProyecto = new ModProyecto(p);
                     modProyecto.ShowDialog();
@@ -315,8 +319,8 @@ namespace ProjectStore
         // evento que habilita los botones de modificacion al seleccionar un elemento de la lista
         private void ltvListaPrincipal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ltvListaPrincipal.SelectedItems.Count > 0 && ltvListaPrincipal.SelectedItems[0].SubItems[11].Text == prof.Id || prof.Admin)
-            {                       
+            if (ltvListaPrincipal.SelectedItems.Count > 0 && ltvListaPrincipal.SelectedItems[0].SubItems[0].Text == prof.Id || prof.Admin)
+            {
                 modificarAlumnoToolStripMenuItem.Enabled = true;
                 modificarProfesorToolStripMenuItem.Enabled = true;
                 modificarProyectosToolStripMenuItem.Enabled = true;
@@ -324,6 +328,16 @@ namespace ProjectStore
 
         }
 
-        
+        private void cargarArchivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Selecciona un archivo";
+            ofd.ShowDialog();
+            if (ofd.FileName != "")
+            {
+                string archivo = ofd.FileName;
+            }
+            //funcion subida de archivpo
+        }
     }
 }

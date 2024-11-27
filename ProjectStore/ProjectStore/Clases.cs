@@ -89,7 +89,7 @@ namespace ProjectStore
 
     public class Proyecto
     {
-        private string id;
+        private int id;
         private string nombre;
         private Tipo tipo;
         private string resumen;
@@ -102,7 +102,7 @@ namespace ProjectStore
         private Ciclo ciclo;
         private Profesor tutor;
 
-        public String Id { get => id; set => id = value; }
+        public int Id { get => id; set => id = value; }
         public String Nombre { get => nombre; set => nombre = value; }
         public Tipo Tipo { get => tipo; set => tipo = value; }
         public String Resumen { get => resumen; set => resumen = value; }

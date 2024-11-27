@@ -45,6 +45,7 @@
             modificarProyectosToolStripMenuItem = new ToolStripMenuItem();
             tsmiLogOut = new ToolStripMenuItem();
             ltvListaPrincipal = new ListView();
+            cargarArchivoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -81,14 +82,14 @@
             // tsmiVerProfesores
             // 
             tsmiVerProfesores.Name = "tsmiVerProfesores";
-            tsmiVerProfesores.Size = new Size(180, 22);
+            tsmiVerProfesores.Size = new Size(172, 22);
             tsmiVerProfesores.Text = "Ver Profesores";
             tsmiVerProfesores.Click += tsmiVerProfesores_Click;
             // 
             // addProfesorToolStripMenuItem
             // 
             addProfesorToolStripMenuItem.Name = "addProfesorToolStripMenuItem";
-            addProfesorToolStripMenuItem.Size = new Size(180, 22);
+            addProfesorToolStripMenuItem.Size = new Size(172, 22);
             addProfesorToolStripMenuItem.Text = "Añadir Profesor";
             addProfesorToolStripMenuItem.Visible = false;
             addProfesorToolStripMenuItem.Click += añadirProfesorToolStripMenuItem_Click;
@@ -96,7 +97,7 @@
             // modificarProfesorToolStripMenuItem
             // 
             modificarProfesorToolStripMenuItem.Name = "modificarProfesorToolStripMenuItem";
-            modificarProfesorToolStripMenuItem.Size = new Size(180, 22);
+            modificarProfesorToolStripMenuItem.Size = new Size(172, 22);
             modificarProfesorToolStripMenuItem.Text = "Modificar Profesor";
             modificarProfesorToolStripMenuItem.Visible = false;
             modificarProfesorToolStripMenuItem.Click += modificarProfesorToolStripMenuItem_Click;
@@ -111,14 +112,14 @@
             // tsmiVerAlumnos
             // 
             tsmiVerAlumnos.Name = "tsmiVerAlumnos";
-            tsmiVerAlumnos.Size = new Size(180, 22);
+            tsmiVerAlumnos.Size = new Size(171, 22);
             tsmiVerAlumnos.Text = "Ver Alumnos";
             tsmiVerAlumnos.Click += tsmiVerAlumnos_Click;
             // 
             // addAlumnoToolStripMenuItem
             // 
             addAlumnoToolStripMenuItem.Name = "addAlumnoToolStripMenuItem";
-            addAlumnoToolStripMenuItem.Size = new Size(180, 22);
+            addAlumnoToolStripMenuItem.Size = new Size(171, 22);
             addAlumnoToolStripMenuItem.Text = "Añadir Alumno";
             addAlumnoToolStripMenuItem.Visible = false;
             addAlumnoToolStripMenuItem.Click += añadirAlumnoToolStripMenuItem_Click;
@@ -126,14 +127,14 @@
             // modificarAlumnoToolStripMenuItem
             // 
             modificarAlumnoToolStripMenuItem.Name = "modificarAlumnoToolStripMenuItem";
-            modificarAlumnoToolStripMenuItem.Size = new Size(180, 22);
+            modificarAlumnoToolStripMenuItem.Size = new Size(171, 22);
             modificarAlumnoToolStripMenuItem.Text = "Modificar Alumno";
             modificarAlumnoToolStripMenuItem.Visible = false;
             modificarAlumnoToolStripMenuItem.Click += modificarAlumnoToolStripMenuItem_Click;
             // 
             // tsmiProyectos
             // 
-            tsmiProyectos.DropDownItems.AddRange(new ToolStripItem[] { tsmiVerProyectos, addProyectosToolStripMenuItem, modificarProyectosToolStripMenuItem });
+            tsmiProyectos.DropDownItems.AddRange(new ToolStripItem[] { tsmiVerProyectos, addProyectosToolStripMenuItem, modificarProyectosToolStripMenuItem, cargarArchivoToolStripMenuItem });
             tsmiProyectos.Name = "tsmiProyectos";
             tsmiProyectos.Size = new Size(71, 20);
             tsmiProyectos.Text = "Proyectos";
@@ -181,6 +182,13 @@
             ltvListaPrincipal.View = View.Details;
             ltvListaPrincipal.SelectedIndexChanged += ltvListaPrincipal_SelectedIndexChanged;
             // 
+            // cargarArchivoToolStripMenuItem
+            // 
+            cargarArchivoToolStripMenuItem.Name = "cargarArchivoToolStripMenuItem";
+            cargarArchivoToolStripMenuItem.Size = new Size(180, 22);
+            cargarArchivoToolStripMenuItem.Text = "Cargar Archivo";
+            cargarArchivoToolStripMenuItem.Click += cargarArchivoToolStripMenuItem_Click;
+            // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -218,5 +226,6 @@
         private ToolStripMenuItem addProfesorToolStripMenuItem;
         private ToolStripMenuItem modificarProfesorToolStripMenuItem;
         private ListView ltvListaPrincipal;
+        private ToolStripMenuItem cargarArchivoToolStripMenuItem;
     }
 }
