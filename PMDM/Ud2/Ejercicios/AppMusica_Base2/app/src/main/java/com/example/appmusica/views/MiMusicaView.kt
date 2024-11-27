@@ -1,12 +1,6 @@
 package com.example.appmusica.views
 
 import android.annotation.SuppressLint
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.List
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Star
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -19,15 +13,22 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.example.appmusica.Navigation.MiMusicaNavigation
+import com.example.appmusica.model.Items_Bottom_Nav
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MiMusicaView() {
 
+    val navController = rememberNavController()
+
     Scaffold(
         topBar = { MiMusicaTopBar() },
-        bottomBar = { MiMusicaBottomBar() },
-        content = { HomeView()}
+        bottomBar = { MiMusicaBottomBar(navController) },
+        content = { MiMusicaNavigation(navController = navController) }
     )
 }
 
@@ -58,12 +59,33 @@ fun MiMusicaTopBar() {
 }
 
 @Composable
-private fun MiMusicaBottomBar() {
-    NavigationBar(
-        containerColor = MaterialTheme.colorScheme.surfaceVariant,
+fun currentRoute(navController: NavHostController) :String? =
+    navController.currentBackStackEntryAsState().value?.destination?.route
 
+@Composable
+private fun MiMusicaBottomBar(navController: NavHostController) {
+    val bar_items = listOf(
+        Items_Bottom_Nav.Item_bottom_nav_home,
+        Items_Bottom_Nav.Item_bottom_nav_artists,
+        Items_Bottom_Nav.Item_bottom_nav_search,
+        Items_Bottom_Nav.Item_bottom_nav_myapp,
+        Items_Bottom_Nav.Item_bottom_nav_premium
+    )
+    NavigationBar(
+        containerColor = MaterialTheme.colorScheme.surfaceVariant
     ) {
-        NavigationBarItem(
+        bar_items.forEach {
+            item ->
+            val clicked = currentRoute(navController) == item.ruta
+            NavigationBarItem(
+                selected = clicked,
+                onClick = { navController.navigate(item.ruta) },
+                icon = { Icon( imageVector = item.icono, contentDescription = null)},
+                label = { Text(item.texto) }
+            )
+        }
+
+        /*NavigationBarItem(
             icon = {
                 Icon(
                     imageVector = Icons.Filled.Home,
@@ -128,6 +150,6 @@ private fun MiMusicaBottomBar() {
             },
             selected = false,
             onClick = {}
-        )
+        )*/
     }
 }
