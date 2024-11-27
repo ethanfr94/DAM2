@@ -115,8 +115,6 @@ namespace ProjectStore
                 return;
             }
 
-            // Insertar el profesor en la lista
-            Principal.profesores.Add(p);
             DialogResult = DialogResult.OK;
 
             // Insertar el profesor en la API

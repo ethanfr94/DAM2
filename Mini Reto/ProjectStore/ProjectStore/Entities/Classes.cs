@@ -162,14 +162,14 @@ namespace ProjectStore
         private string nombre;
         private Tipo tipo;
         private string resumen;
-        private int anioAcademico;
-        private DateTime fechaPresentacion;
+        private int? anioAcademico;
+        private DateTime? fechaPresentacion;
         private string logo;
         private string memoria;
         private string archivos;
         private string comentarios;
         private Ciclo ciclo;
-        private Profesor tutor;
+        private Profesor? tutor;
 
         [JsonProperty("id")]
         public string Id { get => id; set => id = value; }
@@ -184,10 +184,10 @@ namespace ProjectStore
         public string Resumen { get => resumen; set => resumen = value; }
 
         [JsonProperty("anio_academico")]
-        public int AnioAcademico { get => anioAcademico; set => anioAcademico = value; }
+        public int? AnioAcademico { get => anioAcademico; set => anioAcademico = value; }
 
         [JsonProperty("fecha_presentacion")]
-        public DateTime FechaPresentacion { get => fechaPresentacion; set => fechaPresentacion = value; }
+        public DateTime? FechaPresentacion { get => fechaPresentacion; set => fechaPresentacion = value; }
 
         [JsonProperty("logo")]
         public string Logo { get => logo; set => logo = value; }
@@ -205,6 +205,6 @@ namespace ProjectStore
         public Ciclo Ciclo { get => ciclo; set => ciclo = value; }
 
         [JsonProperty("tutor")]
-        public Profesor Tutor { get => tutor; set => tutor = value; }
+        public Profesor? Tutor { get => tutor; set => tutor = value; }
     }
 }

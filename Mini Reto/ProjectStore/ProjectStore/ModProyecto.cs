@@ -22,8 +22,9 @@ namespace ProjectStore
             txtNombre.Text = proyecto.Nombre;
             cmbTipo.Text = proyecto.Tipo.ToString();
             txtResumen.Text = proyecto.Resumen;
-            nudAnioAcademico.Value = proyecto.AnioAcademico;
-            dtpFechaPres.Value = proyecto.FechaPresentacion;
+            int anno = int.TryParse(nudAnioAcademico.Value.ToString(), out anno) ? anno : 0;
+            nudAnioAcademico.Value = anno;
+            //dtpFechaPres.Value = proyecto.FechaPresentacion;
             txtLogo.Text = proyecto.Logo;
             txtMemoria.Text = proyecto.Memoria;
             txtArchivos.Text = proyecto.Archivos;

@@ -20,6 +20,7 @@ namespace ProjectStore
         public Principal(Profesor p)
         {
             InitializeComponent();
+            
             profesor = p;
             this.Text = $"{profesor.Nombre} {profesor.Apellidos}";
             esAdmin(p);
@@ -187,6 +188,8 @@ namespace ProjectStore
             ltvListaPrincipal.Columns.Add("Tutor", 50);
 
             proyectos = await apiConnection.GetAllProyectos();
+
+
             cargaProyectos();
         }
 
@@ -234,8 +237,14 @@ namespace ProjectStore
         // Método para abrir formulario de alumno
         private void añadirAlumnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             AddAlumno addAlumno = new AddAlumno();
             addAlumno.ShowDialog();
+            if (addAlumno.DialogResult == DialogResult.OK)
+            {
+                alumnos = apiConnection.GetAllAlumnos().Result;
+                cargaAlumnos();
+            }
         }
 
         // Método para abrir formulario de profesor
@@ -243,6 +252,11 @@ namespace ProjectStore
         {
             AddProfesor addProfesor = new AddProfesor();
             addProfesor.ShowDialog();
+            if (addProfesor.DialogResult == DialogResult.OK)
+            {
+                profesores = apiConnection.GetAllProfesores().Result;
+                cargaProfesores();
+            }
         }
 
         // Método para abrir formulario de proyecto
@@ -250,6 +264,11 @@ namespace ProjectStore
         {
             AddProyecto addProyecto = new AddProyecto();
             addProyecto.ShowDialog();
+            if (addProyecto.DialogResult == DialogResult.OK)
+            {
+                proyectos = apiConnection.GetAllProyectos().Result;
+                cargaProyectos();
+            }
         }
 
         // Método genérico para modificar un elemento (Profesor, Alumno o Proyecto)

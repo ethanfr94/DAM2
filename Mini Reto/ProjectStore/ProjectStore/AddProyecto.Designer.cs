@@ -45,7 +45,6 @@
             cmbTipo = new ComboBox();
             label2 = new Label();
             txtMemoria = new TextBox();
-            nudAnioAcademico = new NumericUpDown();
             txtArchivos = new TextBox();
             label9 = new Label();
             cmbCiclo = new ComboBox();
@@ -53,6 +52,7 @@
             cmbTutor = new ComboBox();
             txtResumen = new TextBox();
             label12 = new Label();
+            nudAnioAcademico = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)nudAnioAcademico).BeginInit();
             SuspendLayout();
             // 
@@ -201,16 +201,6 @@
             txtMemoria.Size = new Size(200, 23);
             txtMemoria.TabIndex = 83;
             // 
-            // nudAnioAcademico
-            // 
-            nudAnioAcademico.Location = new Point(154, 99);
-            nudAnioAcademico.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
-            nudAnioAcademico.Minimum = new decimal(new int[] { 2023, 0, 0, 0 });
-            nudAnioAcademico.Name = "nudAnioAcademico";
-            nudAnioAcademico.Size = new Size(200, 23);
-            nudAnioAcademico.TabIndex = 84;
-            nudAnioAcademico.Value = new decimal(new int[] { 2024, 0, 0, 0 });
-            // 
             // txtArchivos
             // 
             txtArchivos.Location = new Point(154, 215);
@@ -269,6 +259,16 @@
             label12.Size = new Size(118, 15);
             label12.TabIndex = 91;
             label12.Text = "* Campos requeridos";
+            // 
+            // nudAnioAcademico
+            // 
+            nudAnioAcademico.Location = new Point(154, 99);
+            nudAnioAcademico.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            nudAnioAcademico.Minimum = new decimal(new int[] { 2023, 0, 0, 0 });
+            nudAnioAcademico.Name = "nudAnioAcademico";
+            nudAnioAcademico.Size = new Size(200, 23);
+            nudAnioAcademico.TabIndex = 84;
+            nudAnioAcademico.Value = new decimal(new int[] { 2024, 0, 0, 0 });
             // 
             // AddProyecto
             // 
@@ -333,7 +333,6 @@
         private ComboBox cmbTipo;
         private Label label2;
         private TextBox txtMemoria;
-        private NumericUpDown nudAnioAcademico;
         private TextBox txtArchivos;
         private Label label9;
         private ComboBox cmbCiclo;
@@ -341,5 +340,6 @@
         private ComboBox cmbTutor;
         private TextBox txtResumen;
         private Label label12;
+        private NumericUpDown nudAnioAcademico;
     }
 }

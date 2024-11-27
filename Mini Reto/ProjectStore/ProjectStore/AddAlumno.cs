@@ -12,6 +12,8 @@ namespace ProjectStore
         private const string EmailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
         private const string DniPattern = @"^\d{8}[A-Za-z]$";
         private const int PhoneLength = 9;
+        APIConnection apiConnection = new APIConnection();
+        List<Ciclo> ciclos;
 
         public AddAlumno()
         {
@@ -30,9 +32,11 @@ namespace ProjectStore
         }
 
         // Carga los ciclos disponibles al combo
-        private void cargaComboCiclo()
+        private async void cargaComboCiclo()
         {
-            foreach (Ciclo ciclo in Principal.ciclos)
+            
+            ciclos = await apiConnection.GetAllCiclos();
+            foreach (Ciclo ciclo in ciclos)
             {
                 cmbCiclo.Items.Add(ciclo.Nombre);
             }
@@ -90,7 +94,7 @@ namespace ProjectStore
         }
 
         // Guarda los datos del alumno y lo añade a la lista
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             // Validamos si todos los campos requeridos están completos
             if (!ValidarCamposRequeridos()) return;
@@ -124,10 +128,18 @@ namespace ProjectStore
             }
 
             // Asignación del ciclo
-            a.Ciclo = Principal.ciclos[cmbCiclo.SelectedIndex];
+            a.Ciclo = ciclos[cmbCiclo.SelectedIndex];
 
-            // Insertar el alumno en la lista
-            Principal.alumnos.Add(a);
+            bool result = await apiConnection.PostAlumno(a);
+
+            if (result)
+            {
+                MessageBox.Show("Alumno añadido correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error al añadir el alumno", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             // Cerrar formulario con éxito
             DialogResult = DialogResult.OK;

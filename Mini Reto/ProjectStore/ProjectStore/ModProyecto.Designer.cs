@@ -37,7 +37,6 @@
             cmbCiclo = new ComboBox();
             txtArchivos = new TextBox();
             label9 = new Label();
-            nudAnioAcademico = new NumericUpDown();
             txtMemoria = new TextBox();
             cmbTipo = new ComboBox();
             label2 = new Label();
@@ -53,6 +52,7 @@
             label4 = new Label();
             label3 = new Label();
             label1 = new Label();
+            nudAnioAcademico = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)nudAnioAcademico).BeginInit();
             SuspendLayout();
             // 
@@ -134,17 +134,6 @@
             label9.Size = new Size(53, 15);
             label9.TabIndex = 153;
             label9.Text = "Archivos";
-            // 
-            // nudAnioAcademico
-            // 
-            nudAnioAcademico.Enabled = false;
-            nudAnioAcademico.Location = new Point(151, 99);
-            nudAnioAcademico.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
-            nudAnioAcademico.Minimum = new decimal(new int[] { 2023, 0, 0, 0 });
-            nudAnioAcademico.Name = "nudAnioAcademico";
-            nudAnioAcademico.Size = new Size(200, 23);
-            nudAnioAcademico.TabIndex = 152;
-            nudAnioAcademico.Value = new decimal(new int[] { 2024, 0, 0, 0 });
             // 
             // txtMemoria
             // 
@@ -275,6 +264,17 @@
             label1.TabIndex = 137;
             label1.Text = "Nombre *";
             // 
+            // nudAnioAcademico
+            // 
+            nudAnioAcademico.Enabled = false;
+            nudAnioAcademico.Location = new Point(151, 99);
+            nudAnioAcademico.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            nudAnioAcademico.Minimum = new decimal(new int[] { 2023, 0, 0, 0 });
+            nudAnioAcademico.Name = "nudAnioAcademico";
+            nudAnioAcademico.Size = new Size(200, 23);
+            nudAnioAcademico.TabIndex = 152;
+            nudAnioAcademico.Value = new decimal(new int[] { 2024, 0, 0, 0 });
+            // 
             // ModProyecto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -323,7 +323,6 @@
         private ComboBox cmbCiclo;
         private TextBox txtArchivos;
         private Label label9;
-        private NumericUpDown nudAnioAcademico;
         private TextBox txtMemoria;
         private ComboBox cmbTipo;
         private Label label2;
@@ -339,5 +338,6 @@
         private Label label4;
         private Label label3;
         private Label label1;
+        private NumericUpDown nudAnioAcademico;
     }
 }
