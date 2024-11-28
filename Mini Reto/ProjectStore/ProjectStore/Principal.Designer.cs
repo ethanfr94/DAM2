@@ -180,7 +180,8 @@
             ltvListaPrincipal.TabIndex = 8;
             ltvListaPrincipal.UseCompatibleStateImageBehavior = false;
             ltvListaPrincipal.View = View.Details;
-            ltvListaPrincipal.SelectedIndexChanged += ltvListaPrincipal_SelectedIndexChanged;
+            ltvListaPrincipal.ItemSelectionChanged += ltvListaPrincipal_ItemSelectionChanged;
+            //ltvListaPrincipal.SelectedIndexChanged += ltvListaPrincipal_SelectedIndexChanged;
             // 
             // Principal
             // 

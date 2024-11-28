@@ -20,7 +20,7 @@ namespace ProjectStore
         public Principal(Profesor p)
         {
             InitializeComponent();
-            
+
             profesor = p;
             this.Text = $"{profesor.Nombre} {profesor.Apellidos}";
             esAdmin(p);
@@ -270,7 +270,7 @@ namespace ProjectStore
                 cargaProyectos();
             }
         }
-
+        /*
         // Método genérico para modificar un elemento (Profesor, Alumno o Proyecto)
         private async Task ModificarElementoToolStripMenuItem_Click<T>(List<T> lista, string idElemento, Func<T, bool> buscarElemento, Func<T, Form> crearFormulario, Func<Task> recargarDatos) where T : class
         {
@@ -287,10 +287,27 @@ namespace ProjectStore
                 }
             }
         }
+        */
 
         // Método específico para modificar un Profesor
         private async void modificarProfesorToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (ltvListaPrincipal.SelectedItems.Count > 0)
+            {
+                var id = ltvListaPrincipal.SelectedItems[0].SubItems[0].Text;
+                Profesor profesor = profesores.Find(p => p.Id == id);
+
+                ModProfesor modProfesor = new ModProfesor(profesor);
+                modProfesor.ShowDialog();
+                if (modProfesor.DialogResult == DialogResult.OK)
+                {
+                    profesores = await apiConnection.GetAllProfesores();
+                    cargaProfesores();
+                }
+            }
+
+
+            /*
             // Verificar si hay un elemento seleccionado
             if (ltvListaPrincipal.SelectedItems.Count > 0)
             {
@@ -314,11 +331,27 @@ namespace ProjectStore
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
             }
+            */
         }
 
         // Método específico para modificar un Alumno
         private async void modificarAlumnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (ltvListaPrincipal.SelectedItems.Count > 0)
+            {
+                var id = ltvListaPrincipal.SelectedItems[0].SubItems[0].Text;
+                Alumno alumno = alumnos.Find(a => a.Id == id);
+
+                ModAlumno modAlumno = new ModAlumno(alumno);
+                modAlumno.ShowDialog();
+                if (modAlumno.DialogResult == DialogResult.OK)
+                {
+                    alumnos = await apiConnection.GetAllAlumnos();
+                    cargaAlumnos();
+                }
+            }
+
+            /*
             // Verificar si hay un elemento seleccionado
             if (ltvListaPrincipal.SelectedItems.Count > 0)
             {
@@ -342,11 +375,27 @@ namespace ProjectStore
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
             }
+            */
         }
 
         // Método específico para modificar un Proyecto
         private async void modificarProyectosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (ltvListaPrincipal.SelectedItems.Count > 0)
+            {
+                var id = ltvListaPrincipal.SelectedItems[0].SubItems[0].Text;
+                Proyecto proyecto = proyectos.Find(p => p.Id == id);
+
+                ModProyecto modProyecto = new ModProyecto(proyecto);
+                modProyecto.ShowDialog();
+                if (modProyecto.DialogResult == DialogResult.OK)
+                {
+                    proyectos = await apiConnection.GetAllProyectos();
+                    cargaProyectos();
+                }
+            }
+
+            /*
             // Verificar si hay un elemento seleccionado
             if (ltvListaPrincipal.SelectedItems.Count > 0)
             {
@@ -370,14 +419,18 @@ namespace ProjectStore
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
             }
+            */
         }
-
+/*
         // Evento que habilita los botones de modificación al seleccionar un elemento de la lista
         private void ltvListaPrincipal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string id = ltvListaPrincipal.SelectedItems[0].Text;
             try
             {
+
+                String id2 = ltvListaPrincipal.SelectedIndexChanged
+                string id = ltvListaPrincipal.SelectedItems[0].Text;
+
                 if (ltvListaPrincipal.SelectedItems.Count > 0)
                 {
                     if (profesor.Admin)
@@ -398,11 +451,43 @@ namespace ProjectStore
             }
             catch (Exception)
             {
-                MessageBox.Show("Error al seleccionar el elemento",
+                MessageBox.Show("Error al seleccionar un elemento",
                                 "Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
+        }
+*/
+        private void ltvListaPrincipal_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            try
+            {
+
+                string id = ltvListaPrincipal.SelectedItems[0].Text;
+
+                if (ltvListaPrincipal.SelectedItems.Count > 0)
+                {
+                    if (profesor.Admin)
+                    {
+                        modificarAlumnoToolStripMenuItem.Enabled = true;
+                        modificarProfesorToolStripMenuItem.Enabled = true;
+                        modificarProyectosToolStripMenuItem.Enabled = true;
+                    }
+                    else
+                    {
+                        Proyecto proyecto = proyectos.Find(p => p.Id == id);
+                        if (proyecto != null && proyecto.Tutor.Id == profesor.Id)
+                        {
+                            modificarProyectosToolStripMenuItem.Enabled = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+
         }
     }
 }
