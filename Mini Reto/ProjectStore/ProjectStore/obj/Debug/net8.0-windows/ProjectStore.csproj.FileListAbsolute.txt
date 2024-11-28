@@ -155,3 +155,4 @@ C:\Users\usuario\Desktop\DAM\Mini Reto\ProjectStore\ProjectStore\obj\Debug\net8.
 C:\Users\usuario\Desktop\DAM\Mini Reto\ProjectStore\ProjectStore\obj\Debug\net8.0-windows\ProjectStore.pdb
 C:\Users\usuario\Desktop\DAM\Mini Reto\ProjectStore\ProjectStore\obj\Debug\net8.0-windows\ProjectStore.genruntimeconfig.cache
 C:\Users\usuario\Desktop\DAM\Mini Reto\ProjectStore\ProjectStore\obj\Debug\net8.0-windows\ref\ProjectStore.dll
+C:\Users\usuario\Desktop\Mini_Reto_DI\ProjectStore\ProjectStore\obj\Debug\net8.0-windows\ProjectStore.Properties.Resources.resources

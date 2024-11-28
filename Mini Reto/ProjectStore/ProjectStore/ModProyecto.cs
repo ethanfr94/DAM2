@@ -9,6 +9,8 @@ namespace ProjectStore
     {
         private Proyecto proyecto;
 
+        private readonly APIConnection apiConnection = new APIConnection();
+
         public ModProyecto(Proyecto p)
         {
             InitializeComponent();
@@ -48,7 +50,7 @@ namespace ProjectStore
         }
 
         // Método para aplicar la modificación al proyecto
-        private void ModificarProyecto()
+        private async void ModificarProyecto()
         {
             if (proyecto.Resumen != txtResumen.Text)
                 proyecto.Resumen = txtResumen.Text;
@@ -62,9 +64,15 @@ namespace ProjectStore
             if (proyecto.Tutor.ToString() != cmbTutor.Text)
                 proyecto.Tutor = Principal.profesores[cmbTutor.SelectedIndex];
 
-            //
-            // API
-            //
+           bool res = await apiConnection.UpdateProyecto(proyecto.Id, proyecto);
+            if (res)
+            {
+                MessageBox.Show("Proyecto modificado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error al modificar el proyecto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // Confirmar si el usuario realmente quiere modificar los datos
@@ -77,7 +85,8 @@ namespace ProjectStore
         // Botón de cancelar
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
         // Botón de modificar
@@ -88,7 +97,8 @@ namespace ProjectStore
                 if (ValidarCampos())
                 {
                     ModificarProyecto();
-                    DialogResult = DialogResult.OK;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
             }
         }

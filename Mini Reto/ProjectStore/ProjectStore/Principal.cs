@@ -375,25 +375,33 @@ namespace ProjectStore
         // Evento que habilita los botones de modificación al seleccionar un elemento de la lista
         private void ltvListaPrincipal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string id = ltvListaPrincipal.SelectedItems[0].SubItems[0].Text;
-
-            if (ltvListaPrincipal.SelectedItems.Count > 0)
+            string id = ltvListaPrincipal.SelectedItems[0].Text;
+            try
             {
-                if (profesor.Admin)
+                if (ltvListaPrincipal.SelectedItems.Count > 0)
                 {
-                    modificarAlumnoToolStripMenuItem.Enabled = true;
-                    modificarProfesorToolStripMenuItem.Enabled = true;
-                    modificarProyectosToolStripMenuItem.Enabled = true;
-                }
-                else
-                {
-                    Proyecto proyecto = proyectos.Find(p => p.Id == id);
-                    if (proyecto != null && proyecto.Tutor.Id == profesor.Id)
+                    if (profesor.Admin)
                     {
+                        modificarAlumnoToolStripMenuItem.Enabled = true;
+                        modificarProfesorToolStripMenuItem.Enabled = true;
                         modificarProyectosToolStripMenuItem.Enabled = true;
                     }
+                    else
+                    {
+                        Proyecto proyecto = proyectos.Find(p => p.Id == id);
+                        if (proyecto != null && proyecto.Tutor.Id == profesor.Id)
+                        {
+                            modificarProyectosToolStripMenuItem.Enabled = true;
+                        }
+                    }
                 }
-
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al seleccionar el elemento",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
     }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             menuStrip1 = new MenuStrip();
             tsmiCiclos = new ToolStripMenuItem();
             tsmiVerCiclos = new ToolStripMenuItem();
@@ -50,6 +51,7 @@
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = SystemColors.ControlLightLight;
             menuStrip1.Items.AddRange(new ToolStripItem[] { tsmiCiclos, txmiProfesores, tsmiAlumnos, tsmiProyectos, tsmiLogOut });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
@@ -81,14 +83,14 @@
             // tsmiVerProfesores
             // 
             tsmiVerProfesores.Name = "tsmiVerProfesores";
-            tsmiVerProfesores.Size = new Size(180, 22);
+            tsmiVerProfesores.Size = new Size(172, 22);
             tsmiVerProfesores.Text = "Ver Profesores";
             tsmiVerProfesores.Click += tsmiVerProfesores_Click;
             // 
             // addProfesorToolStripMenuItem
             // 
             addProfesorToolStripMenuItem.Name = "addProfesorToolStripMenuItem";
-            addProfesorToolStripMenuItem.Size = new Size(180, 22);
+            addProfesorToolStripMenuItem.Size = new Size(172, 22);
             addProfesorToolStripMenuItem.Text = "Añadir Profesor";
             addProfesorToolStripMenuItem.Visible = false;
             addProfesorToolStripMenuItem.Click += añadirProfesorToolStripMenuItem_Click;
@@ -96,7 +98,7 @@
             // modificarProfesorToolStripMenuItem
             // 
             modificarProfesorToolStripMenuItem.Name = "modificarProfesorToolStripMenuItem";
-            modificarProfesorToolStripMenuItem.Size = new Size(180, 22);
+            modificarProfesorToolStripMenuItem.Size = new Size(172, 22);
             modificarProfesorToolStripMenuItem.Text = "Modificar Profesor";
             modificarProfesorToolStripMenuItem.Visible = false;
             modificarProfesorToolStripMenuItem.Click += modificarProfesorToolStripMenuItem_Click;
@@ -111,14 +113,14 @@
             // tsmiVerAlumnos
             // 
             tsmiVerAlumnos.Name = "tsmiVerAlumnos";
-            tsmiVerAlumnos.Size = new Size(180, 22);
+            tsmiVerAlumnos.Size = new Size(171, 22);
             tsmiVerAlumnos.Text = "Ver Alumnos";
             tsmiVerAlumnos.Click += tsmiVerAlumnos_Click;
             // 
             // addAlumnoToolStripMenuItem
             // 
             addAlumnoToolStripMenuItem.Name = "addAlumnoToolStripMenuItem";
-            addAlumnoToolStripMenuItem.Size = new Size(180, 22);
+            addAlumnoToolStripMenuItem.Size = new Size(171, 22);
             addAlumnoToolStripMenuItem.Text = "Añadir Alumno";
             addAlumnoToolStripMenuItem.Visible = false;
             addAlumnoToolStripMenuItem.Click += añadirAlumnoToolStripMenuItem_Click;
@@ -126,7 +128,7 @@
             // modificarAlumnoToolStripMenuItem
             // 
             modificarAlumnoToolStripMenuItem.Name = "modificarAlumnoToolStripMenuItem";
-            modificarAlumnoToolStripMenuItem.Size = new Size(180, 22);
+            modificarAlumnoToolStripMenuItem.Size = new Size(171, 22);
             modificarAlumnoToolStripMenuItem.Text = "Modificar Alumno";
             modificarAlumnoToolStripMenuItem.Visible = false;
             modificarAlumnoToolStripMenuItem.Click += modificarAlumnoToolStripMenuItem_Click;
@@ -141,14 +143,14 @@
             // tsmiVerProyectos
             // 
             tsmiVerProyectos.Name = "tsmiVerProyectos";
-            tsmiVerProyectos.Size = new Size(180, 22);
+            tsmiVerProyectos.Size = new Size(175, 22);
             tsmiVerProyectos.Text = "Ver Proyectos";
             tsmiVerProyectos.Click += verProyectosToolStripMenuItem_Click;
             // 
             // addProyectosToolStripMenuItem
             // 
             addProyectosToolStripMenuItem.Name = "addProyectosToolStripMenuItem";
-            addProyectosToolStripMenuItem.Size = new Size(180, 22);
+            addProyectosToolStripMenuItem.Size = new Size(175, 22);
             addProyectosToolStripMenuItem.Text = "Añadir Proyecto";
             addProyectosToolStripMenuItem.Visible = false;
             addProyectosToolStripMenuItem.Click += añadirProyectosToolStripMenuItem_Click;
@@ -156,7 +158,7 @@
             // modificarProyectosToolStripMenuItem
             // 
             modificarProyectosToolStripMenuItem.Name = "modificarProyectosToolStripMenuItem";
-            modificarProyectosToolStripMenuItem.Size = new Size(180, 22);
+            modificarProyectosToolStripMenuItem.Size = new Size(175, 22);
             modificarProyectosToolStripMenuItem.Text = "Modificar Proyecto";
             modificarProyectosToolStripMenuItem.Visible = false;
             modificarProyectosToolStripMenuItem.Click += modificarProyectosToolStripMenuItem_Click;
@@ -173,7 +175,6 @@
             ltvListaPrincipal.FullRowSelect = true;
             ltvListaPrincipal.GridLines = true;
             ltvListaPrincipal.Location = new Point(12, 27);
-            ltvListaPrincipal.MultiSelect = false;
             ltvListaPrincipal.Name = "ltvListaPrincipal";
             ltvListaPrincipal.Size = new Size(698, 358);
             ltvListaPrincipal.TabIndex = 8;
@@ -185,10 +186,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(722, 397);
             Controls.Add(ltvListaPrincipal);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "Principal";
             StartPosition = FormStartPosition.CenterScreen;

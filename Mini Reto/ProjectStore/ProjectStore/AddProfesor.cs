@@ -115,25 +115,26 @@ namespace ProjectStore
                 return;
             }
 
-            DialogResult = DialogResult.OK;
-
             // Insertar el profesor en la API
             bool resultado = await apiConnection.PostProfesor(p);
+
             if (resultado)
             {
-                MessageBox.Show("Profesor añadido con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
+                MessageBox.Show("Profesor añadido con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);                
             }
             else
             {
                 MessageBox.Show("Error al añadir el profesor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         // Cierra el formulario sin guardar
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

@@ -107,17 +107,16 @@ namespace ProjectStore
                 Tutor = Principal.profesores[cmbTutor.SelectedIndex]
             };
 
-            // Insertar el proyecto en la lista
-            Principal.proyectos.Add(p);
-
             // Cerrar formulario con éxito
-            DialogResult = DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         // Cierra el formulario sin guardar
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

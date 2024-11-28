@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\usuario\\Desktop\\DAM\\Mini Reto\\ProjectStore\\ProjectStore\\ProjectStore.csproj": {}
+    "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\ProjectStore\\ProjectStore\\ProjectStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\usuario\\Desktop\\DAM\\Mini Reto\\ProjectStore\\ProjectStore\\ProjectStore.csproj": {
+    "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\ProjectStore\\ProjectStore\\ProjectStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\usuario\\Desktop\\DAM\\Mini Reto\\ProjectStore\\ProjectStore\\ProjectStore.csproj",
+        "projectUniqueName": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\ProjectStore\\ProjectStore\\ProjectStore.csproj",
         "projectName": "ProjectStore",
-        "projectPath": "C:\\Users\\usuario\\Desktop\\DAM\\Mini Reto\\ProjectStore\\ProjectStore\\ProjectStore.csproj",
+        "projectPath": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\ProjectStore\\ProjectStore\\ProjectStore.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\usuario\\Desktop\\DAM\\Mini Reto\\ProjectStore\\ProjectStore\\obj\\",
+        "outputPath": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\ProjectStore\\ProjectStore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -141,14 +141,15 @@ namespace ProjectStore
                 MessageBox.Show("Error al añadir el alumno", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            // Cerrar formulario con éxito
-            DialogResult = DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         // Cierra el formulario sin guardar
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

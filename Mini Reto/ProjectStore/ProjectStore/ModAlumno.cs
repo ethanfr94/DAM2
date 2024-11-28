@@ -9,6 +9,9 @@ namespace ProjectStore
     {
         private Alumno alumno;
 
+        private readonly APIConnection apiConnection = new APIConnection();
+
+
         public ModAlumno(Alumno a)
         {
             InitializeComponent();
@@ -49,22 +52,36 @@ namespace ProjectStore
         }
 
         // Método para aplicar la modificación al alumno
-        private void ModificarAlumno()
+        private async void ModificarAlumno()
         {
             if (alumno.Email != txtEmail.Text) alumno.Email = txtEmail.Text;
             if (alumno.Contraseña != txtContraseña.Text) alumno.Contraseña = txtContraseña.Text;
             if (alumno.Telefono != txtTelefono.Text) alumno.Telefono = txtTelefono.Text;
             if (alumno.Activo != chkActivo.Checked) alumno.Activo = chkActivo.Checked;
 
-            //
-            // API
-            //
+            bool res = await apiConnection.UpdateAlumno(alumno.Id, alumno);
+
+            if (res)
+            {
+                MessageBox.Show("Alumno modificado correctamente",
+                                "Exito",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error al modificar el alumno",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
         }
 
         // Botón de cancelar
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
         // Botón de modificar
@@ -81,7 +98,8 @@ namespace ProjectStore
                 if (ValidarCampos())
                 {
                     ModificarAlumno();
-                    DialogResult = DialogResult.OK;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
             }
         }

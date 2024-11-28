@@ -54,7 +54,9 @@ namespace ProjectStore
             if (profesor.Telefono != txtTelefono.Text) profesor.Telefono = txtTelefono.Text;
             if (profesor.Activo != chkActivo.Checked) profesor.Activo = chkActivo.Checked;
 
-            if (await apiConnection.UpdateProfesor(profesor.Id, profesor))
+            bool res = await apiConnection.UpdateProfesor(profesor.Id, profesor);
+
+            if (res)
             {
                 MessageBox.Show("Profesor modificado correctamente",
                                 "Exito",
@@ -87,7 +89,8 @@ namespace ProjectStore
                 if (ValidarCampos())
                 {
                     ModificarProfesor();
-                    DialogResult = DialogResult.OK;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
             }
         }
