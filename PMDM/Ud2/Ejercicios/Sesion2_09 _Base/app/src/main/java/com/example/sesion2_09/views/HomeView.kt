@@ -65,7 +65,7 @@ fun ContentHomeView(innerPadding: PaddingValues) {
         verticalArrangement = Arrangement.spacedBy(16.dp),
 
     ) {
-        artists.forEach { it -> ArtistCard(artist = it,{}) }
+        artists.forEach { it -> ArtistCard(artist = it, navController = navC) }
     }
 
 }

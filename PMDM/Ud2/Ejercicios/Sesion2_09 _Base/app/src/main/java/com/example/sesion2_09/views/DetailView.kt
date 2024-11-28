@@ -43,7 +43,7 @@ fun ContenDetailView(navController: NavController, artist: Artist){
         Spacer(modifier = Modifier.height(10.dp))
         Text(text = "Año de inicio: ${artist.foundationYear}")
         Spacer(modifier = Modifier.height(30.dp))
-        Text(text = "Biografía:")
+        Text(text = "${artist.comments}")
         MainButton(name = "Return Home")
         {
             navController.popBackStack()
