@@ -184,6 +184,7 @@
             dtpFechaPres.Name = "dtpFechaPres";
             dtpFechaPres.Size = new Size(200, 23);
             dtpFechaPres.TabIndex = 146;
+            dtpFechaPres.Value = new DateTime(2024, 11, 9, 0, 0, 0, 0);
             // 
             // txtLogo
             // 

@@ -10,13 +10,20 @@ namespace ProjectStore
     {
         // Expresiones regulares y constantes reutilizables
         private const int MinNombreLength = 1;
+        private readonly APIConnection apiConnection = new APIConnection();
 
         public AddProyecto()
         {
             InitializeComponent();
             cargaComboCiclo();
-            cargaComboTipo();
             cargaComboProfesor();
+            cargaComboTipo();
+        }
+
+        private void cargaComboTipo()
+        {
+            cmbTipo.Items.Add(Tipo.Final);
+            cmbTipo.Items.Add(Tipo.Intermodular);
         }
 
         // Carga los ciclos disponibles en el combo de ciclos
@@ -24,16 +31,7 @@ namespace ProjectStore
         {
             foreach (Ciclo ciclo in Principal.ciclos)
             {
-                cmbCiclo.Items.Add(ciclo.Nombre);
-            }
-        }
-
-        // Carga los tipos de proyecto disponibles en el combo
-        private void cargaComboTipo()
-        {
-            foreach (Tipo tipo in Enum.GetValues(typeof(Tipo)))
-            {
-                cmbTipo.Items.Add(tipo);
+                cmbCiclo.Items.Add(ciclo.Codigo);
             }
         }
 
@@ -42,7 +40,7 @@ namespace ProjectStore
         {
             foreach (Profesor profesor in Principal.profesores)
             {
-                cmbTutor.Items.Add(profesor.Nombre);
+                cmbTutor.Items.Add(profesor.Nombre + " " + profesor.Apellidos);
             }
         }
 
@@ -84,7 +82,7 @@ namespace ProjectStore
         }
 
         // Guarda los datos del proyecto y lo añade a la lista
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             // Validamos si todos los campos requeridos están completos
             if (!ValidarCamposRequeridos()) return;
@@ -95,7 +93,7 @@ namespace ProjectStore
             Proyecto p = new Proyecto
             {
                 Nombre = txtNombre.Text,
-                Tipo = (Tipo) cmbTipo.SelectedItem,
+                Tipo = cmbTipo.SelectedText.ToString() == Tipo.Final.ToString() ? "fin de ciclo" : "intermodular",
                 Resumen = txtResumen.Text,
                 AnioAcademico = (int)nudAnioAcademico.Value,
                 FechaPresentacion = dtpFechaPres.Value,
@@ -108,15 +106,15 @@ namespace ProjectStore
             };
 
             // Cerrar formulario con éxito
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            await apiConnection.PostProyecto(p);
+
+            this.Dispose();
         }
 
         // Cierra el formulario sin guardar
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            this.Dispose();
         }
     }
 }

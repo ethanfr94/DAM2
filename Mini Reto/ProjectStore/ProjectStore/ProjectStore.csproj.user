@@ -25,7 +25,7 @@
     <Compile Update="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ProyectoIndividual.cs">
+    <Compile Update="VerProyecto.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

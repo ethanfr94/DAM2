@@ -26,13 +26,13 @@ namespace ProjectStore
             txtResumen.Text = proyecto.Resumen;
             int anno = int.TryParse(nudAnioAcademico.Value.ToString(), out anno) ? anno : 0;
             nudAnioAcademico.Value = anno;
-            //dtpFechaPres.Value = proyecto.FechaPresentacion;
+            dtpFechaPres.Value = proyecto.FechaPresentacion.Value;
             txtLogo.Text = proyecto.Logo;
             txtMemoria.Text = proyecto.Memoria;
             txtArchivos.Text = proyecto.Archivos;
             txtComentarios.Text = proyecto.Comentarios;
-            cmbCiclo.Text = proyecto.Ciclo.ToString();
-            cmbTutor.Text = proyecto.Tutor.ToString();
+            cmbCiclo.Text = proyecto.Ciclo.Nombre;
+            cmbTutor.Text = proyecto.Tutor.Nombre;
         }
 
         // Validar los campos requeridos antes de modificar
@@ -61,10 +61,10 @@ namespace ProjectStore
             if (proyecto.Comentarios != txtComentarios.Text)
                 proyecto.Comentarios = txtComentarios.Text;
 
-            if (proyecto.Tutor.ToString() != cmbTutor.Text)
+            if (proyecto.Tutor.Nombre != cmbTutor.Text)
                 proyecto.Tutor = Principal.profesores[cmbTutor.SelectedIndex];
 
-           bool res = await apiConnection.UpdateProyecto(proyecto.Id, proyecto);
+           bool res = await apiConnection.UpdateProyecto(proyecto);
             if (res)
             {
                 MessageBox.Show("Proyecto modificado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -86,7 +86,7 @@ namespace ProjectStore
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            this.Dispose();
         }
 
         // Botón de modificar
@@ -94,12 +94,12 @@ namespace ProjectStore
         {
             if (ConfirmarModificacion())
             {
-                if (ValidarCampos())
-                {
+                //if (ValidarCampos())
+               // {
                     ModificarProyecto();
                     this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
+                    this.Dispose();
+                //}
             }
         }
     }

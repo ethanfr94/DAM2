@@ -59,7 +59,7 @@ namespace ProjectStore
             if (alumno.Telefono != txtTelefono.Text) alumno.Telefono = txtTelefono.Text;
             if (alumno.Activo != chkActivo.Checked) alumno.Activo = chkActivo.Checked;
 
-            bool res = await apiConnection.UpdateAlumno(alumno.Id, alumno);
+            bool res = await apiConnection.UpdateAlumno(alumno);
 
             if (res)
             {
@@ -81,7 +81,7 @@ namespace ProjectStore
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            this.Dispose();
         }
 
         // Botón de modificar
@@ -99,7 +99,7 @@ namespace ProjectStore
                 {
                     ModificarAlumno();
                     this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    this.Dispose();
                 }
             }
         }

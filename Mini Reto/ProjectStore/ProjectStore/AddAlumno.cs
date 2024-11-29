@@ -142,14 +142,14 @@ namespace ProjectStore
             }
 
             this.DialogResult = DialogResult.OK;
-            this.Close();
+            this.Dispose();
         }
 
         // Cierra el formulario sin guardar
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            this.Dispose();
         }
     }
 }

@@ -158,9 +158,9 @@ namespace ProjectStore
 
     public class Proyecto
     {
-        private string id;
+        private int id;
         private string nombre;
-        private Tipo tipo;
+        private string tipo;
         private string resumen;
         private int? anioAcademico;
         private DateTime? fechaPresentacion;
@@ -171,22 +171,22 @@ namespace ProjectStore
         private Ciclo ciclo;
         private Profesor? tutor;
 
-        [JsonProperty("id")]
-        public string Id { get => id; set => id = value; }
+        [JsonProperty("idProyecto")]
+        public int Id { get => id; set => id = value; }
 
         [JsonProperty("nombre")]
         public string Nombre { get => nombre; set => nombre = value; }
 
         [JsonProperty("tipo")]
-        public Tipo Tipo { get => tipo; set => tipo = value; }
+        public string Tipo { get => tipo; set => tipo = value; }
 
         [JsonProperty("resumen")]
         public string Resumen { get => resumen; set => resumen = value; }
 
-        [JsonProperty("anio_academico")]
+        [JsonProperty("annoAcad")]
         public int? AnioAcademico { get => anioAcademico; set => anioAcademico = value; }
 
-        [JsonProperty("fecha_presentacion")]
+        [JsonProperty("fechaPres")]
         public DateTime? FechaPresentacion { get => fechaPresentacion; set => fechaPresentacion = value; }
 
         [JsonProperty("logo")]
@@ -206,5 +206,58 @@ namespace ProjectStore
 
         [JsonProperty("tutor")]
         public Profesor? Tutor { get => tutor; set => tutor = value; }
+    }
+
+    public class Realizan
+    {
+        private int id;
+        private int calificacion;
+        private string idAlumno;
+        private int idProyecto;
+        private string comentario;
+
+        [JsonProperty("id")]
+        public int Id { get => id; set => id = value; }
+
+        [JsonProperty("calificacion")]
+        public int Calificacion { get => calificacion; set => calificacion = value; }
+
+        [JsonProperty("alumno")]
+        public string IdAlumno { get => idAlumno; set => idAlumno = value; }
+
+        [JsonProperty("proyecto")]
+        public int IdProyecto { get => idProyecto; set => idProyecto = value; }
+
+        [JsonProperty("comentario")]
+        public string Comentario { get => comentario; set => comentario = value; }
+    }
+
+    public class Evaluan
+    {
+        private int id;
+        private float calificacion_pers;
+        private string comentario;
+        private int idProyecto;
+        private string idProfesor;
+
+        [JsonProperty("id")]
+        public int Id { get => id; set => id = value; }
+
+        [JsonProperty("calificacion_pers")]
+        public float Calificacion { get => calificacion_pers; set => calificacion_pers = value; }
+
+        [JsonProperty("comentario")]
+        public string Comentario { get => comentario; set => comentario = value; }
+
+        [JsonProperty("proyecto")]
+        public int IdProyecto { get => idProyecto; set => idProyecto = value; }
+
+        [JsonProperty("profesor")]
+        public string IdProfesor { get => idProfesor; set => idProfesor = value; }
+
+
+
+
+
     }
 }

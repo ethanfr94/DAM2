@@ -4,6 +4,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using static System.Net.WebRequestMethods;
 
 namespace ProjectStore
 {
@@ -61,9 +63,9 @@ namespace ProjectStore
         }
 
         // Actualiza un alumno.
-        public async Task<bool> UpdateAlumno(string id, Alumno alumno)
+        public async Task<bool> UpdateAlumno(Alumno alumno)
         {
-            return await UpdateEntity($"http://localhost:4000/actualizarAlumno{id}", alumno);
+            return await UpdateEntity($"http://localhost:4000/alumnos/{alumno}", alumno);
         }
 
         // ===== Métodos de Profesor =====
@@ -129,9 +131,9 @@ namespace ProjectStore
         }
 
         // Actualiza un profesor.
-        public async Task<bool> UpdateProfesor(string id, Profesor profesor)
+        public async Task<bool> UpdateProfesor(Profesor profesor)
         {
-            return await UpdateEntity($"http://localhost:4000/actualizarProfesor{id}", profesor);
+            return await UpdateEntity($"http://localhost:4000/profesores/{profesor}", profesor);
         }
 
         // ===== Métodos de Ciclo =====
@@ -175,7 +177,7 @@ namespace ProjectStore
         // ===== Métodos de Proyecto =====
 
         // Obtiene un proyecto por su ID.
-        public async Task<Proyecto> GetProyectoById(string id)
+        public async Task<Proyecto> GetProyectoById(int id)
         {
             try
             {
@@ -213,13 +215,28 @@ namespace ProjectStore
         // Inserta un nuevo proyecto.
         public async Task<bool> PostProyecto(Proyecto proyecto)
         {
-            return await PostEntity("http://localhost:4000/proyectos", proyecto);
+            var client = new HttpClient();
+            var jsonContent = JsonConvert.SerializeObject(proyecto);
+            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+            try
+            {
+                var response = await client.PostAsync("http://localhost:4000/proyectos", content);
+                response.EnsureSuccessStatusCode(); // Lanza una excepción si el código de respuesta no es exitoso
+                return true;
+            }
+            catch (HttpRequestException e)
+            {
+                // Captura la excepción y maneja el error adecuadamente
+                MessageBox.Show("Error al enviar la solicitud: " + e.Message);
+                return false;
+            }
         }
 
         // Actualiza un proyecto.
-        public async Task<bool> UpdateProyecto(string id, Proyecto proyecto)
+        public async Task<bool> UpdateProyecto(Proyecto proyecto)
         {
-            return await UpdateEntity($"http://localhost:4000/actualizarProyecto{id}", proyecto);
+            return await UpdateEntity($"http://localhost:4000/proyectos/{proyecto}", proyecto);
         }
 
         // ===== Métodos Genéricos =====
@@ -257,6 +274,158 @@ namespace ProjectStore
                 return false;
             }
         }
+
+        public async Task<String> Download(int id_proyecto, string etapa_proyecto)
+        {
+            try
+            {
+                string url = $"http://localhost:4000/proyectos/ficheros?idProyecto={id_proyecto}&tipo={etapa_proyecto}";
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+
+                string responseJson = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<String>(responseJson);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public async Task<bool> Upload(int id_proyecto, string rutaFichero)
+        {
+            try
+            {
+                string jsonData = JsonConvert.SerializeObject(rutaFichero);
+                StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PutAsync($"http://localhost:4000/proyectos/ficheros?idProyecto={id_proyecto}", content);
+                response.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al enviar la solicitud: " + e.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteProyecto(int id)
+        {
+            try
+            {
+                string url = $"http://localhost:4000/proyectos/{id}";
+                HttpResponseMessage response = await client.DeleteAsync(url);
+                response.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteProfesor(string id)
+        {
+            try
+            {
+                string url = $"http://localhost:4000/profesores/{id}";
+                HttpResponseMessage response = await client.DeleteAsync(url);
+                response.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteAlumno(string id)
+        {
+            try
+            {
+                string url = $"http://localhost:4000/alumnos/{id}";
+                HttpResponseMessage response = await client.DeleteAsync(url);
+                response.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<List<Realizan>> GetRealizanId(int idProyecto)
+        {
+            try
+            {
+                string url = $"http://localhost:4000/realizan/proyecto/{idProyecto}";
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+
+                string responseJson = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Realizan>>(responseJson) ?? new List<Realizan>();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<List<String>> GetAutores(int idProyecto)
+        {
+            try
+            {
+                string url = $"http://localhost:4000/realizan/proyecto/{idProyecto}";
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+
+                string responseJson = await response.Content.ReadAsStringAsync();
+                JObject json = JObject.Parse(responseJson);
+                Alumno al = json["alumno"].ToObject<Alumno>();
+                return JsonConvert.DeserializeObject<List<String>>(al.Id) ?? new List<String>();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<List<Evaluan>> GetEvaluanId(int idProyecto)
+        {
+            try
+            {
+                string url = $"http://localhost:4000/realizan/proyecto/{idProyecto}";
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+
+                string responseJson = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Evaluan>>(responseJson) ?? new List<Evaluan>();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<List<String>> GetEvaluadores(int idProyecto)
+        {
+            try
+            {
+                string url = $"http://localhost:4000/realizan/proyecto/{idProyecto}";
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+
+                string responseJson = await response.Content.ReadAsStringAsync();
+                JObject json = JObject.Parse(responseJson);
+                Profesor pr = json["profesor"].ToObject<Profesor>();
+                return JsonConvert.DeserializeObject<List<String>>(pr.Id) ?? new List<String>();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
 
     }
 }

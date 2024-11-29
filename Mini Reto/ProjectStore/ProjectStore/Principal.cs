@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using minireto;
 using ProjectStore.Entities;
 
 namespace ProjectStore
@@ -23,7 +24,15 @@ namespace ProjectStore
 
             profesor = p;
             this.Text = $"{profesor.Nombre} {profesor.Apellidos}";
-            esAdmin(p);
+            //esAdmin(p);
+        }
+
+        private async void Principal_Load(object sender, EventArgs e)
+        {
+            profesores = await apiConnection.GetAllProfesores();
+            alumnos = await apiConnection.GetAllAlumnos();
+            ciclos = await apiConnection.GetAllCiclos();
+            proyectos = await apiConnection.GetAllProyectos();
         }
 
         // Verifica si el profesor tiene permisos de administrador
@@ -37,6 +46,10 @@ namespace ProjectStore
                 modificarAlumnoToolStripMenuItem.Visible = true;
                 modificarProfesorToolStripMenuItem.Visible = true;
                 modificarProyectosToolStripMenuItem.Visible = true;
+                borrarAlumnoToolStripMenuItem.Visible = true;
+                borrarProfesorToolStripMenuItem.Visible = true;
+                borrarProyectoToolStripMenuItem.Visible = true;
+                verProyectoToolStripMenuItem.Visible = true;
             }
         }
 
@@ -79,6 +92,21 @@ namespace ProjectStore
         // Evento para visualizar los profesores
         private async void tsmiVerProfesores_Click(object sender, EventArgs e)
         {
+            if (profesor.Admin)
+            {
+                addProfesorToolStripMenuItem.Visible = true;
+                modificarProfesorToolStripMenuItem.Visible = true;
+                borrarProfesorToolStripMenuItem.Visible = true;
+
+                addAlumnoToolStripMenuItem.Visible = false;
+                modificarAlumnoToolStripMenuItem.Visible = false;
+                borrarAlumnoToolStripMenuItem.Visible = false;
+                addProyectosToolStripMenuItem.Visible = false;
+                modificarProyectosToolStripMenuItem.Visible = false;
+                borrarProyectoToolStripMenuItem.Visible = false;
+                verProyectoToolStripMenuItem.Visible = false;
+            }
+
             ltvListaPrincipal.Items.Clear();
             ltvListaPrincipal.Columns.Clear();
 
@@ -95,13 +123,14 @@ namespace ProjectStore
             ltvListaPrincipal.Columns.Add("Activo", 50);
             ltvListaPrincipal.Columns.Add("Admin", 50);
 
-            profesores = await apiConnection.GetAllProfesores();
+
             cargaProfesores();
         }
 
         // Método para cargar los profesores en el ListView
-        public void cargaProfesores()
+        public async void cargaProfesores()
         {
+            profesores = await apiConnection.GetAllProfesores();
             ltvListaPrincipal.Items.Clear();
 
             foreach (Profesor profesor in profesores)
@@ -127,6 +156,21 @@ namespace ProjectStore
         // Evento para visualizar los alumnos
         private async void tsmiVerAlumnos_Click(object sender, EventArgs e)
         {
+            if (profesor.Admin)
+            {
+                addAlumnoToolStripMenuItem.Visible = true;
+                modificarAlumnoToolStripMenuItem.Visible = true;
+                borrarAlumnoToolStripMenuItem.Visible = true;
+
+                addProfesorToolStripMenuItem.Visible = false;
+                modificarProfesorToolStripMenuItem.Visible = false;
+                borrarProfesorToolStripMenuItem.Visible = false;
+                addProyectosToolStripMenuItem.Visible = false;
+                modificarProyectosToolStripMenuItem.Visible = false;
+                borrarProyectoToolStripMenuItem.Visible = false;
+                verProyectoToolStripMenuItem.Visible = false;
+            }
+
             ltvListaPrincipal.Items.Clear();
             ltvListaPrincipal.Columns.Clear();
 
@@ -141,13 +185,13 @@ namespace ProjectStore
             ltvListaPrincipal.Columns.Add("Fecha de Nacimiento", 100);
             ltvListaPrincipal.Columns.Add("Activo", 50);
 
-            alumnos = await apiConnection.GetAllAlumnos();
             cargaAlumnos();
         }
 
         // Método para cargar los alumnos en el ListView
-        public void cargaAlumnos()
+        public async void cargaAlumnos()
         {
+            alumnos = await apiConnection.GetAllAlumnos();
             ltvListaPrincipal.Items.Clear();
 
             foreach (Alumno alumno in alumnos)
@@ -171,6 +215,26 @@ namespace ProjectStore
         // Evento para visualizar los proyectos
         private async void verProyectosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            verProyectoToolStripMenuItem.Visible = true;
+            
+            if (profesor.Admin)
+            {
+                addProyectosToolStripMenuItem.Visible = true;
+                modificarProyectosToolStripMenuItem.Visible = true;
+                borrarProyectoToolStripMenuItem.Visible = true;
+                
+
+                addProfesorToolStripMenuItem.Visible = false;
+                modificarProfesorToolStripMenuItem.Visible = false;
+                borrarProfesorToolStripMenuItem.Visible = false;
+                addAlumnoToolStripMenuItem.Visible = false;
+                modificarAlumnoToolStripMenuItem.Visible = false;
+                borrarAlumnoToolStripMenuItem.Visible = false;
+            }
+            addProyectosToolStripMenuItem.Visible = true;
+            modificarProyectosToolStripMenuItem.Visible = true;
+            borrarProyectoToolStripMenuItem.Visible = true;
+
             ltvListaPrincipal.Items.Clear();
             ltvListaPrincipal.Columns.Clear();
 
@@ -187,31 +251,40 @@ namespace ProjectStore
             ltvListaPrincipal.Columns.Add("Ciclo", 100);
             ltvListaPrincipal.Columns.Add("Tutor", 50);
 
-            proyectos = await apiConnection.GetAllProyectos();
-
-
             cargaProyectos();
         }
 
-        // Método para cargar los proyectos en el ListView
-        public void cargaProyectos()
+        public async void cargaProyectos()
         {
+            proyectos = await apiConnection.GetAllProyectos();
             ltvListaPrincipal.Items.Clear();
+
             foreach (Proyecto proyecto in proyectos)
             {
-                ListViewItem item = new ListViewItem(proyecto.Id);
+                ListViewItem item = new ListViewItem(proyecto.Id.ToString());
 
                 item.SubItems.Add(proyecto.Nombre);
-                item.SubItems.Add(proyecto.Tipo.ToString());
+                item.SubItems.Add(proyecto.Tipo);
                 item.SubItems.Add(proyecto.Resumen);
-                item.SubItems.Add(proyecto.AnioAcademico.ToString());
-                item.SubItems.Add(proyecto.FechaPresentacion.ToString());
-                item.SubItems.Add(proyecto.Logo);
-                item.SubItems.Add(proyecto.Memoria);
-                item.SubItems.Add(proyecto.Archivos);
-                item.SubItems.Add(proyecto.Comentarios);
-                item.SubItems.Add(proyecto.Ciclo.ToString());
-                item.SubItems.Add(proyecto.Tutor.ToString());
+                item.SubItems.Add(proyecto.AnioAcademico?.ToString() ?? "No Disponible");
+
+                string fechaPresentacion = proyecto.FechaPresentacion?.ToString("dd/MM/yyyy") ?? "Fecha no disponible";
+                item.SubItems.Add(fechaPresentacion);
+
+                string logo = string.IsNullOrEmpty(proyecto.Logo) ? "No Disponible" : proyecto.Logo;
+                item.SubItems.Add(logo);
+
+                string memoria = string.IsNullOrEmpty(proyecto.Memoria) ? "No Disponible" : proyecto.Memoria;
+                item.SubItems.Add(memoria);
+
+                string archivos = string.IsNullOrEmpty(proyecto.Archivos) ? "No Disponible" : proyecto.Archivos;
+                item.SubItems.Add(archivos);
+
+                string comentarios = string.IsNullOrEmpty(proyecto.Comentarios) ? "No Disponible" : proyecto.Comentarios;
+                item.SubItems.Add(comentarios);
+
+                item.SubItems.Add(proyecto.Ciclo.Nombre);
+                item.SubItems.Add(proyecto.Tutor.Id);
 
                 ltvListaPrincipal.Items.Add(item);
             }
@@ -240,11 +313,12 @@ namespace ProjectStore
 
             AddAlumno addAlumno = new AddAlumno();
             addAlumno.ShowDialog();
-            if (addAlumno.DialogResult == DialogResult.OK)
+
+            if (addAlumno.IsDisposed)
             {
-                alumnos = apiConnection.GetAllAlumnos().Result;
                 cargaAlumnos();
             }
+
         }
 
         // Método para abrir formulario de profesor
@@ -252,11 +326,12 @@ namespace ProjectStore
         {
             AddProfesor addProfesor = new AddProfesor();
             addProfesor.ShowDialog();
-            if (addProfesor.DialogResult == DialogResult.OK)
+
+            if (addProfesor.IsDisposed)
             {
-                profesores = apiConnection.GetAllProfesores().Result;
                 cargaProfesores();
             }
+
         }
 
         // Método para abrir formulario de proyecto
@@ -264,11 +339,12 @@ namespace ProjectStore
         {
             AddProyecto addProyecto = new AddProyecto();
             addProyecto.ShowDialog();
-            if (addProyecto.DialogResult == DialogResult.OK)
+
+            if (addProyecto.IsDisposed)
             {
-                proyectos = apiConnection.GetAllProyectos().Result;
                 cargaProyectos();
             }
+
         }
         /*
         // Método genérico para modificar un elemento (Profesor, Alumno o Proyecto)
@@ -299,11 +375,12 @@ namespace ProjectStore
 
                 ModProfesor modProfesor = new ModProfesor(profesor);
                 modProfesor.ShowDialog();
-                if (modProfesor.DialogResult == DialogResult.OK)
+
+                if (modProfesor.IsDisposed)
                 {
-                    profesores = await apiConnection.GetAllProfesores();
                     cargaProfesores();
                 }
+
             }
 
 
@@ -344,11 +421,13 @@ namespace ProjectStore
 
                 ModAlumno modAlumno = new ModAlumno(alumno);
                 modAlumno.ShowDialog();
-                if (modAlumno.DialogResult == DialogResult.OK)
+
+                if (modAlumno.IsDisposed)
                 {
-                    alumnos = await apiConnection.GetAllAlumnos();
                     cargaAlumnos();
                 }
+
+
             }
 
             /*
@@ -384,80 +463,65 @@ namespace ProjectStore
             if (ltvListaPrincipal.SelectedItems.Count > 0)
             {
                 var id = ltvListaPrincipal.SelectedItems[0].SubItems[0].Text;
-                Proyecto proyecto = proyectos.Find(p => p.Id == id);
+                Proyecto proyecto = proyectos.Find(p => p.Id.ToString() == id);
+
+                if(proyecto.Tutor.Id == profesor.Id) modificarProyectosToolStripMenuItem.Visible = true;
 
                 ModProyecto modProyecto = new ModProyecto(proyecto);
                 modProyecto.ShowDialog();
-                if (modProyecto.DialogResult == DialogResult.OK)
+
+                if (modProyecto.IsDisposed)
                 {
-                    proyectos = await apiConnection.GetAllProyectos();
                     cargaProyectos();
                 }
-            }
 
-            /*
-            // Verificar si hay un elemento seleccionado
-            if (ltvListaPrincipal.SelectedItems.Count > 0)
-            {
-                var idSeleccionado = ltvListaPrincipal.SelectedItems[0].SubItems[0].Text;
 
-                await ModificarElementoToolStripMenuItem_Click<Proyecto>(
-                    proyectos,
-                    idSeleccionado,
-                    (Proyecto p) => p.Id == idSeleccionado,
-                    (Proyecto p) => new ModProyecto(p),
-                    async () =>
-                    {
-                        proyectos = await apiConnection.GetAllProyectos();
-                        cargaProyectos();
-                    });
             }
             else
             {
-                MessageBox.Show("Por favor, selecciona un profesor para modificar.",
+                MessageBox.Show("Por favor, selecciona un proyecto para modificar.",
                                 "Atención",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
             }
-            */
         }
-/*
-        // Evento que habilita los botones de modificación al seleccionar un elemento de la lista
-        private void ltvListaPrincipal_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-
-                String id2 = ltvListaPrincipal.SelectedIndexChanged
-                string id = ltvListaPrincipal.SelectedItems[0].Text;
-
-                if (ltvListaPrincipal.SelectedItems.Count > 0)
+        /*
+                // Evento que habilita los botones de modificación al seleccionar un elemento de la lista
+                private void ltvListaPrincipal_SelectedIndexChanged(object sender, EventArgs e)
                 {
-                    if (profesor.Admin)
+                    try
                     {
-                        modificarAlumnoToolStripMenuItem.Enabled = true;
-                        modificarProfesorToolStripMenuItem.Enabled = true;
-                        modificarProyectosToolStripMenuItem.Enabled = true;
-                    }
-                    else
-                    {
-                        Proyecto proyecto = proyectos.Find(p => p.Id == id);
-                        if (proyecto != null && proyecto.Tutor.Id == profesor.Id)
+
+                        String id2 = ltvListaPrincipal.SelectedIndexChanged
+                        string id = ltvListaPrincipal.SelectedItems[0].Text;
+
+                        if (ltvListaPrincipal.SelectedItems.Count > 0)
                         {
-                            modificarProyectosToolStripMenuItem.Enabled = true;
+                            if (profesor.Admin)
+                            {
+                                modificarAlumnoToolStripMenuItem.Enabled = true;
+                                modificarProfesorToolStripMenuItem.Enabled = true;
+                                modificarProyectosToolStripMenuItem.Enabled = true;
+                            }
+                            else
+                            {
+                                Proyecto proyecto = proyectos.Find(p => p.Id == id);
+                                if (proyecto != null && proyecto.Tutor.Id == profesor.Id)
+                                {
+                                    modificarProyectosToolStripMenuItem.Enabled = true;
+                                }
+                            }
                         }
                     }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Error al seleccionar un elemento",
+                                        "Error",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                    }
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error al seleccionar un elemento",
-                                "Error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
-        }
-*/
+        */
         private void ltvListaPrincipal_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             try
@@ -475,7 +539,7 @@ namespace ProjectStore
                     }
                     else
                     {
-                        Proyecto proyecto = proyectos.Find(p => p.Id == id);
+                        Proyecto proyecto = proyectos.Find(p => p.Id.ToString() == id);
                         if (proyecto != null && proyecto.Tutor.Id == profesor.Id)
                         {
                             modificarProyectosToolStripMenuItem.Enabled = true;
@@ -485,9 +549,130 @@ namespace ProjectStore
             }
             catch (Exception)
             {
-                
+
             }
 
+        }
+
+        private async void subirArchivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ltvListaPrincipal.SelectedItems.Count > 0)
+            {
+
+                int id = Convert.ToInt32(ltvListaPrincipal.SelectedItems[0].SubItems[0].Text);
+
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Title = "Selecciona un archivo";
+                ofd.ShowDialog();
+
+                string path = ofd.FileName;
+
+                bool res = await apiConnection.Upload(id, path);
+
+                if (res)
+                {
+                    MessageBox.Show("Archivo subido correctamente",
+                                    "Exito",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al subir el archivo",
+                                    "Error",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+
+                }
+
+            }
+
+        }
+
+        private async void borrarProyectoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(ltvListaPrincipal.SelectedItems[0].SubItems[0].Text);
+
+            bool res = await apiConnection.DeleteProyecto(id);
+            if (res)
+            {
+                MessageBox.Show("Proyecto eliminado correctamente",
+                                "Exito",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                cargaProyectos();
+            }
+            else
+            {
+                MessageBox.Show("Error al eliminar el proyecto",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
+        private async void borrarAlumnoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string id = ltvListaPrincipal.SelectedItems[0].SubItems[0].Text;
+
+            bool res = await apiConnection.DeleteAlumno(id);
+            if (res)
+            {
+                MessageBox.Show("Alumno eliminado correctamente",
+                                "Exito",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                cargaProyectos();
+            }
+            else
+            {
+                MessageBox.Show("Error al eliminar el alumno",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
+        private async void borrarProfesorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string id = ltvListaPrincipal.SelectedItems[0].SubItems[0].Text;
+
+            bool res = await apiConnection.DeleteProfesor(id);
+            if (res)
+            {
+                MessageBox.Show("Profesor eliminado correctamente",
+                                "Exito",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                cargaProyectos();
+            }
+            else
+            {
+                MessageBox.Show("Error al eliminar el profesor",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void verProyectoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ltvListaPrincipal.SelectedItems.Count > 0)
+            {
+                int id = Convert.ToInt32(ltvListaPrincipal.SelectedItems[0].SubItems[0].Text);
+                
+                VerProyecto verProyecto = new VerProyecto(id);
+                verProyecto.ShowDialog();
+                
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un proyecto para ver.",
+                                "Atención",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+            }
         }
     }
 }

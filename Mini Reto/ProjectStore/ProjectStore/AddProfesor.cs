@@ -127,14 +127,14 @@ namespace ProjectStore
                 MessageBox.Show("Error al añadir el profesor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.DialogResult = DialogResult.OK;
-            this.Close();
+            this.Dispose();
         }
 
         // Cierra el formulario sin guardar
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            this.Dispose();
         }
     }
 }
