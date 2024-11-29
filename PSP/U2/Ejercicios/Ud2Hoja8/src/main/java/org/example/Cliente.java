@@ -2,55 +2,95 @@ package org.example;
 
 public class Cliente extends Thread{
 
-    public int copa;
-    private Barra barra;
+    private int id;
+    private Fiesta fiesta;
+    private int turno;
 
-    public Cliente() {
-        this.copa = 0;
+    public Cliente(Fiesta fiesta){
+        this.fiesta = fiesta;
     }
 
-    public synchronized void entrar(Fiesta fiesta, Barra bar) {
-        try {
-            sleep(75);
-            if (fiesta.cola1 > fiesta.cola2) {
-                fiesta.cola2++;
-                barra = bar;
-            } else if (fiesta.cola2 < fiesta.cola1) {
-                fiesta.cola1++;
-            } else {
-                fiesta.cola1++;
+    public void run(){
+        try{
+            while(true){
+                elige();
+                switch (id){
+                    case 1->{
+                        if(turno > fiesta.getColaIzq()){
+                            wait();
+                        }
+                        fiesta.recoger(id);
+                    }
+                    case 2->{
+                        if(turno > fiesta.getColaDcha()){
+                            wait();
+                        }
+                        fiesta.recoger(id);
+                    }
+                }
+                notify();
+                bebe();
             }
-        }catch (InterruptedException e) {
+        }
+        catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    public synchronized void beber(){
+    public void elige(){
+        if(fiesta.getColaIzq() < fiesta.getColaDcha()){
+
+            this.id = 1;
+            fiesta.setColaIzq();
+            turno = fiesta.getColaIzq();
+
+        }else if(fiesta.getColaIzq() > fiesta.getColaDcha()){
+
+            this.id = 2;
+            fiesta.setColaDcha();
+            turno = fiesta.getColaDcha();
+
+        }else{
+
+            this.id = (int) (Math.random() * 2) + 1;
+
+            if (id == 1){
+                fiesta.setColaIzq();
+                turno = fiesta.getColaIzq();
+            }
+            else{
+                fiesta.setColaDcha();
+                turno = fiesta.getColaDcha();
+
+            }
+        }
+    }
+
+    public void bebe(){
         try {
-            int n = (int) (Math.random() * 601);
+
+            int n = (int) (Math.random() * 600) + 1;
             sleep(n);
-            this.copa++;
-        }catch (InterruptedException e) {
+
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    public synchronized void dejarCola(Fiesta fiesta) {
-        try {
-            sleep(5);
-            if (fiesta.cola1 > fiesta.cola2) {
-                fiesta.cola1--;
-            } else if (fiesta.cola2 < fiesta.cola1) {
-                fiesta.cola2--;
-            } else {
-                fiesta.cola1--;
-            }
-        }catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public long getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public Fiesta getFiesta() {
+        return fiesta;
+    }
 
-
+    public void setFiesta(Fiesta fiesta) {
+        this.fiesta = fiesta;
+    }
 }

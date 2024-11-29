@@ -7,12 +7,52 @@ import static java.lang.Thread.sleep;
 
 public class Fiesta {
 
-    public int cola1;
-    public int cola2;
+    private int colaIzq;
+    private int colaDcha;
+    private int bebidas;
 
-    public Barra barra1;
-    public Barra barra2;
+    public Fiesta(){
+        colaIzq = 0;
+        colaDcha = 0;
+        bebidas = 0;
+    }
+
+   public synchronized void servir(int id){
+       try {
+           wait();
+           sleep(100);
+           bebidas++;
+           notify();
+
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       }
+   }
+
+   public synchronized void recoger(int id) {
+       try{
+              wait();
+
+              notify();
+       } catch (InterruptedException e) {
+              e.printStackTrace();
+       }
+   }
+
+    public int getColaIzq() {
+        return colaIzq;
+    }
 
 
+    public int getColaDcha() {
+        return colaDcha;
+    }
 
+    public void setColaIzq() {
+        this.colaIzq++;
+    }
+
+    public void setColaDcha() {
+        this.colaDcha++;
+    }
 }

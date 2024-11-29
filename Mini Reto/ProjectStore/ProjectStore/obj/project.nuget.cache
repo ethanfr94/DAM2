@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/hxe2V1ZVi8=",
+  "dgSpecHash": "25lnp3D4z4k=",
   "success": true,
-  "projectFilePath": "C:\\Users\\usuario\\Desktop\\Mini_Reto_DI\\ProjectStore\\ProjectStore\\ProjectStore.csproj",
+  "projectFilePath": "D:\\Usuarios\\dam2\\Desktop\\Mini_Reto_DI\\ProjectStore\\ProjectStore\\ProjectStore.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\usuario\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "D:\\Usuarios\\dam2\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

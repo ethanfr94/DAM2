@@ -1,31 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="AddAlumno.cs">
+    <Compile Update="Vistas\AddAlumno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="AddProfesor.cs">
+    <Compile Update="Vistas\AddProfesor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="AddProyecto.cs">
+    <Compile Update="Vistas\AddProyecto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Login.cs">
+    <Compile Update="Vistas\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ModAlumno.cs">
+    <Compile Update="Vistas\ModAlumno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ModProfesor.cs">
+    <Compile Update="Vistas\ModProfesor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ModProyecto.cs">
+    <Compile Update="Vistas\ModProyecto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Principal.cs">
+    <Compile Update="Vistas\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="VerProyecto.cs">
+    <Compile Update="Vistas\VerProyecto.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

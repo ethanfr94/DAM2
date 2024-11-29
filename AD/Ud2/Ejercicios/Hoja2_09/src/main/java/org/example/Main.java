@@ -7,6 +7,7 @@ import jakarta.persistence.TypedQuery;
 import org.example.modelo.Grupo;
 import org.example.modelo.Usuario;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -52,7 +53,7 @@ public class Main {
                 case 3->{
                     System.out.println("Usuarios nacidos a partir de 1999");
                     TypedQuery <Usuario> query = em.createQuery("select u from Usuario u where u.fechanac >= :fecha", Usuario.class);
-                    query.setParameter("fecha", java.time.LocalDate.of(1999, 1, 1));
+                    query.setParameter("fecha", LocalDate.of(1999, 1, 1));
                     List<Usuario> usuarios = query.getResultList();
                     for(Usuario u : usuarios) {
                         System.out.println(u.getNombre());

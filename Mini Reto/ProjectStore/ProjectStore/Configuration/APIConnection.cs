@@ -353,11 +353,13 @@ namespace ProjectStore
             }
         }
 
-        public async Task<List<Realizan>> GetRealizanId(int idProyecto)
+       
+
+        public async Task<List<Realizan>> GetRealizan()
         {
             try
             {
-                string url = $"http://localhost:4000/realizan/proyecto/{idProyecto}";
+                string url = "http://localhost:4000/realizan";
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
 
@@ -370,30 +372,11 @@ namespace ProjectStore
             }
         }
 
-        public async Task<List<String>> GetAutores(int idProyecto)
+        public async Task<List<Evaluan>> GetEvaluan()
         {
             try
             {
-                string url = $"http://localhost:4000/realizan/proyecto/{idProyecto}";
-                HttpResponseMessage response = await client.GetAsync(url);
-                response.EnsureSuccessStatusCode();
-
-                string responseJson = await response.Content.ReadAsStringAsync();
-                JObject json = JObject.Parse(responseJson);
-                Alumno al = json["alumno"].ToObject<Alumno>();
-                return JsonConvert.DeserializeObject<List<String>>(al.Id) ?? new List<String>();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        public async Task<List<Evaluan>> GetEvaluanId(int idProyecto)
-        {
-            try
-            {
-                string url = $"http://localhost:4000/realizan/proyecto/{idProyecto}";
+                string url = "http://localhost:4000/realizan";
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
 
@@ -405,27 +388,6 @@ namespace ProjectStore
                 return null;
             }
         }
-
-        public async Task<List<String>> GetEvaluadores(int idProyecto)
-        {
-            try
-            {
-                string url = $"http://localhost:4000/realizan/proyecto/{idProyecto}";
-                HttpResponseMessage response = await client.GetAsync(url);
-                response.EnsureSuccessStatusCode();
-
-                string responseJson = await response.Content.ReadAsStringAsync();
-                JObject json = JObject.Parse(responseJson);
-                Profesor pr = json["profesor"].ToObject<Profesor>();
-                return JsonConvert.DeserializeObject<List<String>>(pr.Id) ?? new List<String>();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-
 
     }
 }
