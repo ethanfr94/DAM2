@@ -18,13 +18,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.sesion2_09.components.ArtistCard
 import com.example.sesion2_09.data.artists
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeView(navController: NavController){
+fun HomeView(navController: NavHostController){
     Scaffold(
         topBar = {
             TopAppBar(
@@ -38,9 +39,7 @@ fun HomeView(navController: NavController){
             )
         },
 
-    ) { innerPadding -> ContentHomeView(innerPadding)
-
-    }
+    ) { ContentHomeView(navController) }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -57,15 +56,15 @@ fun ContentTopBar() {
 }
 
 @Composable
-fun ContentHomeView(innerPadding: PaddingValues) {
+fun ContentHomeView(navController: NavHostController) {
     Column(
         modifier = Modifier
-            .padding(innerPadding)
-            .verticalScroll(rememberScrollState()),
+            .verticalScroll(rememberScrollState())
+            .padding(top = 75.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
 
     ) {
-        artists.forEach { it -> ArtistCard(artist = it, navController = navC) }
+        artists.forEach { it -> ArtistCard(artist = it, navController = navController) }
     }
 
 }

@@ -9,7 +9,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "grupos")
-@NamedQuery(name = "Grupo.antesDe", query = "SELECT g FROM Grupo g WHERE g.localidad = :localidad AND g.fechaEstreno < :year")
+@NamedQueries(
+        {@NamedQuery(name = "Grupo.antesDe", query = "SELECT g FROM Grupo g WHERE g.localidad = :localidad AND g.fechaEstreno < :year"),
+        @NamedQuery(name = "Grupo.masCanciones", query = "SELECT g FROM Grupo g WHERE SIZE(g.canciones) > :n")}
+)
 public class Grupo {
     @Id
     @Column(name = "codgrupo", nullable = false)

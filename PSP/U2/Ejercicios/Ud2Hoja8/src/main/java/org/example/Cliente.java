@@ -2,95 +2,45 @@ package org.example;
 
 public class Cliente extends Thread{
 
-    private int id;
+    // Número de copas que puede tomar un cliente
+    private static int COPAS = 5;
+    // Fiesta a la que asiste el cliente
     private Fiesta fiesta;
-    private int turno;
+    // Número del cliente
+    private int numero;
 
-    public Cliente(Fiesta fiesta){
+    public Cliente( Fiesta fiesta, int numero)
+    {
         this.fiesta = fiesta;
+        this.numero = numero;
     }
 
-    public void run(){
-        try{
-            while(true){
-                elige();
-                switch (id){
-                    case 1->{
-                        if(turno > fiesta.getColaIzq()){
-                            wait();
-                        }
-                        fiesta.recoger(id);
-                    }
-                    case 2->{
-                        if(turno > fiesta.getColaDcha()){
-                            wait();
-                        }
-                        fiesta.recoger(id);
-                    }
+    public void run()
+    {
+        try
+        {
+            // El cliente pide 5 copas
+            for(int x = 0; x < COPAS; x++)
+            {
+                // El cliente pide una copa en la barra que menos cola tenga y espera a que le sirvan la copa para beberla y bailar un rato
+                System.out.println("--------En la cola izquierda hay: "+fiesta.cola_barra_izq()+ " en la cola derecha hay: "+fiesta.cola_barra_der());
+                if(fiesta.cola_barra_izq() < fiesta.cola_barra_der())
+                {
+                    fiesta.pedir_izq(numero);
+                    fiesta.beber_izq(numero);
                 }
-                notify();
-                bebe();
-            }
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void elige(){
-        if(fiesta.getColaIzq() < fiesta.getColaDcha()){
-
-            this.id = 1;
-            fiesta.setColaIzq();
-            turno = fiesta.getColaIzq();
-
-        }else if(fiesta.getColaIzq() > fiesta.getColaDcha()){
-
-            this.id = 2;
-            fiesta.setColaDcha();
-            turno = fiesta.getColaDcha();
-
-        }else{
-
-            this.id = (int) (Math.random() * 2) + 1;
-
-            if (id == 1){
-                fiesta.setColaIzq();
-                turno = fiesta.getColaIzq();
-            }
-            else{
-                fiesta.setColaDcha();
-                turno = fiesta.getColaDcha();
+                else
+                {
+                    fiesta.pedir_der(numero);
+                    fiesta.beber_der(numero);
+                }
+                System.out.println("--------El cliente " + numero + " se pone a bailar.-");
+                Thread.sleep((int)(Math.random() * 600) );
 
             }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-    }
-
-    public void bebe(){
-        try {
-
-            int n = (int) (Math.random() * 600) + 1;
-            sleep(n);
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public long getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Fiesta getFiesta() {
-        return fiesta;
-    }
-
-    public void setFiesta(Fiesta fiesta) {
-        this.fiesta = fiesta;
     }
 }

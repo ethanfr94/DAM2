@@ -2,6 +2,23 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
+        Fiesta fiesta = new Fiesta();
+        Cliente[] clientes = new Cliente[50];
+        for (int i = 0; i < 50; i++) {
+            try{
+                Thread.sleep(100);
+                clientes[i] = new Cliente(fiesta, i);
+                clientes[i].start();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        Barra barra_izq = new Barra(fiesta, 0);
+        Barra barra_der = new Barra(fiesta, 1);
+        barra_izq.start();
+        barra_der.start();
+
+
 
     }
 }

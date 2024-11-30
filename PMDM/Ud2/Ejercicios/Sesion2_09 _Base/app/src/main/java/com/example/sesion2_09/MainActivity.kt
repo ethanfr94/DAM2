@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.example.sesion2_09.Navigation.NavManager
 import com.example.sesion2_09.ui.theme.Sesion2_09Theme
 import com.example.sesion2_09.views.HomeView
 
@@ -19,17 +21,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Sesion2_09Theme {
-                HomeView()
+                val navController = rememberNavController()
+                NavManager(navController)
             }
         }
     }
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Sesion2_09Theme {
-        HomeView()
-    }
-}

@@ -12,9 +12,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,6 +35,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
@@ -39,7 +45,7 @@ import com.example.sesion2_09.model.Artist
 //Para componer ArtistCard recibe un objeto artista y una lambda
 // con lo que se va a realizar cuando se pulse en Ver
 @Composable
-fun ArtistCard(navController: NavController, artist: Artist, onClick: () -> Unit) {
+fun ArtistCard(artist: Artist, navController: NavHostController ) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
@@ -69,7 +75,8 @@ fun ArtistCard(navController: NavController, artist: Artist, onClick: () -> Unit
             Spacer(modifier = Modifier.width(16.dp))
             // Información del artista
             InfoArtist(artist, modifier=Modifier.weight(0.75f))
-            BotonCard(artist,modifier=Modifier.weight(0.25f),onClick)
+            val id = artist.id
+            BotonCard("ver",modifier=Modifier.weight(0.25f),id,navController)
 
 
 
@@ -78,16 +85,18 @@ fun ArtistCard(navController: NavController, artist: Artist, onClick: () -> Unit
 }
 
 @Composable
-fun BotonCard(artist: Artist, modifier: Modifier, onClick: () -> Unit) {
+fun BotonCard(texto: String,
+              modifier: Modifier,
+              artistId: Int,
+              navController: NavHostController) {
     // Botón "Ver"
-    var context = LocalContext.current
     Text(
         textAlign = TextAlign.Right ,
-        text = "Ver",
+        text = texto,
         color = Color.Blue,
         fontSize = 18.sp,
         fontStyle = FontStyle.Italic,
-        modifier=modifier.clickable {  }
+        modifier=modifier.clickable { navController.navigate("DetailView/$artistId") }
             .padding(horizontal = 8.dp)
 
     )
@@ -128,4 +137,15 @@ fun ImagenArtistCard(url: String?, desc: String){
         loading = placeholder(R.drawable.loading),
         failure = placeholder(R.drawable.error)
     )
+}
+
+@Composable
+fun RetornoIconButton(onClick:()->Unit){
+    IconButton(onClick = onClick) {
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onPrimary
+        )
+    }
 }
