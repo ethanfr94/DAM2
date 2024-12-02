@@ -17,3 +17,6 @@ build_property.RootNamespace = Ud2Hoja14
 build_property.ProjectDir = C:\Users\usuario\Desktop\DAM\DI\U2\Ejercicios\Ud2Hoja14\Ud2Hoja14\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 

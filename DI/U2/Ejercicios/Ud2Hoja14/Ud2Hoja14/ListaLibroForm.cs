@@ -10,11 +10,10 @@ using System.Windows.Forms;
 
 namespace Ud2Hoja14
 {
+    // funciona correctamente 
     public partial class ListaLibroForm : Form
     {
-
         public static List<Libro> libros = new List<Libro>();
-
         public ListaLibroForm()
         {
             InitializeComponent();
@@ -70,9 +69,9 @@ namespace Ud2Hoja14
                 if (libro != null)
                 {
                     ListViewItem item = new ListViewItem(libro.Titulo);
-                    item.SubItems.Add(libro.Autor);
                     item.SubItems.Add(libro.Anio.ToString());
-                    item.Tag = libro;
+                    item.SubItems.Add(libro.Autor);
+                    item.Tag = libro;// item.tag hace referencia al objeto libro que se muestra en la fila para que al seleccionar una fila se pueda acceder a la información del libro                    
                     listView1.Items.Add(item);
                 }
             }
@@ -86,6 +85,5 @@ namespace Ud2Hoja14
             menu.Items[1].Enabled = itemSelected;  // Ver
             menu.Items[2].Enabled = itemSelected;  // Borrar
         }
-
     }
 }

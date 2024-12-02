@@ -31,18 +31,18 @@
             menuStrip1 = new MenuStrip();
             tsmiAdd = new ToolStripMenuItem();
             tsmiVer = new ToolStripMenuItem();
-            tsmiEdit = new ToolStripMenuItem();
             tsmiBuscar = new ToolStripMenuItem();
+            tsmiEdit = new ToolStripMenuItem();
             tsmiBorrar = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { tsmiAdd, tsmiVer, tsmiEdit, tsmiBuscar, tsmiBorrar });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { tsmiAdd, tsmiVer, tsmiBuscar, tsmiEdit, tsmiBorrar });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(481, 24);
+            menuStrip1.Size = new Size(788, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -60,19 +60,19 @@
             tsmiVer.Text = "Ver";
             tsmiVer.Click += tsmiVer_Click;
             // 
-            // tsmiEdit
-            // 
-            tsmiEdit.Name = "tsmiEdit";
-            tsmiEdit.Size = new Size(49, 20);
-            tsmiEdit.Text = "Editar";
-            tsmiEdit.Click += tsmiEdit_Click;
-            // 
             // tsmiBuscar
             // 
             tsmiBuscar.Name = "tsmiBuscar";
             tsmiBuscar.Size = new Size(54, 20);
             tsmiBuscar.Text = "Buscar";
             tsmiBuscar.Click += tsmiBuscar_Click;
+            // 
+            // tsmiEdit
+            // 
+            tsmiEdit.Name = "tsmiEdit";
+            tsmiEdit.Size = new Size(49, 20);
+            tsmiEdit.Text = "Editar";
+            tsmiEdit.Click += tsmiEdit_Click;
             // 
             // tsmiBorrar
             // 
@@ -85,7 +85,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(481, 267);
+            ClientSize = new Size(788, 464);
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;

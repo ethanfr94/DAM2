@@ -12,9 +12,11 @@ namespace Ud2Hoja15
 {
     public partial class AgregarEmpleado : Form
     {
+        Empleado emp;
         public AgregarEmpleado()
         {
             InitializeComponent();
+            emp = new Empleado();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -24,12 +26,12 @@ namespace Ud2Hoja15
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Empleado emp = new Empleado();
             emp.Nombre = txtNombre.Text;
             emp.Apellidos = txtApellidos.Text;
             emp.edad = int.Parse(txtEdad.Text);
             emp.departamento = txtDept.Text;
             Principal.empleados.Add(emp);
+            this.Close();
         }
     }
 }

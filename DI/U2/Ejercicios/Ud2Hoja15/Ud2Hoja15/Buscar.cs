@@ -12,9 +12,8 @@ namespace Ud2Hoja15
 {
     public partial class Buscar : Form
     {
-        public String nombre { get; set; }
-        public String departamento { get; set; }
-
+        public int criterio;
+        public string busqueda;
         public Buscar()
         {
             InitializeComponent();
@@ -34,16 +33,35 @@ namespace Ud2Hoja15
             txtNombre.Enabled = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
-            nombre = txtNombre.Text;
-            departamento = txtDepartamento.Text;
-            DialogResult = DialogResult.OK;
+            if (rdoNombre.Checked)
+            {
+                criterio = 0;
+                busqueda = txtNombre.Text;
+                DialogResult = DialogResult.OK;
+            }
+            else if (rdoDept.Checked)
+            {
+                criterio = 1;
+                busqueda = txtDepartamento.Text;
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un criterio de busqueda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.Cancel;
+            }
+            Ver ver = new Ver();
+            ver.cargaBusqueda(criterio, busqueda);
+            ver.MdiParent = Principal.ActiveForm;
+            ver.Show();
+            this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

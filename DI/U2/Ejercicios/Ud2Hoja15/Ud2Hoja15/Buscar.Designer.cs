@@ -32,8 +32,8 @@
             label2 = new Label();
             txtNombre = new TextBox();
             txtDepartamento = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
+            btnBuscar = new Button();
+            btnCancel = new Button();
             rdoNombre = new RadioButton();
             rdoDept = new RadioButton();
             SuspendLayout();
@@ -70,25 +70,25 @@
             txtDepartamento.Size = new Size(200, 23);
             txtDepartamento.TabIndex = 5;
             // 
-            // button1
+            // btnBuscar
             // 
-            button1.Location = new Point(157, 112);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 6;
-            button1.Text = "Buscar";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnBuscar.Location = new Point(157, 112);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(75, 23);
+            btnBuscar.TabIndex = 6;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
-            // button2
+            // btnCancel
             // 
-            button2.Location = new Point(245, 112);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 7;
-            button2.Text = "Cancelar";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnCancel.Location = new Point(245, 112);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 7;
+            btnCancel.Text = "Cancelar";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // rdoNombre
             // 
@@ -121,8 +121,8 @@
             ClientSize = new Size(332, 147);
             Controls.Add(rdoDept);
             Controls.Add(rdoNombre);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnCancel);
+            Controls.Add(btnBuscar);
             Controls.Add(txtDepartamento);
             Controls.Add(txtNombre);
             Controls.Add(label2);
@@ -139,8 +139,8 @@
         private Label label2;
         private TextBox txtNombre;
         private TextBox txtDepartamento;
-        private Button button1;
-        private Button button2;
+        private Button btnBuscar;
+        private Button btnCancel;
         private RadioButton rdoNombre;
         private RadioButton rdoDept;
     }

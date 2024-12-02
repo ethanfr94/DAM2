@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace Ud2Hoja14
 {
+    // no funciona correctamente aunque parece esrtar bien
+    
     public partial class ListaPeliculaForm : Form
     {
         public static List<Pelicula> peliculas = new List<Pelicula>();
@@ -22,7 +24,8 @@ namespace Ud2Hoja14
         {
             Pelicula pelic = new Pelicula();
             PeliculaForm form = new PeliculaForm(pelic, 0);
-            if (form.ShowDialog() == DialogResult.OK)
+            form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
             {
                 refresca();
             }
@@ -52,16 +55,11 @@ namespace Ud2Hoja14
                 PeliculaForm form = new PeliculaForm(pelic, 1); // Crea un formulario de pelicula con la pelicula seleccionada
                 form.ShowDialog();
             }
-
         }
 
-        private void ContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        private void listView1_DoubleClick(object sender, EventArgs e)
         {
-            ContextMenuStrip menu = sender as ContextMenuStrip;
-            bool itemSelected = listView1.SelectedItems.Count > 0; // Comprueba si hay un item seleccionado
-            menu.Items[0].Enabled = !itemSelected; // Crear
-            menu.Items[1].Enabled = itemSelected;  // Ver
-            menu.Items[2].Enabled = itemSelected;  // Borrar
+            verToolStripMenuItem_Click(sender, e);
         }
 
         private void refresca()
@@ -74,15 +72,19 @@ namespace Ud2Hoja14
                     ListViewItem item = new ListViewItem(pelic.Titulo);     //Añadimos el titulo de la pelicula a la lista
                     item.SubItems.Add(pelic.Anio.ToString());//Añadimos el año de la pelicula a la lista
                     item.SubItems.Add(pelic.Genero);    //Añadimos el genero de la pelicula a la lista
-                    item.Tag = pelic; 
+                    item.Tag = pelic;
                     listView1.Items.Add(item);
                 }
             }
         }
 
-        private void listView1_DoubleClick(object sender, EventArgs e)
+        private void ContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            verToolStripMenuItem_Click(sender, e);
+            ContextMenuStrip menu = sender as ContextMenuStrip;
+            bool itemSelected = listView1.SelectedItems.Count > 0; // Comprueba si hay un item seleccionado
+            menu.Items[0].Enabled = !itemSelected; // Crear
+            menu.Items[1].Enabled = itemSelected;  // Ver
+            menu.Items[2].Enabled = itemSelected;  // Borrar
         }
     }
 }

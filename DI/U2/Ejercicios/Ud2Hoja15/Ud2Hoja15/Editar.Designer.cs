@@ -32,7 +32,7 @@
             btnAceptar = new Button();
             txtEdad = new TextBox();
             txtDept = new TextBox();
-            txtApellido = new TextBox();
+            txtApellidos = new TextBox();
             txtNombre = new TextBox();
             label4 = new Label();
             label3 = new Label();
@@ -48,6 +48,7 @@
             btnCancelar.TabIndex = 19;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnAceptar
             // 
@@ -57,6 +58,7 @@
             btnAceptar.TabIndex = 18;
             btnAceptar.Text = "Editar";
             btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // txtEdad
             // 
@@ -72,12 +74,12 @@
             txtDept.Size = new Size(250, 23);
             txtDept.TabIndex = 16;
             // 
-            // txtApellido
+            // txtApellidos
             // 
-            txtApellido.Location = new Point(114, 42);
-            txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(250, 23);
-            txtApellido.TabIndex = 15;
+            txtApellidos.Location = new Point(114, 42);
+            txtApellidos.Name = "txtApellidos";
+            txtApellidos.Size = new Size(250, 23);
+            txtApellidos.TabIndex = 15;
             // 
             // txtNombre
             // 
@@ -131,7 +133,7 @@
             Controls.Add(btnAceptar);
             Controls.Add(txtEdad);
             Controls.Add(txtDept);
-            Controls.Add(txtApellido);
+            Controls.Add(txtApellidos);
             Controls.Add(txtNombre);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -149,7 +151,7 @@
         private Button btnAceptar;
         private TextBox txtEdad;
         private TextBox txtDept;
-        private TextBox txtApellido;
+        private TextBox txtApellidos;
         private TextBox txtNombre;
         private Label label4;
         private Label label3;

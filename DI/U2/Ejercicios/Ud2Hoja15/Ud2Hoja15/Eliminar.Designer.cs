@@ -38,13 +38,16 @@
             // lstEmpleados
             // 
             lstEmpleados.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            lstEmpleados.Dock = DockStyle.Fill;
             lstEmpleados.GridLines = true;
-            lstEmpleados.Location = new Point(12, 12);
+            lstEmpleados.Location = new Point(0, 0);
             lstEmpleados.Name = "lstEmpleados";
-            lstEmpleados.Size = new Size(550, 226);
+            lstEmpleados.Size = new Size(571, 248);
             lstEmpleados.TabIndex = 1;
             lstEmpleados.UseCompatibleStateImageBehavior = false;
             lstEmpleados.View = View.Details;
+            lstEmpleados.ItemSelectionChanged += lstEmpleados_ItemSelectionChanged;
+            lstEmpleados.DoubleClick += lstEmpleados_DoubleClick;
             // 
             // columnHeader1
             // 
