@@ -112,7 +112,7 @@
             btnOk.Name = "btnOk";
             btnOk.Size = new Size(75, 23);
             btnOk.TabIndex = 6;
-            btnOk.Text = "Agregar";
+            btnOk.Text = "Aceptar";
             btnOk.UseVisualStyleBackColor = true;
             btnOk.Click += btnOk_Click;
             // 
