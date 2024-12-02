@@ -37,6 +37,7 @@ namespace Ud2Hoja15
             emp.edad = int.Parse(txtEdad.Text);
             emp.departamento = txtDept.Text;
             Principal.empleados.Add(emp);
+            DialogResult = DialogResult.OK;
         }
     }
 }

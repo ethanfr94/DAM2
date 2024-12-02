@@ -56,7 +56,6 @@ namespace Ud2Hoja14
                 ListaLibroForm.libros.Add(_libro);
                 DialogResult = DialogResult.OK;
             }
-
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

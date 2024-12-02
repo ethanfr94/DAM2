@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnAceptarPelicula = new Button();
+            btnAceptar = new Button();
             btnCancelar = new Button();
             label1 = new Label();
             txtTituloPelicula = new TextBox();
@@ -38,14 +38,15 @@
             label3 = new Label();
             SuspendLayout();
             // 
-            // btnAceptarPelicula
+            // btnAceptar
             // 
-            btnAceptarPelicula.Location = new Point(215, 100);
-            btnAceptarPelicula.Name = "btnAceptarPelicula";
-            btnAceptarPelicula.Size = new Size(75, 23);
-            btnAceptarPelicula.TabIndex = 0;
-            btnAceptarPelicula.Text = "Aceptar";
-            btnAceptarPelicula.UseVisualStyleBackColor = true;
+            btnAceptar.Location = new Point(215, 100);
+            btnAceptar.Name = "btnAceptar";
+            btnAceptar.Size = new Size(75, 23);
+            btnAceptar.TabIndex = 0;
+            btnAceptar.Text = "Aceptar";
+            btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // btnCancelar
             // 
@@ -117,7 +118,7 @@
             Controls.Add(txtTituloPelicula);
             Controls.Add(label1);
             Controls.Add(btnCancelar);
-            Controls.Add(btnAceptarPelicula);
+            Controls.Add(btnAceptar);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "PeliculaForm";
             Text = "Pelicula";
@@ -127,7 +128,7 @@
 
         #endregion
 
-        private Button btnAceptarPelicula;
+        private Button btnAceptar;
         private Button btnCancelar;
         private Label label1;
         private TextBox txtTituloPelicula;

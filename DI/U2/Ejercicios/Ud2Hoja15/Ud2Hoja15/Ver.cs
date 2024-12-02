@@ -39,9 +39,9 @@ namespace Ud2Hoja15
             lstEmpleados.Items.Clear();
             foreach (Empleado emp in Principal.empleados)
             {
-                if(criterio == 0)
+                if (criterio == 0)
                 {
-                    if(emp.Nombre.Contains(busqueda))
+                    if (emp.Nombre.Contains(busqueda))
                     {
                         ListViewItem item = new ListViewItem(emp.Nombre);
                         item.SubItems.Add(emp.Apellidos);
@@ -53,7 +53,7 @@ namespace Ud2Hoja15
                 }
                 else
                 {
-                    if(emp.departamento.Contains(busqueda))
+                    if (emp.departamento.Contains(busqueda))
                     {
                         ListViewItem item = new ListViewItem(emp.Nombre);
                         item.SubItems.Add(emp.Apellidos);
@@ -66,14 +66,49 @@ namespace Ud2Hoja15
             }
         }
 
-        private void lstEmpleados_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void lstEmpleados_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             if (lstEmpleados.SelectedItems.Count < 0)
             {
                 ListViewItem item = lstEmpleados.SelectedItems[0];
-                emp = (Empleado)item.Tag;                
+                emp = (Empleado)item.Tag;
             }
+        }
 
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = lstEmpleados.SelectedItems[0];
+            emp = (Empleado)item.Tag;
+
+            Editar ed = new Editar(emp);            
+            ed.ShowDialog();
+            if (ed.DialogResult == DialogResult.OK)
+            {
+                Principal.empleados.Remove(emp);
+                Principal.empleados.Add(emp);
+                cargaLista();
+            }
+        }
+
+        private void borrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = lstEmpleados.SelectedItems[0];
+            emp = (Empleado)item.Tag;
+
+            DialogResult res = MessageBox.Show("¿Está seguro de que desea eliminar el empleado?", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (res == DialogResult.Yes)
+            {
+                if (Principal.eliminar(emp))
+                {
+                    MessageBox.Show("Empleado eliminado", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargaLista();
+                }
+                else
+                {
+                    MessageBox.Show("No se ha podido eliminar el empleado", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

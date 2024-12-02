@@ -13,7 +13,7 @@ namespace Ud2Hoja15
         {
             InitializeComponent();
             empleados = new List<Empleado>();
-            tsmiEdit.Enabled = false;
+            
         }
 
         private void tsmiAdd_Click(object sender, EventArgs e)
@@ -22,27 +22,16 @@ namespace Ud2Hoja15
             ae.MdiParent = this;
             ae.Show();
         }
-        
-        private void tsmiEdit_Click(object sender, EventArgs e)
-        {
-            Editar ed = new Editar(emp);
-            ed.MdiParent = this;
-            ed.Show();
-            // no deja seleccionar en la lista
-            
-        }
+                
 
         private void tsmiVer_Click(object sender, EventArgs e)
         {
-            tsmiEdit.Enabled = true;
             ver = new Ver();
             ver.MdiParent = this;
             ver.Show();
             if(ver.emp != null)
             {
                 emp = ver.emp;
-                tsmiEdit.Enabled = true;
-                tsmiBorrar.Enabled = true;
             }
         }
 
@@ -53,12 +42,11 @@ namespace Ud2Hoja15
             bs.Show();            
         }
 
-        private void tsmiBorrar_Click(object sender, EventArgs e)
+        
+
+        public static bool eliminar(Empleado emp)
         {
-            Eliminar el = new Eliminar();
-            el.MdiParent = this;
-            el.Show();
-            // no deja seleleccionar el empleado a borrar en la lista
+            return empleados.Remove(emp);
         }
     }
 }

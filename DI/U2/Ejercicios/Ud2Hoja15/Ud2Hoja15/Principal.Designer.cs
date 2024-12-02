@@ -32,14 +32,12 @@
             tsmiAdd = new ToolStripMenuItem();
             tsmiVer = new ToolStripMenuItem();
             tsmiBuscar = new ToolStripMenuItem();
-            tsmiEdit = new ToolStripMenuItem();
-            tsmiBorrar = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { tsmiAdd, tsmiVer, tsmiBuscar, tsmiEdit, tsmiBorrar });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { tsmiAdd, tsmiVer, tsmiBuscar });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(788, 24);
@@ -67,20 +65,6 @@
             tsmiBuscar.Text = "Buscar";
             tsmiBuscar.Click += tsmiBuscar_Click;
             // 
-            // tsmiEdit
-            // 
-            tsmiEdit.Name = "tsmiEdit";
-            tsmiEdit.Size = new Size(49, 20);
-            tsmiEdit.Text = "Editar";
-            tsmiEdit.Click += tsmiEdit_Click;
-            // 
-            // tsmiBorrar
-            // 
-            tsmiBorrar.Name = "tsmiBorrar";
-            tsmiBorrar.Size = new Size(62, 20);
-            tsmiBorrar.Text = "Eliminar";
-            tsmiBorrar.Click += tsmiBorrar_Click;
-            // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -102,8 +86,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem tsmiAdd;
         private ToolStripMenuItem tsmiVer;
-        private ToolStripMenuItem tsmiEdit;
         private ToolStripMenuItem tsmiBuscar;
-        private ToolStripMenuItem tsmiBorrar;
     }
 }
