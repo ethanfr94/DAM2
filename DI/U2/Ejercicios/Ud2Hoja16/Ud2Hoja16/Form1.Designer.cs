@@ -36,6 +36,7 @@
             Column4 = new DataGridViewTextBoxColumn();
             btnAddLibro = new Button();
             btnActualizar = new Button();
+            Eliminar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvBiblio).BeginInit();
             SuspendLayout();
             // 
@@ -46,6 +47,7 @@
             dgvBiblio.Location = new Point(12, 12);
             dgvBiblio.MultiSelect = false;
             dgvBiblio.Name = "dgvBiblio";
+            dgvBiblio.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvBiblio.Size = new Size(541, 157);
             dgvBiblio.TabIndex = 0;
             // 
@@ -94,11 +96,22 @@
             btnActualizar.UseVisualStyleBackColor = true;
             btnActualizar.Click += btnActualizar_Click;
             // 
+            // Eliminar
+            // 
+            Eliminar.Location = new Point(230, 175);
+            Eliminar.Name = "Eliminar";
+            Eliminar.Size = new Size(103, 23);
+            Eliminar.TabIndex = 3;
+            Eliminar.Text = "Eliminar";
+            Eliminar.UseVisualStyleBackColor = true;
+            Eliminar.Click += Eliminar_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(565, 210);
+            Controls.Add(Eliminar);
             Controls.Add(btnActualizar);
             Controls.Add(btnAddLibro);
             Controls.Add(dgvBiblio);
@@ -119,5 +132,6 @@
         private DataGridViewTextBoxColumn Column4;
         private Button btnAddLibro;
         private Button btnActualizar;
+        private Button Eliminar;
     }
 }

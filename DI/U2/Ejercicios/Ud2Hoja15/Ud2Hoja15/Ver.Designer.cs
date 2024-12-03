@@ -28,17 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lstEmpleados = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            editarToolStripMenuItem = new ToolStripMenuItem();
+            borrarToolStripMenuItem = new ToolStripMenuItem();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // lstEmpleados
             // 
             lstEmpleados.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            lstEmpleados.ContextMenuStrip = contextMenuStrip1;
             lstEmpleados.Dock = DockStyle.Fill;
+            lstEmpleados.FullRowSelect = true;
             lstEmpleados.GridLines = true;
             lstEmpleados.Location = new Point(0, 0);
             lstEmpleados.Name = "lstEmpleados";
@@ -67,6 +74,26 @@
             columnHeader4.Text = "Departamento";
             columnHeader4.Width = 150;
             // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { editarToolStripMenuItem, borrarToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(107, 48);
+            // 
+            // editarToolStripMenuItem
+            // 
+            editarToolStripMenuItem.Name = "editarToolStripMenuItem";
+            editarToolStripMenuItem.Size = new Size(106, 22);
+            editarToolStripMenuItem.Text = "Editar";
+            editarToolStripMenuItem.Click += editarToolStripMenuItem_Click;
+            // 
+            // borrarToolStripMenuItem
+            // 
+            borrarToolStripMenuItem.Name = "borrarToolStripMenuItem";
+            borrarToolStripMenuItem.Size = new Size(106, 22);
+            borrarToolStripMenuItem.Text = "Borrar";
+            borrarToolStripMenuItem.Click += borrarToolStripMenuItem_Click;
+            // 
             // Ver
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -75,6 +102,7 @@
             Controls.Add(lstEmpleados);
             Name = "Ver";
             Text = "Empleados";
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -85,5 +113,8 @@
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem editarToolStripMenuItem;
+        private ToolStripMenuItem borrarToolStripMenuItem;
     }
 }

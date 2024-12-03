@@ -1,18 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ejercicios\\Ud2Hoja14\\",
+  "WorkspaceRootPath": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\Ejercicios\\Ud2Hoja14\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4C0A9C1-84D9-42B3-BABB-67E3F4E7D1F6}|Ud2Hoja14\\Ud2Hoja14.csproj|c:\\users\\usuario\\desktop\\dam\\di\\u2\\ejercicios\\ud2hoja14\\ud2hoja14\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4C0A9C1-84D9-42B3-BABB-67E3F4E7D1F6}|Ud2Hoja14\\Ud2Hoja14.csproj|solutionrelative:ud2hoja14\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4C0A9C1-84D9-42B3-BABB-67E3F4E7D1F6}|Ud2Hoja14\\Ud2Hoja14.csproj|c:\\users\\usuario\\desktop\\dam\\di\\u2\\ejercicios\\ud2hoja14\\ud2hoja14\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B4C0A9C1-84D9-42B3-BABB-67E3F4E7D1F6}|Ud2Hoja14\\Ud2Hoja14.csproj|solutionrelative:ud2hoja14\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4C0A9C1-84D9-42B3-BABB-67E3F4E7D1F6}|Ud2Hoja14\\Ud2Hoja14.csproj|c:\\users\\usuario\\desktop\\dam\\di\\u2\\ejercicios\\ud2hoja14\\ud2hoja14\\listalibroform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B4C0A9C1-84D9-42B3-BABB-67E3F4E7D1F6}|Ud2Hoja14\\Ud2Hoja14.csproj|solutionrelative:ud2hoja14\\listalibroform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{B4C0A9C1-84D9-42B3-BABB-67E3F4E7D1F6}|Ud2Hoja14\\Ud2Hoja14.csproj|d:\\usuarios\\dam2\\desktop\\dam\\di\\u2\\ejercicios\\ud2hoja14\\ud2hoja14\\libroform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4C0A9C1-84D9-42B3-BABB-67E3F4E7D1F6}|Ud2Hoja14\\Ud2Hoja14.csproj|solutionrelative:ud2hoja14\\libroform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,39 +27,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ejercicios\\Ud2Hoja14\\Ud2Hoja14\\Form1.cs",
-              "RelativeDocumentMoniker": "Ud2Hoja14\\Form1.cs",
-              "ToolTip": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ejercicios\\Ud2Hoja14\\Ud2Hoja14\\Form1.cs",
-              "RelativeToolTip": "Ud2Hoja14\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "LibroForm.cs",
+              "DocumentMoniker": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\Ejercicios\\Ud2Hoja14\\Ud2Hoja14\\LibroForm.cs",
+              "RelativeDocumentMoniker": "Ud2Hoja14\\LibroForm.cs",
+              "ToolTip": "D:\\Usuarios\\dam2\\Desktop\\DAM\\DI\\U2\\Ejercicios\\Ud2Hoja14\\Ud2Hoja14\\LibroForm.cs",
+              "RelativeToolTip": "Ud2Hoja14\\LibroForm.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAowDkAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T16:09:24.108Z",
+              "WhenOpened": "2024-12-02T14:25:14.905Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ListaLibroForm.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ejercicios\\Ud2Hoja14\\Ud2Hoja14\\ListaLibroForm.cs",
-              "RelativeDocumentMoniker": "Ud2Hoja14\\ListaLibroForm.cs",
-              "ToolTip": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ejercicios\\Ud2Hoja14\\Ud2Hoja14\\ListaLibroForm.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Ud2Hoja14\\ListaLibroForm.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T16:08:39.437Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ejercicios\\Ud2Hoja14\\Ud2Hoja14\\Form1.cs",
-              "RelativeDocumentMoniker": "Ud2Hoja14\\Form1.cs",
-              "ToolTip": "C:\\Users\\usuario\\Desktop\\DAM\\DI\\U2\\Ejercicios\\Ud2Hoja14\\Ud2Hoja14\\Form1.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Ud2Hoja14\\Form1.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T16:08:14.941Z",
-              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }
