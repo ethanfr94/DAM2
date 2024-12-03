@@ -58,9 +58,11 @@ public class Main {
                     c.setId(id);
                     c.setNombre(nombre);
                     System.out.println("Introduce el id del tutor");
+                    // Se busca el profesor con el id introducido en la base de datos y se asigna al curso como tutor si se encuentra
                     Profesor tutor = em.find(Profesor.class, Integer.parseInt(t.nextLine()));
                     do {
                         if (tutor != null) {
+                            // Se asigna el tutor al curso y se añade el curso a la base de datos
                             c.setTutor(tutor);
                         } else {
                             System.out.println("Tutor no encontrado");
@@ -88,14 +90,19 @@ public class Main {
                         c.setNombre(nombre);
                         em.getTransaction().commit();
                     } else {
+                        // Se inicia una transacción para añadir el curso a la base de datos
                         em.getTransaction().begin();
                         Curso curso = new Curso();
+                        // Se asigna el id y el nombre al curso
                         curso.setId(id);
                         curso.setNombre(nombre);
                         System.out.println("Introduce el id del tutor");
+                        // Se busca el profesor con el id introducido en la base de datos y se asigna al curso como tutor si se encuentra
                         Profesor tutor = em.find(Profesor.class, Integer.parseInt(t.nextLine()));
                         do {
                             if (tutor != null) {
+
+                                // Se asigna el tutor al curso y se añade el curso a la base de datos
                                 curso.setTutor(tutor);
                             } else {
                                 System.out.println("Tutor no encontrado");
@@ -114,10 +121,15 @@ public class Main {
                         System.out.println("Curso: " + curso.getNombre()+ " Tutor: " + curso.getTutor().getNombre());
                         System.out.println("Introduce el id del profesor para asignar como tutor");
                         int idProfesor = Integer.parseInt(t.nextLine());
+                        // Se busca el profesor con el id introducido
+                        // a find le pasamos la clase que queremos buscar y el id del objeto que queremos buscar en la base de datos que sera la clave primaria
                         Profesor tutor = em.find(Profesor.class, idProfesor);
                         if (tutor != null) {
+                            // Se inicia una transacción para modificar el tutor del curso
                             em.getTransaction().begin();
+                            // Se asigna el nuevo tutor al curso
                             curso.setTutor(tutor);
+                            // se confirma la transacción
                             em.getTransaction().commit();
                         } else {
                             System.out.println("Profesor no encontrado");

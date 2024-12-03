@@ -13,6 +13,9 @@ public class Departamento {
     private String nombre;
     @Column(length = 50)
     private String localidad;
+    // mappedBy es el nombre del atributo en la clase Empleado que hace referencia a esta clase
+    // OneToMany es la relación de uno a muchos
+    // JoinColumn es la columna que hace referencia a la clave foránea
     @OneToMany
     @JoinColumn(name = "departamento_id")
     private List<Empleado> empleados = new ArrayList<>();

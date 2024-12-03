@@ -10,6 +10,9 @@ import java.util.Objects;
 @Table(name = "empleados_estudios")
 public class EmpleadoEstudio {
 
+    // @ManyToOne y @JoinColumn son necesarios para mapear la relación muchos a uno entre Empleado y EmpleadoEstudio
+    // empleado_id es la clave foránea que referencia a la tabla empleados
+    // insertable = false y updatable = false indican que no se insertará ni actualizará la columna empleado_id
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "empleado_id",insertable = false,updatable = false)

@@ -14,11 +14,16 @@ public class Estudio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    // @NaturalId indica que el campo codEstudio es un identificador natural
     @NaturalId
     @Column(length = 5)
     private String codEstudio;
     @Column(length = 45, nullable = false)
     private String nombre;
+    // @OneToMany indica que la relación es de uno a muchos y mappedBy indica que la relación es bidireccional y que el dueño de la relación es la clase Estudio
+    // cascade = CascadeType.ALL indica que si se elimina un estudio se eliminan todos los empleados asociados a él
+    // orphanRemoval = true indica que si se elimina un empleado se elimina el estudio asociado a él
+
     @OneToMany(mappedBy = "estudio", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmpleadoEstudio> empleados = new ArrayList<>();
 

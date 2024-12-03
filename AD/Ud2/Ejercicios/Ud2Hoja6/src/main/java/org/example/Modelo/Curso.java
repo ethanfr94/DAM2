@@ -12,6 +12,8 @@ public class Curso {
     @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
 
+    // @OneToOne indica que la relación entre Curso y Profesor es de uno a uno
+    // @JoinColumn indica que la columna que hace referencia a la clave primaria de Profesor es tutor_id
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "tutor_id", nullable = false)
     private Profesor tutor;

@@ -10,6 +10,10 @@ import java.util.Objects;
 @Table(name = "empleados_estudios")
 public class EmpleadoEstudio {
 
+    // @Id indica que es una clave primaria
+    // @ManyToOne indica que la relación es de muchos a uno
+    // fetch = FetchType.LAZY indica que la relación se carga de forma diferida es decir que se carga solo cuando se accede a ella
+    // @JoinColumn indica que la columna empleado_id es una clave foránea que referencia a la columna id de la tabla empleados
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "empleado_id",insertable = false,updatable = false)

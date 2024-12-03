@@ -19,8 +19,12 @@ public class Empleado {
     private String oficio;
     @Column(name = "fecha_alta")
     private LocalDate fechaAlta;
+    // @Embedded indica que la clase Sueldo es una clase embebida
     @Embedded
     private Sueldo salario;
+    // @OneToMany indica que la relación es de uno a muchos y mappedBy indica que la relación es bidireccional y que el dueño de la relación es la clase Empleado
+    // cascade = CascadeType.ALL indica que si se elimina un empleado se eliminan todos los estudios asociados a él
+    // orphanRemoval = true indica que si se elimina un estudio se elimina el empleado asociado a él
     @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmpleadoEstudio> estudios = new ArrayList<>();
 

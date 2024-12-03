@@ -18,6 +18,7 @@ public class Estudio {
     private String codEstudio;
     @Column(length = 45, nullable = false)
     private String nombre;
+    // mappedBy indica el nombre del atributo en la clase Empleado que mapea esta relación
     @ManyToMany(mappedBy = "estudios")
     private Set<Empleado> empleados = new HashSet<>();
 

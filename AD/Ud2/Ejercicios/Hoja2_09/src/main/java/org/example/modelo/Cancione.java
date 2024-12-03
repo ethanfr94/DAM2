@@ -14,6 +14,12 @@ public class Cancione {
     @Column(name = "numCancion", nullable = false)
     private Integer id;
 
+    // @ManyToOne sirve para indicar que la clase Cancione tiene una relacion de muchos a uno con la clase Grupo
+    // creara una columna en la tabla canciones llamada grupo que sera una clave foranea que apuntara a la tabla grupos
+    // fetch = FetchType.LAZY indica que la relacion se cargara de forma perezosa
+    // optional = false indica que la relacion es obligatoria
+    // @OnDelete(action = OnDeleteAction.CASCADE) indica que si se borra un grupo se borraran todas las canciones que pertenezcan a ese grupo
+    // @JoinColumn(name = "grupo", nullable = false) indica que la columna que se creara en la tabla canciones se llamara grupo y sera una clave foranea
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "grupo", nullable = false)
@@ -25,6 +31,7 @@ public class Cancione {
     @Column(name = "titulo", nullable = false, length = 40)
     private String titulo;
 
+    // @ColumnDefault("0") indica que el valor por defecto de la columna sera 0
     @ColumnDefault("0")
     @Column(name = "total_votos")
     private Integer totalVotos;

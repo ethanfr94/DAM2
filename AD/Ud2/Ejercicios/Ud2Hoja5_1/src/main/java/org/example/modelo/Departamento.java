@@ -13,6 +13,10 @@ public class Departamento {
     private String nombre;
     @Column(length = 50)
     private String localidad;
+    // @OneToMany(mappedBy = "departamento") indica que la relación es bidireccional y que el propietario de la relación es la clase Empleado
+    // mappedBy = "departamento" indica que la relación es bidireccional y que el propietario de la relación es la clase Empleado
+    // @JoinColumn(name = "departamento_id") indica que la relación es unidireccional y que el propietario de la relación es la clase Departamento
+
     @OneToMany
     @JoinColumn(name = "departamento_id")
     private List<Empleado> empleados = new ArrayList<>();

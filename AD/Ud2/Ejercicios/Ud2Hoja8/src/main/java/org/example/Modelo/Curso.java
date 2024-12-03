@@ -3,6 +3,9 @@ package org.example.Modelo;
 import jakarta.persistence.*;
 
 @Entity
+// @NamedQuery se utiliza para definir consultas con nombre que se pueden utilizar en las consultas de JPQL
+// se pueden definir consultas con nombre en la entidad o en un archivo XML
+// en este caso se define una consulta con nombre findAll que devolverá todos los cursos de la base de datos
 @NamedQueries({@NamedQuery(name = "Curso.findAll", query = "select c from Curso c")})
 @Table(name = "curso")
 public class Curso {

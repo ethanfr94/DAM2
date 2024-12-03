@@ -6,6 +6,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
+// @NamedQueries indica que la clase tiene consultas con nombre asociadas
+// @NamedQuery en su consulta indica que la consulta obtendra todos los cursos de la tabla curso
 @NamedQueries({@NamedQuery(name = "Curso.findAll", query = "select c from Curso c")})
 @Table(name = "curso")
 public class Curso {
@@ -20,6 +22,10 @@ public class Curso {
     @JoinColumn(name = "tutor_id", nullable = false)
     private Profesor tutor;
 
+    // @OneToMany indica que la relación es de uno a muchos y que la clave foránea está en la tabla de la entidad Alumno
+    // mappedBy indica que la relación está mapeada por el atributo curso de la clase Alumno
+    // fetch = FetchType.LAZY indica que la relación se cargará de forma diferida
+    // esto creara una tabla intermedia para la relación muchos a muchos entre Alumno y Curso
     @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY)
     private Set<Alumno> alumnos = new LinkedHashSet<>();
 

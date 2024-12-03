@@ -7,6 +7,11 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "grupos")
+// @NamedQueries sirve para definir consultas que se pueden reutilizar en cualquier parte del codigo
+// @NamedQuery sirve para definir una consulta
+// name es el nombre de la consulta
+// query es la consulta que se ejecutara
+
 @NamedQueries({
         @NamedQuery(name = "Grupo.findAll", query = "select g from Grupo g"),
         @NamedQuery(name = "Grupo.sinComponentes", query = "select g from Grupo g where g.esgrupo = true and g.id not in (select c.grupo.id from Componente c)"),

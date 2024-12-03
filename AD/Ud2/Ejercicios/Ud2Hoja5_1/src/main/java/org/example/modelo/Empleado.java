@@ -21,6 +21,13 @@ public class Empleado {
     private LocalDate fechaAlta;
     @Embedded
     private Sueldo salario;
+    // mappedBy es el nombre del atributo en la clase EmpleadoEstudio
+    // cascade es para que se apliquen los cambios en cascada
+    // orphanRemoval es para que si se elimina un estudio de un empleado se elimine de la base de datos
+    // fetch es para que se carguen los estudios al mismo tiempo que el empleado
+    // LAZY es para que se carguen los estudios solo cuando se acceda a ellos
+    // EAGER es para que se carguen los estudios al mismo tiempo que el empleado
+
     @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmpleadoEstudio> estudios = new ArrayList<>();
 

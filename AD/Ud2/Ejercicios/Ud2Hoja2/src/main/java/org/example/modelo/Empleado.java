@@ -15,6 +15,7 @@ public class Empleado {
     private String oficio;
     @Column(name = "fecha_alta")
     private LocalDate fechaAlta;
+    // embedded hace que la clase salario se guarde en la misma tabla que empleado
     @Embedded
     private Sueldo salario;
 

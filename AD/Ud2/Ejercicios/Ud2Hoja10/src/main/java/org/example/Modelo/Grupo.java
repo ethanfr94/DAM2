@@ -9,6 +9,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "grupos")
+// NamedQueries para las consultas de la clase GBD
+
 @NamedQueries(
         {@NamedQuery(name = "Grupo.antesDe", query = "SELECT g FROM Grupo g WHERE g.localidad = :localidad AND g.fechaEstreno < :year"),
         @NamedQuery(name = "Grupo.masCanciones", query = "SELECT g FROM Grupo g WHERE SIZE(g.canciones) > :n")}
@@ -40,9 +42,16 @@ public class Grupo {
     @Column(name = "compania", length = 35)
     private String compania;
 
+    // Relación uno a muchos con Componente y Cancion con la propiedad mappedBy para indicar el atributo de la clase Componente y Cancion que mapea la relación
+    // Se ha añadido orphanRemoval = true para que al eliminar un grupo se eliminen también sus componentes y canciones
+    // FetchType.LAZY para que no se carguen los componentes y canciones al cargar un grupo
+
     @OneToMany(mappedBy = "grupo", fetch =  FetchType.LAZY, orphanRemoval = true)
     private List<Componente> componentes = new ArrayList<>();
 
+    // Relación uno a muchos con Cancion con la propiedad mappedBy para indicar el atributo de la clase Cancion que mapea la relación
+    // Se ha añadido orphanRemoval = true para que al eliminar un grupo se eliminen también sus canciones
+    // FetchType.LAZY para que no se carguen las canciones al cargar un grupo
     @OneToMany(mappedBy = "grupo", orphanRemoval = true)
     private List<Cancion> canciones = new ArrayList<>();
 

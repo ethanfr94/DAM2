@@ -20,6 +20,11 @@ public class Alumno {
     @Column(name = "nota_media", precision = 4, scale = 2)
     private BigDecimal notaMedia;
 
+    // @ManyToOne indica que la relación es de muchos a uno y que la clave foránea está en la tabla de la entidad Alumno
+    // fetch = FetchType.LAZY indica que la relación se cargará de forma diferida
+    // optional = false indica que la relación es obligatoria
+    // @JoinColumn indica que la columna que actúa como clave foránea es curso_id
+    // nullable = false indica que la columna no puede tener valores nulos
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "curso_id", nullable = false)
     private Curso curso;

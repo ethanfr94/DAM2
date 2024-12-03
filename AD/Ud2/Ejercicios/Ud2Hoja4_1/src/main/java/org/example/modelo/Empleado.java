@@ -20,6 +20,8 @@ public class Empleado {
     private LocalDate fechaAlta;
     @Embedded
     private Sueldo salario;
+    // @ManyToMany indica que la relación es de muchos a muchos
+    // @JoinTable indica la tabla intermedia que se va a crear para almacenar la relación
     @ManyToMany
     @JoinTable(
             name = "empleados_estudios", // nombre de la tabla intermedia

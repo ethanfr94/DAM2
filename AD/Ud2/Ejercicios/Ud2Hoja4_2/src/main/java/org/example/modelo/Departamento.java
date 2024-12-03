@@ -13,7 +13,9 @@ public class Departamento {
     private String nombre;
     @Column(length = 50)
     private String localidad;
+    // Relación uno a muchos
     @OneToMany
+    // Nombre de la columna que hace referencia a la clave foránea
     @JoinColumn(name = "departamento_id")
     private List<Empleado> empleados = new ArrayList<>();
 

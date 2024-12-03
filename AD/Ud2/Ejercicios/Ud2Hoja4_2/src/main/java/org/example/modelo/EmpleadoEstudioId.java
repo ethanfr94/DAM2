@@ -3,6 +3,14 @@ package org.example.modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
+
+//esta clase se creas para poder tener una clave compuesta en la tabla empleados_estudios
+//la clave compuesta se compone de dos claves foráneas empleado_id y estudio_id
+//para poder crear esta clase se debe implementar la interfaz Serializable
+//se deben crear los atributos empleado y estudio de tipo long
+//se deben crear los métodos get y set de los atributos
+//se deben sobreescribir los métodos equals y hashCode
+
 public class EmpleadoEstudioId implements Serializable {
     private long empleado;
     private long estudio;

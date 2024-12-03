@@ -17,6 +17,7 @@ public class Main {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
 
+        // insertamos un estudio oficial
         EstudioOficial e = new EstudioOficial();
         e.setCodEstudio("Logis");
         e.setNombre("Logistica");
@@ -24,6 +25,7 @@ public class Main {
         e.setRealDecreto("RD 123/2020");
         em.persist(e);
 
+        // insertamos un estudio no oficial
         EstudioNoOficial e2 = new EstudioNoOficial();
         e2.setCodEstudio("Prog");
         e2.setNombre("Programacion");
@@ -31,20 +33,21 @@ public class Main {
         e2.setHoras(100);
         em.persist(e2);
 
-
+        // insertamos un departamento
         Departamento d = new Departamento();
         d.setId(1L);
         d.setNombre("TIC");
         d.setLocalidad("Torrelavega");
         em.persist(d);
 
+        // insertamos empleados en el departamento d
         Empleado emp1 = new Empleado("Manolo", "Desarrollador", java.time.LocalDate.now(),1000.0);
         emp1.addEstudio(e, LocalDate.of(2022, 11, 30));
         d.getEmpleados().add(emp1);
         em.persist(emp1);
 
 
-
+        // insertamos empleados en el departamento d
         Empleado emp2 = new Empleado("Ramon", "Analista", java.time.LocalDate.now(),2000.0);
         emp2.addEstudio(e, LocalDate.of(2020, 12, 31));
         d.getEmpleados().add(emp2);
