@@ -40,8 +40,6 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.lblTabla = new System.Windows.Forms.Label();
             this.lblInicio = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnDeshacer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.cmsDatos.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +56,7 @@
             // 
             // btnAlumnos
             // 
-            this.btnAlumnos.Location = new System.Drawing.Point(526, 166);
+            this.btnAlumnos.Location = new System.Drawing.Point(526, 134);
             this.btnAlumnos.Name = "btnAlumnos";
             this.btnAlumnos.Size = new System.Drawing.Size(88, 55);
             this.btnAlumnos.TabIndex = 1;
@@ -68,7 +66,7 @@
             // 
             // btnProfesores
             // 
-            this.btnProfesores.Location = new System.Drawing.Point(526, 105);
+            this.btnProfesores.Location = new System.Drawing.Point(526, 73);
             this.btnProfesores.Name = "btnProfesores";
             this.btnProfesores.Size = new System.Drawing.Size(88, 55);
             this.btnProfesores.TabIndex = 2;
@@ -78,7 +76,7 @@
             // 
             // btnCiclos
             // 
-            this.btnCiclos.Location = new System.Drawing.Point(526, 44);
+            this.btnCiclos.Location = new System.Drawing.Point(526, 12);
             this.btnCiclos.Name = "btnCiclos";
             this.btnCiclos.Size = new System.Drawing.Size(88, 55);
             this.btnCiclos.TabIndex = 3;
@@ -125,7 +123,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(526, 227);
+            this.btnAgregar.Location = new System.Drawing.Point(526, 195);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(88, 55);
             this.btnAgregar.TabIndex = 5;
@@ -155,32 +153,11 @@
             this.lblInicio.Text = "Bienvenido, seleccione una tabla para visualizar.";
             this.lblInicio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(263, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Actualizar tabla";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnDeshacer
-            // 
-            this.btnDeshacer.Location = new System.Drawing.Point(386, 9);
-            this.btnDeshacer.Name = "btnDeshacer";
-            this.btnDeshacer.Size = new System.Drawing.Size(117, 23);
-            this.btnDeshacer.TabIndex = 9;
-            this.btnDeshacer.Text = "Deshacer cambios";
-            this.btnDeshacer.UseVisualStyleBackColor = true;
-            this.btnDeshacer.Click += new System.EventHandler(this.btnDeshacer_Click);
-            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(622, 341);
-            this.Controls.Add(this.btnDeshacer);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblInicio);
             this.Controls.Add(this.lblTabla);
             this.Controls.Add(this.btnAgregar);
@@ -213,8 +190,6 @@
         private System.Windows.Forms.ToolStripMenuItem borrarToolStripMenuItem;
         private System.Windows.Forms.Label lblTabla;
         private System.Windows.Forms.Label lblInicio;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnDeshacer;
     }
 }
 

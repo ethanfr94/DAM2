@@ -24,32 +24,42 @@ namespace Ud2Hoja18
         public Agregar(Profesore p)
         {
             InitializeComponent();
+            rdoProfesor.Checked = true;
             escuelaContext = new EscuelaContext();
             cargaCiclos();
             cargaProfesores();
             txtNombre.Text = p.nombre;
             txtApellidos.Text = p.apellidos;
+            cmbCiclo.Text = "";
+            cmbTutor.Text = "";
+            
         }
 
         public Agregar(Alumno a)
         {
             InitializeComponent();
+            rdoAlumno.Checked = true;
             escuelaContext = new EscuelaContext();
             cargaCiclos();
             cargaProfesores();
             txtNombre.Text = a.nombre;
             txtApellidos.Text = a.apellidos;
             cmbCiclo.SelectedItem = a.ciclo;
+            cmbTutor.Text = "";
         }
 
         public Agregar(Ciclo c)
         {
             InitializeComponent();
+            rdoCiclo.Checked = true;
             escuelaContext = new EscuelaContext();
             cargaCiclos();
             cargaProfesores();
             txtNombre.Text = c.nombre;
             cmbTutor.SelectedItem = c.tutor;
+            txtApellidos.Text = "";
+            cmbTutor.Text = "";
+
         }
 
         private void cargaCiclos()
