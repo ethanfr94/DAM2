@@ -107,6 +107,7 @@ namespace Ud2Hoja18
                 Ciclo ciclo = (Ciclo)cmbCiclo.SelectedItem;
                 alumno.ciclo = ciclo.id;
                 escuelaContext.Alumnos.Add(alumno);
+                Principal.alumnos.Add(alumno);
                 escuelaContext.SaveChanges();
             }
             else if(rdoProfesor.Checked)
@@ -115,6 +116,7 @@ namespace Ud2Hoja18
                 profesor.nombre = txtNombre.Text;
                 profesor.apellidos = txtApellidos.Text;
                 escuelaContext.Profesores.Add(profesor);
+                Principal.profesores.Add(profesor);
                 escuelaContext.SaveChanges();   
             }
             else if(rdoCiclo.Checked)
@@ -124,6 +126,7 @@ namespace Ud2Hoja18
                 Profesore profesor = (Profesore)cmbTutor.SelectedItem;
                 ciclo.tutor = profesor.id;
                 escuelaContext.Ciclos.Add(ciclo);
+                Principal.ciclos.Add(ciclo);
                 escuelaContext.SaveChanges();
             }
 

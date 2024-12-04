@@ -13,9 +13,9 @@ namespace Ud2Hoja18
     public partial class Principal : Form
     {
 
-        private List<Alumno> alumnos;
-        private List<Profesore> profesores;
-        private List<Ciclo> ciclos;
+        public static List<Alumno> alumnos;
+        public static List<Profesore> profesores;
+        public static List<Ciclo> ciclos;
         EscuelaContext EscuelaContext;
             public Principal()
         {
@@ -39,18 +39,27 @@ namespace Ud2Hoja18
 
         private void btnCiclos_Click(object sender, EventArgs e)
         {
+            lblInicio.Visible = false;
+            dgvDatos.Visible = true;
+            lblTabla.Text = "Ciclos";
             cargaDatos();
             dgvDatos.DataSource = ciclos;
         }
 
         private void btnProfesores_Click(object sender, EventArgs e)
         {
+            lblInicio.Visible = false;
+            dgvDatos.Visible = true;
+            lblTabla.Text = "Profesores";
             cargaDatos();
             dgvDatos.DataSource = profesores;
         }
 
         private void btnAlumnos_Click(object sender, EventArgs e)
         {
+            lblInicio.Visible = false;
+            dgvDatos.Visible = true;
+            lblTabla.Text = "Alumnos";
             cargaDatos();
             dgvDatos.DataSource = alumnos;  
         }
@@ -117,21 +126,63 @@ namespace Ud2Hoja18
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            Agregar agregar = new Agregar();
-        }
-
-        private void dgvDatos_SelectionChanged(object sender, EventArgs e)
-        {
             if(dgvDatos.DataSource == alumnos)
             {
+                Alumno a = (Alumno)dgvDatos.CurrentRow.DataBoundItem;
+                Agregar agregaral = new Agregar(a);
+                agregaral.Show();
+                if (agregaral.DialogResult == DialogResult.OK)
+                {
+                    cargaDatos();
+                    dgvDatos.DataSource = alumnos;
+                }
             }
-            else if(dgvDatos.DataSource == profesores)
+            else if (dgvDatos.DataSource == profesores)
             {
+                Profesore p = (Profesore)dgvDatos.CurrentRow.DataBoundItem;
+                Agregar agregarpr = new Agregar(p);
+                agregarpr.Show();
+                if (agregarpr.DialogResult == DialogResult.OK)
+                {
+                    cargaDatos();
+                    dgvDatos.DataSource = profesores;
+                }
             }
-            else if(dgvDatos.DataSource == ciclos)
+            else if (dgvDatos.DataSource == ciclos)
             {
+                Ciclo c = (Ciclo)dgvDatos.CurrentRow.DataBoundItem;
+                Agregar agregarcl = new Agregar(c);
+                agregarcl.Show();
+                if (agregarcl.DialogResult == DialogResult.OK)
+                {
+                    cargaDatos();
+                    dgvDatos.DataSource = ciclos;
+                }
             }
+            
+
+        }
+
+        
+        private void btnDeshacer_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("¿Estás seguro de que quieres deshacer los cambios?", "Deshacer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(res == DialogResult.Yes)
+            {
+                if (lblTabla.Text == "Alumnos")
+                {
+                    dgvDatos.DataSource = alumnos;
+                }
+                else if (lblTabla.Text == "Profesores")
+                {
+                    dgvDatos.DataSource = profesores;
+                }
+                else if (lblTabla.Text == "Ciclos")
+                {
+                    dgvDatos.DataSource = ciclos;
+                }
+            }
+            
         }
     }
 }

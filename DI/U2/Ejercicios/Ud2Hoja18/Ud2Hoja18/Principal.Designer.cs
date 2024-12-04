@@ -34,17 +34,21 @@
             this.btnProfesores = new System.Windows.Forms.Button();
             this.btnCiclos = new System.Windows.Forms.Button();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.cmsDatos = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.lblTabla = new System.Windows.Forms.Label();
+            this.lblInicio = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnDeshacer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.cmsDatos.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnContacto
             // 
-            this.btnContacto.Location = new System.Drawing.Point(539, 275);
+            this.btnContacto.Location = new System.Drawing.Point(539, 306);
             this.btnContacto.Name = "btnContacto";
             this.btnContacto.Size = new System.Drawing.Size(75, 23);
             this.btnContacto.TabIndex = 0;
@@ -54,7 +58,7 @@
             // 
             // btnAlumnos
             // 
-            this.btnAlumnos.Location = new System.Drawing.Point(526, 134);
+            this.btnAlumnos.Location = new System.Drawing.Point(526, 166);
             this.btnAlumnos.Name = "btnAlumnos";
             this.btnAlumnos.Size = new System.Drawing.Size(88, 55);
             this.btnAlumnos.TabIndex = 1;
@@ -64,7 +68,7 @@
             // 
             // btnProfesores
             // 
-            this.btnProfesores.Location = new System.Drawing.Point(526, 73);
+            this.btnProfesores.Location = new System.Drawing.Point(526, 105);
             this.btnProfesores.Name = "btnProfesores";
             this.btnProfesores.Size = new System.Drawing.Size(88, 55);
             this.btnProfesores.TabIndex = 2;
@@ -74,7 +78,7 @@
             // 
             // btnCiclos
             // 
-            this.btnCiclos.Location = new System.Drawing.Point(526, 12);
+            this.btnCiclos.Location = new System.Drawing.Point(526, 44);
             this.btnCiclos.Name = "btnCiclos";
             this.btnCiclos.Size = new System.Drawing.Size(88, 55);
             this.btnCiclos.TabIndex = 3;
@@ -88,23 +92,14 @@
             this.dgvDatos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.ContextMenuStrip = this.cmsDatos;
-            this.dgvDatos.Location = new System.Drawing.Point(12, 12);
+            this.dgvDatos.Location = new System.Drawing.Point(15, 44);
             this.dgvDatos.MultiSelect = false;
             this.dgvDatos.Name = "dgvDatos";
+            this.dgvDatos.ReadOnly = true;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDatos.Size = new System.Drawing.Size(488, 285);
             this.dgvDatos.TabIndex = 4;
-            this.dgvDatos.SelectionChanged += new System.EventHandler(this.dgvDatos_SelectionChanged);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Location = new System.Drawing.Point(526, 195);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(88, 55);
-            this.btnAgregar.TabIndex = 5;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.dgvDatos.Visible = false;
             // 
             // cmsDatos
             // 
@@ -117,22 +112,77 @@
             // editarToolStripMenuItem
             // 
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.editarToolStripMenuItem.Text = "Editar";
             this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
             // 
             // borrarToolStripMenuItem
             // 
             this.borrarToolStripMenuItem.Name = "borrarToolStripMenuItem";
-            this.borrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.borrarToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.borrarToolStripMenuItem.Text = "Borrar";
             this.borrarToolStripMenuItem.Click += new System.EventHandler(this.borrarToolStripMenuItem_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(526, 227);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(88, 55);
+            this.btnAgregar.TabIndex = 5;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // lblTabla
+            // 
+            this.lblTabla.BackColor = System.Drawing.Color.LightGray;
+            this.lblTabla.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTabla.Location = new System.Drawing.Point(15, 9);
+            this.lblTabla.Name = "lblTabla";
+            this.lblTabla.Size = new System.Drawing.Size(229, 23);
+            this.lblTabla.TabIndex = 6;
+            this.lblTabla.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblInicio
+            // 
+            this.lblInicio.BackColor = System.Drawing.Color.LightGray;
+            this.lblInicio.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInicio.Location = new System.Drawing.Point(56, 134);
+            this.lblInicio.Name = "lblInicio";
+            this.lblInicio.Size = new System.Drawing.Size(378, 116);
+            this.lblInicio.TabIndex = 7;
+            this.lblInicio.Text = "Bienvenido, seleccione una tabla para visualizar.";
+            this.lblInicio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(263, 9);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Actualizar tabla";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnDeshacer
+            // 
+            this.btnDeshacer.Location = new System.Drawing.Point(386, 9);
+            this.btnDeshacer.Name = "btnDeshacer";
+            this.btnDeshacer.Size = new System.Drawing.Size(117, 23);
+            this.btnDeshacer.TabIndex = 9;
+            this.btnDeshacer.Text = "Deshacer cambios";
+            this.btnDeshacer.UseVisualStyleBackColor = true;
+            this.btnDeshacer.Click += new System.EventHandler(this.btnDeshacer_Click);
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 309);
+            this.ClientSize = new System.Drawing.Size(622, 341);
+            this.Controls.Add(this.btnDeshacer);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lblInicio);
+            this.Controls.Add(this.lblTabla);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.btnCiclos);
@@ -161,6 +211,10 @@
         private System.Windows.Forms.ContextMenuStrip cmsDatos;
         private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem borrarToolStripMenuItem;
+        private System.Windows.Forms.Label lblTabla;
+        private System.Windows.Forms.Label lblInicio;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDeshacer;
     }
 }
 
