@@ -10,6 +10,7 @@ public class Main {
         Semaphore capacidad = new Semaphore(50);
         Semaphore semaforoEntrada = new Semaphore(1);
         Semaphore semaforoSalida = new Semaphore(1);
+
         Parking parking = new Parking(semaforoEntrada, semaforoSalida, capacidad, 0);
 
         for (int i = 1; i <= 250; i++) {
