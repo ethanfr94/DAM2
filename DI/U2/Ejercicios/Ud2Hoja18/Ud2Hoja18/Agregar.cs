@@ -13,6 +13,8 @@ namespace Ud2Hoja18
     public partial class Agregar : Form
     {
         EscuelaContext escuelaContext;
+        int id;
+
         public Agregar()
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace Ud2Hoja18
         public Agregar(Profesore p)
         {
             InitializeComponent();
+            id = p.id;
             rdoProfesor.Checked = true;
             escuelaContext = new EscuelaContext();
             cargaCiclos();
@@ -38,6 +41,7 @@ namespace Ud2Hoja18
         public Agregar(Alumno a)
         {
             InitializeComponent();
+            id = a.id;
             rdoAlumno.Checked = true;
             escuelaContext = new EscuelaContext();
             cargaCiclos();
@@ -51,6 +55,7 @@ namespace Ud2Hoja18
         public Agregar(Ciclo c)
         {
             InitializeComponent();
+            id = c.id;
             rdoCiclo.Checked = true;
             escuelaContext = new EscuelaContext();
             cargaCiclos();
@@ -111,33 +116,60 @@ namespace Ud2Hoja18
         {
             if(rdoAlumno.Checked)
             {
-                Alumno alumno = new Alumno();
-                alumno.nombre = txtNombre.Text;
-                alumno.apellidos = txtApellidos.Text;
-                Ciclo ciclo = (Ciclo)cmbCiclo.SelectedItem;
-                alumno.ciclo = ciclo.id;
-                escuelaContext.Alumnos.Add(alumno);
-                Principal.alumnos.Add(alumno);
-                escuelaContext.SaveChanges();
+                Alumno alumno = escuelaContext.Alumnos.FirstOrDefault(x => x.id == id);
+                if(alumno != null)
+                {
+                    alumno.nombre = txtNombre.Text;
+                    alumno.apellidos = txtApellidos.Text;
+                    alumno.ciclo = ((Ciclo)cmbCiclo.SelectedItem).id;
+                    escuelaContext.SaveChanges();
+                }
+                else
+                {
+                    alumno = new Alumno();
+                    alumno.nombre = txtNombre.Text;
+                    alumno.apellidos = txtApellidos.Text;
+                    alumno.ciclo = ((Ciclo)cmbCiclo.SelectedItem).id;
+                    escuelaContext.Alumnos.Add(alumno);
+                    escuelaContext.SaveChanges();
+                }
             }
             else if(rdoProfesor.Checked)
             {
-                Profesore profesor = new Profesore();
-                profesor.nombre = txtNombre.Text;
-                profesor.apellidos = txtApellidos.Text;
-                escuelaContext.Profesores.Add(profesor);
-                Principal.profesores.Add(profesor);
-                escuelaContext.SaveChanges();   
+                Profesore profesor = escuelaContext.Profesores.FirstOrDefault(x => x.id == id);
+                if (profesor != null)
+                {
+                    profesor.nombre = txtNombre.Text;
+                    profesor.apellidos = txtApellidos.Text;
+                    escuelaContext.SaveChanges();
+                }
+                else
+                {
+                    profesor = new Profesore();
+                    profesor.nombre = txtNombre.Text;
+                    profesor.apellidos = txtApellidos.Text;
+                    escuelaContext.Profesores.Add(profesor);
+                    escuelaContext.SaveChanges();
+                }
             }
             else if(rdoCiclo.Checked)
             {
-                Ciclo ciclo = new Ciclo();
-                ciclo.nombre = txtNombre.Text;
-                Profesore profesor = (Profesore)cmbTutor.SelectedItem;
-                ciclo.tutor = profesor.id;
-                escuelaContext.Ciclos.Add(ciclo);
-                Principal.ciclos.Add(ciclo);
-                escuelaContext.SaveChanges();
+                Ciclo ciclo = escuelaContext.Ciclos.FirstOrDefault(x => x.id == id);
+                if (ciclo != null)
+                {
+                    ciclo.nombre = txtNombre.Text;
+                    ciclo.tutor = ((Profesore)cmbTutor.SelectedItem).id;
+                    escuelaContext.SaveChanges();
+                }
+                else
+                {
+                    ciclo = new Ciclo();
+                    ciclo.nombre = txtNombre.Text;
+                    ciclo.tutor = ((Profesore)cmbTutor.SelectedItem).id;
+                    escuelaContext.Ciclos.Add(ciclo);
+                    escuelaContext.SaveChanges();
+                }
+
             }
 
             DialogResult = DialogResult.OK;

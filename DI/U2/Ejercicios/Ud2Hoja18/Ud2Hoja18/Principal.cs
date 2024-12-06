@@ -16,19 +16,20 @@ namespace Ud2Hoja18
         public static List<Alumno> alumnos;
         public static List<Profesore> profesores;
         public static List<Ciclo> ciclos;
-        EscuelaContext EscuelaContext;
+        EscuelaContext escuelaContext;
             public Principal()
         {
             InitializeComponent();
-            EscuelaContext = new EscuelaContext();
+            escuelaContext = new EscuelaContext();
             cargaDatos();
         }
 
         public void cargaDatos()
         {
-            alumnos = EscuelaContext.Alumnos.ToList();
-            profesores = EscuelaContext.Profesores.ToList();
-            ciclos = EscuelaContext.Ciclos.ToList();
+            
+            alumnos = escuelaContext.Alumnos.ToList();
+            profesores = escuelaContext.Profesores.ToList();
+            ciclos = escuelaContext.Ciclos.ToList();
         }
 
         private void btnContacto_Click(object sender, EventArgs e)
@@ -95,31 +96,57 @@ namespace Ud2Hoja18
 
         private void borrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int id;
             DialogResult res = MessageBox.Show("¿Estás seguro de que quieres borrar este registro?", "Borrar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(res == DialogResult.Yes) {
-                if(dgvDatos.DataSource == alumnos)
+            if (res == DialogResult.Yes)
+            {
+                if (dgvDatos.DataSource == alumnos)
                 {
-                    Alumno a = (Alumno)dgvDatos.CurrentRow.DataBoundItem;
-                    EscuelaContext.Alumnos.Remove(a);
-                    EscuelaContext.SaveChanges();
-                    cargaDatos();
-                    dgvDatos.DataSource = alumnos;
+                    id = (int)dgvDatos.CurrentRow.Cells[0].Value;
+                    Alumno a = escuelaContext.Alumnos.FirstOrDefault(x => x.id == id);
+                    if (a != null)
+                    {
+                        escuelaContext.Alumnos.Remove(a);
+                        escuelaContext.SaveChanges();
+                        cargaDatos();
+                        dgvDatos.DataSource = alumnos;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se ha podido borrar el alumno", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else if(dgvDatos.DataSource == profesores)
+                else if (dgvDatos.DataSource == profesores)
                 {
-                    Profesore p = (Profesore)dgvDatos.CurrentRow.DataBoundItem;
-                    EscuelaContext.Profesores.Remove(p);
-                    EscuelaContext.SaveChanges();
-                    cargaDatos();
-                    dgvDatos.DataSource = profesores;
+                    id = (int)dgvDatos.CurrentRow.Cells[0].Value;
+                    Profesore p = escuelaContext.Profesores.FirstOrDefault(x => x.id == id);
+                    if (p != null)
+                    {
+                        escuelaContext.Profesores.Remove(p);
+                        escuelaContext.SaveChanges();
+                        cargaDatos();
+                        dgvDatos.DataSource = profesores;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se ha podido borrar el profesor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else if(dgvDatos.DataSource == ciclos)
+                else if (dgvDatos.DataSource == ciclos)
                 {
-                    Ciclo c = (Ciclo)dgvDatos.CurrentRow.DataBoundItem;
-                    EscuelaContext.Ciclos.Remove(c);
-                    EscuelaContext.SaveChanges();
-                    cargaDatos();
-                    dgvDatos.DataSource = ciclos;
+                    id = (int)dgvDatos.CurrentRow.Cells[0].Value;
+                    Ciclo c = escuelaContext.Ciclos.FirstOrDefault(x => x.id == id);
+                    if (c != null)
+                    {
+                        escuelaContext.Ciclos.Remove(c);
+                        escuelaContext.SaveChanges();
+                        cargaDatos();
+                        dgvDatos.DataSource = ciclos;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se ha podido borrar el ciclo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -133,6 +160,7 @@ namespace Ud2Hoja18
                 agregaral.Show();
                 if (agregaral.DialogResult == DialogResult.OK)
                 {
+                    MessageBox.Show("Alumno editado correctamente", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cargaDatos();
                     dgvDatos.DataSource = alumnos;
                 }
@@ -144,6 +172,7 @@ namespace Ud2Hoja18
                 agregarpr.Show();
                 if (agregarpr.DialogResult == DialogResult.OK)
                 {
+                    MessageBox.Show("Profesor editado correctamente", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cargaDatos();
                     dgvDatos.DataSource = profesores;
                 }
@@ -155,6 +184,7 @@ namespace Ud2Hoja18
                 agregarcl.Show();
                 if (agregarcl.DialogResult == DialogResult.OK)
                 {
+                    MessageBox.Show("Ciclo editado correctamente", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cargaDatos();
                     dgvDatos.DataSource = ciclos;
                 }
