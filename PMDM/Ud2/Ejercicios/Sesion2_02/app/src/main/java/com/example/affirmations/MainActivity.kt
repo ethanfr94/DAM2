@@ -69,12 +69,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AffirmationsApp() {
     val layoutDirection = LocalLayoutDirection.current
-
+    // surface es un contenedor de nivel superior que representa la pantalla completa
     Surface (
         modifier = Modifier
             .fillMaxSize()
             .statusBarsPadding()
             .padding(
+                // Agrega padding a la izquierda y derecha de la pantalla
                 start = WindowInsets.safeDrawing// esta es la linea que se agrega para que el padding sea correcto
                     .asPaddingValues()
                     .calculateStartPadding(layoutDirection),
@@ -84,27 +85,33 @@ fun AffirmationsApp() {
             )
     ) {
         AffirmationList(
+            // carga la lista de afirmaciones
             affirmationList = Datasource().loadAffirmations()
         )
     }
 }
-
+// muestra una tarjeta de afirmación en la pantalla principal de la app
 @Composable
 fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
     Card (modifier = modifier) {
         Column {
             Image(
+                // carga la imagen de la afirmación
                 painter = painterResource(affirmation.imageResourceId),
+                // describe la imagen para los usuarios con discapacidades visuales
                 contentDescription = stringResource(affirmation.stringResourceId),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(194.dp),
+                // escala la imagen para que llene el ancho y la altura especificados
                 contentScale = ContentScale.Crop
             )
             Text(
+                // carga el texto de la afirmación
                 stringResource(affirmation.stringResourceId),
                 modifier = Modifier
                     .padding(16.dp),
+                // establece el tamaño del texto en MaterialTheme.typography.h6
                 style = MaterialTheme.typography.headlineSmall
             )
         }
@@ -113,11 +120,13 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
 
 @Preview
 @Composable
+// muestra una vista previa de la tarjeta de afirmación
 private fun AffirmationCardPreview(){
     AffirmationCard(Affirmation(R.string.affirmation1, R.drawable.image1))
 }
 
 @Composable
+// crea una lista de afirmaciones y las muestra en la pantalla principal de la app
 fun AffirmationList(affirmationList: List<Affirmation>, modifier: Modifier = Modifier) {
     LazyColumn (modifier = modifier){
         items(affirmationList){

@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.sp
             color = MaterialTheme.colorScheme.primaryContainer)
     }
 
+// este boton es un icono que al pulsarlo ejecuta una funcion que se le pasa como parametro
+// en este caso se le pasa la funcion de navegar hacia atras en el navController y nos lleva a la pantalla anterior
     @Composable
     fun MainIconButton(icon: ImageVector, OnClick: () -> Unit){
         IconButton(onClick = OnClick) {

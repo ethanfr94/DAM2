@@ -42,7 +42,10 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
                     colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                         containerColor = MaterialTheme.colorScheme.onPrimaryContainer))
             },
-            //floatingActionButton = { ActionButton() }
+            // este boton flotante se muestra en la parte inferior derecha de la pantalla
+            // al pulsarlo se ejecuta la funcion que se le pasa como parametro
+            // en este caso no hace nada y no se utiliza porque se implementa oun boton  con ese fin en de la TopBar de DetailsView
+            // floatingActionButton = { ActionButton() }
         ){
             ContentHomeView(navController)
         }

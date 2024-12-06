@@ -65,6 +65,7 @@ fun Content() {
             .fillMaxSize(),//Ocupa todo el tamaño
             horizontalAlignment = Alignment.CenterHorizontally//Alineación horizontal
     ){
+        // lista de imagenes en la parte superior de la pantalla (como un stories)
         LazyRow(//Lista horizontal de elementos que se desplazan horizontalmente
             horizontalArrangement = Arrangement.spacedBy(10.dp),//Espacio entre elementos
             modifier = Modifier
@@ -80,7 +81,7 @@ fun Content() {
 
     }
 }
-
+// creamos un caja que se encargara de mostrar la imagen seleccionada
 @Composable
 fun Caja(imageResId: Int = R.drawable.foto01) {
     Box(modifier = Modifier
@@ -99,6 +100,7 @@ fun Caja(imageResId: Int = R.drawable.foto01) {
     }
 }
 
+//Botón con imagen redondo que al hacer clic cambia la imagen de la caja (como un stories)
 @Composable
 fun BotonConImagen(imageResId: Int, onClick: () -> Unit) {
     Box(

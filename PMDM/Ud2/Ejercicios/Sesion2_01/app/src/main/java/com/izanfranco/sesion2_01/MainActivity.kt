@@ -52,6 +52,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+// lista de superhéroes
 val nombreSHeroe = listOf("Spider-Man", "Iron Man", "Captain America", "Thor", "Hulk",
     "Black Widow", "Doctor Strange", "Scarlet Witch", "Black Panther", "Ant-Man",
     "Captain Marvel", "Hawkeye", "Vision", "War Machine", "Falcon",
@@ -153,19 +154,16 @@ fun Espacio(dp: Dp) {
 @Composable
 fun TextSHeroe(name: String) {
     Text(
-        text = name,
-        fontSize = 20.sp,
-        color = Color.White,
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(
-                color = Color(0xFF8899FF),
-                shape = RoundedCornerShape(8.dp)//Borde redondeado
+        text = name,//Texto del superhéroe
+        fontSize = 20.sp,// Tamaño de fuente
+        color = Color.White,//  Color del texto
+        modifier = Modifier//Modificador
+            .fillMaxWidth()//Ocupa todo el ancho
+            .background(//Color de fondo
+                color = Color(0xFF8899FF),//Color de fondo
+                shape = RoundedCornerShape(8.dp)//Borde redondeado//Borde redondeado
             )
-            .padding(16.dp)
-
+            .padding(16.dp)// Espacio alrededor del texto
     )
-
-
 }
 

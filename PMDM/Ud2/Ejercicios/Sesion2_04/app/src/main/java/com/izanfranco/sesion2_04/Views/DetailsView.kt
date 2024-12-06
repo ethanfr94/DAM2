@@ -35,6 +35,9 @@ import com.izanfranco.sesion2_03.Components.TitleView
                     colors = TopAppBarDefaults.mediumTopAppBarColors(
                         containerColor = MaterialTheme.colorScheme.primary
                     ),
+                    // este icono nos lleva a la pantalla anterior mediante el navController
+                    // en este caso se utiliza un icono en lugar de un texto
+                    // al pulsarlo ejecuta la funcion que se le pasa como parametro
                     navigationIcon = {
                         MainIconButton( icon = Icons.Filled.ArrowBack)
                         {
@@ -57,8 +60,10 @@ import com.izanfranco.sesion2_03.Components.TitleView
         ) {
             TitleView(name = "Detail")
             EspacioVertical(20.dp)
+            // este boton nos lleva a la pantalla anterior mediante el navController
             MainButton(name = "Return Home")
             {
+                // navController.popBackStack() nos lleva a la pantalla anterior
             navController.popBackStack()
             }
         }
