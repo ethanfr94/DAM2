@@ -6,13 +6,11 @@ import java.util.concurrent.Semaphore;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-
         Cola cola = new Cola();
         Prod p = new Prod(cola);
         Cons c = new Cons(cola);
         p.start();
         c.start();
-
 
         // asi seria con semaforos
         /*

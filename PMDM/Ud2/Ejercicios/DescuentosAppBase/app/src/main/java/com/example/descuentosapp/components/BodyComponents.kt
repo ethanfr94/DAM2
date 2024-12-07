@@ -33,13 +33,17 @@ fun SpaceW(size: Dp = 5.dp) {
     Spacer(modifier = Modifier.width(size))
 }
 
+// textfield para introducir el precio y el descuento
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+// onvaluechange es la funcion que se ejecuta cuando se cambia el valor del textfield
 fun MainTextField(value: String, onValueChange: (String) -> Unit, label: String) {
     OutlinedTextField(
         value = value,
+        // se le pasa el valor, la funcion para cambiar el valor y el label
         onValueChange = onValueChange,
         label = { Text(text = label) },
+        // el teclado es de tipo numerico para que solo se puedan introducir numeros
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         modifier = Modifier
             .fillMaxWidth()
@@ -47,13 +51,16 @@ fun MainTextField(value: String, onValueChange: (String) -> Unit, label: String)
     )
 }
 
+// boton para calcular el descuento y mostrar el dialogo o para limpiar los campos
 @Composable
 fun MainButton(
     text: String,
     color: Color = MaterialTheme.colorScheme.primary,
+    // si se pone unit es que no devuelve nada y se podra ejecutar la funcion que se le pase al boton sin problemas
     onClick: () -> Unit
 ) {
     OutlinedButton(
+        // el boton es de tipo outlined y se le pasa el color y el texto
         onClick = onClick, colors = ButtonDefaults.outlinedButtonColors(
             contentColor = color,
             containerColor = Color.Transparent

@@ -3,7 +3,6 @@ package org.example;
 import java.util.concurrent.Semaphore;
 
 public class Prod extends Thread {
-
         private Cola cola;
         private int n;
         Semaphore prod;
@@ -21,16 +20,16 @@ public class Prod extends Thread {
         public void run() {
             for (int i = 0; i < 20; i++) {
                 try {
-                    prod.acquire();
-                    mutex.acquire();
+                    prod.acquire(); // coge el semaforo de prod para producir y espera a que el consumidor lo libere
+                    mutex.acquire(); // coge el semaforo de mutex para acceder a la cola y espera a que el consumidor lo libere
+                    // cuando el consumidor libera el semaforo de mutex, el productor puede acceder a la cola
                     cola.put(n); //pone el numero
                     System.out.println("Productor : " + n + ", produce: " + n + "-----------------------------------");
-                    mutex.release();
-                    cons.release();
+                    mutex.release(); // libera el semaforo de mutex para que el consumidor pueda acceder a la cola
+                    cons.release(); // libera el semaforo de cons para que el consumidor pueda consumir
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-
             }
         }
 }

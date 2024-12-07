@@ -14,7 +14,4 @@ public class Gallinero {
         ponedero[n] = 0;
         rotos++;
     }
-
-
-
 }

@@ -15,7 +15,6 @@ public class Cola {
         return msg;
     }
 
-
     public synchronized void put (String valor) {
         while(hay){
             try{
@@ -32,7 +31,6 @@ public class Cola {
     public String get() {
         return msg;
     }
-
 
     public void put (String valor) {
         msg = valor;

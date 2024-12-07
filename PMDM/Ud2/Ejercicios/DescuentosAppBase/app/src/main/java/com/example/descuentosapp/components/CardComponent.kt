@@ -21,12 +21,17 @@ fun TwoCards(title1: String, number1: Double, title2: String, number2: Double){
     Row(modifier = Modifier.fillMaxWidth(),
     horizontalArrangement = Arrangement.SpaceEvenly
         ) {
+
+        // una card con el titulo y el numero
         MainCard(title = title1, number = number1,
         modifier = Modifier
             .padding(start = 30.dp)
             .weight(1f)
             )
+
         SpaceW(10.dp)
+
+        // otra card con el titulo y el numero
         MainCard(title = title2, number = number2,
             modifier = Modifier
                 .padding(end = 30.dp)
@@ -50,6 +55,7 @@ fun MainCard(title: String, number: Double, modifier: Modifier = Modifier){
             modifier = Modifier.padding(16.dp)
         ) {
             Text(text = title, color = Color.Black, fontSize = 20.sp)
+
             Text(text = "$number €", color = Color.Black, fontSize = 20.sp)
         }
     }

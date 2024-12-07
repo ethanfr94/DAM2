@@ -58,6 +58,7 @@ public class Barra extends Thread{
                             }
                         }
                         // Se sirve la copa y se notifica a los demás hilos que estén esperando
+
                         Thread.sleep(100);
                         fiesta.sirve_copas_izq();
                         System.out.println("------- El camarero IZQ sirve la copa " + fiesta.obtener_total_copas() + ".");
