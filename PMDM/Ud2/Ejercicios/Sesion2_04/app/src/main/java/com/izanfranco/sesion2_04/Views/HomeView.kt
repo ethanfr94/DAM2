@@ -60,8 +60,7 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
         ){
             TitleView(name = "Home")
             EspacioVertical(20.dp)
-            MainButton(name = "To Detail", onClick = { navController.navigate("DetailsView")
-            })
+            MainButton(name = "To Detail", onClick = { navController.navigate("DetailsView") })
         }
     }
 

@@ -65,6 +65,7 @@ fun ContentHomeView(){
 
 @Composable
 fun FrasedelDia(){
+    // metodo que devuelve la frase del dia y su autor en funcion de la fecha
     Box(modifier = Modifier.fillMaxWidth().padding(7.dp)){
         Column (modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.Start,){
@@ -92,9 +93,13 @@ var encuestaActiva = true
 fun EncuestaSection(){
     if(encuestaActiva) {
         Column(modifier = Modifier.fillMaxWidth()) {
+            // variable para mostrar el contexto de la aplicacion
             val context = LocalContext.current
+            // variable para almacenar la respuesta seleccionada
             var respuestaSeleccionada by remember { mutableStateOf<String?>(null) }
+            // variable para almacenar las respuestas de la encuesta
             val respuestas = Encuesta.EncuestaHoy.respuestas
+            // variable para almacenar el indice de la respuesta seleccionada
             var indice = respuestas.indexOf(respuestaSeleccionada)
 
             Text(text = Encuesta.EncuestaHoy.pregunta, fontSize = 20.sp)
