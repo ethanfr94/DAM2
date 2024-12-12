@@ -19,8 +19,8 @@ public class Servidor {
                 Socket cliente = server.accept();
                 // se incrementa el número de clientes
                 clientes++;
-                // cliente.getInetAddress().getHostAddress() devuelve la dirección IP del cliente
-                System.out.println("Cliente " + clientes + " IP: " + cliente.getInetAddress().getHostAddress());
+                // cliente.getInetAddress() devuelve la dirección IP del cliente
+                System.out.println("Cliente " + clientes + " IP: " + cliente.getInetAddress());
                 // Se envía un mensaje al cliente
                 DataOutputStream salida = new DataOutputStream(cliente.getOutputStream());
                 salida.writeUTF("Hola cliente nº" + clientes);
