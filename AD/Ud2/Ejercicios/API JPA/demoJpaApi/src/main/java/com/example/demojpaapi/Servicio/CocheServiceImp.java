@@ -1,6 +1,8 @@
 package com.example.demojpaapi.Servicio;
 
+import com.example.demojpaapi.Mapper.CocheMapper;
 import com.example.demojpaapi.Model.Coche;
+import com.example.demojpaapi.Model.CocheDTO;
 import com.example.demojpaapi.Repositorio.CocheRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +35,7 @@ public class CocheServiceImp implements CocheService{
         //save es un método de JpaRepository
         return repo.save(coche);
     }
-
+    /*
     @Override
     public Coche modificar(Coche coche, Integer id) {
        if(repo.existsById(id)){
@@ -42,6 +44,19 @@ public class CocheServiceImp implements CocheService{
        }else{
            return null;
        }
+    }
+    */
+
+    @Override
+    public Coche modificar(Coche editar, Integer id) {
+        Coche coche = repo.findById(id).orElse(null);
+        if (coche != null) {
+            coche.setMarca(editar.getMarca());
+            coche.setModelo(editar.getModelo());
+            coche.setPrecio(editar.getPrecio());
+            repo.save(coche);
+        }
+        return coche;
     }
 
     public Coche delete(Integer id){
@@ -54,5 +69,13 @@ public class CocheServiceImp implements CocheService{
         }
     }
 
+    private CocheMapper mapper=new CocheMapper();
+
+    @Override
+    public CocheDTO findDTOById(int id) {
+        Coche coche=findById(id);
+        CocheDTO cocheDTO=mapper.toDTO(coche);
+        return cocheDTO;
+    }
 
 }

@@ -1,20 +1,11 @@
 package com.example.demojpaapi.Model;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "coches")
-public class Coche {
-
-    @Id
+public class CocheDTO {
     private Integer id;
     private String marca;
     private String modelo;
     private int precio;
-
-    @ManyToOne
-    @JoinColumn(name="propietario")
-    private Propietario propietario;
+    private Integer idPropietario;
 
     public Integer getId() {
         return id;
@@ -48,11 +39,11 @@ public class Coche {
         this.precio = precio;
     }
 
-    public Propietario getPropietario() {
-        return propietario;
+    public Integer getIdPropietario() {
+        return idPropietario;
     }
 
-    public void setPropietario(Propietario propietario) {
-        this.propietario = propietario;
+    public void setIdPropietario(Integer idPropietario) {
+        this.idPropietario = idPropietario;
     }
 }
