@@ -56,6 +56,7 @@ public class Main {
                             }
                             System.out.println();
                             lee.close();
+                            lee.close();
                         } catch (IOException e) {
                             System.out.println("Error al leer el archivo");
                         } catch (Exception e) {
