@@ -1,0 +1,6 @@
+sesion 1- corrutinas y contador automatico
+sesion 2- intents, llamadas a otras aplicaciones
+sesion 3- consumo de Api cargar y mostrar datos
+sesion 4- gatosApp- consumo de api y navegacion , alertdialog
+sesion 5- conexion a bd 
+sesion 5b- 
