@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.sesion3_03_base"
+    namespace = "com.example.appgatos"
     compileSdk = 35
 
     defaultConfig {

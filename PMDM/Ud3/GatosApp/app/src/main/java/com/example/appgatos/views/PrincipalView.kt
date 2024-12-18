@@ -1,8 +1,7 @@
-package com.example.sesion3_03_base.views
+package com.example.appgatos.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -23,7 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.sesion3_03_base.R
+import com.example.appgatos.R
 
 @Composable
 fun PrincipalView(navController: NavController) {

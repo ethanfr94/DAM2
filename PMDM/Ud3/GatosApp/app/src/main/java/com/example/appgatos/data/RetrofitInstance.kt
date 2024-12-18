@@ -1,4 +1,4 @@
-import com.example.sesion3_03_base.data.GatosApi
+import com.example.appgatos.data.GatosApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

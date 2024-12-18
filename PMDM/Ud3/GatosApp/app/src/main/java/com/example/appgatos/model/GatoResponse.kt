@@ -1,4 +1,4 @@
-package com.example.sesion3_03_base.model
+package com.example.appgatos.model
 
 data class GatoResponse (
     val `data`: List<Gato>,

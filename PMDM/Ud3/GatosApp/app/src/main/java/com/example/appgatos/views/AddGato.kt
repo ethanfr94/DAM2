@@ -1,4 +1,4 @@
-package com.example.sesion3_03_base.views
+package com.example.appgatos.views
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.AlertDialog
@@ -10,7 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import com.example.sesion3_03_base.model.Gato
+import com.example.appgatos.model.Gato
 
 @Composable
 fun AddGato(onDismiss: () -> Unit, onAddGato: (Gato) -> Unit) {

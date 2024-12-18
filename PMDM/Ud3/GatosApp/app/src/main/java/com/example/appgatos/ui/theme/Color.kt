@@ -1,4 +1,4 @@
-package com.example.sesion3_03_base.ui.theme
+package com.example.appgatos.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

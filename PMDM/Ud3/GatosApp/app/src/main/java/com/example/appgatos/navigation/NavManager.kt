@@ -1,4 +1,4 @@
-package com.example.sesion3_03_base.navigation
+package com.example.appgatos.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -7,10 +7,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 //import com.example.sesion3_03_base.views.AddCharacterView
-import com.example.sesion3_03_base.views.GatoViewModel
-import com.example.sesion3_03_base.views.DetailView
-import com.example.sesion3_03_base.views.HomeView
-import com.example.sesion3_03_base.views.PrincipalView
+import com.example.appgatos.views.GatoViewModel
+import com.example.appgatos.views.DetailView
+import com.example.appgatos.views.HomeView
+import com.example.appgatos.views.PrincipalView
 
 
 @Composable

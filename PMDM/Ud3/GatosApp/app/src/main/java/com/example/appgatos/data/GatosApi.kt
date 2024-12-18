@@ -1,6 +1,6 @@
-package com.example.sesion3_03_base.data
+package com.example.appgatos.data
 
-import com.example.sesion3_03_base.model.Gato
+import com.example.appgatos.model.Gato
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

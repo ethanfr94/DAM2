@@ -1,13 +1,13 @@
-package com.example.sesion3_03_base
+package com.example.appgatos
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.navigation.compose.rememberNavController
-import com.example.sesion3_03_base.navigation.NavManager
-import com.example.sesion3_03_base.ui.theme.Sesion3_03_BaseTheme
-import com.example.sesion3_03_base.views.GatoViewModel
+import com.example.appgatos.navigation.NavManager
+import com.example.appgatos.ui.theme.GatosAppTheme
+import com.example.appgatos.views.GatoViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         val gatosViewModel: GatoViewModel by viewModels()
 
         setContent {
-            Sesion3_03_BaseTheme {
+            GatosAppTheme {
                 val navController = rememberNavController()
                 NavManager(navController, viewModel = gatosViewModel)}
         }

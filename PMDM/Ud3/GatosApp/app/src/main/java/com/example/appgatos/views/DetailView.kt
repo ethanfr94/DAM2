@@ -1,4 +1,4 @@
-package com.example.sesion3_03_base.views
+package com.example.appgatos.views
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
@@ -36,8 +36,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.example.sesion3_03_base.R
-import com.example.sesion3_03_base.model.Gato
+import com.example.appgatos.R
+import com.example.appgatos.model.Gato
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")

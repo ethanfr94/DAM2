@@ -1,4 +1,4 @@
-package com.example.sesion3_03_base.views
+package com.example.appgatos.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -30,7 +30,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
-import com.example.sesion3_03_base.R
+import com.example.appgatos.R
 
 
 @OptIn(ExperimentalGlideComposeApi::class)

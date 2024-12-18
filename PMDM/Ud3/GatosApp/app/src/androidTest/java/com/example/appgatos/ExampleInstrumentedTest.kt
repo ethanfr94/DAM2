@@ -1,4 +1,4 @@
-package com.example.sesion3_03_base
+package com.example.appgatos
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,12 +1,12 @@
-package com.example.sesion3_03_base.views
+package com.example.appgatos.views
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.sesion3_03_base.data.RetrofitServiceFactory
-import com.example.sesion3_03_base.model.Gato
+import com.example.appgatos.data.RetrofitServiceFactory
+import com.example.appgatos.model.Gato
 import kotlinx.coroutines.launch
 
 class GatoViewModel : ViewModel() {
