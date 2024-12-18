@@ -48,7 +48,9 @@ fun HomeView(viewModel: GatoViewModel, navController: NavController) {
         Image(
             painter = painterResource(id = R.drawable.gato),
             contentDescription = "",
-            modifier = Modifier.fillMaxSize().graphicsLayer(alpha = 0.5f),
+            modifier = Modifier
+                .fillMaxSize()
+                .graphicsLayer(alpha = 0.5f),
             contentScale = ContentScale.Crop
         )
 
@@ -62,25 +64,27 @@ fun HomeView(viewModel: GatoViewModel, navController: NavController) {
                             .weight(1f)
                             .padding(8.dp)
                             .fillMaxHeight(),
-                        shape = RoundedCornerShape(12.dp),
+                        shape = RoundedCornerShape(12.dp, 0.dp, 12.dp, 0.dp),
                         colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
                         onClick = { navController.navigate("detail/${gato.Id}") }
                     ) {
-                        Column(
+                        Row(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(16.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center
                         ) {
                             GlideImage(
                                 model = gato.imagenUrl,
                                 contentDescription = "Image of ${gato.Raza}",
                                 modifier = Modifier
-                                    .size(100.dp)
+                                    .size(90.dp)
                                     .clip(CircleShape)
                                     .padding(bottom = 8.dp),
                                 contentScale = ContentScale.Crop
                             )
+                            Spacer(modifier = Modifier.width(25.dp))
                             Text(
                                 text = gato.Raza,
                                 fontSize = 18.sp,
