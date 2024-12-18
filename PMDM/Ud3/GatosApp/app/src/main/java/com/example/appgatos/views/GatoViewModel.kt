@@ -34,7 +34,7 @@ class GatoViewModel : ViewModel() {
     fun getGatoById(id: String) {
         viewModelScope.launch {
             try {
-                val gato = _gatos.value?.find { it.id == id }
+                val gato = _gatos.value?.find { it.Id == id }
                 _selectedGato.value = gato
             } catch (e: Exception) {
                 e.printStackTrace()

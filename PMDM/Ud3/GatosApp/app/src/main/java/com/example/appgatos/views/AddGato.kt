@@ -26,10 +26,10 @@ fun AddGato(onDismiss: () -> Unit, onAddGato: (Gato) -> Unit) {
                 if (raza.isNotEmpty() && origen.isNotEmpty()) {
                     onAddGato(
                         Gato(
-                            raza = raza,
+                            Raza = raza,
                             origen = origen,
-                            urlImagen = imageUrl,
-                            id = id
+                            imagenUrl = imageUrl,
+                            Id = id
                         )
                     )
                 }

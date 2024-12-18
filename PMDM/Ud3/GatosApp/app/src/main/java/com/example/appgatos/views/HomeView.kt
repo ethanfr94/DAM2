@@ -64,7 +64,7 @@ fun HomeView(viewModel: GatoViewModel, navController: NavController) {
                             .fillMaxHeight(),
                         shape = RoundedCornerShape(12.dp),
                         colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
-                        onClick = { navController.navigate("detail/${gato.id}") }
+                        onClick = { navController.navigate("detail/${gato.Id}") }
                     ) {
                         Column(
                             modifier = Modifier
@@ -73,8 +73,8 @@ fun HomeView(viewModel: GatoViewModel, navController: NavController) {
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             GlideImage(
-                                model = gato.urlImagen,
-                                contentDescription = "Image of ${gato.raza}",
+                                model = gato.imagenUrl,
+                                contentDescription = "Image of ${gato.Raza}",
                                 modifier = Modifier
                                     .size(100.dp)
                                     .clip(CircleShape)
@@ -82,7 +82,7 @@ fun HomeView(viewModel: GatoViewModel, navController: NavController) {
                                 contentScale = ContentScale.Crop
                             )
                             Text(
-                                text = gato.raza,
+                                text = gato.Raza,
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = Color(0xFF000000),

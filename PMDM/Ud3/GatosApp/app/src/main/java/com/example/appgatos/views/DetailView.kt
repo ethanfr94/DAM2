@@ -127,8 +127,8 @@ fun ContentDetailView(navController: NavController, gato: Gato?) {
                 contentAlignment = Alignment.Center
             ) {
                 GlideImage(
-                    model = gato?.urlImagen,
-                    contentDescription = "Imagen de ${gato?.raza}",
+                    model = gato?.imagenUrl,
+                    contentDescription = "Imagen de ${gato?.Raza}",
                     modifier = Modifier
                         .size(300.dp)
                         .clip(CircleShape)
@@ -153,7 +153,7 @@ fun ContentDetailView(navController: NavController, gato: Gato?) {
                             modifier = Modifier.padding(bottom = 4.dp)
                         )
                         Text(
-                            text = gato?.raza ?: "Desconocida",
+                            text = gato?.Raza ?: "Desconocida",
                             fontSize = 18.sp
                         )
                     }
