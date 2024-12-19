@@ -28,7 +28,7 @@ public class Servidor {
                 cliente.close();
             }
 
-        }catch(RuntimeException e) {
+        } catch(RuntimeException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
