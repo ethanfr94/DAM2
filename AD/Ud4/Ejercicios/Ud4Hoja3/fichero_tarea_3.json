@@ -1,0 +1,198 @@
+[{
+  "_id": "b889fd75-4289-4ef0-9e27-6174ad3230e4",
+  "codigo": 1,
+  "nombre": "Correos",
+  "localidad": "Guipúzcoa",
+  "estilo": "Indie",
+  "annograb": 2009,
+  "fecha_primer_concierto": "2009-01-01"
+},
+{
+  "_id": "661058d6-68bf-42a2-a51a-b5837dbbf5ce",
+  "codigo": 2,
+  "nombre": "Varry Brava",
+  "localidad": "Murcia",
+  "estilo": "Pop",
+  "annograb": 2005,
+  "fecha_primer_concierto": "2009-02-21"
+},
+{
+  "_id": "43e1e45f-6558-4206-a1ae-ae9ee2832078",
+  "codigo": 3,
+  "nombre": "FULL",
+  "localidad": "Sevilla",
+  "estilo": "Indie",
+  "annograb": 2003,
+  "fecha_primer_concierto": "2009-11-28"
+},
+{
+  "_id": "51e41b80-7bdc-40d5-bf2d-9cf6688d90fc",
+  "codigo": 4,
+  "nombre": "Cyan",
+  "localidad": "Barcelona",
+  "estilo": "Pop/rock",
+  "annograb": 2008,
+  "fecha_primer_concierto": "2008-12-01"
+},
+{
+  "_id": "57f52c29-b8dc-47a1-98c4-bd2591ec6335",
+  "codigo": 5,
+  "nombre": "Izal",
+  "localidad": "Madrid",
+  "estilo": "Indie",
+  "annograb": 2010,
+  "fecha_primer_concierto": "2015-03-26"
+},
+{
+  "_id": "7c22c1b6-e93a-4486-88f7-3782c88f172c",
+  "codigo": 6,
+  "nombre": "Ellos",
+  "localidad": "Madrid",
+  "estilo": "Indie",
+  "annograb": 2002,
+  "fecha_primer_concierto": "2002-04-27"
+},
+{
+  "_id": "57344555-c479-40aa-b13c-d04eeb02272c",
+  "codigo": 7,
+  "nombre": "Carlos Sadness",
+  "localidad": "Barcelona",
+  "estilo": "Pop",
+  "annograb": 2011,
+  "fecha_primer_concierto": "2011-03-05"
+},
+{
+  "_id": "803fad90-64b9-4018-91e6-6f37bba984b2",
+  "codigo": 9,
+  "nombre": "The noises",
+  "localidad": "Madrid",
+  "estilo": "prock",
+  "annograb": 2010,
+  "fecha_primer_concierto": "2010-02-14"
+},
+{
+  "_id": "3bffab30-a891-429d-afbd-75fe7fc19631",
+  "codigo": 10,
+  "nombre": "Second",
+  "localidad": "Murcia",
+  "estilo": "Indie rock",
+  "annograb": 2000,
+  "fecha_primer_concierto": "1997-01-27"
+},
+{
+  "_id": "b7acbbbf-e6ef-46e5-a190-98d0ad3f4211",
+  "codigo": 11,
+  "nombre": "Papa topo",
+  "localidad": "Mallorca",
+  "estilo": "Indie rock",
+  "annograb": 2008,
+  "fecha_primer_concierto": "2008-06-23"
+},
+{
+  "_id": "ff54b284-0732-473a-9638-61e0cbaabc12",
+  "codigo": 12,
+  "nombre": "Grises",
+  "localidad": "Guipúzcoa",
+  "estilo": "Indie",
+  "annograb": 2009,
+  "fecha_primer_concierto": "2009-10-15"
+},
+{
+  "_id": "a2ce3b63-539e-47c3-aae3-877ee500ea2a",
+  "codigo": 13,
+  "nombre": "Lori Meyers",
+  "localidad": "Loja",
+  "estilo": "Indie",
+  "annograb": 2004,
+  "fecha_primer_concierto": "2004-02-15"
+},
+{
+  "_id": "8eb44189-6c94-41f9-92b5-87f01d937f24",
+  "codigo": 14,
+  "nombre": "Russian Red",
+  "localidad": "Madrid",
+  "estilo": "Indie Pop",
+  "annograb": 2008,
+  "fecha_primer_concierto": "2008-06-20"
+},
+{
+  "_id": "78daefe2-51a0-4870-b64a-b78484aac229",
+  "codigo": 15,
+  "nombre": "Viva Suecia",
+  "localidad": "Murcia",
+  "estilo": "Indie",
+  "annograb": 2014,
+  "fecha_primer_concierto": "2013-01-01"
+},
+{
+  "_id": "012b0cd9-2e6d-408f-a87f-bd0d564e6e7d",
+  "codigo": 16,
+  "nombre": "Astrud",
+  "localidad": "Barcelona",
+  "estilo": "Pop",
+  "annograb": 1999,
+  "fecha_primer_concierto": "1999-11-20"
+},
+{
+  "_id": "2add5dab-e034-4b94-a66b-739476f7e242",
+  "codigo": 17,
+  "nombre": "Delorean",
+  "localidad": "País Vasco",
+  "estilo": "Indie pop",
+  "annograb": 2000,
+  "fecha_primer_concierto": "2001-09-27"
+},
+{
+  "_id": "549e9ad6-ac3e-4659-b8af-658c7ab19444",
+  "codigo": 18,
+  "nombre": "Vetusta Morla",
+  "localidad": "Madrid",
+  "estilo": "Indie-Rock",
+  "annograb": 2000,
+  "fecha_primer_concierto": "2000-03-02"
+},
+{
+  "_id": "f76b2390-b5b9-4431-b9bf-a7e2e798addc",
+  "codigo": 19,
+  "nombre": "Kitai",
+  "localidad": "Madrid",
+  "estilo": "Indie",
+  "annograb": 2011,
+  "fecha_primer_concierto": "2011-12-02"
+},
+{
+  "_id": "eb4d22ae-2105-4824-8973-b6cf391fbcea",
+  "codigo": 20,
+  "nombre": "Rufus T. Firefly",
+  "localidad": "Madrid",
+  "estilo": "Rock alternativo",
+  "annograb": 2006,
+  "fecha_primer_concierto": "2006-05-07"
+},
+{
+  "_id": "893ccc6f-db27-49c5-8ee0-109186e374a9",
+  "codigo": 21,
+  "nombre": "Mäbu",
+  "localidad": "Bilbao",
+  "estilo": "Pop-Rock-Indie-Folk",
+  "annograb": 2009,
+  "fecha_primer_concierto": "2010-06-01"
+},
+{
+  "_id": "a76b337c-12b5-4587-bfca-62ad57212744",
+  "codigo": 22,
+  "nombre": "Pauline en la Playa",
+  "localidad": "Asturias",
+  "estilo": "Pop",
+  "annograb": 1997,
+  "fecha_primer_concierto": "1997-08-05"
+},
+{
+  "_id": "ec663287-a1d1-4215-acaa-be3024563e1d",
+  "codigo": 23,
+  "nombre": "Sidonie",
+  "localidad": "Barcelona",
+  "estilo": "Pop",
+  "annograb": 2003,
+  "fecha_primer_concierto": "2002-12-06"
+}]
