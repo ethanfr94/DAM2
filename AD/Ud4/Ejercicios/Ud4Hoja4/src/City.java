@@ -3,49 +3,19 @@ public class City {
     private String name;
     private String country;
     private String province;
-    private int population;
-    private double latitude;
-    private double longitude;
+    private Integer population;
+    private Double latitude;
+    private Double longitude;
 
-    public City(String name, String country, String province, int population, double latitude, double longitude) {
+    public City() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
-        this.country = country;
-        this.province = province;
-        this.population = population;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public int getPopulation() {
-        return population;
-    }
-
-    public void setPopulation(int population) {
-        this.population = population;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
     }
 
     public String getCountry() {
@@ -56,12 +26,36 @@ public class City {
         this.country = country;
     }
 
-    public String getName() {
-        return name;
+    public String getProvince() {
+        return province;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public Integer getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(Integer population) {
+        this.population = population;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     @Override

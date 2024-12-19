@@ -42,24 +42,32 @@ public class Main {
                     try{
                         List<City> cities = new ArrayList<>();
                         BufferedReader br = Files.newBufferedReader(path);
-                        String line;
+                        String line = br.readLine();
                         while((line = br.readLine()) != null){
                             String[] data = line.split(",");
                             if(Integer.parseInt(data[3]) > 200000){
 
                                 if (data[4].equals("NULL")){
-                                    data[4] = "desconocido";
+                                    data[4] = null;
                                 }
                                 if (data[5].equals("NULL")){
-                                    data[5] = "desconocido";
+                                    data[5] = null;
                                 }
-                                City city = new City(data[0], data[1], data[2], Integer.parseInt(data[3]), Double.parseDouble(data[4]), Double.parseDouble(data[5]));
+                                City city = new City();
+                                city.setName(data[0]);
+                                city.setCountry(data[1]);
+                                city.setProvince(data[2]);
+                                if(data[3].equals("NULL")) {
+                                    city.setPopulation(0);
+                                }else{
+                                    city.setPopulation(Integer.parseInt(data[3]));
+                                }
                                 cities.add(city);
                             }
                         }
                         cities.forEach(city -> city.toString());
                     }catch (Exception e){
-                        System.out.println("Error: " + e.getMessage());
+                        e.printStackTrace();
                     }
 
 
