@@ -62,7 +62,6 @@ dependencies {
 
     // Room runtime
     implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.runtime.livedata)
     ksp(libs.androidx.room.compiler)
     // Room KTX
     implementation(libs.androidx.room.ktx)
