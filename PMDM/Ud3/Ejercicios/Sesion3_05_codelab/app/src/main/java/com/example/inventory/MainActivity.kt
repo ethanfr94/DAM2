@@ -43,4 +43,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-// codelabs paso 10 consulta el contenido de la bd con un inspector de bases de datos

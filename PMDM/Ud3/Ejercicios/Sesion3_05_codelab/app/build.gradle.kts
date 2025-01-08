@@ -17,7 +17,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp") version "2.1.0-1.0.29"
+    id("com.google.devtools.ksp") version "2.1.0-1.0.29" // ajusta la version segun la version de kotlin que tengas instalada
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
