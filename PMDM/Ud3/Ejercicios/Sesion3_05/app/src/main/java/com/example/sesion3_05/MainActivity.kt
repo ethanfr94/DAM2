@@ -11,8 +11,6 @@ import androidx.room.Room
 import com.example.sesion3_05.Data.Daos.FamiliaDao
 import com.example.sesion3_05.Data.Database.AppDatabase
 import com.example.sesion3_05.Data.Entities.Familia
-import com.example.sesion3_05.View.HomeView
-import com.example.sesion3_05.View.HomeViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,11 +19,17 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val database = DatabaseProvider.getDatabase(this)
-        var homeViewModel = HomeViewModel(database)
         setContent {
-            HomeView(homeViewModel)
+            val database = DatabaseProvider.getDatabase(this)
+            val familiaDao = database.familiaDao()
+//Insertar los datos de una lista de familiar
+            // insertarFamilias(familiaDao) comentamos para que no de error al intentar volver a introducir los datos
+//Ver los datos de las familias
+            verFamilias(familiaDao)
+
         }
+
+
     }
 }
 

@@ -1,6 +1,5 @@
 package com.example.sesion3_05.View
 
-
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,6 +11,15 @@ import com.example.sesion3_05.Data.Entities.Familia
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/*
+ 1.- HomeViewModel.kt  para el ViewModel de las vistas a usar. El archivo contiene:
+•	Un LiveData para proveer una lista de animales y otro para proveer un animal.
+•	Una función para obtener un animal de la tabla de animales a partir de su id.
+•	Una función para insertar en la tabla de familias el contenido de una lista de familias.
+•	Una función que devuelve en una lista todos los animales de la tabla de animales y la asigna al LiveData.
+•	Una función iniciar que añade una lisa de animales a la tabla de animales y después obtiene en una lista todos los animales de la tabla.
+
+ */
 
 class HomeViewModel(private val appDatabase: AppDatabase) : ViewModel() {
     // LiveData para servir la lista de animales
