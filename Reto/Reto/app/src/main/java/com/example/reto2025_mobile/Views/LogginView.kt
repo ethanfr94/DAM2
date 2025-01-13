@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -25,10 +26,10 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 
-@Preview
 @Composable
-fun LogginView(){
+fun LogginView(navController: NavHostController) {
 
     var user by remember { mutableStateOf("") }
     var pass by remember { mutableStateOf("") }
@@ -57,7 +58,8 @@ fun LogginView(){
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 30.dp)
+                    .padding(horizontal = 30.dp),
+                shape = RoundedCornerShape(12.dp)
             )
 
             Spacer(modifier = Modifier.padding(30.dp))
@@ -73,12 +75,14 @@ fun LogginView(){
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 30.dp)
+                    .padding(horizontal = 30.dp),
+                shape = RoundedCornerShape(12.dp)
+
             )
             Spacer(modifier = Modifier.padding(20.dp))
 
             Button(
-                onClick = {  },
+                onClick = { navController.navigate("home") },
                 modifier = Modifier.fillMaxWidth(0.6f),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.LightGray
