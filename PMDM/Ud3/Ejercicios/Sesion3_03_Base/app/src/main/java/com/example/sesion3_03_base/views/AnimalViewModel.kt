@@ -37,11 +37,10 @@ class AnimalViewModel() : ViewModel() {
     //Función para obtener un animal aleatorio
     fun getAnimalRandom(){
         val newAnimal=Animal(
-            commonName = "Club-tailed glyptodont",
-            location =  "South American Pampas",
-            imageSrc = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Doedicurus.png/220px-Doedicurus.png" ,
-            lastRecord = "4765-4445 BCE"
-        )
+            commonName = animal.value?.commonName?:"",
+            location =  animal.value?.location?:"",
+            imageSrc = animal.value?.imageSrc?:"",
+            lastRecord = animal.value?.lastRecord?:"",        )
         _animal.value = newAnimal
     }
 

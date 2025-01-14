@@ -52,6 +52,7 @@ class GatoViewModel : ViewModel() {
         }
     }
 
+
     init {
         getGatos()
     }
