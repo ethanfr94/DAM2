@@ -16,14 +16,14 @@ sealed class ItemsNav (
         val texto:String,
         val ruta:String
     )
-    {
-        object Item_bottom_nav_home:ItemsNav(
-            Icons.Filled.Home,"Home", "home")
+{
+    object Item_bottom_nav_home:ItemsNav(
+        Icons.Filled.Home,"Home", "home")
 
-        object Item_bottom_nav_acts:ItemsNav(
-            Icons.Filled.Menu,"Acts", "actividades")
+    object Item_bottom_nav_acts:ItemsNav(
+        Icons.Filled.Menu,"Acts", "actividades")
 
-        object Item_bottom_nav_faq:ItemsNav(
-            Icons.Filled.Info,"FAQ", "FAQ")
+    object Item_bottom_nav_faq:ItemsNav(
+        Icons.Filled.Info,"FAQ", "FAQ")
 
-    }
+}

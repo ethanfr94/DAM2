@@ -10,6 +10,7 @@ import com.example.reto2025_mobile.Views.DetailsView
 import com.example.reto2025_mobile.Views.FAQView
 import com.example.reto2025_mobile.Views.HomeView
 import com.example.reto2025_mobile.Views.LogginView
+import com.example.reto2025_mobile.Views.PicturesView
 import com.example.reto2025_mobile.Views.ProximasView
 
 
@@ -23,7 +24,7 @@ fun NavManager(navController: NavHostController, actividadViewModel: ActividadVi
             LogginView(navController)
         }
         composable("home"){
-            HomeView(navController)
+            HomeView(navController, actividadViewModel)
         }
         composable("actividades"){
             ActividadesView(navController, actividadViewModel)
@@ -34,15 +35,12 @@ fun NavManager(navController: NavHostController, actividadViewModel: ActividadVi
         composable("details"){
             DetailsView(navController)
         }
-<<<<<<< Updated upstream
-=======
         composable("FAQ"){
             FAQView(navController)
         }
         composable("pictures"){
             PicturesView(navController)
         }
->>>>>>> Stashed changes
     }
 }
 

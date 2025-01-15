@@ -65,11 +65,8 @@ dependencies {
     implementation(libs.androidx.runtime.livedata)
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-<<<<<<< Updated upstream
 
-=======
-    implementation(libs.coil.compose)
->>>>>>> Stashed changes
+    implementation("io.coil-kt:coil-compose:2.1.0")
     implementation(libs.osmdroid.android)
     implementation(libs.osmdroid.wms)
     implementation("io.github.boguszpawlowski.composecalendar:composecalendar:1.3.0")
