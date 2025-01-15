@@ -57,7 +57,10 @@ fun ActividadesView(navController: NavController, actividadViewModel: ActividadV
                                 .fillMaxHeight(),
                             shape = RoundedCornerShape(12.dp),
                             colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
-                            onClick = { navController.navigate("details") }
+                            onClick = {
+                                actividadViewModel.getActividadById(actividad.id)
+                                navController.navigate("details")
+                            }
                         ) {
                             Row(
                                 modifier = Modifier
