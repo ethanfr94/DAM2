@@ -1,5 +1,8 @@
 package com.example.reto2025_mobile.Views
 
+import android.content.Intent
+import android.net.Uri
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -20,6 +23,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -37,16 +41,18 @@ fun DetailsView(
     val actividad: Actividad? by actividadViewModel.actividad.observeAsState()
     //val profesor: Profesor? by actividadViewModel.profesor.observeAsState()
     actividad?.let {
-        Scaffold (
-            topBar = { DetailTopBar(navController = navController, it.titulo)  }
-        ){
-                innerPadding ->
-            Box(modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)) {
-                Column(modifier = Modifier
-                    .fillMaxWidth()
-                    .height(1000.dp)
+        Scaffold(
+            topBar = { DetailTopBar(navController = navController, it.titulo) }
+        ) { innerPadding ->
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(1000.dp)
                 ) {
                     Spacer(modifier = Modifier.height(10.dp))
                     Card(
@@ -55,77 +61,159 @@ fun DetailsView(
                             .fillMaxWidth(),
                         shape = RoundedCornerShape(12.dp),
                         colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
-                    ){
-                        Text(text = it.descripcion?:"", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
+                    ) {
+                        Text(
+                            text = it.descripcion ?: "",
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(8.dp)
+                        )
                         Spacer(modifier = Modifier.height(5.dp))
-                        Text(text = "Actividad ${it.tipo}", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
+                        Text(
+                            text = "Actividad ${it.tipo}",
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(8.dp)
+                        )
                         Spacer(modifier = Modifier.height(5.dp))
-                        Text(text = "Comentarios: ${it.comentarios}", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
+                        Text(
+                            text = "Comentarios: ${it.comentarios}",
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(8.dp)
+                        )
                     }
-                    Card(
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .fillMaxWidth(),
-                        shape = RoundedCornerShape(12.dp),
-                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
-                    ){
-                        Text(text = "Fecha inicio: ${it.fini}", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
-                        Text(text = "Fecha finalizacion ${it.ffin}", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
-                    }
-                    Spacer(modifier = Modifier.height(5.dp))
-                    Card(
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .fillMaxWidth(),
-                        shape = RoundedCornerShape(12.dp),
-                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
-                    ){
-                        Text(text = "Hora inicio: ${it.hini}", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
-                        Text(text = "Hora finalizacion ${it.hfin}", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
-                    }
-                    Spacer(modifier = Modifier.height(5.dp))
-                    Card(
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .fillMaxWidth(),
-                        shape = RoundedCornerShape(12.dp),
-                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
-                    ){
-                        Text(text = "Profesor solicitante: ${it.solicitanteId}", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
-                    }
-                    Spacer(modifier = Modifier.height(5.dp))
-                    Card(
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .fillMaxWidth(),
-                        shape = RoundedCornerShape(12.dp),
-                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
-                    ){
-                        Text(text = "Estado: ${it.estado}", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
-                        if(it.comentEstado != null) {
+                    if (it.urlFolleto != null) {
+                        Spacer(modifier = Modifier.height(5.dp))
+                        val context = LocalContext.current
+                        Card(
+                            modifier = Modifier
+                                .padding(8.dp),
+                            shape = RoundedCornerShape(12.dp),
+                            colors = CardDefaults.cardColors(containerColor = Color(0xFFB0C4DE)),
+                            onClick = {
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.urlFolleto))
+                                context.startActivity(intent)
+                            }
+                        ) {
                             Text(
-                                text = it.comentEstado.toString(), fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp)
+                                text = "Sitio Web",
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(8.dp)
+                            )
+                        }
+                    }
+                    Card(
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                    ) {
+                        Text(
+                            text = "Fecha inicio: ${it.fini}",
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(8.dp)
+                        )
+                        Text(
+                            text = "Fecha finalizacion ${it.ffin}",
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(8.dp)
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Card(
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                    ) {
+                        Text(
+                            text = "Hora inicio: ${it.hini}",
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(8.dp)
+                        )
+                        Text(
+                            text = "Hora finalizacion ${it.hfin}",
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(8.dp)
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Card(
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                    ) {
+                        Text(
+                            text = "Profesor solicitante: ${it.solicitante.nombre} ${it.solicitante.apellidos}",
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(8.dp)
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Card(
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                    ) {
+                        Text(
+                            text = "Estado: ${it.estado}",
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(8.dp)
+                        )
+                        if (it.comentEstado != null) {
+                            Text(
+                                text = it.comentEstado.toString(),
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(8.dp)
                             )
                         }
                     }
                     Spacer(modifier = Modifier.height(5.dp))
-                    var trans = "No"
-                    if(it.transporteReq) {
+                    if (it.incidencias != null) {
                         Card(
                             modifier = Modifier
                                 .padding(8.dp)
                                 .fillMaxWidth(),
                             shape = RoundedCornerShape(12.dp),
                             colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
-                        ){
+                        ) {
+                            Text(
+                                text = "Incidencias: ${it.incidencias}",
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(8.dp)
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(5.dp))
+                    var trans = "No"
+                    if (it.transporteReq) {
+                        Card(
+                            modifier = Modifier
+                                .padding(8.dp)
+                                .fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp),
+                            colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                        ) {
                             trans = "Si"
-                            Text(text = "Transporte ${trans}", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
-                            Text(text = "${it.comentTransporte}", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
+                            Text(
+                                text = "Transporte ${trans}",
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(8.dp)
+                            )
+                            Text(
+                                text = "${it.comentTransporte}",
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(8.dp)
+                            )
                         }
                     }
                     Spacer(modifier = Modifier.height(5.dp))
                     var aloj = "No"
-                    if(it.alojamientoReq) {
+                    if (it.alojamientoReq) {
                         Card(
                             modifier = Modifier
                                 .weight(1f)
@@ -133,14 +221,25 @@ fun DetailsView(
                                 .fillMaxWidth(),
                             shape = RoundedCornerShape(12.dp),
                             colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
-                        ){
+                        ) {
                             aloj = "Si"
-                            Text(text = "Alojamiento ${aloj}", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
-                            Text(text = "${it.comentAlojamiento}", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
+                            Text(
+                                text = "Alojamiento ${aloj}",
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(8.dp)
+                            )
+                            Text(
+                                text = "${it.comentAlojamiento}",
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(8.dp)
+                            )
                         }
                     }
                 }
             }
         }
     }
+    BackHandler {
+        navController.popBackStack()
     }
+}

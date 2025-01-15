@@ -1,5 +1,6 @@
 package com.example.reto2025_mobile.Views
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -85,5 +86,8 @@ fun ActividadesView(navController: NavController, actividadViewModel: ActividadV
                 }
             }
         }
+    }
+    BackHandler {
+        navController.navigate("home")
     }
 }
