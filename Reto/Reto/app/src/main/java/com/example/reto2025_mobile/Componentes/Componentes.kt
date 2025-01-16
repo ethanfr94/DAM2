@@ -1,7 +1,6 @@
 package com.example.reto2025_mobile.Componentes
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
@@ -42,6 +42,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -49,13 +50,15 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.reto2025_mobile.Navigation.ItemsNav
 import com.example.reto2025_mobile.R
 import com.example.reto2025_mobile.ViewModel.ActividadViewModel
+import com.example.reto2025_mobile.ViewModel.GrupoParticipanteViewModel
+import com.example.reto2025_mobile.ViewModel.ProfParticipanteViewModel
 import com.example.reto2025_mobile.data.Actividad
 import io.github.boguszpawlowski.composecalendar.Calendar
 import io.github.boguszpawlowski.composecalendar.day.DayState
 import io.github.boguszpawlowski.composecalendar.rememberCalendarState
 import java.time.LocalDate
-import java.time.format.TextStyle
-import java.util.Locale
+
+// Top Bar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -82,9 +85,12 @@ fun AppBar(navController: NavController) {
     )
 }
 
+//Top bar de la pantalla de Detalles de una actividad
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailTopBar(navController: NavController, titulo: String) {
+    var expanded by remember { mutableStateOf(false) }
     TopAppBar(
         title = {
             Text(
@@ -106,23 +112,22 @@ fun DetailTopBar(navController: NavController, titulo: String) {
         actions = {
             Box {
                 Row {
-                    IconButton(onClick = { }) {
+                    IconButton(onClick = { expanded = true }) {
                         Icon(
                             imageVector = Icons.Default.Create,
-                            contentDescription = "añadir imagenes"
+                            contentDescription = "añadir incidencia"
                         )
                     }
-                    IconButton(onClick = { navController.navigate("pictures") }) {
-                        Icon(
-                            imageVector = ImageVector.vectorResource(R.drawable.photo),
-                            contentDescription = "añadir imagenes"
-                        )
+                    if(expanded){
+                    Incidencias(onDismiss = { expanded = false })
                     }
                 }
             }
         },
     )
 }
+
+//Top bar de la pantalla de Actividades
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -163,6 +168,8 @@ fun ActividadesTopAppBar(navController: NavController) {
         },
     )
 }
+
+//Top bar de la pantalla de Inicio
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -215,6 +222,8 @@ fun HomeAppBar(navController: NavController) {
     )
 }
 
+// Bottom Bar con navegacion entre pantallas
+
 @Composable
 fun currentRoute(navController: NavController) :String? =
     navController.currentBackStackEntryAsState().value?.destination?.route
@@ -240,6 +249,35 @@ fun BottomAppBar(navController: NavController) {
             )
         }
     }
+}
+
+// Cuadros de dialogo para filtrar actividades y añadir incidencias
+
+@Composable
+fun Incidencias(onDismiss: () -> Unit) {
+    var inci by remember { mutableStateOf("") }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        confirmButton = {
+            Button(onClick = onDismiss) {
+                Text("Aceptar")
+            }
+        },
+        dismissButton = {
+            Button(onClick = onDismiss) {
+                Text("Cancelar")
+            }
+        },
+        text = {
+            Column {
+                Text(text = "Añadir incidencia")
+                TextField(value = inci,
+                    onValueChange = { inci = it },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                    )
+            }
+        }
+    )
 }
 
 @Composable
@@ -268,11 +306,15 @@ fun Filtros(onDismiss: () -> Unit) {
     )
 }
 
+// Calendario de actividades
+
 @Composable
 fun ActivityCalendarApp(
     navController: NavController,
     actividades: List<Actividad>,
-    actividadViewModel: ActividadViewModel
+    actividadViewModel: ActividadViewModel,
+    profParticipanteViewModel: ProfParticipanteViewModel,
+    grupoParticipanteViewModel: GrupoParticipanteViewModel
 ) {
     // Estado para las actividades (con título y horario)
     var activities by remember { mutableStateOf(mapOf<LocalDate, Actividad>()) }
@@ -287,10 +329,13 @@ fun ActivityCalendarApp(
     // Estado del día seleccionado
     var selectedDate by remember { mutableStateOf<LocalDate?>(null) }
 
-    Column(modifier = Modifier.fillMaxSize().padding(15.dp)) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(15.dp)) {
         // Mostrar el calendario
         Box(modifier = Modifier
-            .background(Color(0xFFD0E8F2), shape = RoundedCornerShape(12.dp)).padding(5.dp)){
+            .background(Color(0xFFD0E8F2), shape = RoundedCornerShape(12.dp))
+            .padding(5.dp)){
             Calendar(
                 calendarState = calendarState,
                 showAdjacentMonths = true,
@@ -314,10 +359,11 @@ fun ActivityCalendarApp(
                 navController = navController,
                 date = date,
                 activity = activities[date],
-                actividadViewModel = actividadViewModel
+                actividadViewModel = actividadViewModel,
+                profParticipanteViewModel = profParticipanteViewModel,
+                grupoParticipanteViewModel = grupoParticipanteViewModel
             )
         }
-
     }
 }
 
@@ -356,14 +402,18 @@ fun ActivityDetails(
     navController: NavController,
     date: LocalDate,
     activity: Actividad?,
-    actividadViewModel: ActividadViewModel
+    actividadViewModel: ActividadViewModel,
+    profParticipanteViewModel: ProfParticipanteViewModel,
+    grupoParticipanteViewModel: GrupoParticipanteViewModel
 ) {
     Card (modifier = Modifier
         .padding(5.dp)
         .fillMaxSize()
         .then(
-            if(activity != null)Modifier.clickable {
+            if (activity != null) Modifier.clickable {
                 actividadViewModel.getActividadById(activity.id)
+                profParticipanteViewModel.getProfesoresParticipantes()
+                grupoParticipanteViewModel.getGruposParticipantes()
                 navController.navigate("details")
             } else Modifier
         ),
@@ -387,52 +437,7 @@ fun ActivityDetails(
                     Text(text = "Actividad: No hay actividad programada", fontSize = 18.sp, fontWeight = FontWeight.Bold)
                 }
             }
-
         }
-
     }
 
-    /*Column(
-        modifier = Modifier.padding(16.dp),
-        
-    ) {
-
-
-        // Si ya hay una actividad, mostrar el título y el horario
-        activity?.let {
-            Text(text = "Título: ${it.title}")
-            //Text(text = "Horario: ${it.time}")
-            Spacer(modifier = Modifier.height(8.dp))
-            Button(
-                onClick = onRemoveActivity,
-                colors = ButtonDefaults.buttonColors(Color.Red)
-            ) {
-                Text(text = "Eliminar actividad")
-            }
-        } ?: run {
-            // Si no hay actividad, mostrar los campos para añadirla
-            TextField(
-                value = title,
-                onValueChange = { title = it },
-                label = { Text("Título de la actividad") },
-                modifier = Modifier.fillMaxWidth()
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-
-            TextField(
-                value = time,
-                onValueChange = { time = it },
-                label = { Text("Horario de la actividad") },
-                modifier = Modifier.fillMaxWidth()
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Button(
-                onClick = { onAddActivity(title, time) },
-                colors = ButtonDefaults.buttonColors(Color.Green)
-            ) {
-                Text(text = "Añadir actividad")
-            }
-        }
-    }*/
 }

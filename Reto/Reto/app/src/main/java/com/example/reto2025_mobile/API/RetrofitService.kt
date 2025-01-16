@@ -15,6 +15,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface RetrofitService {
     @GET("actividades")
@@ -53,6 +54,12 @@ interface RetrofitService {
     @GET("fotos")
     suspend fun getFotos(): List<Foto>
 
+    @GET("profesores/inicio")
+    suspend fun login(
+        @Query("correo") correo: String,
+        @Query("password") password: String
+    ): Profesor
+
 
 
 
@@ -61,8 +68,8 @@ interface RetrofitService {
 object RetrofitServiceFactory {
     fun makeRetrofitService(): RetrofitService {
         return Retrofit.Builder()
-            //.baseUrl("http://10.0.22.68:8080/acex/")
-            .baseUrl("http://192.168.1.132:8080/acex/")
+            .baseUrl("http://10.0.22.68:8080/acex/")
+            //.baseUrl("http://192.168.1.132:8080/acex/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(RetrofitService::class.java)
     }

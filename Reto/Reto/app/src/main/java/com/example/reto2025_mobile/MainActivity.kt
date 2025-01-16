@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.navigation.compose.rememberNavController
 import com.example.reto2025_mobile.Navigation.NavManager
 import com.example.reto2025_mobile.ViewModel.ActividadViewModel
+import com.example.reto2025_mobile.ViewModel.GrupoParticipanteViewModel
 import com.example.reto2025_mobile.ViewModel.ProfParticipanteViewModel
 import com.example.reto2025_mobile.ui.theme.Reto2025MobileTheme
 import java.util.Locale
@@ -19,9 +20,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Reto2025MobileTheme {
+                val profParticipanteViewModel by viewModels<ProfParticipanteViewModel>()
+                val grupoParticipanteViewModel by viewModels<GrupoParticipanteViewModel>()
                 val actividadViewModel by viewModels<ActividadViewModel>()
                 val navController = rememberNavController()
-                NavManager(navController, actividadViewModel)
+                NavManager(navController, actividadViewModel, profParticipanteViewModel, grupoParticipanteViewModel)
             }
         }
     }
