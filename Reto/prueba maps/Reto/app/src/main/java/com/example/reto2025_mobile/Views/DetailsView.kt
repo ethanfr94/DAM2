@@ -84,7 +84,7 @@ fun DetailsView(
                         .fillMaxWidth()
                         .height(1000.dp)
                 ) {
-                    Box(modifier = Modifier.weight(0.5f)) {
+                    Box(modifier = Modifier.fillMaxSize()) {
                         LazyColumn {
                             item{
                                 Card(
@@ -331,27 +331,48 @@ fun DetailsView(
 
                                 }
                             }
-
-                        }
-                    }
-                    Box(modifier = Modifier.weight(0.5f)) {
-                        Column {
-                            val selectedImageUris = remember { mutableStateListOf<Uri?>() }
-                            val multiplePhotoPickerLauncher = rememberLauncherForActivityResult(
-                                contract = ActivityResultContracts.PickMultipleVisualMedia(),
-                                onResult = { uris ->
-                                    uris.forEach { uri ->
-                                        uri?.let { selectedImageUris.add(it) }
+                            item {
+                                Column {
+                                    val selectedImageUris = remember { mutableStateListOf<Uri?>() }
+                                    val multiplePhotoPickerLauncher = rememberLauncherForActivityResult(
+                                        contract = ActivityResultContracts.PickMultipleVisualMedia(),
+                                        onResult = { uris ->
+                                            uris.forEach { uri ->
+                                                uri?.let { selectedImageUris.add(it) }
+                                            }
+                                        }
+                                    )
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(100.dp)
+                                    ) {
+                                        LazyRow {
+                                            items(10) {
+                                                Card(
+                                                    modifier = Modifier
+                                                        .padding(3.dp)
+                                                        .fillMaxHeight()
+                                                        .width(60.dp),
+                                                    shape = RoundedCornerShape(12.dp),
+                                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                                ) {
+                                                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                                                        Icon(
+                                                            imageVector = ImageVector.vectorResource(R.drawable.photo),
+                                                            contentDescription = "añadir imagenes",
+                                                            modifier = Modifier.size(32.dp)
+                                                        )
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
-                                }
-                            )
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(100.dp)
-                            ) {
-                                LazyRow {
-                                    items(10) {
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(100.dp)
+                                    ) {
                                         Card(
                                             modifier = Modifier
                                                 .padding(8.dp)
@@ -361,123 +382,107 @@ fun DetailsView(
                                             colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
                                         ) {
                                             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                                                Icon(
-                                                    imageVector = ImageVector.vectorResource(R.drawable.photo),
-                                                    contentDescription = "añadir imagenes",
-                                                    modifier = Modifier.size(32.dp)
-                                                )
+                                                IconButton(onClick = {
+                                                    multiplePhotoPickerLauncher.launch(
+                                                        PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                                                    ) }) {
+                                                    Icon(
+                                                        imageVector = ImageVector.vectorResource(R.drawable.addphoto),
+                                                        contentDescription = "añadir imagenes",
+                                                        modifier = Modifier.size(32.dp)
+                                                    )
+                                                }
                                             }
                                         }
-                                    }
-                                }
-                            }
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(100.dp)
-                            ) {
-                                Card(
-                                    modifier = Modifier
-                                        .padding(8.dp)
-                                        .fillMaxHeight()
-                                        .width(60.dp),
-                                    shape = RoundedCornerShape(12.dp),
-                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
-                                ) {
-                                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                                        IconButton(onClick = {
-                                            multiplePhotoPickerLauncher.launch(
-                                            PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
-                                        ) }) {
-                                            Icon(
-                                                imageVector = ImageVector.vectorResource(R.drawable.addphoto),
-                                                contentDescription = "añadir imagenes",
-                                                modifier = Modifier.size(32.dp)
-                                            )
-                                        }
-                                    }
-                                }
 
-                                Row(modifier = Modifier.width(260.dp)) {
-                                    LazyRow {
-                                        items(selectedImageUris) { uri ->
-                                            uri?.let {
-                                                Card(
-                                                    modifier = Modifier
-                                                        .padding(8.dp)
-                                                        .fillMaxSize(),
-                                                    shape = RoundedCornerShape(12.dp),
-                                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
-                                                    onClick = {
-                                                        // accion al presionar la imagen
-                                                        navController.navigate("home")
-                                                    }
-                                                ) {
-                                                    Box(modifier = Modifier.fillMaxSize()) {
-                                                        AsyncImage(
-                                                            model = uri,
-                                                            contentDescription = null,
-                                                            modifier = Modifier.fillMaxWidth(),
-                                                            contentScale = ContentScale.Crop
-                                                        )
-                                                        IconButton(
-                                                            onClick = {
-                                                                // alert dialog para preguntar si quiere eliminar
-                                                                selectedImageUris.remove(uri)
-                                                            },
+                                        Row(modifier = Modifier.width(260.dp)) {
+                                            LazyRow {
+                                                items(selectedImageUris) { uri ->
+                                                    uri?.let {
+                                                        Card(
                                                             modifier = Modifier
-                                                                .align(Alignment.TopEnd)
-                                                                .size(20.dp),// Align button at top end
+                                                                .padding(8.dp)
+                                                                .fillMaxSize(),
+                                                            shape = RoundedCornerShape(12.dp),
+                                                            colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
+                                                            onClick = {
+                                                                // accion al presionar la imagen
+                                                                navController.navigate("home")
+                                                            }
                                                         ) {
-                                                            Icon(
-                                                                imageVector = Icons.Default.Close,
-                                                                contentDescription = "eliminar imagen",
-                                                                modifier = Modifier.size(20.dp),
-                                                                tint = Color.Black
-                                                            )
+                                                            Box(modifier = Modifier.fillMaxSize()) {
+                                                                AsyncImage(
+                                                                    model = uri,
+                                                                    contentDescription = null,
+                                                                    modifier = Modifier.fillMaxWidth(),
+                                                                    contentScale = ContentScale.Crop
+                                                                )
+                                                                IconButton(
+                                                                    onClick = {
+                                                                        // alert dialog para preguntar si quiere eliminar
+                                                                        selectedImageUris.remove(uri)
+                                                                    },
+                                                                    modifier = Modifier
+                                                                        .align(Alignment.TopEnd)
+                                                                        .size(20.dp),// Align button at top end
+                                                                ) {
+                                                                    Icon(
+                                                                        imageVector = Icons.Default.Close,
+                                                                        contentDescription = "eliminar imagen",
+                                                                        modifier = Modifier.size(20.dp),
+                                                                        tint = Color.Black
+                                                                    )
+                                                                }
+
+                                                            }
+
                                                         }
 
                                                     }
-
                                                 }
-
+                                            }
+                                        }
+                                        Card(
+                                            modifier = Modifier
+                                                .padding(3.dp)
+                                                .fillMaxHeight()
+                                                .width(60.dp),
+                                            shape = RoundedCornerShape(12.dp),
+                                            colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                        ) {
+                                            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                                                IconButton(onClick = { /*TODO*/ }) {
+                                                    Icon(
+                                                        imageVector = ImageVector.vectorResource(R.drawable.save),
+                                                        contentDescription = "subir imagenes",
+                                                        modifier = Modifier.size(32.dp)
+                                                    )
+                                                }
                                             }
                                         }
                                     }
                                 }
-                                Card(
-                                    modifier = Modifier
-                                        .padding(8.dp)
-                                        .fillMaxHeight()
-                                        .width(60.dp),
-                                    shape = RoundedCornerShape(12.dp),
-                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
-                                ) {
-                                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                                        IconButton(onClick = { /*TODO*/ }) {
-                                            Icon(
-                                                imageVector = ImageVector.vectorResource(R.drawable.save),
-                                                contentDescription = "subir imagenes",
-                                                modifier = Modifier.size(32.dp)
-                                            )
-                                        }
-                                    }
-                                }
                             }
-                            Box(modifier = Modifier.fillMaxSize()){
-                                Card(
-                                    modifier = Modifier
-                                        .padding(8.dp)
-                                        .fillMaxSize(),
-                                    shape = RoundedCornerShape(12.dp),
-                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
-                                ) {
-                                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                                        MapScreen()
+                            item {
+                                Box(modifier = Modifier.fillMaxSize()){
+                                    Card(
+                                        modifier = Modifier
+                                            .padding(8.dp)
+                                            .fillMaxWidth()
+                                            .height(300.dp),
+                                        shape = RoundedCornerShape(12.dp),
+                                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                    ) {
+                                        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                                            MapScreen()
+                                        }
                                     }
                                 }
                             }
                         }
+                    }
+                    Box(modifier = Modifier.weight(0.5f)) {
+
                     }
                 }
             }

@@ -467,11 +467,16 @@ fun MapScreen() {
     GoogleMap(
         cameraPositionState = cameraPositionState
     ) {
+
+
+        /*
         Marker(
             state = rememberMarkerState(position = location),
             title = "IES Miguel Herrero",
             snippet = "Torrelavega"
         )
+        */
+
     }
 
     /*val puntosDeInteres = listOf(
