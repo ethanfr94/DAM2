@@ -6,6 +6,7 @@ import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -37,7 +38,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -50,7 +53,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.reto2025_mobile.Componentes.DetailTopBar
+import com.example.reto2025_mobile.Componentes.Fotos
 import com.example.reto2025_mobile.Componentes.MapScreen
+import com.example.reto2025_mobile.Componentes.Mapa
 import com.example.reto2025_mobile.R
 import com.example.reto2025_mobile.ViewModel.ActividadViewModel
 import com.example.reto2025_mobile.ViewModel.GrupoParticipanteViewModel
@@ -69,7 +74,7 @@ fun DetailsView(
     val profParticipantes: List<ProfParticipante> by profParticipanteViewModel.profesoresParticipantes.observeAsState(emptyList())
     val grupoParticipantes: List<GrupoParticipante> by grupoParticipanteViewModel.gruposParticipantes.observeAsState(emptyList())
     val actividad: Actividad? by actividadViewModel.actividad.observeAsState()
-
+    var color by remember { mutableStateOf(Color(0xFFD0E8F2)) }
     actividad?.let {
         Scaffold(
             topBar = { DetailTopBar(navController = navController, it.titulo) }
@@ -85,6 +90,20 @@ fun DetailsView(
                         .height(1000.dp)
                 ) {
                     Box(modifier = Modifier.fillMaxSize()) {
+                        if(it.estado == "SOLICITADA"){
+                            color = Color(0xFFD0E8F2)
+                        }else if(it.estado == "DENEGADA"){
+                            color = Color(0xFFCD5C5C)
+                        }else if(it.estado == "APROBADA"){
+                            color = Color(0xFFADD8E6)
+                        }else if(it.estado == "REALIZADA"){
+                            color = Color(0xFF90EE90)
+                        }else if(it.estado == "REALIZANDOSE"){
+                            color = Color(0xFFFFFFE0)
+                        }else if(it.estado == "CANCELADA"){
+                            color = Color(0xFFD3D3D3)
+                        }
+
                         LazyColumn {
                             item{
                                 Card(
@@ -92,8 +111,9 @@ fun DetailsView(
                                         .padding(8.dp)
                                         .fillMaxWidth(),
                                     shape = RoundedCornerShape(12.dp),
-                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                    colors = CardDefaults.cardColors(containerColor = color)
                                 ) {
+
                                     Text(
                                         text = "Estado: ${it.estado}",
                                         fontWeight = FontWeight.Bold,
@@ -368,115 +388,43 @@ fun DetailsView(
                                             }
                                         }
                                     }
-                                    Row(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .height(100.dp)
-                                    ) {
-                                        Card(
-                                            modifier = Modifier
-                                                .padding(8.dp)
-                                                .fillMaxHeight()
-                                                .width(60.dp),
-                                            shape = RoundedCornerShape(12.dp),
-                                            colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
-                                        ) {
-                                            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                                                IconButton(onClick = {
-                                                    multiplePhotoPickerLauncher.launch(
-                                                        PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
-                                                    ) }) {
-                                                    Icon(
-                                                        imageVector = ImageVector.vectorResource(R.drawable.addphoto),
-                                                        contentDescription = "añadir imagenes",
-                                                        modifier = Modifier.size(32.dp)
-                                                    )
-                                                }
-                                            }
-                                        }
-
-                                        Row(modifier = Modifier.width(260.dp)) {
-                                            LazyRow {
-                                                items(selectedImageUris) { uri ->
-                                                    uri?.let {
-                                                        Card(
-                                                            modifier = Modifier
-                                                                .padding(8.dp)
-                                                                .fillMaxSize(),
-                                                            shape = RoundedCornerShape(12.dp),
-                                                            colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
-                                                            onClick = {
-                                                                // accion al presionar la imagen
-                                                                navController.navigate("home")
-                                                            }
-                                                        ) {
-                                                            Box(modifier = Modifier.fillMaxSize()) {
-                                                                AsyncImage(
-                                                                    model = uri,
-                                                                    contentDescription = null,
-                                                                    modifier = Modifier.fillMaxWidth(),
-                                                                    contentScale = ContentScale.Crop
-                                                                )
-                                                                IconButton(
-                                                                    onClick = {
-                                                                        // alert dialog para preguntar si quiere eliminar
-                                                                        selectedImageUris.remove(uri)
-                                                                    },
-                                                                    modifier = Modifier
-                                                                        .align(Alignment.TopEnd)
-                                                                        .size(20.dp),// Align button at top end
-                                                                ) {
-                                                                    Icon(
-                                                                        imageVector = Icons.Default.Close,
-                                                                        contentDescription = "eliminar imagen",
-                                                                        modifier = Modifier.size(20.dp),
-                                                                        tint = Color.Black
-                                                                    )
-                                                                }
-
-                                                            }
-
-                                                        }
-
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        Card(
-                                            modifier = Modifier
-                                                .padding(3.dp)
-                                                .fillMaxHeight()
-                                                .width(60.dp),
-                                            shape = RoundedCornerShape(12.dp),
-                                            colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
-                                        ) {
-                                            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                                                IconButton(onClick = { /*TODO*/ }) {
-                                                    Icon(
-                                                        imageVector = ImageVector.vectorResource(R.drawable.save),
-                                                        contentDescription = "subir imagenes",
-                                                        modifier = Modifier.size(32.dp)
-                                                    )
-                                                }
-                                            }
-                                        }
-                                    }
                                 }
                             }
                             item {
-                                Box(modifier = Modifier.fillMaxSize()){
+                                var showMap by remember { mutableStateOf(false) }
+                                var showPhoto by remember { mutableStateOf(false) }
+
+                                Row {
                                     Card(
                                         modifier = Modifier
                                             .padding(8.dp)
-                                            .fillMaxWidth()
-                                            .height(300.dp),
+                                            .weight(0.5f),
                                         shape = RoundedCornerShape(12.dp),
-                                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
+                                        onClick = { showPhoto = true }
+
                                     ) {
-                                        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                                            MapScreen()
+                                        if (showPhoto) Fotos(onDismiss = { showPhoto = false })
+                                        Row {
+                                            Icon(imageVector = ImageVector.vectorResource(R.drawable.addphoto), contentDescription = "photo", modifier = Modifier.padding(8.dp))
+                                            Text(text = "Añadir imagenes", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
                                         }
                                     }
+                                    Card(
+                                            modifier = Modifier
+                                                .padding(8.dp)
+                                                .weight(0.5f),
+                                    shape = RoundedCornerShape(12.dp),
+                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
+                                    onClick = { showMap = true }
+
+                                    ) {
+                                    if (showMap) Mapa(onDismiss = { showMap = false })
+                                    Row {
+                                        Icon(Icons.Default.LocationOn, contentDescription = "Ubicacion", modifier = Modifier.padding(8.dp))
+                                        Text(text = "Ubicacion", fontWeight = FontWeight.Bold, modifier = Modifier.padding(8.dp))
+                                    }
+                                }
                                 }
                             }
                         }
