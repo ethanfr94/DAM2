@@ -56,6 +56,7 @@ import com.example.reto2025_mobile.Componentes.DetailTopBar
 import com.example.reto2025_mobile.Componentes.Fotos
 import com.example.reto2025_mobile.Componentes.MapScreen
 import com.example.reto2025_mobile.Componentes.Mapa
+import com.example.reto2025_mobile.Componentes.Pic
 import com.example.reto2025_mobile.R
 import com.example.reto2025_mobile.ViewModel.ActividadViewModel
 import com.example.reto2025_mobile.ViewModel.GrupoParticipanteViewModel
@@ -352,16 +353,8 @@ fun DetailsView(
                                 }
                             }
                             item {
+                                var showPic by remember { mutableStateOf(false) }
                                 Column {
-                                    val selectedImageUris = remember { mutableStateListOf<Uri?>() }
-                                    val multiplePhotoPickerLauncher = rememberLauncherForActivityResult(
-                                        contract = ActivityResultContracts.PickMultipleVisualMedia(),
-                                        onResult = { uris ->
-                                            uris.forEach { uri ->
-                                                uri?.let { selectedImageUris.add(it) }
-                                            }
-                                        }
-                                    )
                                     Row(
                                         modifier = Modifier
                                             .fillMaxWidth()
@@ -375,8 +368,10 @@ fun DetailsView(
                                                         .fillMaxHeight()
                                                         .width(60.dp),
                                                     shape = RoundedCornerShape(12.dp),
-                                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
+                                                    onClick = { showPic = true }
                                                 ) {
+
                                                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                                                         Icon(
                                                             imageVector = ImageVector.vectorResource(R.drawable.photo),
@@ -387,6 +382,7 @@ fun DetailsView(
                                                 }
                                             }
                                         }
+                                        if(showPic) Pic(onDismiss = { showPic = false })
                                     }
                                 }
                             }

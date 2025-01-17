@@ -332,6 +332,22 @@ fun Mapa(onDismiss: () -> Unit) {
 }
 
 @Composable
+fun Pic(onDismiss: () -> Unit) {
+    AlertDialog(
+        modifier = Modifier
+            .fillMaxWidth()
+            .size(400.dp),
+        onDismissRequest = onDismiss,
+        confirmButton = {},
+        text = {
+            Box(modifier = Modifier.fillMaxSize()) {
+                Icon(modifier = Modifier.fillMaxSize(), imageVector = ImageVector.vectorResource(R.drawable.photo), contentDescription = "foto")
+            }
+        }
+    )
+}
+
+@Composable
 fun Fotos(onDismiss: () -> Unit) {
 
     AlertDialog(
