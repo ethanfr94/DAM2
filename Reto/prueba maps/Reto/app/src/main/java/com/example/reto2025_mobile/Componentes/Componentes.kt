@@ -59,6 +59,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -75,6 +76,8 @@ import com.example.reto2025_mobile.ViewModel.ActividadViewModel
 import com.example.reto2025_mobile.ViewModel.GrupoParticipanteViewModel
 import com.example.reto2025_mobile.ViewModel.ProfParticipanteViewModel
 import com.example.reto2025_mobile.data.Actividad
+import com.example.reto2025_mobile.ui.theme.GreenBar
+import com.example.reto2025_mobile.ui.theme.GreenContainer
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
@@ -92,30 +95,6 @@ import java.time.LocalDate
 
 // Top Bar
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun AppBar(navController: NavController) {
-    var expanded by remember { mutableStateOf(false) }
-    TopAppBar(
-        title = {
-            Text(
-                "Proximas",
-                color = Color.White,
-                fontSize = 22.sp,
-                fontWeight = FontWeight.Bold
-            )
-        },
-        navigationIcon = {
-            IconButton(onClick = {navController.popBackStack()}) {
-                Icon(imageVector = Icons.Default.KeyboardArrowLeft, contentDescription = "Back")
-            }
-        },
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color(0xFF4682B4),
-            titleContentColor = Color.White
-        )
-    )
-}
 
 //Top bar de la pantalla de Detalles de una actividad
 
@@ -139,7 +118,7 @@ fun DetailTopBar(navController: NavController, titulo: String) {
             }
         },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color(0xFF4682B4),
+            containerColor = GreenBar,
             titleContentColor = Color.White
         ),
         actions = {
@@ -163,11 +142,13 @@ fun ActividadesTopAppBar(navController: NavController) {
     var expanded by remember { mutableStateOf(false) }
     TopAppBar(
         title = {
-            Text(
-                "ACTIVIDADES",
-                color = Color.White,
-                fontSize = 22.sp,
-                fontWeight = FontWeight.Bold
+            Icon(
+                painter = painterResource(R.drawable.logowhite), // Asegúrate de tener un logo blanco en res/drawable
+                contentDescription = "Logo",
+                modifier = Modifier
+                    .padding(8.dp)
+                    .size(250.dp), // Ajusta el tamaño según sea necesario
+                tint = Color.Unspecified // Asegúrate de que el color no se sobreescriba
             )
         },
         navigationIcon = {
@@ -176,7 +157,7 @@ fun ActividadesTopAppBar(navController: NavController) {
             }
         },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color(0xFF4682B4),
+            containerColor = GreenBar,
             titleContentColor = Color.White
         ),
         actions = {
@@ -202,11 +183,13 @@ fun ActividadesTopAppBar(navController: NavController) {
 fun PerfilTopAppBar(navController: NavController) {
     TopAppBar(
         title = {
-            Text(
-                "MIS DATOS",
-                color = Color.White,
-                fontSize = 22.sp,
-                fontWeight = FontWeight.Bold
+            Icon(
+                painter = painterResource(R.drawable.logowhite), // Asegúrate de tener un logo blanco en res/drawable
+                contentDescription = "Logo",
+                modifier = Modifier
+                    .padding(8.dp)
+                    .size(250.dp), // Ajusta el tamaño según sea necesario
+                tint = Color.Unspecified // Asegúrate de que el color no se sobreescriba
             )
         },
         navigationIcon = {
@@ -215,7 +198,7 @@ fun PerfilTopAppBar(navController: NavController) {
             }
         },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color(0xFF4682B4),
+            containerColor = GreenBar,
             titleContentColor = Color.White
         )
     )
@@ -229,15 +212,19 @@ fun HomeAppBar(navController: NavController) {
     var showlogout by remember { mutableStateOf(false) }
     TopAppBar(
         title = {
-            Text(
-                "ACEX",
-                color = Color.White,
-                fontSize = 22.sp,
-                fontWeight = FontWeight.Bold
+        },
+        navigationIcon = {
+            Icon(
+                painter = painterResource(R.drawable.logowhite), // Asegúrate de tener un logo blanco en res/drawable
+                contentDescription = "Logo",
+                modifier = Modifier
+                    .padding(8.dp)
+                    .size(250.dp), // Ajusta el tamaño según sea necesario
+                tint = Color.Unspecified // Asegúrate de que el color no se sobreescriba
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color(0xFF4682B4),
+            containerColor = GreenBar,
             titleContentColor = Color.White
         ),
         actions = {
@@ -274,6 +261,33 @@ fun HomeAppBar(navController: NavController) {
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun AppBar(navController: NavController) {
+    var showlogout by remember { mutableStateOf(false) }
+    TopAppBar(
+        title = {
+            Icon(
+                painter = painterResource(R.drawable.logowhite), // Asegúrate de tener un logo blanco en res/drawable
+                contentDescription = "Logo",
+                modifier = Modifier
+                    .padding(8.dp)
+                    .size(250.dp), // Ajusta el tamaño según sea necesario
+                tint = Color.Unspecified // Asegúrate de que el color no se sobreescriba
+            )
+        },
+        navigationIcon = {
+            IconButton(onClick = {navController.popBackStack()}) {
+                Icon(imageVector = Icons.Default.KeyboardArrowLeft, contentDescription = "Back")
+            }
+        },
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = GreenBar,
+            titleContentColor = Color.White
+        )
+    )
+}
+
 // Bottom Bar con navegacion entre pantallas
 
 @Composable
@@ -283,13 +297,14 @@ fun currentRoute(navController: NavController) :String? =
 @Composable
 fun BottomAppBar(navController: NavController) {
     val bar_items = listOf(
-        ItemsNav.Item_bottom_nav_home,
         ItemsNav.Item_bottom_nav_acts,
+        ItemsNav.Item_bottom_nav_calendar,
+        ItemsNav.Item_bottom_nav_home,
+        ItemsNav.Item_bottom_nav_perfil,
         ItemsNav.Item_bottom_nav_faq,
-        ItemsNav.Item_bottom_nav_perfil
     )
     NavigationBar(
-        containerColor = Color(0xFF4682B4),
+        containerColor = GreenBar,
         contentColor = Color.White
     ) {
         bar_items.forEach { item ->
@@ -402,7 +417,7 @@ fun Fotos(onDismiss: () -> Unit) {
                             .padding(8.dp)
                             .weight(0.5f),
                         shape = RoundedCornerShape(12.dp),
-                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                        colors = CardDefaults.cardColors(containerColor = GreenContainer)
                     ) {
                         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                             IconButton(onClick = {
@@ -423,7 +438,7 @@ fun Fotos(onDismiss: () -> Unit) {
                             .padding(8.dp)
                             .weight(0.5f),
                         shape = RoundedCornerShape(12.dp),
-                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                        colors = CardDefaults.cardColors(containerColor = GreenContainer)
                     ) {
                         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                             IconButton(onClick = { /*TODO*/ }) {
@@ -444,7 +459,7 @@ fun Fotos(onDismiss: () -> Unit) {
                                     .padding(8.dp)
                                     .fillMaxSize(),
                                 shape = RoundedCornerShape(12.dp),
-                                colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
+                                colors = CardDefaults.cardColors(containerColor = GreenContainer),
                                 onClick = {
                                     // accion al presionar la imagen
                                 }
@@ -539,7 +554,7 @@ fun ActivityCalendarApp(
         .padding(15.dp)) {
         // Mostrar el calendario
         Box(modifier = Modifier
-            .background(Color(0xFFD0E8F2), shape = RoundedCornerShape(12.dp))
+            .background(GreenContainer, shape = RoundedCornerShape(12.dp))
             .padding(5.dp)){
             Calendar(
                 calendarState = calendarState,
@@ -626,7 +641,7 @@ fun ActivityDetails(
             } else Modifier
         ),
         shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
+        colors = CardDefaults.cardColors(containerColor = GreenContainer),
         ) {
         Box(modifier = Modifier
             .fillMaxSize()
@@ -663,50 +678,6 @@ fun MapScreen() {
         cameraPositionState = cameraPositionState
     ) {
 
-
-
-
-
     }
 
-    /*val puntosDeInteres = listOf(
-        GeoPoint(43.35257675380246, -4.062506714329061), // Coordenadas 1
-        GeoPoint(43.3530000, -4.0610000), // Coordenadas 2
-        GeoPoint(43.3500000, -4.0650000)
-    )*/
-
-    /*AndroidView(
-        factory = {
-            MapView(context).apply {
-                setTileSource(org.osmdroid.tileprovider.tilesource.TileSourceFactory.MAPNIK)
-                controller.setCenter(GeoPoint(43.35257675380246, -4.062506714329061)) // Coordenadas de inicio
-                controller.setZoom(18) // Nivel de zoom
-
-                // Añadir los marcadores con títulos secuenciales
-                puntosDeInteres.forEachIndexed { index, geoPoint ->
-                    val title = "Punto de Interés ${index + 1}"  // Título secuencial
-                    addMarker(geoPoint, title)
-                }
-
-                val polyline = Polyline()
-                puntosDeInteres.forEach { geoPoint ->
-                    polyline.addPoint(geoPoint)  // Añadir puntos al Polyline
-                }
-
-                // Hacer la línea discontinua
-                val dashEffect = DashPathEffect(floatArrayOf(10f, 5f), 0f) // 10px línea y 5px espacio
-                polyline.outlinePaint.pathEffect = dashEffect
-                overlays.add(polyline)  // Añadir la línea al mapa
-            }
-        }
-        modifier = Modifier.fillMaxSize() // El mapa se ajusta al tamaño de su contenedor
-    )*/
 }
-/*
-// Función para añadir un marcador en el mapa
-fun MapView.addMarker(location: GeoPoint, title: String) {
-    val marker = Marker(this)
-    marker.position = location
-    marker.title = title
-    overlays.add(marker)
-}*/

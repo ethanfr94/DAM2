@@ -65,6 +65,7 @@ import com.example.reto2025_mobile.ViewModel.ProfParticipanteViewModel
 import com.example.reto2025_mobile.data.Actividad
 import com.example.reto2025_mobile.data.GrupoParticipante
 import com.example.reto2025_mobile.data.ProfParticipante
+import com.example.reto2025_mobile.ui.theme.GreenContainer
 
 @Composable
 fun DetailsView(
@@ -136,7 +137,7 @@ fun DetailsView(
                                         .padding(8.dp)
                                         .fillMaxWidth(),
                                     shape = RoundedCornerShape(12.dp),
-                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                    colors = CardDefaults.cardColors(containerColor = GreenContainer)
                                 ) {
                                     Text(
                                         text = it.descripcion ?: "",
@@ -164,7 +165,7 @@ fun DetailsView(
                                         modifier = Modifier
                                             .padding(8.dp),
                                         shape = RoundedCornerShape(12.dp),
-                                        colors = CardDefaults.cardColors(containerColor = Color(0xFFB0C4DE)),
+                                        colors = CardDefaults.cardColors(containerColor = GreenContainer),
                                         onClick = {
                                             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.urlFolleto))
                                             context.startActivity(intent)
@@ -184,7 +185,7 @@ fun DetailsView(
                                         .padding(8.dp)
                                         .fillMaxWidth(),
                                     shape = RoundedCornerShape(12.dp),
-                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                    colors = CardDefaults.cardColors(containerColor = GreenContainer)
                                 ) {
                                     Text(
                                         text = "Fecha inicio: ${it.fini}",
@@ -204,7 +205,7 @@ fun DetailsView(
                                         .padding(8.dp)
                                         .fillMaxWidth(),
                                     shape = RoundedCornerShape(12.dp),
-                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                    colors = CardDefaults.cardColors(containerColor = GreenContainer)
                                 ) {
                                     Text(
                                         text = "Hora inicio: ${it.hini}",
@@ -224,7 +225,7 @@ fun DetailsView(
                                         .padding(8.dp)
                                         .fillMaxWidth(),
                                     shape = RoundedCornerShape(12.dp),
-                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                    colors = CardDefaults.cardColors(containerColor = GreenContainer)
                                 ) {
                                     Text(
                                         text = "Profesor solicitante: ${it.solicitante.nombre} ${it.solicitante.apellidos}",
@@ -240,7 +241,7 @@ fun DetailsView(
                                             .padding(8.dp)
                                             .fillMaxWidth(),
                                         shape = RoundedCornerShape(12.dp),
-                                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                        colors = CardDefaults.cardColors(containerColor = GreenContainer)
                                     ) {
                                         Text(
                                             text = "Incidencias: ${it.incidencias}",
@@ -258,7 +259,7 @@ fun DetailsView(
                                             .padding(8.dp)
                                             .fillMaxWidth(),
                                         shape = RoundedCornerShape(12.dp),
-                                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                        colors = CardDefaults.cardColors(containerColor = GreenContainer)
                                     ) {
                                         trans = "Si"
                                         Text(
@@ -284,7 +285,7 @@ fun DetailsView(
                                             .padding(8.dp)
                                             .fillMaxWidth(),
                                         shape = RoundedCornerShape(12.dp),
-                                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                        colors = CardDefaults.cardColors(containerColor = GreenContainer)
                                     ) {
                                         aloj = "Si"
                                         Text(
@@ -309,7 +310,7 @@ fun DetailsView(
                                         .padding(8.dp)
                                         .fillMaxWidth(),
                                     shape = RoundedCornerShape(12.dp),
-                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                    colors = CardDefaults.cardColors(containerColor = GreenContainer)
                                 ) {
                                     Text(
                                         text = "Profesores participantes: ",
@@ -334,7 +335,7 @@ fun DetailsView(
                                         .padding(8.dp)
                                         .fillMaxWidth(),
                                     shape = RoundedCornerShape(12.dp),
-                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2))
+                                    colors = CardDefaults.cardColors(containerColor = GreenContainer)
                                 ) {
                                     Text(
                                         text = "Grupos participantes: ",
@@ -369,7 +370,7 @@ fun DetailsView(
                                                         .fillMaxHeight()
                                                         .width(60.dp),
                                                     shape = RoundedCornerShape(12.dp),
-                                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
+                                                    colors = CardDefaults.cardColors(containerColor = GreenContainer),
                                                     onClick = { showPic = true }
                                                 ) {
 
@@ -404,7 +405,7 @@ fun DetailsView(
                                             .padding(8.dp)
                                             .weight(0.5f),
                                         shape = RoundedCornerShape(12.dp),
-                                        colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
+                                        colors = CardDefaults.cardColors(containerColor = GreenContainer),
                                         onClick = { showPhoto = true },
                                         enabled = enabledAddPhoto
 
@@ -420,7 +421,7 @@ fun DetailsView(
                                                 .padding(8.dp)
                                                 .weight(0.5f),
                                     shape = RoundedCornerShape(12.dp),
-                                    colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
+                                    colors = CardDefaults.cardColors(containerColor = GreenContainer),
                                     onClick = { showMap = true }
 
                                     ) {

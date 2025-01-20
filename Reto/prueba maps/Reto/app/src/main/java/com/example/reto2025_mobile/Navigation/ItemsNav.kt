@@ -18,7 +18,7 @@ sealed class ItemsNav (
     )
 {
     object Item_bottom_nav_acts:ItemsNav(
-    Icons.Filled.Menu,"Acts", "actividades")
+    Icons.Filled.Menu,"Actividades", "actividades")
 
     object Item_bottom_nav_home:ItemsNav(
         Icons.Filled.Home,"Home", "home")
@@ -29,5 +29,9 @@ sealed class ItemsNav (
 
     object Item_bottom_nav_perfil:ItemsNav(
         Icons.Filled.Person,"Perfil", "perfil")
+
+    object Item_bottom_nav_calendar:ItemsNav(
+        Icons.Filled.DateRange,"Calendario", "calendario")
+
 
 }
