@@ -12,6 +12,7 @@ import com.example.reto2025_mobile.Views.DetailsView
 import com.example.reto2025_mobile.Views.FAQView
 import com.example.reto2025_mobile.Views.HomeView
 import com.example.reto2025_mobile.Views.LogginView
+import com.example.reto2025_mobile.Views.PerfilView
 import com.example.reto2025_mobile.Views.ProximasView
 
 
@@ -43,6 +44,9 @@ fun NavManager(
         }
         composable("FAQ"){
             FAQView(navController)
+        }
+        composable("perfil"){
+            PerfilView(navController)
         }
     }
 }

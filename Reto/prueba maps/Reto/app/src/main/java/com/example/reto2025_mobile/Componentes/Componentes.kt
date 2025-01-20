@@ -122,7 +122,6 @@ fun AppBar(navController: NavController) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailTopBar(navController: NavController, titulo: String) {
-    var expanded by remember { mutableStateOf(false) }
     var showIncidencia by remember { mutableStateOf(false) }
 
     TopAppBar(
@@ -198,6 +197,30 @@ fun ActividadesTopAppBar(navController: NavController) {
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PerfilTopAppBar(navController: NavController) {
+    TopAppBar(
+        title = {
+            Text(
+                "MIS DATOS",
+                color = Color.White,
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold
+            )
+        },
+        navigationIcon = {
+            IconButton(onClick = {navController.popBackStack()}) {
+                Icon(imageVector = Icons.Default.KeyboardArrowLeft, contentDescription = "Back")
+            }
+        },
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = Color(0xFF4682B4),
+            titleContentColor = Color.White
+        )
+    )
+}
+
 //Top bar de la pantalla de Inicio
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -262,7 +285,8 @@ fun BottomAppBar(navController: NavController) {
     val bar_items = listOf(
         ItemsNav.Item_bottom_nav_home,
         ItemsNav.Item_bottom_nav_acts,
-        ItemsNav.Item_bottom_nav_faq
+        ItemsNav.Item_bottom_nav_faq,
+        ItemsNav.Item_bottom_nav_perfil
     )
     NavigationBar(
         containerColor = Color(0xFF4682B4),

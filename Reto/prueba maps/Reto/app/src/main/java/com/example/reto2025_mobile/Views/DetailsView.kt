@@ -57,6 +57,7 @@ import com.example.reto2025_mobile.Componentes.Fotos
 import com.example.reto2025_mobile.Componentes.MapScreen
 import com.example.reto2025_mobile.Componentes.Mapa
 import com.example.reto2025_mobile.Componentes.Pic
+import com.example.reto2025_mobile.Componentes.Usuario
 import com.example.reto2025_mobile.R
 import com.example.reto2025_mobile.ViewModel.ActividadViewModel
 import com.example.reto2025_mobile.ViewModel.GrupoParticipanteViewModel
@@ -389,6 +390,13 @@ fun DetailsView(
                             item {
                                 var showMap by remember { mutableStateOf(false) }
                                 var showPhoto by remember { mutableStateOf(false) }
+                                var enabledAddPhoto by remember { mutableStateOf(false) }
+
+                                for(prof in profParticipantes){
+                                    if(prof.actividad.id == it.id && prof.profesor.uuid == Usuario.uuid){
+                                        enabledAddPhoto = true
+                                    }
+                                }
 
                                 Row {
                                     Card(
@@ -397,7 +405,8 @@ fun DetailsView(
                                             .weight(0.5f),
                                         shape = RoundedCornerShape(12.dp),
                                         colors = CardDefaults.cardColors(containerColor = Color(0xFFD0E8F2)),
-                                        onClick = { showPhoto = true }
+                                        onClick = { showPhoto = true },
+                                        enabled = enabledAddPhoto
 
                                     ) {
                                         if (showPhoto) Fotos(onDismiss = { showPhoto = false })
