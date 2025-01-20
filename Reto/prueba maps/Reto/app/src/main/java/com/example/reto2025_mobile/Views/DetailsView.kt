@@ -3,10 +3,6 @@ package com.example.reto2025_mobile.Views
 import android.content.Intent
 import android.net.Uri
 import androidx.activity.compose.BackHandler
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.PickVisualMediaRequest
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,24 +16,17 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.Send
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -45,16 +34,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
 import com.example.reto2025_mobile.Componentes.DetailTopBar
 import com.example.reto2025_mobile.Componentes.Fotos
-import com.example.reto2025_mobile.Componentes.MapScreen
 import com.example.reto2025_mobile.Componentes.Mapa
 import com.example.reto2025_mobile.Componentes.Pic
 import com.example.reto2025_mobile.Componentes.Usuario
@@ -78,9 +64,18 @@ fun DetailsView(
     val grupoParticipantes: List<GrupoParticipante> by grupoParticipanteViewModel.gruposParticipantes.observeAsState(emptyList())
     val actividad: Actividad? by actividadViewModel.actividad.observeAsState()
     var color by remember { mutableStateOf(Color(0xFFD0E8F2)) }
+    var enableUpdate by remember { mutableStateOf(false) }
+
+    for(prof in profParticipantes){
+        if(prof.actividad.id == actividad?.id && prof.profesor.uuid == Usuario.uuid){
+            enableUpdate = true
+            break
+        }
+    }
     actividad?.let {
+
         Scaffold(
-            topBar = { DetailTopBar(navController = navController, it.titulo) }
+            topBar = { DetailTopBar(navController = navController, it.titulo,actividadViewModel, actividad!!, enableUpdate) }
         ) { innerPadding ->
             Box(
                 modifier = Modifier
@@ -158,7 +153,7 @@ fun DetailsView(
                                     )
                                 }
                             }
-                            item {
+                            /*item {
                                 if (it.urlFolleto != null) {
                                     val context = LocalContext.current
                                     Card(
@@ -178,7 +173,7 @@ fun DetailsView(
                                         )
                                     }
                                 }
-                            }
+                            }*/
                             item{
                                 Card(
                                     modifier = Modifier

@@ -1,6 +1,5 @@
 package com.example.reto2025_mobile.Componentes
 
-import android.graphics.DashPathEffect
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
@@ -12,15 +11,12 @@ import androidx.compose.foundation.layout.Column
 //import androidx.compose.foundation.layout.FlowColumnScopeInstance.align
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -29,14 +25,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -66,7 +58,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import coil.compose.AsyncImage
@@ -76,21 +67,16 @@ import com.example.reto2025_mobile.ViewModel.ActividadViewModel
 import com.example.reto2025_mobile.ViewModel.GrupoParticipanteViewModel
 import com.example.reto2025_mobile.ViewModel.ProfParticipanteViewModel
 import com.example.reto2025_mobile.data.Actividad
+import com.example.reto2025_mobile.data.Profesor
 import com.example.reto2025_mobile.ui.theme.GreenBar
 import com.example.reto2025_mobile.ui.theme.GreenContainer
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.rememberCameraPositionState
-import com.google.maps.android.compose.rememberMarkerState
 import io.github.boguszpawlowski.composecalendar.Calendar
 import io.github.boguszpawlowski.composecalendar.day.DayState
 import io.github.boguszpawlowski.composecalendar.rememberCalendarState
-import org.osmdroid.util.GeoPoint
-import org.osmdroid.views.MapView
-import org.osmdroid.views.overlay.Marker
-import org.osmdroid.views.overlay.Polyline
 import java.time.LocalDate
 
 // Top Bar
@@ -100,7 +86,13 @@ import java.time.LocalDate
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailTopBar(navController: NavController, titulo: String) {
+fun DetailTopBar(
+    navController: NavController,
+    titulo: String,
+    actividadViewModel: ActividadViewModel,
+    actividad: Actividad,
+    enableUpdate: Boolean
+) {
     var showIncidencia by remember { mutableStateOf(false) }
 
     TopAppBar(
@@ -123,11 +115,11 @@ fun DetailTopBar(navController: NavController, titulo: String) {
         ),
         actions = {
             Box {
-                IconButton(onClick = { showIncidencia = true}) {
+                IconButton(onClick = { showIncidencia = true}, enabled = enableUpdate) {
                     Icon(imageVector = Icons.Default.Create, contentDescription = "Incidencias")
                 }
                 if(showIncidencia) {
-                    Incidencias(onDismiss = { showIncidencia = false })
+                    Incidencias(onDismiss = { showIncidencia = false }, actividadViewModel = actividadViewModel, actividad = actividad)
                 }
             }
         },
@@ -322,12 +314,25 @@ fun BottomAppBar(navController: NavController) {
 // Cuadros de dialogo para filtrar actividades y añadir incidencias
 
 @Composable
-fun Incidencias(onDismiss: () -> Unit) {
+fun Incidencias(onDismiss: () -> Unit,
+                actividadViewModel: ActividadViewModel,
+                actividad : Actividad) {
     var inci by remember { mutableStateOf("") }
     AlertDialog(
         onDismissRequest = onDismiss,
         confirmButton = {
-            Button(onClick = onDismiss) {
+            Button(
+                onClick = {
+                    if(actividad.incidencias == null) {
+                        actividad.incidencias = ""
+                    }else{
+                        actividad.incidencias = actividad.incidencias + ". " + inci
+                    }
+                    val updateActividad = actividad.copy(incidencias = actividad.incidencias + inci)
+                    actividadViewModel.updateActividad(updateActividad)
+                    onDismiss()
+                }
+            ) {
                 Text("Aceptar")
             }
         },
@@ -336,14 +341,15 @@ fun Incidencias(onDismiss: () -> Unit) {
                 Text("Cancelar")
             }
         },
+        title = {
+            Text("Añadir incidencias")
+        },
         text = {
-            Column {
-                Text(text = "Añadir incidencia")
                 TextField(value = inci,
                     onValueChange = { inci = it },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     )
-            }
+
         }
     )
 }
