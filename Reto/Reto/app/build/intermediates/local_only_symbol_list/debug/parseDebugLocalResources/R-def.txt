@@ -7,12 +7,16 @@ color purple_700
 color teal_200
 color teal_700
 color white
+drawable addphoto
 drawable filter
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable imagen
+drawable logo
 drawable logout
+drawable logowhite
 drawable photo
+drawable save
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
