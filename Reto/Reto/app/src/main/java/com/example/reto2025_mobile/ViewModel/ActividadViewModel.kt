@@ -52,7 +52,7 @@ class ActividadViewModel:ViewModel() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 service.updateActividad(actividad.id!!, actividad)
-                // las siguientes lineas
+                _actividad.postValue(actividad)
 
                 Log.d("Actividades", "Updated actividad: $actividad")
             } catch (e: Exception) {

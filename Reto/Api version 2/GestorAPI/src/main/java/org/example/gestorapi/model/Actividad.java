@@ -2,6 +2,8 @@ package org.example.gestorapi.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.example.gestorapi.model.enumerados.Estado;
+import org.example.gestorapi.model.enumerados.Tipo;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -20,10 +22,11 @@ public class Actividad {
     @Column(name = "titulo", nullable = false)
     private String titulo;
 
+    @Enumerated(EnumType.STRING)
     @NotNull
     @Lob
     @Column(name = "tipo", nullable = false)
-    private String tipo;
+    private Tipo tipo;
 
     @Lob
     @Column(name = "descripcion")
@@ -70,10 +73,11 @@ public class Actividad {
     @Column(name = "comentarios")
     private String comentarios;
 
+    @Enumerated(EnumType.STRING)
     @NotNull
     @Lob
     @Column(name = "estado", nullable = false)
-    private String estado;
+    private Estado estado;
 
     @Lob
     @Column(name = "coment_estado")
@@ -119,13 +123,6 @@ public class Actividad {
         this.titulo = titulo;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
 
     public String getDescripcion() {
         return descripcion;
@@ -216,14 +213,6 @@ public class Actividad {
         this.comentarios = comentarios;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public String getComentEstado() {
         return comentEstado;
     }
@@ -278,5 +267,21 @@ public class Actividad {
 
     public void setLatitud(String latitud) {
         this.latitud = latitud;
+    }
+
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 }

@@ -68,6 +68,12 @@ interface RetrofitService {
         @Body actividad: Actividad
     ): Actividad
 
+    @PUT("gruposParticipantes/{id}")
+    suspend fun updateGrupoParticipante(
+        @Path("id") id: Int?,
+        @Body grupoParticipante: GrupoParticipante
+    ): GrupoParticipante
+
 
 }
 
