@@ -1,6 +1,9 @@
 package com.example.reto2025_mobile.Componentes
 
+import android.content.ContentValues
 import android.net.Uri
+import android.os.Environment
+import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
@@ -63,6 +66,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.core.content.FileProvider
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import coil.compose.AsyncImage
@@ -84,9 +88,9 @@ import com.google.maps.android.compose.rememberCameraPositionState
 import io.github.boguszpawlowski.composecalendar.Calendar
 import io.github.boguszpawlowski.composecalendar.day.DayState
 import io.github.boguszpawlowski.composecalendar.rememberCalendarState
+import java.io.File
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-
 
 //Top bar de la pantalla de Detalles de una actividad
 
@@ -309,11 +313,11 @@ fun BottomAppBar(navController: NavController) {
 
 @Composable
 fun BottomDetailBar(actividad: Actividad, profParticipantes: List<ProfParticipante>) {
-    Row (
+    Row(
         modifier = Modifier
             .background(GreenBar),
         horizontalArrangement = Arrangement.SpaceBetween
-    ){
+    ) {
 
         var showMap by remember { mutableStateOf(false) }
         var showPhoto by remember { mutableStateOf(false) }
@@ -452,13 +456,18 @@ fun Mapa(onDismiss: () -> Unit) {
 
 @Composable
 fun Pics(onDismiss: () -> Unit) {
-    Dialog( onDismissRequest = onDismiss ){
+    Dialog(onDismissRequest = onDismiss) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(500.dp)
                 .background(Color.Transparent)
         ) {
+            Icon(
+                modifier = Modifier.fillMaxSize(),
+                imageVector = ImageVector.vectorResource(R.drawable.photo),
+                contentDescription = "foto"
+            )
             /*AsyncImage(
                 model = imageUrl,
                 contentDescription = null,
@@ -468,7 +477,7 @@ fun Pics(onDismiss: () -> Unit) {
         }
     }
 }
-
+/*
 @Composable
 fun Pic(onDismiss: () -> Unit) {
     AlertDialog(
@@ -487,29 +496,105 @@ fun Pic(onDismiss: () -> Unit) {
             }
         }
     )
-}
+}*/
 
 @Composable
 fun Fotos(onDismiss: () -> Unit) {
+    val context = LocalContext.current
+    var showOptions by remember { mutableStateOf(false) }
+    val selectedImageUris = remember { mutableStateListOf<Uri?>() }
+    val multiplePhotoPickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.PickMultipleVisualMedia(),
+        onResult = { uris ->
+            uris.forEach { uri ->
+                uri?.let { selectedImageUris.add(it) }
+            }
+        }
+    )
+    var photoUri by remember { mutableStateOf<Uri?>(null) }
+    val cameraLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.TakePicture(),
+        onResult = { success: Boolean ->
+            if (success) {
+                // Guardar la imagen en la galería
+                val contentValues = ContentValues().apply {
+                    put(MediaStore.Images.Media.DISPLAY_NAME, "IMG_${System.currentTimeMillis()}.jpg")
+                    put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+                    put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
+                }
+                val resolver = context.contentResolver
+                resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)?.let { galleryUri ->
+                    resolver.openOutputStream(galleryUri)?.use { outputStream ->
+                        photoUri?.let {
+                            resolver.openInputStream(photoUri!!)?.use { inputStream ->
+                                inputStream.copyTo(outputStream)
+                            }
+                        }
+                    }
+                }
+                // Añadir la URI de la imagen a las imágenes seleccionadas
+                selectedImageUris.add(photoUri)
+            }
+        }
+    )
+
 
     AlertDialog(
         modifier = Modifier
-            .fillMaxWidth()
-            .size(800.dp),
+            .fillMaxWidth(),
         onDismissRequest = onDismiss,
         confirmButton = {
         },
         text = {
             Column {
-                val selectedImageUris = remember { mutableStateListOf<Uri?>() }
-                val multiplePhotoPickerLauncher = rememberLauncherForActivityResult(
-                    contract = ActivityResultContracts.PickMultipleVisualMedia(),
-                    onResult = { uris ->
-                        uris.forEach { uri ->
-                            uri?.let { selectedImageUris.add(it) }
+                if (selectedImageUris.isNotEmpty()) {
+                    Box(modifier = Modifier.weight(0.8f)) {
+                        LazyColumn {
+                            items(selectedImageUris) { uri ->
+                                uri?.let {
+                                    Card(
+                                        modifier = Modifier
+                                            .padding(8.dp)
+                                            .fillMaxSize(),
+                                        shape = RoundedCornerShape(12.dp),
+                                        colors = CardDefaults.cardColors(containerColor = BlueContainer),
+                                        onClick = {
+                                            // accion al presionar la imagen
+                                        }
+                                    ) {
+                                        Box(modifier = Modifier.fillMaxSize()) {
+                                            AsyncImage(
+                                                model = uri,
+                                                contentDescription = null,
+                                                modifier = Modifier.fillMaxWidth(),
+                                                contentScale = ContentScale.Crop
+                                            )
+                                            IconButton(
+                                                onClick = {
+                                                    // alert dialog para preguntar si quiere eliminar
+                                                    selectedImageUris.remove(uri)
+                                                },
+                                                modifier = Modifier
+                                                    .align(Alignment.TopEnd)
+                                                    .size(20.dp),// Align button at top end
+                                            ) {
+                                                Icon(
+                                                    imageVector = Icons.Default.Close,
+                                                    contentDescription = "eliminar imagen",
+                                                    modifier = Modifier.size(20.dp),
+                                                    tint = Color.Black
+                                                )
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+                            }
                         }
                     }
-                )
+                }
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -520,23 +605,28 @@ fun Fotos(onDismiss: () -> Unit) {
                             .padding(8.dp)
                             .weight(0.5f),
                         shape = RoundedCornerShape(12.dp),
-                        colors = CardDefaults.cardColors(containerColor = BlueContainer)
+                        colors = CardDefaults.cardColors(containerColor = BlueContainer),
+                        onClick = {
+                            // asi se cierra la camara
+                            var tempPhotoUri = FileProvider.getUriForFile(
+                                context,
+                                "${context.packageName}.provider",
+                                File(context.cacheDir, "temp_image.jpg")
+                            )
+                            photoUri = tempPhotoUri
+                            cameraLauncher.launch(tempPhotoUri)
+                        }
                     ) {
                         Box(
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
-                            IconButton(onClick = {
-                                multiplePhotoPickerLauncher.launch(
-                                    PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
-                                )
-                            }) {
                                 Icon(
                                     imageVector = ImageVector.vectorResource(R.drawable.addphoto),
-                                    contentDescription = "añadir imagenes",
+                                    contentDescription = "añadir desde camara",
                                     modifier = Modifier.size(32.dp)
                                 )
-                            }
+
                         }
                     }
 
@@ -545,66 +635,53 @@ fun Fotos(onDismiss: () -> Unit) {
                             .padding(8.dp)
                             .weight(0.5f),
                         shape = RoundedCornerShape(12.dp),
-                        colors = CardDefaults.cardColors(containerColor = BlueContainer)
+                        colors = CardDefaults.cardColors(containerColor = BlueContainer),
+                        onClick = {
+                            multiplePhotoPickerLauncher.launch(
+                                PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                            )
+                            showOptions = false
+                        }
                     ) {
                         Box(
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
-                            IconButton(onClick = { /*TODO*/ }) {
                                 Icon(
-                                    imageVector = ImageVector.vectorResource(R.drawable.save),
-                                    contentDescription = "subir imagenes",
+                                    imageVector = ImageVector.vectorResource(R.drawable.image_search),
+                                    contentDescription = "añadir desde galeria",
                                     modifier = Modifier.size(32.dp)
                                 )
-                            }
+
                         }
                     }
-                }
-                LazyColumn {
-                    items(selectedImageUris) { uri ->
-                        uri?.let {
-                            Card(
-                                modifier = Modifier
-                                    .padding(8.dp)
-                                    .fillMaxSize(),
-                                shape = RoundedCornerShape(12.dp),
-                                colors = CardDefaults.cardColors(containerColor = BlueContainer),
-                                onClick = {
-                                    // accion al presionar la imagen
-                                }
+
+                    if (selectedImageUris.isNotEmpty()) {
+                        Card(
+                            modifier = Modifier
+                                .padding(8.dp)
+                                .weight(0.5f),
+                            shape = RoundedCornerShape(12.dp),
+                            colors = CardDefaults.cardColors(containerColor = BlueContainer),
+                            onClick = {
+                                // subir imagenes
+                            }
+                        ) {
+                            Box(
+                                modifier = Modifier.fillMaxSize(),
+                                contentAlignment = Alignment.Center
                             ) {
-                                Box(modifier = Modifier.fillMaxSize()) {
-                                    AsyncImage(
-                                        model = uri,
-                                        contentDescription = null,
-                                        modifier = Modifier.fillMaxWidth(),
-                                        contentScale = ContentScale.Crop
+                                    Icon(
+                                        imageVector = ImageVector.vectorResource(R.drawable.save),
+                                        contentDescription = "subir imagenes",
+                                        modifier = Modifier.size(32.dp)
                                     )
-                                    IconButton(
-                                        onClick = {
-                                            // alert dialog para preguntar si quiere eliminar
-                                            selectedImageUris.remove(uri)
-                                        },
-                                        modifier = Modifier
-                                            .align(Alignment.TopEnd)
-                                            .size(20.dp),// Align button at top end
-                                    ) {
-                                        Icon(
-                                            imageVector = Icons.Default.Close,
-                                            contentDescription = "eliminar imagen",
-                                            modifier = Modifier.size(20.dp),
-                                            tint = Color.Black
-                                        )
-                                    }
-
-                                }
 
                             }
-
                         }
                     }
                 }
+
             }
         }
     )

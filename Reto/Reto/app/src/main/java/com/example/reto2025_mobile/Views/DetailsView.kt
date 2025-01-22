@@ -47,7 +47,6 @@ import com.example.reto2025_mobile.Componentes.DetailTopBar
 import com.example.reto2025_mobile.Componentes.Fotos
 import com.example.reto2025_mobile.Componentes.Incidencias
 import com.example.reto2025_mobile.Componentes.Mapa
-import com.example.reto2025_mobile.Componentes.Pic
 import com.example.reto2025_mobile.Componentes.Pics
 import com.example.reto2025_mobile.Componentes.Usuario
 import com.example.reto2025_mobile.Componentes.formatFecha
