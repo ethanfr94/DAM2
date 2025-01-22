@@ -62,6 +62,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import coil.compose.AsyncImage
@@ -84,6 +85,7 @@ import io.github.boguszpawlowski.composecalendar.Calendar
 import io.github.boguszpawlowski.composecalendar.day.DayState
 import io.github.boguszpawlowski.composecalendar.rememberCalendarState
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
 //Top bar de la pantalla de Detalles de una actividad
@@ -419,6 +421,15 @@ fun Incidencias(
 
 @Composable
 fun Mapa(onDismiss: () -> Unit) {
+    /*Dialog( onDismissRequest = onDismiss ){
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Transparent)
+        ) {
+            MapScreen()
+        }
+    }*/
     AlertDialog(
         modifier = Modifier
             .fillMaxWidth()
@@ -437,6 +448,25 @@ fun Mapa(onDismiss: () -> Unit) {
             }
         }
     )
+}
+
+@Composable
+fun Pics(onDismiss: () -> Unit) {
+    Dialog( onDismissRequest = onDismiss ){
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(500.dp)
+                .background(Color.Transparent)
+        ) {
+            /*AsyncImage(
+                model = imageUrl,
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop
+            )*/
+        }
+    }
 }
 
 @Composable
@@ -661,6 +691,7 @@ fun ActivityCalendarApp(
 
         // Mostrar información sobre el día seleccionado
         selectedDate?.let { date ->
+
             ActivityDetails(
                 navController = navController,
                 date = date,
@@ -694,7 +725,7 @@ fun MyDayContentWithActivities(
             if (hasActivity) {
                 Box(
                     modifier = Modifier
-                        .size(17.dp)
+                        .size(25.dp)
                         .background(Color.White, shape = CircleShape)
 
                 )
@@ -741,7 +772,7 @@ fun ActivityDetails(
     Card(
         modifier = Modifier
             .padding(5.dp)
-            .fillMaxSize()
+            .fillMaxWidth()
             .then(
                 if (activity != null) Modifier.clickable {
                     actividadViewModel.getActividadById(activity.id)
@@ -755,8 +786,8 @@ fun ActivityDetails(
     ) {
         Box(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(10.dp),
+                .padding(10.dp)
+                .fillMaxWidth(),
             contentAlignment = Alignment.Center
         ) {
             Column {
@@ -808,4 +839,10 @@ fun MapScreen() {
 
     }
 
+}
+
+fun formatFecha(fecha: String): String {
+    val date = LocalDate.parse(fecha)
+    val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+    return date.format(formatter)
 }

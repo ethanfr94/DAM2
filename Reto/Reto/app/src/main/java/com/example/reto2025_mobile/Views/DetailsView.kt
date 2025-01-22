@@ -48,7 +48,9 @@ import com.example.reto2025_mobile.Componentes.Fotos
 import com.example.reto2025_mobile.Componentes.Incidencias
 import com.example.reto2025_mobile.Componentes.Mapa
 import com.example.reto2025_mobile.Componentes.Pic
+import com.example.reto2025_mobile.Componentes.Pics
 import com.example.reto2025_mobile.Componentes.Usuario
+import com.example.reto2025_mobile.Componentes.formatFecha
 import com.example.reto2025_mobile.R
 import com.example.reto2025_mobile.ViewModel.ActividadViewModel
 import com.example.reto2025_mobile.ViewModel.GrupoParticipanteViewModel
@@ -160,7 +162,7 @@ fun DetailsView(
                                                 }
                                             }
                                         }
-                                        if (showPic) Pic(onDismiss = { showPic = false })
+                                        if (showPic) Pics(onDismiss = { showPic = false })
                                     }
                                 }
                             }
@@ -252,6 +254,9 @@ fun DetailsView(
                                 }
                             }*/
                             item {
+                                val fechaInicio = formatFecha(it.fini)
+                                val fechaFin = formatFecha(it.ffin)
+
                                 Card(
                                     modifier = Modifier
                                         .padding(8.dp)
@@ -260,12 +265,12 @@ fun DetailsView(
                                     colors = CardDefaults.cardColors(containerColor = BlueContainer)
                                 ) {
                                     Text(
-                                        text = "Fecha inicio: ${it.fini}",
+                                        text = "Fecha inicio: ${fechaInicio}",
                                         fontWeight = FontWeight.Bold,
                                         modifier = Modifier.padding(8.dp)
                                     )
                                     Text(
-                                        text = "Fecha finalizacion ${it.ffin}",
+                                        text = "Fecha finalizacion ${fechaFin}",
                                         fontWeight = FontWeight.Bold,
                                         modifier = Modifier.padding(8.dp)
                                     )

@@ -28,7 +28,6 @@ class ActividadViewModel:ViewModel() {
                 val actividadesList = service.getActividades()
                 _actividades.value = actividadesList
                 Log.d("Actividades", "Received list: $actividadesList")
-                _actividades.value = actividadesList
             } catch (e: Exception) {
                 Log.d("Actividades", "$e")
                 e.printStackTrace()
