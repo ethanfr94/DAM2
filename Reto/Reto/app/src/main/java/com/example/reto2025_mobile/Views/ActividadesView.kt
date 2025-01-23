@@ -40,9 +40,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -51,27 +49,30 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.reto2025_mobile.Componentes.ActividadesTopAppBar
 import com.example.reto2025_mobile.Componentes.BottomAppBar
+import com.example.reto2025_mobile.Componentes.SelectColor
 import com.example.reto2025_mobile.Componentes.normalizeString
-import com.example.reto2025_mobile.R
 import com.example.reto2025_mobile.ViewModel.ActividadViewModel
 import com.example.reto2025_mobile.ViewModel.GrupoParticipanteViewModel
 import com.example.reto2025_mobile.ViewModel.ProfParticipanteViewModel
+import com.example.reto2025_mobile.ViewModel.ProfResponsableViewModel
 import com.example.reto2025_mobile.data.Actividad
 import com.example.reto2025_mobile.data.GrupoParticipante
 import com.example.reto2025_mobile.data.ProfParticipante
-import com.example.reto2025_mobile.ui.theme.BlueContainer
-
-var actividadesSeleccionadas = mutableListOf<Actividad>()
+import com.example.reto2025_mobile.data.ProfResponsable
 
 @Composable
 fun ActividadesView(
     navController: NavController,
     actividadViewModel: ActividadViewModel,
-    profParticipanteViewModel: ProfParticipanteViewModel,
+    profResponsableViewModel: ProfResponsableViewModel,
     grupoParticipanteViewModel: GrupoParticipanteViewModel
 ) {
-    val grupoParticipantes: List<GrupoParticipante> by grupoParticipanteViewModel.gruposParticipantes.observeAsState(emptyList())
-    val profesParticipantes: List<ProfParticipante> by profParticipanteViewModel.profesoresParticipantes.observeAsState(emptyList())
+    val grupoParticipantes: List<GrupoParticipante> by grupoParticipanteViewModel.gruposParticipantes.observeAsState(
+        emptyList()
+    )
+    val profesResponsables: List<ProfResponsable> by profResponsableViewModel.profesoresResponsables.observeAsState(
+        emptyList()
+    )
 
     val context = LocalContext.current
 
@@ -81,16 +82,16 @@ fun ActividadesView(
 
     var showActividades: List<Actividad> by remember { mutableStateOf(emptyList()) }
 
-    if(actividadesSeleccionadas.isNullOrEmpty()) actividadesSeleccionadas.addAll(actividades)
-    else actividadesSeleccionadas = showActividades.toMutableList()
+    showActividades = actividades
 
-    val estados: List<String> = listOf("APROBADA", "CANCELADA", "REALIZADA", "SOLICITADA", "DENEGADA", "REALIZANDOSE")
+    val estados: List<String> =
+        listOf("APROBADA", "CANCELADA", "REALIZADA", "SOLICITADA", "DENEGADA", "REALIZANDOSE")
 
     var expEstado by remember { mutableStateOf(false) }
-    var expGrupo by remember { mutableStateOf(false) }
-    var expProf by remember { mutableStateOf(false) }
+    /*var expEtapa by remember { mutableStateOf(false) }
+    var expDep by remember { mutableStateOf(false) }*/
 
-    profParticipanteViewModel.getProfesoresParticipantes()
+    profResponsableViewModel.getProfesoresResponsables()
     grupoParticipanteViewModel.getGruposParticipantes()
 
     Scaffold(
@@ -104,10 +105,15 @@ fun ActividadesView(
         ) {
 
             Column(modifier = Modifier.fillMaxSize()) {
-                Row(modifier = Modifier.fillMaxWidth()) {
-                    Button(onClick = { actividFiltered = actividades.toMutableList()
-                                     showActividades = actividFiltered },
-                        modifier = Modifier.weight(0.2f))
+                Spacer(modifier = Modifier.height(4.dp))
+                Row(modifier = Modifier.fillMaxWidth(), Arrangement.SpaceBetween) {
+                    Button(
+                        onClick = {
+                            actividFiltered = actividades.toMutableList()
+                            showActividades = actividFiltered
+                        },
+                        modifier = Modifier.weight(0.2f)
+                    )
                     {
                         Text("Todas")
                     }
@@ -116,19 +122,19 @@ fun ActividadesView(
                         modifier = Modifier.weight(0.2f)
                     ) {
                         Text("Estado")
-                    }
+                    }/*
                     Button(
-                        onClick = { expProf = true },
+                        onClick = { expDep = true },
                         modifier = Modifier.weight(0.2f)
                     ) {
-                        Text("Profesor")
+                        Text("Depart.")
                     }
                     Button(
-                        onClick = { expGrupo = true },
+                        onClick = { expEtapa = true },
                         modifier = Modifier.weight(0.2f)
                     ) {
-                        Text("Grupo")
-                    }
+                        Text("Etapa")
+                    }*/
                     if (expEstado) {
                         AlertDialog(
                             onDismissRequest = { expEstado = false },
@@ -145,17 +151,20 @@ fun ActividadesView(
                                                 actividFiltered.clear()
                                                 // filtrar actividades por estado
                                                 for (actividad in actividades) {
-                                                    if (actividad.estado.equals( est, ignoreCase = true)) {
+                                                    if (actividad.estado.equals(
+                                                            est,
+                                                            ignoreCase = true
+                                                        )
+                                                    ) {
                                                         actividFiltered.add(actividad)
                                                     }
                                                 }
                                                 showActividades = actividFiltered
-                                                actividadesSeleccionadas = showActividades.toMutableList()
 
                                                 if (actividFiltered.isEmpty()) {
                                                     Toast.makeText(
                                                         context,
-                                                        "No hay actividades con ese estado",
+                                                        "No hay actividades para esa etapa",
                                                         Toast.LENGTH_SHORT
                                                     ).show()
                                                 }
@@ -169,27 +178,70 @@ fun ActividadesView(
                             }
                         )
                     }
-                    val uniqueGroups = mutableSetOf<String>()
-                    if (expGrupo) {
+                    /*val uniqueDep = mutableSetOf<Int>()
+                    if (expDep) {
                         AlertDialog(
-                            onDismissRequest = { expGrupo = false },
+                            onDismissRequest = { expDep = false },
                             confirmButton = { },
                             title = {
-                                Text("Filtrar por grupo")
+                                Text("Filtrar por departamento")
                             },
                             text = {
-                                Column (modifier = Modifier.verticalScroll(rememberScrollState())) {
-                                    grupoParticipantes.forEach { grupo ->
-                                        val groupCode = grupo.grupo.codGrupo
-                                        if (uniqueGroups.add(groupCode)) {
+                                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                                    profesResponsables.forEach { prp ->
+                                        if (uniqueDep.add(prp.profesor.depart.id))
                                             Button(
                                                 onClick = {
                                                     actividFiltered.clear()
-                                                    expGrupo = false
-                                                    // filtrar actividades por estado
-                                                    for (actividad in actividades) {
-                                                        if (actividad.id == grupo.actividades.id) {
-                                                            actividFiltered.add(actividad)
+                                                    expDep = false
+                                                    // filtrar actividades por etapa
+                                                    for (prf in profesResponsables) {
+                                                        if (prf.profesor.depart.id == prp.profesor.depart.id) {
+                                                            actividFiltered.add(prf.actividad)
+
+                                                        }
+                                                    }
+                                                    showActividades = actividFiltered
+                                                    if (actividFiltered.isEmpty()) {
+                                                        Toast.makeText(
+                                                            context,
+                                                            "No hay actividades para ese Departamento",
+                                                            Toast.LENGTH_SHORT
+                                                        ).show()
+                                                    }
+                                                },
+                                                modifier = Modifier.fillMaxWidth()
+                                            ) {
+                                                Text(prp.profesor.depart.nombre)
+                                            }
+
+                                    }
+                                }
+                            }
+                        )
+                    }
+                    val uniqueEtapa = mutableSetOf<String>()
+
+                    if (expEtapa) {
+                        AlertDialog(
+                            onDismissRequest = { expEtapa = false },
+                            confirmButton = { },
+                            title = {
+                                Text("Filtrar por etapa")
+                            },
+                            text = {
+                                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                                    grupoParticipantes.forEach { grp ->
+                                        if (uniqueEtapa.add(grp.grupo.curso.etapa))
+                                            Button(
+                                                onClick = {
+                                                    actividFiltered.clear()
+                                                    expEtapa = false
+                                                    // filtrar actividades por etapa
+                                                    for (grupos in grupoParticipantes) {
+                                                        if (grupos.grupo.curso.etapa == grp.grupo.curso.etapa) {
+                                                            actividFiltered.add(grupos.actividades)
+
                                                         }
                                                     }
                                                     showActividades = actividFiltered
@@ -203,71 +255,34 @@ fun ActividadesView(
                                                 },
                                                 modifier = Modifier.fillMaxWidth()
                                             ) {
-                                                Text(grupo.grupo.codGrupo)
+                                                Text(grp.grupo.curso.etapa)
                                             }
-                                        }
+
                                     }
                                 }
                             }
                         )
-                    }
-                    val uniqueProfs = mutableSetOf<String>()
-                    if (expProf) {
-                        AlertDialog(
-                            onDismissRequest = { expProf = false },
-                            confirmButton = { },
-                            title = {
-                                Text("Filtrar por profesor")
-                            },
-                            text = {
-                                Column (modifier = Modifier.verticalScroll(rememberScrollState())) {
-                                    profesParticipantes.forEach { prof ->
-                                        val profe = prof.profesor.uuid
-                                        if (uniqueProfs.add(profe)) {
-                                            Button(
-                                                onClick = {
-                                                    actividFiltered.clear()
-                                                    expProf = false
-                                                    // filtrar actividades por profesor
-                                                    for (actividad in actividades) {
-                                                        if (actividad.id == prof.actividad.id) {
-                                                            actividFiltered.add(actividad)
-                                                        }
-                                                    }
-                                                    showActividades = actividFiltered
-                                                    if (actividFiltered.isEmpty()) {
-                                                        Toast.makeText(
-                                                            context,
-                                                            "No hay actividades para ese profesor",
-                                                            Toast.LENGTH_SHORT
-                                                        ).show()
-                                                    }
-                                                },
-                                                modifier = Modifier.fillMaxWidth()
-                                            ) {
-                                                Text("${prof.profesor.nombre} ${prof.profesor.apellidos}")
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        )
-                    }
+                    }*/
                 }
                 Row(modifier = Modifier.fillMaxWidth()) {
 
                     var busqueda by remember { mutableStateOf("") }
                     var normalizedBusqueda = normalizeString(busqueda)
-
                     OutlinedTextField(
                         value = busqueda,
                         onValueChange = { busqueda = it },
                         label = { Text("Buscar") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-                        modifier = Modifier.weight(0.6f).padding(10.dp)
+                        modifier = Modifier
+                            .weight(0.6f)
+                            .padding(10.dp)
                     )
                     IconButton(
-                        onClick = { showActividades = actividades.filter { normalizeString(it.titulo).contains(normalizedBusqueda) } },
+                        onClick = {
+                            showActividades = actividades.filter {
+                                normalizeString(it.titulo).contains(normalizedBusqueda)
+                            }
+                        },
                         modifier = Modifier.align(Alignment.CenterVertically)
                     ) {
                         Icon(
@@ -280,13 +295,14 @@ fun ActividadesView(
                 Spacer(modifier = Modifier.height(20.dp))
                 LazyColumn {
                     items(showActividades) { actividad ->
+                        val color = SelectColor(actividad.estado)
                         Card(
                             modifier = Modifier
                                 .weight(1f)
                                 .padding(8.dp)
                                 .fillMaxHeight(),
                             shape = RoundedCornerShape(12.dp),
-                            colors = CardDefaults.cardColors(containerColor = BlueContainer),
+                            colors = CardDefaults.cardColors(containerColor = color),
                             onClick = {
                                 actividadViewModel.getActividadById(actividad.id)
                                 navController.navigate("details")
@@ -323,3 +339,4 @@ fun ActividadesView(
         navController.navigate("home")
     }
 }
+

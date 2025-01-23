@@ -50,6 +50,7 @@ import androidx.navigation.NavController
 import com.example.reto2025_mobile.Componentes.BottomDetailBar
 import com.example.reto2025_mobile.Componentes.DetailTopBar
 import com.example.reto2025_mobile.Componentes.Pics
+import com.example.reto2025_mobile.Componentes.SelectColor
 import com.example.reto2025_mobile.Componentes.Usuario
 import com.example.reto2025_mobile.Componentes.formatFecha
 import com.example.reto2025_mobile.R
@@ -76,7 +77,6 @@ fun DetailsView(
         emptyList()
     )
     val actividad: Actividad? by actividadViewModel.actividad.observeAsState()
-    var color by remember { mutableStateOf(Color(0xFFD0E8F2)) }
     var enableUpdate by remember { mutableStateOf(false) }
     // datos de la actividad
     var incidencias by remember { mutableStateOf(actividad?.incidencias ?: "") }
@@ -108,19 +108,8 @@ fun DetailsView(
                         .height(1000.dp)
                 ) {
                     Box(modifier = Modifier.fillMaxSize()) {
-                        if (it.estado == "SOLICITADA") {
-                            color = Color(0xFFD0E8F2)
-                        } else if (it.estado == "DENEGADA") {
-                            color = Color(0xFFCD5C5C)
-                        } else if (it.estado == "APROBADA") {
-                            color = Color(0xFFADD8E6)
-                        } else if (it.estado == "REALIZADA") {
-                            color = Color(0xFF90EE90)
-                        } else if (it.estado == "REALIZANDOSE") {
-                            color = Color(0xFFFFFFE0)
-                        } else if (it.estado == "CANCELADA") {
-                            color = Color(0xFFD3D3D3)
-                        }
+
+                        val color = SelectColor(actividad!!.estado)
 
                         LazyColumn {
                             item {

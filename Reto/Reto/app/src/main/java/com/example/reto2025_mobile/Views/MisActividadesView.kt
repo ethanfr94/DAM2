@@ -50,6 +50,8 @@ import androidx.navigation.NavController
 import com.example.reto2025_mobile.Componentes.ActividadesTopAppBar
 import com.example.reto2025_mobile.Componentes.AppBar
 import com.example.reto2025_mobile.Componentes.BottomAppBar
+import com.example.reto2025_mobile.Componentes.SelectColor
+import com.example.reto2025_mobile.Componentes.Usuario
 import com.example.reto2025_mobile.Componentes.normalizeString
 import com.example.reto2025_mobile.ViewModel.ActividadViewModel
 import com.example.reto2025_mobile.ViewModel.GrupoParticipanteViewModel
@@ -66,18 +68,22 @@ fun MisActividades(
     profParticipanteViewModel: ProfParticipanteViewModel,
     grupoParticipanteViewModel: GrupoParticipanteViewModel
 ) {
-    val grupoParticipantes: List<GrupoParticipante> by grupoParticipanteViewModel.gruposParticipantes.observeAsState(emptyList())
-    val profesParticipantes: List<ProfParticipante> by profParticipanteViewModel.profesoresParticipantes.observeAsState(emptyList())
+    val grupoParticipantes: List<GrupoParticipante> by grupoParticipanteViewModel.gruposParticipantes.observeAsState(
+        emptyList()
+    )
+    val profesParticipantes: List<ProfParticipante> by profParticipanteViewModel.profesoresParticipantes.observeAsState(
+        emptyList()
+    )
 
     profParticipanteViewModel.getProfesoresParticipantes()
     grupoParticipanteViewModel.getGruposParticipantes()
 
-    val context = LocalContext.current
 
     val actividades: List<Actividad> by actividadViewModel.actividades.observeAsState(emptyList())
 
 
-    val estados: List<String> = listOf("APROBADA", "CANCELADA", "REALIZADA", "SOLICITADA", "DENEGADA", "REALIZANDOSE")
+    val estados: List<String> =
+        listOf("APROBADA", "CANCELADA", "REALIZADA", "SOLICITADA", "DENEGADA", "REALIZANDOSE")
 
 
 
@@ -91,74 +97,98 @@ fun MisActividades(
                 .padding(innerPadding)
         ) {
 
-            Column(modifier = Modifier.fillMaxSize()) {
-                Spacer(modifier = Modifier.height(20.dp))
+            Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    text = "Actividades solicitadas",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF000000),
+                    modifier = Modifier.padding(bottom = 8.dp),
+                    textAlign = TextAlign.Center
+                )
                 LazyColumn {
                     items(actividades) { actividad ->
-                        Card(
-                            modifier = Modifier
-                                .weight(1f)
-                                .padding(8.dp)
-                                .fillMaxHeight(),
-                            shape = RoundedCornerShape(12.dp),
-                            colors = CardDefaults.cardColors(containerColor = BlueContainer),
-                            onClick = {
-                                actividadViewModel.getActividadById(actividad.id)
-                                navController.navigate("details")
-                            }
-                        ) {
-                            Row(
+                        var color = SelectColor(actividad.estado)
+                        if (actividad.solicitante.uuid == Usuario.uuid) {
+                            Card(
                                 modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(16.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.Center
+                                    .weight(1f)
+                                    .padding(8.dp)
+                                    .fillMaxHeight(),
+                                shape = RoundedCornerShape(12.dp),
+                                colors = CardDefaults.cardColors(containerColor = color),
+                                onClick = {
+                                    actividadViewModel.getActividadById(actividad.id)
+                                    navController.navigate("details")
+                                }
                             ) {
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(16.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.Center
+                                ) {
 
-                                Spacer(modifier = Modifier.width(25.dp))
-                                Text(
-                                    text = actividad.titulo,
-                                    fontSize = 18.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = Color(0xFF000000),
-                                    modifier = Modifier.padding(bottom = 8.dp),
-                                    textAlign = TextAlign.Center
-                                )
+                                    Spacer(modifier = Modifier.width(25.dp))
+                                    Text(
+                                        text = actividad.titulo,
+                                        fontSize = 18.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = Color(0xFF000000),
+                                        modifier = Modifier.padding(bottom = 8.dp),
+                                        textAlign = TextAlign.Center
+                                    )
+                                }
                             }
                         }
+
                     }
                 }
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "Actividades en las que participo",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF000000),
+                    modifier = Modifier.padding(bottom = 8.dp),
+                    textAlign = TextAlign.Center
+                )
                 LazyColumn {
-                    items(actividades) { actividad ->
-                        Card(
-                            modifier = Modifier
-                                .weight(1f)
-                                .padding(8.dp)
-                                .fillMaxHeight(),
-                            shape = RoundedCornerShape(12.dp),
-                            colors = CardDefaults.cardColors(containerColor = BlueContainer),
-                            onClick = {
-                                actividadViewModel.getActividadById(actividad.id)
-                                navController.navigate("details")
-                            }
-                        ) {
-                            Row(
+                    items(profesParticipantes) { actividad ->
+                        var color = SelectColor(actividad.actividad.estado)
+                        if (actividad.profesor.uuid == Usuario.uuid) {
+                            Card(
                                 modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(16.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.Center
+                                    .weight(1f)
+                                    .padding(8.dp)
+                                    .fillMaxHeight(),
+                                shape = RoundedCornerShape(12.dp),
+                                colors = CardDefaults.cardColors(containerColor = color),
+                                onClick = {
+                                    actividadViewModel.getActividadById(actividad.id)
+                                    navController.navigate("details")
+                                }
                             ) {
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(16.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.Center
+                                ) {
 
-                                Spacer(modifier = Modifier.width(25.dp))
-                                Text(
-                                    text = actividad.titulo,
-                                    fontSize = 18.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = Color(0xFF000000),
-                                    modifier = Modifier.padding(bottom = 8.dp),
-                                    textAlign = TextAlign.Center
-                                )
+                                    Spacer(modifier = Modifier.width(25.dp))
+                                    Text(
+                                        text = actividad.actividad.titulo,
+                                        fontSize = 18.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = Color(0xFF000000),
+                                        modifier = Modifier.padding(bottom = 8.dp),
+                                        textAlign = TextAlign.Center
+                                    )
+                                }
                             }
                         }
                     }

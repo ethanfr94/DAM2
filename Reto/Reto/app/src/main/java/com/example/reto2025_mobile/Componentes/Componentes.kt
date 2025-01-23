@@ -1,6 +1,8 @@
 package com.example.reto2025_mobile.Componentes
 
 import android.content.ContentValues
+import android.content.Context
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
@@ -25,7 +27,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -43,7 +44,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -62,7 +62,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -71,12 +70,24 @@ import androidx.core.content.FileProvider
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import coil.compose.AsyncImage
+import com.example.reto2025_mobile.Componentes.Usuario.activo
+import com.example.reto2025_mobile.Componentes.Usuario.apellidos
+import com.example.reto2025_mobile.Componentes.Usuario.correo
+import com.example.reto2025_mobile.Componentes.Usuario.depart
+import com.example.reto2025_mobile.Componentes.Usuario.dni
+import com.example.reto2025_mobile.Componentes.Usuario.esJefeDep
+import com.example.reto2025_mobile.Componentes.Usuario.nombre
+import com.example.reto2025_mobile.Componentes.Usuario.password
+import com.example.reto2025_mobile.Componentes.Usuario.rol
+import com.example.reto2025_mobile.Componentes.Usuario.urlFoto
+import com.example.reto2025_mobile.Componentes.Usuario.uuid
 import com.example.reto2025_mobile.Navigation.ItemsNav
 import com.example.reto2025_mobile.R
 import com.example.reto2025_mobile.ViewModel.ActividadViewModel
 import com.example.reto2025_mobile.ViewModel.GrupoParticipanteViewModel
 import com.example.reto2025_mobile.ViewModel.ProfParticipanteViewModel
 import com.example.reto2025_mobile.data.Actividad
+import com.example.reto2025_mobile.data.Departamento
 import com.example.reto2025_mobile.data.ProfParticipante
 import com.example.reto2025_mobile.ui.theme.GreenBar
 import com.example.reto2025_mobile.ui.theme.BlueContainer
@@ -88,6 +99,8 @@ import io.github.boguszpawlowski.composecalendar.Calendar
 import io.github.boguszpawlowski.composecalendar.day.DayState
 import io.github.boguszpawlowski.composecalendar.rememberCalendarState
 import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.text.Normalizer
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -194,6 +207,7 @@ fun PerfilTopAppBar(navController: NavController) {
 @Composable
 fun HomeAppBar(navController: NavController) {
     var showlogout by remember { mutableStateOf(false) }
+    val context = LocalContext.current
     TopAppBar(
         title = {
         },
@@ -223,6 +237,7 @@ fun HomeAppBar(navController: NavController) {
                             onDismissRequest = { },
                             confirmButton = {
                                 Button(onClick = {
+                                    clearLoginData(context)
                                     navController.navigate("loggin")
                                     showlogout = false
                                 })
@@ -800,12 +815,16 @@ fun ActivityDetails(
             actividadViewModel.getActividadById(activity.id)
             profParticipanteViewModel.getProfesoresParticipantes()
             grupoParticipanteViewModel.getGruposParticipantes()
+
+
+            val color = SelectColor(activity.estado)
+
             Card(
                 modifier = Modifier
                     .padding(5.dp)
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(12.dp),
-                colors = CardDefaults.cardColors(containerColor = BlueContainer),
+                colors = CardDefaults.cardColors(containerColor = color),
                 onClick = { navController.navigate("details") }
             ) {
                 Box(
@@ -832,6 +851,7 @@ fun ActivityDetails(
             }
         }
     }else{
+
         Card(
             modifier = Modifier
                 .padding(5.dp)
@@ -948,4 +968,77 @@ fun normalizeString(input: String): String {
     return Normalizer.normalize(input, Normalizer.Form.NFD)
         .replace(Regex("\\p{InCombiningDiacriticalMarks}+"), "")
         .lowercase()
+}
+
+fun SelectColor(estado: String): Color {
+    var color = Color(0xFFD0E8F2)
+    if (estado == "SOLICITADA") {
+        color = Color(0xFFD0E8F2)
+    } else if (estado == "DENEGADA") {
+        color = Color(0xFFCD5C5C)
+    } else if (estado == "APROBADA") {
+        color = Color(0xFFADD8E6)
+    } else if (estado == "REALIZADA") {
+        color = Color(0xFF90EE90)
+    } else if (estado == "REALIZANDOSE") {
+        color = Color(0xFFFFFFE0)
+    } else if (estado == "CANCELADA") {
+        color = Color(0xFFD3D3D3)
+    }
+    return color
+}
+
+
+fun saveLoginData(context: Context, email: String, password: String) {
+    val sharedPreferences: SharedPreferences = context.getSharedPreferences("login_prefs", Context.MODE_PRIVATE)
+    val editor: SharedPreferences.Editor = sharedPreferences.edit()
+    editor.putString("email", email)
+    editor.putString("password", password)
+    editor.apply()
+}
+
+fun getLoginData(context: Context): Pair<String?, String?> {
+    val sharedPreferences: SharedPreferences = context.getSharedPreferences("login_prefs", Context.MODE_PRIVATE)
+    val email = sharedPreferences.getString("email", null)
+    val password = sharedPreferences.getString("password", null)
+    return Pair(email, password)
+}
+
+fun readLogData(context: Context): List<Usuario> {
+    val fileName = "user_data.csv"
+    val file = File(context.filesDir, fileName)
+    val users = mutableListOf<Usuario>()
+
+    if (file.exists()) {
+        FileInputStream(file).use { input ->
+            input.bufferedReader().useLines { lines ->
+                lines.drop(1).forEach { line -> // Skip the header
+                    val parts = line.split(",")
+                    if (parts.size == 11) {
+                        val user = Usuario.apply {
+                            uuid = parts[0]
+                            dni = parts[1]
+                            nombre = parts[2]
+                            apellidos = parts[3]
+                            correo = parts[4]
+                            password = parts[5]
+                            rol = parts[6]
+                            activo = parts[7].toBoolean()
+                            urlFoto = parts[8]
+                            esJefeDep = parts[9].toBoolean()
+                        }
+                        users.add(user)
+                    }
+                }
+            }
+        }
+    }
+    return users
+}
+
+fun clearLoginData(context: Context) {
+    val sharedPreferences: SharedPreferences = context.getSharedPreferences("login_prefs", Context.MODE_PRIVATE)
+    val editor: SharedPreferences.Editor = sharedPreferences.edit()
+    editor.clear()
+    editor.apply()
 }
