@@ -16,15 +16,19 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -39,14 +43,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.reto2025_mobile.Componentes.BottomDetailBar
 import com.example.reto2025_mobile.Componentes.DetailTopBar
-import com.example.reto2025_mobile.Componentes.Fotos
-import com.example.reto2025_mobile.Componentes.Incidencias
-import com.example.reto2025_mobile.Componentes.Mapa
 import com.example.reto2025_mobile.Componentes.Pics
 import com.example.reto2025_mobile.Componentes.Usuario
 import com.example.reto2025_mobile.Componentes.formatFecha
@@ -89,12 +91,7 @@ fun DetailsView(
 
         Scaffold(
             topBar = {
-                DetailTopBar(
-                    navController = navController,
-                    actividadViewModel,
-                    actividad!!,
-                    enableUpdate
-                )
+                DetailTopBar(navController = navController)
             },
             bottomBar = {
                 BottomDetailBar(actividad = actividad!!, profParticipantes = profParticipantes)
@@ -311,7 +308,7 @@ fun DetailsView(
                                 }
                             }
                             item {
-                                var showIncidencia by remember { mutableStateOf(false) }
+                                var enabled by remember { mutableStateOf(false) }
 
                                 Card(
                                     modifier = Modifier
@@ -320,11 +317,21 @@ fun DetailsView(
                                     shape = RoundedCornerShape(12.dp),
                                     colors = CardDefaults.cardColors(containerColor = BlueContainer)
                                 ) {
-                                    Text(
-                                        text = "Incidencias:",
-                                        fontWeight = FontWeight.Bold,
-                                        modifier = Modifier.padding(8.dp)
-                                    )
+                                    Row(modifier = Modifier.fillMaxWidth()){
+                                        Text(
+                                            text = "Incidencias:",
+                                            fontWeight = FontWeight.Bold,
+                                            modifier = Modifier.padding(8.dp)
+                                        )
+                                        Spacer(modifier = Modifier.width(230.dp))
+                                        Switch(
+                                            enabled = enableUpdate,
+                                            checked = enabled,
+                                            onCheckedChange = { enabled = it },
+                                            modifier = Modifier.padding(8.dp).size(20.dp)
+                                        )
+                                    }
+
                                     Box(
                                         modifier = Modifier
                                             .fillMaxSize()
@@ -346,6 +353,9 @@ fun DetailsView(
                                                 fontSize = 16.sp,
                                                 fontWeight = FontWeight.Bold
                                             ),
+
+                                            enabled = enabled,
+                                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                                         )
                                     }
                                     Button(
@@ -369,13 +379,7 @@ fun DetailsView(
                                         )
                                     }
 
-                                    if (showIncidencia) {
-                                        Incidencias(
-                                            onDismiss = { showIncidencia = false },
-                                            actividadViewModel = actividadViewModel,
-                                            actividad = actividad!!
-                                        )
-                                    }
+
 
 
                                 }
@@ -476,15 +480,25 @@ fun DetailsView(
                                     for (grupo in grupoParticipantes) {
                                         var numPart by remember { mutableStateOf(grupo.numParticipantes) }
                                         var coment by remember { mutableStateOf(grupo.comentario) }
+                                        var enable by remember { mutableStateOf(false) }
 
                                         if (grupo.actividades.id == it.id) {
                                             Column {
+                                                Row(modifier = Modifier.fillMaxWidth()) {
+                                                    Text(
+                                                        text = grupo.grupo.codGrupo,
+                                                        fontWeight = FontWeight.Bold,
+                                                        modifier = Modifier.padding(8.dp)
+                                                    )
+                                                    Spacer(modifier = Modifier.width(270.dp))
+                                                    Switch(
+                                                        enabled = enableUpdate,
+                                                        checked = enable,
+                                                        onCheckedChange = { enable = it },
+                                                        modifier = Modifier.padding(8.dp).size(20.dp)
+                                                    )
+                                                }
 
-                                                Text(
-                                                    text = grupo.grupo.codGrupo,
-                                                    fontWeight = FontWeight.Bold,
-                                                    modifier = Modifier.padding(8.dp)
-                                                )
                                                 Text(
                                                     text = "Numero de asistentes",
                                                     fontWeight = FontWeight.Bold,
@@ -505,6 +519,8 @@ fun DetailsView(
                                                         fontSize = 16.sp,
                                                         fontWeight = FontWeight.Bold
                                                     ),
+                                                    enabled = enable,
+                                                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                                                 )
 
                                                 Text(
@@ -527,6 +543,8 @@ fun DetailsView(
                                                         fontSize = 16.sp,
                                                         fontWeight = FontWeight.Bold
                                                     ),
+                                                    enabled = enable,
+                                                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                                                 )
                                                 Button(
                                                     onClick = {
@@ -549,7 +567,7 @@ fun DetailsView(
                                                     )
                                                 ) {
                                                     Text(
-                                                        text = "Añadir incidencia",
+                                                        text = "Guardar cambios",
                                                         fontWeight = FontWeight.Bold
                                                     )
                                                 }

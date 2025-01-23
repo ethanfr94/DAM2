@@ -67,6 +67,7 @@
       <list>
         <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Enum" />
       </list>
     </option>
   </component>
@@ -96,11 +97,6 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2"
-  },
-  "keyToStringList": {
-    "kotlin-gradle-user-dirs": [
-      "D:\\Usuarios\\dam213\\.gradle"
-    ]
   }
 }]]></component>
   <component name="RecentsManager">

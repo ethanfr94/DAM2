@@ -23,10 +23,10 @@ sealed class ItemsNav (
     object Item_bottom_nav_home:ItemsNav(
         Icons.Filled.Home,"Home", "home")
 
-
+/*
     object Item_bottom_nav_faq:ItemsNav(
         Icons.Filled.Info,"FAQ", "FAQ")
-
+*/
     object Item_bottom_nav_perfil:ItemsNav(
         Icons.Filled.Person,"Perfil", "perfil")
 

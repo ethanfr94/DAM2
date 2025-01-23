@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
-import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -14,7 +13,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-//import androidx.compose.foundation.layout.FlowColumnScopeInstance.align
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,12 +22,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.AlertDialog
@@ -47,6 +47,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -75,10 +76,8 @@ import com.example.reto2025_mobile.R
 import com.example.reto2025_mobile.ViewModel.ActividadViewModel
 import com.example.reto2025_mobile.ViewModel.GrupoParticipanteViewModel
 import com.example.reto2025_mobile.ViewModel.ProfParticipanteViewModel
-import com.example.reto2025_mobile.Views.DetailsView
 import com.example.reto2025_mobile.data.Actividad
 import com.example.reto2025_mobile.data.ProfParticipante
-import com.example.reto2025_mobile.data.Profesor
 import com.example.reto2025_mobile.ui.theme.GreenBar
 import com.example.reto2025_mobile.ui.theme.BlueContainer
 import com.google.android.gms.maps.model.CameraPosition
@@ -89,6 +88,7 @@ import io.github.boguszpawlowski.composecalendar.Calendar
 import io.github.boguszpawlowski.composecalendar.day.DayState
 import io.github.boguszpawlowski.composecalendar.rememberCalendarState
 import java.io.File
+import java.text.Normalizer
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -97,10 +97,7 @@ import java.time.format.DateTimeFormatter
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailTopBar(
-    navController: NavController,
-    actividadViewModel: ActividadViewModel,
-    actividad: Actividad,
-    enableUpdate: Boolean
+    navController: NavController
 ) {
     TopAppBar(
         title = {
@@ -130,7 +127,6 @@ fun DetailTopBar(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ActividadesTopAppBar(navController: NavController) {
-    var expanded by remember { mutableStateOf(false) }
     TopAppBar(
         title = {
             Icon(
@@ -154,14 +150,11 @@ fun ActividadesTopAppBar(navController: NavController) {
         actions = {
             Box {
                 Row {
-                    IconButton(onClick = { expanded = true }) {
+                    IconButton(onClick = { navController.navigate("FAQ") }) {
                         Icon(
-                            imageVector = ImageVector.vectorResource(R.drawable.filter),
-                            contentDescription = "Filtros"
+                            imageVector = Icons.Filled.Info,
+                            contentDescription = "FaQ"
                         )
-                        if (expanded) {
-                            Filtros(onDismiss = { expanded = false })
-                        }
                     }
                 }
             }
@@ -293,7 +286,7 @@ fun BottomAppBar(navController: NavController) {
         ItemsNav.Item_bottom_nav_calendar,
         ItemsNav.Item_bottom_nav_home,
         ItemsNav.Item_bottom_nav_perfil,
-        ItemsNav.Item_bottom_nav_faq,
+        //ItemsNav.Item_bottom_nav_faq,
     )
     NavigationBar(
         containerColor = GreenBar,
@@ -384,44 +377,6 @@ fun BottomDetailBar(actividad: Actividad, profParticipantes: List<ProfParticipan
 
 // Cuadros de dialogo para filtrar actividades y añadir incidencias
 
-@Composable
-fun Incidencias(
-    onDismiss: () -> Unit,
-    actividadViewModel: ActividadViewModel,
-    actividad: Actividad
-) {
-    var inci by remember { mutableStateOf(actividad.incidencias ?: "") }
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        confirmButton = {
-            Button(
-                onClick = {
-                    val updateActividad = actividad.copy(incidencias = inci)
-                    actividadViewModel.updateActividad(updateActividad)
-                    onDismiss()
-                }
-            ) {
-                Text("Aceptar")
-            }
-        },
-        dismissButton = {
-            Button(onClick = onDismiss) {
-                Text("Cancelar")
-            }
-        },
-        title = {
-            Text("Añadir incidencias")
-        },
-        text = {
-            TextField(
-                value = inci!!,
-                onValueChange = { inci = it },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-            )
-
-        }
-    )
-}
 
 @Composable
 fun Mapa(onDismiss: () -> Unit) {
@@ -477,26 +432,6 @@ fun Pics(onDismiss: () -> Unit) {
         }
     }
 }
-/*
-@Composable
-fun Pic(onDismiss: () -> Unit) {
-    AlertDialog(
-        modifier = Modifier
-            .fillMaxWidth()
-            .size(400.dp),
-        onDismissRequest = onDismiss,
-        confirmButton = {},
-        text = {
-            Box(modifier = Modifier.fillMaxSize()) {
-                Icon(
-                    modifier = Modifier.fillMaxSize(),
-                    imageVector = ImageVector.vectorResource(R.drawable.photo),
-                    contentDescription = "foto"
-                )
-            }
-        }
-    )
-}*/
 
 @Composable
 fun Fotos(onDismiss: () -> Unit) {
@@ -518,20 +453,24 @@ fun Fotos(onDismiss: () -> Unit) {
             if (success) {
                 // Guardar la imagen en la galería
                 val contentValues = ContentValues().apply {
-                    put(MediaStore.Images.Media.DISPLAY_NAME, "IMG_${System.currentTimeMillis()}.jpg")
+                    put(
+                        MediaStore.Images.Media.DISPLAY_NAME,
+                        "IMG_${System.currentTimeMillis()}.jpg"
+                    )
                     put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
                     put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
                 }
                 val resolver = context.contentResolver
-                resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)?.let { galleryUri ->
-                    resolver.openOutputStream(galleryUri)?.use { outputStream ->
-                        photoUri?.let {
-                            resolver.openInputStream(photoUri!!)?.use { inputStream ->
-                                inputStream.copyTo(outputStream)
+                resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+                    ?.let { galleryUri ->
+                        resolver.openOutputStream(galleryUri)?.use { outputStream ->
+                            photoUri?.let {
+                                resolver.openInputStream(photoUri!!)?.use { inputStream ->
+                                    inputStream.copyTo(outputStream)
+                                }
                             }
                         }
                     }
-                }
                 // Añadir la URI de la imagen a las imágenes seleccionadas
                 selectedImageUris.add(photoUri)
             }
@@ -621,11 +560,11 @@ fun Fotos(onDismiss: () -> Unit) {
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
-                                Icon(
-                                    imageVector = ImageVector.vectorResource(R.drawable.addphoto),
-                                    contentDescription = "añadir desde camara",
-                                    modifier = Modifier.size(32.dp)
-                                )
+                            Icon(
+                                imageVector = ImageVector.vectorResource(R.drawable.addphoto),
+                                contentDescription = "añadir desde camara",
+                                modifier = Modifier.size(32.dp)
+                            )
 
                         }
                     }
@@ -647,11 +586,11 @@ fun Fotos(onDismiss: () -> Unit) {
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
-                                Icon(
-                                    imageVector = ImageVector.vectorResource(R.drawable.image_search),
-                                    contentDescription = "añadir desde galeria",
-                                    modifier = Modifier.size(32.dp)
-                                )
+                            Icon(
+                                imageVector = ImageVector.vectorResource(R.drawable.image_search),
+                                contentDescription = "añadir desde galeria",
+                                modifier = Modifier.size(32.dp)
+                            )
 
                         }
                     }
@@ -671,11 +610,11 @@ fun Fotos(onDismiss: () -> Unit) {
                                 modifier = Modifier.fillMaxSize(),
                                 contentAlignment = Alignment.Center
                             ) {
-                                    Icon(
-                                        imageVector = ImageVector.vectorResource(R.drawable.save),
-                                        contentDescription = "subir imagenes",
-                                        modifier = Modifier.size(32.dp)
-                                    )
+                                Icon(
+                                    imageVector = ImageVector.vectorResource(R.drawable.save),
+                                    contentDescription = "subir imagenes",
+                                    modifier = Modifier.size(32.dp)
+                                )
 
                             }
                         }
@@ -687,31 +626,6 @@ fun Fotos(onDismiss: () -> Unit) {
     )
 }
 
-@Composable
-fun Filtros(onDismiss: () -> Unit) {
-
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        confirmButton = {
-            Button(onClick = onDismiss) {
-                Text("Aceptar")
-            }
-        },
-        /*dismissButton = {
-            Button(onClick = onDismiss) {
-                Text("Cancelar")
-            }
-        },*/
-        text = {
-            Column {
-                TextField(value = "", onValueChange = { }, label = { Text("Nombre") })
-                TextField(value = "", onValueChange = { }, label = { Text("Fecha") })
-                TextField(value = "", onValueChange = { }, label = { Text("Responsable") })
-                TextField(value = "", onValueChange = { }, label = { Text("Curso") })
-            }
-        }
-    )
-}
 
 // Calendario de actividades
 
@@ -724,17 +638,25 @@ fun ActivityCalendarApp(
     grupoParticipanteViewModel: GrupoParticipanteViewModel
 ) {
     // Estado para las actividades (con título y horario)
-    var activities by remember { mutableStateOf(mapOf<LocalDate, Actividad>()) }
+    var activities by remember { mutableStateOf(mapOf<LocalDate, List<Actividad>>()) }
 
-    for (actividad in actividades) {
-        activities = activities + (LocalDate.parse(actividad.fini) to actividad)
+
+    LaunchedEffect(actividades) {
+        val updatedActivities = actividades.groupBy { LocalDate.parse(it.fini) }
+        activities = updatedActivities
     }
+    /*for (actividad in actividades) {
+        val date = LocalDate.parse(actividad.fini)
+        activities = activities + (date to (activities[date]?.plus(actividad) ?: listOf(actividad)))
+    }*/
 
     // Estado del calendario
     val calendarState = rememberCalendarState()
 
     // Estado del día seleccionado
     var selectedDate by remember { mutableStateOf<LocalDate?>(null) }
+
+    var showCard by remember { mutableStateOf(true) }
 
     Column(
         modifier = Modifier
@@ -765,26 +687,51 @@ fun ActivityCalendarApp(
             )
         }
         Spacer(modifier = Modifier.height(10.dp))
-
-        // Mostrar información sobre el día seleccionado
-        selectedDate?.let { date ->
-
-            ActivityDetails(
-                navController = navController,
-                date = date,
-                activity = activities[date],
-                actividadViewModel = actividadViewModel,
-                profParticipanteViewModel = profParticipanteViewModel,
-                grupoParticipanteViewModel = grupoParticipanteViewModel
-            )
+        Column (modifier = Modifier.verticalScroll(rememberScrollState())) {
+            // Mostrar información sobre el día seleccionado
+            selectedDate?.let { date ->
+                showCard = false
+                ActivityDetails(
+                    navController = navController,
+                    date = date,
+                    activity = activities[date],
+                    actividadViewModel = actividadViewModel,
+                    profParticipanteViewModel = profParticipanteViewModel,
+                    grupoParticipanteViewModel = grupoParticipanteViewModel
+                )
+            }
         }
+
+        if (showCard) {
+            Card(
+                modifier = Modifier
+                    .padding(5.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp),
+                colors = CardDefaults.cardColors(containerColor = BlueContainer),
+            ) {
+                Box(
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .fillMaxWidth(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "Selecciona un día para ver las actividades",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+        }
+
     }
 }
 
 @Composable
 fun MyDayContentWithActivities(
     dayState: DayState<*>,
-    activities: Map<LocalDate, Actividad>,
+    activities: Map<LocalDate, List<Actividad>>,
     onClick: () -> Unit
 ) {
     val hasActivity = activities.containsKey(dayState.date)
@@ -841,18 +788,59 @@ fun MyDayContentWithActivities(
 fun ActivityDetails(
     navController: NavController,
     date: LocalDate,
-    activity: Actividad?,
+    activity: List<Actividad>?,
     actividadViewModel: ActividadViewModel,
     profParticipanteViewModel: ProfParticipanteViewModel,
     grupoParticipanteViewModel: GrupoParticipanteViewModel
 ) {
-    Card(
+
+    if (activity != null) {
+        activity.forEach { activity ->
+            actividadViewModel.getActividadById(activity.id)
+            profParticipanteViewModel.getProfesoresParticipantes()
+            grupoParticipanteViewModel.getGruposParticipantes()
+            Card(
+                modifier = Modifier
+                    .padding(5.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp),
+                colors = CardDefaults.cardColors(containerColor = BlueContainer),
+                onClick = { navController.navigate("details") }
+            ) {
+                Box(
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .fillMaxWidth(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Column (modifier = Modifier.fillMaxWidth()) {
+                        Text(
+                            text = "Fecha: ${date.dayOfMonth}-${date.monthValue}-${date.year}",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            text = "Título: ${activity.titulo}",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+
+            }
+        }
+    }
+
+    /*Card(
         modifier = Modifier
             .padding(5.dp)
             .fillMaxWidth()
             .then(
                 if (activity != null) Modifier.clickable {
-                    actividadViewModel.getActividadById(activity.id)
+                    activity.forEach { activity ->
+                        actividadViewModel.getActividadById(activity.id)
+                    }
                     profParticipanteViewModel.getProfesoresParticipantes()
                     grupoParticipanteViewModel.getGruposParticipantes()
                     navController.navigate("details")
@@ -868,7 +856,7 @@ fun ActivityDetails(
             contentAlignment = Alignment.Center
         ) {
             Column {
-                activity?.let {
+                activity?.forEach() { activity ->
                     Text(
                         text = "Fecha: ${date.dayOfMonth}-${date.monthValue}-${date.year}",
                         fontSize = 18.sp,
@@ -876,7 +864,7 @@ fun ActivityDetails(
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = "Título: ${it.titulo}",
+                        text = "Título: ${activity.titulo}",
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold
                     )
@@ -896,7 +884,7 @@ fun ActivityDetails(
                 }
             }
         }
-    }
+    }*/
 
 }
 
@@ -922,4 +910,10 @@ fun formatFecha(fecha: String): String {
     val date = LocalDate.parse(fecha)
     val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
     return date.format(formatter)
+}
+
+fun normalizeString(input: String): String {
+    return Normalizer.normalize(input, Normalizer.Form.NFD)
+        .replace(Regex("\\p{InCombiningDiacriticalMarks}+"), "")
+        .lowercase()
 }
