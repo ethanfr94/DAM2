@@ -132,6 +132,7 @@ fun ActividadesView(
                                         Button(
                                             onClick = {
                                                 expEstado = false
+                                                actividFiltered.clear()
                                                 // filtrar actividades por estado
                                                 for (actividad in actividades) {
                                                     if (actividad.estado.equals( est, ignoreCase = true)) {
@@ -171,6 +172,7 @@ fun ActividadesView(
                                         if (uniqueGroups.add(groupCode)) {
                                             Button(
                                                 onClick = {
+                                                    actividFiltered.clear()
                                                     expGrupo = false
                                                     // filtrar actividades por estado
                                                     for (actividad in actividades) {
@@ -213,6 +215,7 @@ fun ActividadesView(
                                         if (uniqueProfs.add(profe)) {
                                             Button(
                                                 onClick = {
+                                                    actividFiltered.clear()
                                                     expProf = false
                                                     // filtrar actividades por profesor
                                                     for (actividad in actividades) {

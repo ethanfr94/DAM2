@@ -830,6 +830,37 @@ fun ActivityDetails(
 
             }
         }
+    }else{
+        Card(
+            modifier = Modifier
+                .padding(5.dp)
+                .fillMaxWidth(),
+            shape = RoundedCornerShape(12.dp),
+            colors = CardDefaults.cardColors(containerColor = BlueContainer),
+            onClick = { navController.navigate("details") }
+        ) {
+            Box(
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                Column (modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        text = "Fecha: ${date.dayOfMonth}-${date.monthValue}-${date.year}",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "Actividad: No hay actividad programada",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+
+        }
     }
 
     /*Card(
