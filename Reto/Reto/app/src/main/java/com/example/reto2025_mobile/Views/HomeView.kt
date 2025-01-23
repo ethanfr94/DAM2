@@ -72,10 +72,8 @@ fun HomeView(
     grupoParticipanteViewModel: GrupoParticipanteViewModel,
     fotoViewModel: FotoViewModel = viewModel() // Asegúrate de pasar el FotoViewModel o instanciarlo
 
-
 ) {
     val actividades: List<Actividad> by actividadViewModel.actividades.observeAsState(emptyList())
-    val hayActividades = actividades.isNotEmpty()
 
     var showPic by remember { mutableStateOf(false) }
     var selectedFotos by remember { mutableStateOf<List<Foto>?>(null) }

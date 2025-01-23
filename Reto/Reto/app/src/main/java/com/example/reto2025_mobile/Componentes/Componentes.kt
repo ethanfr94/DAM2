@@ -283,10 +283,11 @@ fun currentRoute(navController: NavController): String? =
 fun BottomAppBar(navController: NavController) {
     val bar_items = listOf(
         ItemsNav.Item_bottom_nav_acts,
-        ItemsNav.Item_bottom_nav_calendar,
+        ItemsNav.Item_bottom_nav_misActividades,
         ItemsNav.Item_bottom_nav_home,
+        ItemsNav.Item_bottom_nav_calendar,
         ItemsNav.Item_bottom_nav_perfil,
-        //ItemsNav.Item_bottom_nav_faq,
+
     )
     NavigationBar(
         containerColor = GreenBar,

@@ -61,6 +61,7 @@ import com.example.reto2025_mobile.data.GrupoParticipante
 import com.example.reto2025_mobile.data.ProfParticipante
 import com.example.reto2025_mobile.ui.theme.BlueContainer
 
+var actividadesSeleccionadas = mutableListOf<Actividad>()
 
 @Composable
 fun ActividadesView(
@@ -69,20 +70,28 @@ fun ActividadesView(
     profParticipanteViewModel: ProfParticipanteViewModel,
     grupoParticipanteViewModel: GrupoParticipanteViewModel
 ) {
-    val grupoParticipantes: List<GrupoParticipante> by grupoParticipanteViewModel.gruposParticipantes.observeAsState(
-        emptyList()
-    )
-    val profesParticipantes: List<ProfParticipante> by profParticipanteViewModel.profesoresParticipantes.observeAsState(
-        emptyList()
-    )
+    val grupoParticipantes: List<GrupoParticipante> by grupoParticipanteViewModel.gruposParticipantes.observeAsState(emptyList())
+    val profesParticipantes: List<ProfParticipante> by profParticipanteViewModel.profesoresParticipantes.observeAsState(emptyList())
+
     val context = LocalContext.current
+
     val actividades: List<Actividad> by actividadViewModel.actividades.observeAsState(emptyList())
+
     var actividFiltered: MutableList<Actividad> by remember { mutableStateOf(mutableListOf()) }
+
     var showActividades: List<Actividad> by remember { mutableStateOf(emptyList()) }
+
+    if(actividadesSeleccionadas.isNullOrEmpty()) actividadesSeleccionadas.addAll(actividades)
+    else actividadesSeleccionadas = showActividades.toMutableList()
+
     val estados: List<String> = listOf("APROBADA", "CANCELADA", "REALIZADA", "SOLICITADA", "DENEGADA", "REALIZANDOSE")
+
     var expEstado by remember { mutableStateOf(false) }
     var expGrupo by remember { mutableStateOf(false) }
     var expProf by remember { mutableStateOf(false) }
+
+    profParticipanteViewModel.getProfesoresParticipantes()
+    grupoParticipanteViewModel.getGruposParticipantes()
 
     Scaffold(
         topBar = { ActividadesTopAppBar(navController) },
@@ -96,7 +105,8 @@ fun ActividadesView(
 
             Column(modifier = Modifier.fillMaxSize()) {
                 Row(modifier = Modifier.fillMaxWidth()) {
-                    Button(onClick = { showActividades = actividades },
+                    Button(onClick = { actividFiltered = actividades.toMutableList()
+                                     showActividades = actividFiltered },
                         modifier = Modifier.weight(0.2f))
                     {
                         Text("Todas")
@@ -137,9 +147,11 @@ fun ActividadesView(
                                                 for (actividad in actividades) {
                                                     if (actividad.estado.equals( est, ignoreCase = true)) {
                                                         actividFiltered.add(actividad)
-                                                        showActividades = actividFiltered
                                                     }
                                                 }
+                                                showActividades = actividFiltered
+                                                actividadesSeleccionadas = showActividades.toMutableList()
+
                                                 if (actividFiltered.isEmpty()) {
                                                     Toast.makeText(
                                                         context,
@@ -178,10 +190,9 @@ fun ActividadesView(
                                                     for (actividad in actividades) {
                                                         if (actividad.id == grupo.actividades.id) {
                                                             actividFiltered.add(actividad)
-                                                            showActividades = actividFiltered
                                                         }
                                                     }
-
+                                                    showActividades = actividFiltered
                                                     if (actividFiltered.isEmpty()) {
                                                         Toast.makeText(
                                                             context,
@@ -221,10 +232,9 @@ fun ActividadesView(
                                                     for (actividad in actividades) {
                                                         if (actividad.id == prof.actividad.id) {
                                                             actividFiltered.add(actividad)
-                                                            showActividades = actividFiltered
                                                         }
                                                     }
-
+                                                    showActividades = actividFiltered
                                                     if (actividFiltered.isEmpty()) {
                                                         Toast.makeText(
                                                             context,
@@ -279,8 +289,6 @@ fun ActividadesView(
                             colors = CardDefaults.cardColors(containerColor = BlueContainer),
                             onClick = {
                                 actividadViewModel.getActividadById(actividad.id)
-                                profParticipanteViewModel.getProfesoresParticipantes()
-                                grupoParticipanteViewModel.getGruposParticipantes()
                                 navController.navigate("details")
                             }
                         ) {
