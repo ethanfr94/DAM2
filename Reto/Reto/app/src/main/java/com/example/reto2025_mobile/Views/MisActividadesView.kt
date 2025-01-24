@@ -104,8 +104,7 @@ fun MisActividades(
                     modifier = Modifier
                         .weight(1f)
                         .padding(8.dp)
-                        .fillMaxHeight()
-                        .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
+                        .fillMaxHeight(),
                     shape = RoundedCornerShape(12.dp),
                     colors = CardDefaults.cardColors(containerColor = Color.White),
                     onClick = {
@@ -175,8 +174,7 @@ fun MisActividades(
                     modifier = Modifier
                         .weight(1f)
                         .padding(8.dp)
-                        .fillMaxHeight()
-                        .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
+                        .fillMaxHeight(),
                     shape = RoundedCornerShape(12.dp),
                     colors = CardDefaults.cardColors(containerColor = Color.White),
                     onClick = {

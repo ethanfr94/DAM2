@@ -1,10 +1,14 @@
 package com.example.reto2025_mobile.ViewModel
 
+import android.content.Context
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.reto2025_mobile.API.RetrofitServiceFactory
+import com.example.reto2025_mobile.Componentes.createPartFromString
+import com.example.reto2025_mobile.Componentes.prepareFilePart
 import com.example.reto2025_mobile.data.Foto
 import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
@@ -36,6 +40,22 @@ class FotoViewModel: ViewModel() {
                 _fotos.value = fotosList
             } catch (e: Exception) {
                 e.printStackTrace()
+            }
+        }
+    }
+
+    fun uploadPhotos(context: Context, idActividad: Int, selectedImageUris: List<Uri?>) {
+        viewModelScope.launch {
+            selectedImageUris.forEach { uri ->
+                val filePart = uri?.let { prepareFilePart(context, it, "foto") }
+                val descriptionPart = createPartFromString("Descripción de la foto")
+                try {
+                    val response =
+                        filePart?.let { service.uploadFoto(idActividad, it, descriptionPart) }
+                    // Manejar la respuesta
+                } catch (e: Exception) {
+                    // Manejar el error
+                }
             }
         }
     }
