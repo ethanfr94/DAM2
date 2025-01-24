@@ -2,6 +2,7 @@ package com.example.reto2025_mobile.Views
 
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -99,14 +100,36 @@ fun MisActividades(
 
             Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
                 Spacer(modifier = Modifier.height(12.dp))
-                Text(
-                    text = "Actividades solicitadas",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF000000),
-                    modifier = Modifier.padding(bottom = 8.dp),
-                    textAlign = TextAlign.Center
-                )
+                Card(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(8.dp)
+                        .fillMaxHeight()
+                        .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = CardDefaults.cardColors(containerColor = Color.White),
+                    onClick = {
+                    }
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+
+                        Spacer(modifier = Modifier.width(25.dp))
+                        Text(
+                            text = "Mis actividades solicitadas",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color(0xFF000000),
+                            modifier = Modifier.padding(bottom = 8.dp),
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
                 LazyColumn {
                     items(actividades) { actividad ->
                         var color = SelectColor(actividad.estado)
@@ -115,7 +138,8 @@ fun MisActividades(
                                 modifier = Modifier
                                     .weight(1f)
                                     .padding(8.dp)
-                                    .fillMaxHeight(),
+                                    .fillMaxHeight()
+                                    .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
                                 shape = RoundedCornerShape(12.dp),
                                 colors = CardDefaults.cardColors(containerColor = color),
                                 onClick = {
@@ -147,14 +171,36 @@ fun MisActividades(
                     }
                 }
                 Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = "Actividades en las que participo",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF000000),
-                    modifier = Modifier.padding(bottom = 8.dp),
-                    textAlign = TextAlign.Center
-                )
+                Card(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(8.dp)
+                        .fillMaxHeight()
+                        .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = CardDefaults.cardColors(containerColor = Color.White),
+                    onClick = {
+                    }
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+
+                        Spacer(modifier = Modifier.width(25.dp))
+                        Text(
+                            text = "Actividades en las que participo",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color(0xFF000000),
+                            modifier = Modifier.padding(bottom = 8.dp),
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
                 LazyColumn {
                     items(profesParticipantes) { actividad ->
                         var color = SelectColor(actividad.actividad.estado)
@@ -163,7 +209,8 @@ fun MisActividades(
                                 modifier = Modifier
                                     .weight(1f)
                                     .padding(8.dp)
-                                    .fillMaxHeight(),
+                                    .fillMaxHeight()
+                                    .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
                                 shape = RoundedCornerShape(12.dp),
                                 colors = CardDefaults.cardColors(containerColor = color),
                                 onClick = {

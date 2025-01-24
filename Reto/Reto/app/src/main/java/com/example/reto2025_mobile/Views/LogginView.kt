@@ -53,6 +53,8 @@ import com.example.reto2025_mobile.ViewModel.ProfesorLoginViewModel
 import com.example.reto2025_mobile.data.Profesor
 import com.google.gson.Gson
 
+
+
 @Composable
 fun LogginView(
     navController: NavHostController,
@@ -73,6 +75,7 @@ fun LogginView(
         if (savedEmail != null && savedPassword != null) {
             user = savedEmail
             pass = savedPassword
+            profesorLoginViewModel.login(savedEmail, savedPassword)
         }
     }
 
@@ -114,7 +117,7 @@ fun LogginView(
             OutlinedTextField(
                 value = user,
                 onValueChange = { user = it },
-                label = { Text("") },
+                label = { Text("Email") },
                 leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "Icono de usuario") },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                 modifier = Modifier
@@ -128,7 +131,7 @@ fun LogginView(
             OutlinedTextField(
                 value = pass,
                 onValueChange = { pass = it },
-                label = { Text("") },
+                label = { Text("Contraseña") },
                 leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "Icono de contraseña") },
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),

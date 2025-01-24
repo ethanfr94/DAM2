@@ -2,6 +2,7 @@ package com.example.reto2025_mobile.Views
 
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -300,7 +301,8 @@ fun ActividadesView(
                             modifier = Modifier
                                 .weight(1f)
                                 .padding(8.dp)
-                                .fillMaxHeight(),
+                                .fillMaxHeight()
+                                .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
                             shape = RoundedCornerShape(12.dp),
                             colors = CardDefaults.cardColors(containerColor = color),
                             onClick = {

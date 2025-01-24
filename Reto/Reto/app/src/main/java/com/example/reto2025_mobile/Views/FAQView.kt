@@ -2,6 +2,7 @@ package com.example.reto2025_mobile.Views
 
 import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -53,7 +54,8 @@ fun FAQView(navController: NavController) {
                 Card(
                     modifier = Modifier
                         .padding(8.dp)
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
                     shape = RoundedCornerShape(12.dp),
                     colors = CardDefaults.cardColors(containerColor = BlueContainer),
                     onClick = { desNorm = !desNorm }
@@ -97,7 +99,8 @@ fun FAQView(navController: NavController) {
                 Card(
                     modifier = Modifier
                         .padding(8.dp)
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
                     shape = RoundedCornerShape(12.dp),
                     colors = CardDefaults.cardColors(containerColor = BlueContainer),
                     onClick = { despfaq = !despfaq }

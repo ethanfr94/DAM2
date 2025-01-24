@@ -25,18 +25,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Reto2025MobileTheme {
-                val context = LocalContext.current
                 val navController = rememberNavController()
-                LaunchedEffect(Unit) {
-                    val (email, password) = getLoginData(context)
-                    if (email != null && password != null) {
-                        // Navegar a la pantalla de inicio si los datos de inicio de sesión están presentes
-                        navController.navigate("home")
-                    } else {
-                        // Navegar a la pantalla de inicio de sesión si no se encuentran datos de inicio de sesión
-                        navController.navigate("loggin")
-                    }
-                }
                 val profParticipanteViewModel by viewModels<ProfParticipanteViewModel>()
                 val grupoParticipanteViewModel by viewModels<GrupoParticipanteViewModel>()
                 val profResponsableViewModel by viewModels<ProfResponsableViewModel>()

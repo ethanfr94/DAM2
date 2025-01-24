@@ -37,6 +37,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -63,9 +64,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.Popup
 import androidx.core.content.FileProvider
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -722,7 +725,8 @@ fun ActivityCalendarApp(
             Card(
                 modifier = Modifier
                     .padding(5.dp)
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
                 shape = RoundedCornerShape(12.dp),
                 colors = CardDefaults.cardColors(containerColor = BlueContainer),
             ) {
@@ -822,7 +826,8 @@ fun ActivityDetails(
             Card(
                 modifier = Modifier
                     .padding(5.dp)
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
                 shape = RoundedCornerShape(12.dp),
                 colors = CardDefaults.cardColors(containerColor = color),
                 onClick = { navController.navigate("details") }
@@ -855,7 +860,8 @@ fun ActivityDetails(
         Card(
             modifier = Modifier
                 .padding(5.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .border(1.dp, Color.Gray, RoundedCornerShape(12.dp)),
             shape = RoundedCornerShape(12.dp),
             colors = CardDefaults.cardColors(containerColor = BlueContainer),
             onClick = { navController.navigate("details") }
