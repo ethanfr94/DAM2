@@ -45,6 +45,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -121,7 +122,8 @@ fun MisActividades(
 
                         Spacer(modifier = Modifier.width(25.dp))
                         Text(
-                            text = "Mis actividades solicitadas",
+                            text = "MIS ACTIVIDADES SOLICITADAS",
+                            textDecoration = TextDecoration.Underline,
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color(0xFF000000),
@@ -192,7 +194,8 @@ fun MisActividades(
 
                         Spacer(modifier = Modifier.width(25.dp))
                         Text(
-                            text = "Actividades en las que participo",
+                            text = "ACTIVIDADES EN LAS QUE PARTICIPO",
+                            textDecoration = TextDecoration.Underline,
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color(0xFF000000),

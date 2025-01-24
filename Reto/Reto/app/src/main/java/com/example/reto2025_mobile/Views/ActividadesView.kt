@@ -85,8 +85,10 @@ fun ActividadesView(
 
     showActividades = actividades
 
-    val estados: List<String> =
-        listOf("APROBADA", "CANCELADA", "REALIZADA", "SOLICITADA", "DENEGADA", "REALIZANDOSE")
+    var estados: MutableSet<String> by remember { mutableStateOf(mutableSetOf()) }
+    for(actividad in actividades){
+        estados.add(actividad.estado)
+    }
 
     var expEstado by remember { mutableStateOf(false) }
     /*var expEtapa by remember { mutableStateOf(false) }
@@ -145,7 +147,7 @@ fun ActividadesView(
                             },
                             text = {
                                 LazyColumn {
-                                    items(estados) { est ->
+                                    items(estados.toList()) { est ->
                                         Button(
                                             onClick = {
                                                 expEstado = false
