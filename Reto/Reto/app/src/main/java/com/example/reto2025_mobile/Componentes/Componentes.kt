@@ -100,15 +100,17 @@ import java.text.Normalizer
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import android.Manifest
-import android.util.Log
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.compose.material3.*
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.viewinterop.AndroidView
 import coil.compose.rememberImagePainter
 import com.example.reto2025_mobile.ViewModel.FotoViewModel
+import com.example.reto2025_mobile.data.PuntoInteres
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -329,7 +331,11 @@ fun BottomAppBar(navController: NavController) {
 }
 
 @Composable
-fun BottomDetailBar(actividad: Actividad, profParticipantes: List<ProfParticipante>) {
+fun BottomDetailBar(
+    actividad: Actividad,
+    profParticipantes: List<ProfParticipante>,
+    puntosInteres: List<PuntoInteres>
+) {
     Row(
         modifier = Modifier
             .background(GreenBar),
@@ -380,7 +386,7 @@ fun BottomDetailBar(actividad: Actividad, profParticipantes: List<ProfParticipan
                 onClick = { showMap = true }
 
             ) {
-                if (showMap) Mapa(onDismiss = { showMap = false })
+                if (showMap) Mapa(onDismiss = { showMap = false }, puntosInteres = puntosInteres, actividad = actividad)
                 Row {
                     Icon(
                         Icons.Default.LocationOn,
@@ -403,7 +409,7 @@ fun BottomDetailBar(actividad: Actividad, profParticipantes: List<ProfParticipan
 
 
 @Composable
-fun Mapa(onDismiss: () -> Unit) {
+fun Mapa(onDismiss: () -> Unit, puntosInteres: List<PuntoInteres>, actividad: Actividad) {
     Dialog(onDismissRequest = onDismiss,
         properties = DialogProperties(usePlatformDefaultWidth = false)
     ) {
@@ -413,7 +419,7 @@ fun Mapa(onDismiss: () -> Unit) {
                 .height(500.dp)
                 .background(Color.White) // Fondo blanco para el diálogo
         ) {
-            MapScreen()
+            MapScreen(puntosInteres = puntosInteres, actividad = actividad)
         }
     }
     /*AlertDialog(
@@ -606,8 +612,12 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
                             shape = RoundedCornerShape(12.dp),
                             colors = CardDefaults.cardColors(containerColor = BlueContainer),
                             onClick = {
-                                fotoViewModel.uploadPhotos(context, idActividad, selectedImageUris)
-
+                                selectedImageUris.forEach { uri ->
+                                    uri?.let {
+                                        fotoViewModel.uploadPhoto(context, idActividad, "Actividad${idActividad}", it)
+                                    }
+                                }
+                                onDismiss()
                             }
                         ) {
                             Box(
@@ -636,7 +646,7 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
         // Solicitar permisos
         val permissionLauncher = rememberLauncherForActivityResult(
             contract = ActivityResultContracts.RequestMultiplePermissions(),
-            onResult = { /*permissions ->
+            onResult = { permissions ->
             if (permissions[Manifest.permission.CAMERA] == true &&
                 permissions[Manifest.permission.WRITE_EXTERNAL_STORAGE] == true &&
                 permissions[Manifest.permission.READ_EXTERNAL_STORAGE] == true
@@ -646,7 +656,7 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
             } else {
                 // Permisos denegados
                 Toast.makeText(context, "Permisos denegados", Toast.LENGTH_SHORT).show()
-            }*/
+            }
             }
         )
 
@@ -1072,32 +1082,57 @@ fun ActivityDetails(
 // mapa
 
 @Composable
-fun MapScreen() {
-    val location = LatLng(43.35257675380246, -4.062506714329061) // Cambia a la ubicación deseada
-    var markers by remember { mutableStateOf(listOf(location)) }
-    val cameraPositionState = rememberCameraPositionState { position = CameraPosition.fromLatLngZoom(location, 17f) }
-    var markerToDelete by remember { mutableStateOf<LatLng?>(null) }
+fun MapScreen(puntosInteres: List<PuntoInteres>, actividad: Actividad) {
+
+    val porDefecto = LatLng(43.35257675380246, -4.062506714329061)// Ies Miguel Herrero
+    var localizacion: LatLng = porDefecto
+
+    if(actividad.latitud != null && actividad.longitud != null){
+        localizacion = LatLng(actividad.latitud.toDouble(), actividad.longitud.toDouble())
+    }
+
+    var markers by remember { mutableStateOf(listOf<Pair<LatLng, String>>()) }
+
+    val cameraPositionState = rememberCameraPositionState { position = CameraPosition.fromLatLngZoom(localizacion, 17f) }
+
+    var markerToDelete by remember { mutableStateOf<Pair<LatLng, String>?>(null) }
+    var newMarkerPosition by remember { mutableStateOf<LatLng?>(null) }
+    var description by remember { mutableStateOf("") }
+    var show by remember { mutableStateOf(false) }
+
 
 
     GoogleMap(
         cameraPositionState = cameraPositionState,
-        onMapClick = { latLng ->
-            markers = markers + latLng
+        onMapLongClick = {
+            description = ""
+            newMarkerPosition = it
+            show = true
         }
     ) {
-        markers.forEach { marker ->
-            // Añadir marcadores
+        markers.forEach { (position, description) ->
+            Marker(
+                state = MarkerState(position = position),
+                title = actividad.titulo,
+                snippet = description,
+                onInfoWindowLongClick = {
+                    markerToDelete = Pair(position, description)
+                }
+            )
+        }
+        puntosInteres.forEach() { puntoInteres ->
+            val marker = LatLng(puntoInteres.latitud.toDouble(), puntoInteres.longitud.toDouble())
             Marker(
                 state = MarkerState(position = marker),
-                title = "Ubicación",
-                snippet = "Descripción",
+                title = actividad.titulo,
+                snippet = puntoInteres.descripcion,
                 onInfoWindowLongClick = {
-                    markerToDelete = marker
+                    markerToDelete = Pair(marker, puntoInteres.descripcion)
                 }
             )
         }
     }
-    markerToDelete?.let { marker ->
+    markerToDelete?.let { (position, description) ->
         Dialog(
             onDismissRequest = { markerToDelete = null },
             properties = DialogProperties(usePlatformDefaultWidth = false)
@@ -1113,14 +1148,14 @@ fun MapScreen() {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
-                    Text("¿Quieres eliminar el punto de interes?")
+                    Text("¿Quieres eliminar el punto de interés?")
                     Spacer(modifier = Modifier.height(16.dp))
                     Row {
                         Button(onClick = {
-                            markers = markers - marker
+                            markers = markers.filterNot { it.first == position }
                             markerToDelete = null
                         }) {
-                            Text("Si")
+                            Text("Sí")
                         }
                         Spacer(modifier = Modifier.width(16.dp))
                         Button(onClick = { markerToDelete = null }) {
@@ -1131,7 +1166,33 @@ fun MapScreen() {
             }
         }
     }
-
+    if(show){
+        AlertDialog(
+            onDismissRequest = { },
+            confirmButton = {
+                Button(onClick = {
+                    markers = markers + Pair(newMarkerPosition!!, description)
+                    show = false
+                }) {
+                    Text("Aceptar")
+                }
+            },
+            dismissButton = {
+                Button(onClick = {show = false }) {
+                    Text("Cancelar")
+                }
+            },
+            title = {
+                Text("¿Añadir punto de interes?")
+            },
+            text = {
+                Column {
+                    Text("Descripcion:")
+                    TextField(value = description, onValueChange = { description = it }, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),)
+                }
+            }
+        )
+    }
 }
 
 fun formatFecha(fecha: String): String {

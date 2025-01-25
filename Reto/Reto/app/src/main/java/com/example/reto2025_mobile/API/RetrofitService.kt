@@ -11,8 +11,10 @@ import com.example.reto2025_mobile.data.GrupoParticipante
 import com.example.reto2025_mobile.data.ProfParticipante
 import com.example.reto2025_mobile.data.ProfResponsable
 import com.example.reto2025_mobile.data.Profesor
+import com.example.reto2025_mobile.data.PuntoInteres
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
@@ -67,6 +69,9 @@ interface RetrofitService {
     @GET("fotos")
     suspend fun getFotos(): List<Foto>
 
+    @GET("puntosinteres")
+    suspend fun getPuntosInteres(): List<PuntoInteres>
+
     @GET("profesores/inicio")
     suspend fun login(
         @Query("correo") correo: String,
@@ -86,20 +91,20 @@ interface RetrofitService {
     ): GrupoParticipante
 
     @Multipart
-    @POST("fotos/{idActividad}/foto")
-    suspend fun uploadFoto(
+    @POST("/fotos/{idActividad}/foto")
+    suspend fun uploadPhoto(
         @Path("idActividad") idActividad: Int,
-        @Part file: MultipartBody.Part,
-        @Part("descripcion") descripcion: RequestBody
-    ): Foto
+        @Part("descripcion") descripcion: RequestBody,
+        @Part fichero: MultipartBody.Part
+    ): Response<Foto>
 
 }
 
 object RetrofitServiceFactory {
     fun makeRetrofitService(): RetrofitService {
         return Retrofit.Builder()
-            .baseUrl("http://10.0.22.68:8080/acex/")
-            //.baseUrl("http://192.168.1.134:8080/acex/")
+            //.baseUrl("http://10.0.22.68:8080/acex/")
+            .baseUrl("http://192.168.1.134:8080/acex/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(RetrofitService::class.java)
     }

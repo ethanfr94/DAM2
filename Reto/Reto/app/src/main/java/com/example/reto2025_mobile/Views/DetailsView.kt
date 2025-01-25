@@ -51,12 +51,13 @@ import com.example.reto2025_mobile.Componentes.Usuario
 import com.example.reto2025_mobile.Componentes.formatFecha
 import com.example.reto2025_mobile.R
 import com.example.reto2025_mobile.ViewModel.ActividadViewModel
-import com.example.reto2025_mobile.ViewModel.FotoViewModel
 import com.example.reto2025_mobile.ViewModel.GrupoParticipanteViewModel
 import com.example.reto2025_mobile.ViewModel.ProfParticipanteViewModel
+import com.example.reto2025_mobile.ViewModel.PuntosInteresViewModel
 import com.example.reto2025_mobile.data.Actividad
 import com.example.reto2025_mobile.data.GrupoParticipante
 import com.example.reto2025_mobile.data.ProfParticipante
+import com.example.reto2025_mobile.data.PuntoInteres
 import com.example.reto2025_mobile.ui.theme.BlueContainer
 
 @Composable
@@ -64,14 +65,13 @@ fun DetailsView(
     navController: NavController,
     actividadViewModel: ActividadViewModel,
     profParticipanteViewModel: ProfParticipanteViewModel,
-    grupoParticipanteViewModel: GrupoParticipanteViewModel
+    grupoParticipanteViewModel: GrupoParticipanteViewModel,
+    puntosInteresViewModel: PuntosInteresViewModel
 ) {
-    val profParticipantes: List<ProfParticipante> by profParticipanteViewModel.profesoresParticipantes.observeAsState(
-        emptyList()
-    )
-    val grupoParticipantes: List<GrupoParticipante> by grupoParticipanteViewModel.gruposParticipantes.observeAsState(
-        emptyList()
-    )
+    val profParticipantes: List<ProfParticipante> by profParticipanteViewModel.profesoresParticipantes.observeAsState( emptyList() )
+    val grupoParticipantes: List<GrupoParticipante> by grupoParticipanteViewModel.gruposParticipantes.observeAsState( emptyList() )
+    val puntosInteres: List<PuntoInteres> by puntosInteresViewModel.puntosInteres.observeAsState( emptyList() )
+
     val actividad: Actividad? by actividadViewModel.actividad.observeAsState()
     var enableUpdate by remember { mutableStateOf(false) }
     // datos de la actividad
@@ -90,7 +90,7 @@ fun DetailsView(
                 DetailTopBar(navController = navController)
             },
             bottomBar = {
-                BottomDetailBar(actividad = actividad!!, profParticipantes = profParticipantes)
+                BottomDetailBar(actividad = actividad!!, profParticipantes = profParticipantes, puntosInteres = puntosInteres )
             }
         ) { innerPadding ->
             Box(

@@ -44,18 +44,20 @@ class FotoViewModel: ViewModel() {
         }
     }
 
-    fun uploadPhotos(context: Context, idActividad: Int, selectedImageUris: List<Uri?>) {
+    fun uploadPhoto(context: Context, idActividad: Int, descripcion: String, uri: Uri) {
         viewModelScope.launch {
-            selectedImageUris.forEach { uri ->
-                val filePart = uri?.let { prepareFilePart(context, it, "foto") }
-                val descriptionPart = createPartFromString("Descripción de la foto")
-                try {
-                    val response =
-                        filePart?.let { service.uploadFoto(idActividad, it, descriptionPart) }
-                    // Manejar la respuesta
-                } catch (e: Exception) {
-                    // Manejar el error
+            try {
+                val filePart = prepareFilePart(context, uri, "fichero")
+                val descriptionPart = createPartFromString(descripcion)
+                val response: Response<Foto> = service.uploadPhoto(idActividad, descriptionPart, filePart)
+                if (response.isSuccessful) {
+                    val foto: Foto? = response.body()
+                    // Manejar la instancia de Foto
+                } else {
+                    // Manejar respuesta de error
                 }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
     }
