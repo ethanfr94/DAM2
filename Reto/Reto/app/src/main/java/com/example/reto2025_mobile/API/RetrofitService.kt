@@ -18,6 +18,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
@@ -74,6 +75,9 @@ interface RetrofitService {
 
     @POST("puntosinteres")
     suspend fun createPuntoInteres(@Body puntoInteres: PuntoInteres): Response<PuntoInteres>
+
+    @DELETE("puntosinteres/{id}")
+    suspend fun deletePuntoInteres(@Path("id") id: Int): Response<PuntoInteres>
 
     @GET("profesores/inicio")
     suspend fun login(

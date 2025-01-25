@@ -57,7 +57,6 @@ import com.example.reto2025_mobile.ViewModel.PuntosInteresViewModel
 import com.example.reto2025_mobile.data.Actividad
 import com.example.reto2025_mobile.data.GrupoParticipante
 import com.example.reto2025_mobile.data.ProfParticipante
-import com.example.reto2025_mobile.data.PuntoInteres
 import com.example.reto2025_mobile.ui.theme.BlueContainer
 
 @Composable
@@ -70,7 +69,7 @@ fun DetailsView(
 ) {
     val profParticipantes: List<ProfParticipante> by profParticipanteViewModel.profesoresParticipantes.observeAsState( emptyList() )
     val grupoParticipantes: List<GrupoParticipante> by grupoParticipanteViewModel.gruposParticipantes.observeAsState( emptyList() )
-    val puntosInteres: List<PuntoInteres> by puntosInteresViewModel.puntosInteres.observeAsState( emptyList() )
+
 
     val actividad: Actividad? by actividadViewModel.actividad.observeAsState()
     var enableUpdate by remember { mutableStateOf(false) }
@@ -90,7 +89,7 @@ fun DetailsView(
                 DetailTopBar(navController = navController)
             },
             bottomBar = {
-                BottomDetailBar(actividad = actividad!!, profParticipantes = profParticipantes, puntosInteres = puntosInteres )
+                BottomDetailBar(actividad = actividad!!, profParticipantes = profParticipantes, puntosInteresViewModel = puntosInteresViewModel )
             }
         ) { innerPadding ->
             Box(

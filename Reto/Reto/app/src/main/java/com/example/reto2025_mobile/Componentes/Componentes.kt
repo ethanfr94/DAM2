@@ -106,10 +106,12 @@ import androidx.compose.material3.*
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.viewinterop.AndroidView
 import coil.compose.rememberImagePainter
 import com.example.reto2025_mobile.ViewModel.FotoViewModel
+import com.example.reto2025_mobile.ViewModel.PuntosInteresViewModel
 import com.example.reto2025_mobile.data.PuntoInteres
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -334,7 +336,7 @@ fun BottomAppBar(navController: NavController) {
 fun BottomDetailBar(
     actividad: Actividad,
     profParticipantes: List<ProfParticipante>,
-    puntosInteres: List<PuntoInteres>
+    puntosInteresViewModel: PuntosInteresViewModel
 ) {
     Row(
         modifier = Modifier
@@ -386,7 +388,7 @@ fun BottomDetailBar(
                 onClick = { showMap = true }
 
             ) {
-                if (showMap) Mapa(onDismiss = { showMap = false }, puntosInteres = puntosInteres, actividad = actividad)
+                if (showMap) Mapa(onDismiss = { showMap = false }, puntosInteresViewModel = puntosInteresViewModel, actividad = actividad)
                 Row {
                     Icon(
                         Icons.Default.LocationOn,
@@ -409,7 +411,7 @@ fun BottomDetailBar(
 
 
 @Composable
-fun Mapa(onDismiss: () -> Unit, puntosInteres: List<PuntoInteres>, actividad: Actividad) {
+fun Mapa(onDismiss: () -> Unit, puntosInteresViewModel: PuntosInteresViewModel, actividad: Actividad) {
     Dialog(onDismissRequest = onDismiss,
         properties = DialogProperties(usePlatformDefaultWidth = false)
     ) {
@@ -419,7 +421,7 @@ fun Mapa(onDismiss: () -> Unit, puntosInteres: List<PuntoInteres>, actividad: Ac
                 .height(500.dp)
                 .background(Color.White) // Fondo blanco para el diálogo
         ) {
-            MapScreen(puntosInteres = puntosInteres, actividad = actividad)
+            MapScreen(puntosInteresViewModel = puntosInteresViewModel, actividad = actividad)
         }
     }
     /*AlertDialog(
@@ -1082,8 +1084,9 @@ fun ActivityDetails(
 // mapa
 
 @Composable
-fun MapScreen(puntosInteres: List<PuntoInteres>, actividad: Actividad) {
+fun MapScreen(puntosInteresViewModel: PuntosInteresViewModel, actividad: Actividad) {
 
+    val puntosInteres: List<PuntoInteres> by puntosInteresViewModel.puntosInteres.observeAsState( emptyList() )
     val porDefecto = LatLng(43.35257675380246, -4.062506714329061)// Ies Miguel Herrero
     var localizacion: LatLng = porDefecto
 
@@ -1153,6 +1156,7 @@ fun MapScreen(puntosInteres: List<PuntoInteres>, actividad: Actividad) {
                     Row {
                         Button(onClick = {
                             markers = markers.filterNot { it.first == position }
+
                             markerToDelete = null
                         }) {
                             Text("Sí")
@@ -1178,6 +1182,7 @@ fun MapScreen(puntosInteres: List<PuntoInteres>, actividad: Actividad) {
                         longitud = newMarkerPosition!!.longitude.toString(),
                         actividad = actividad
                     )
+                    puntosInteresViewModel.savePuntoInteres(puntoInteres)
                     show = false
                 }) {
                     Text("Aceptar")
