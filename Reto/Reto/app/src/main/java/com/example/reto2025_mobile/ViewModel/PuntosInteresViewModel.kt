@@ -28,6 +28,23 @@ class PuntosInteresViewModel : ViewModel() {
         }
     }
 
+    fun savePuntoInteres(puntoInteres: PuntoInteres) {
+        viewModelScope.launch {
+            try {
+                val response = service.createPuntoInteres(puntoInteres)
+                if (response.isSuccessful) {
+                    // Manejar respuesta exitosa
+                    val savedPuntoInteres = response.body()
+                    // Hacer algo con el savedPuntoInteres
+                } else {
+                    // Manejar respuesta de error
+                }
+            } catch (e: Exception) {
+                // Manejar excepción
+            }
+        }
+    }
+
     init {
         getPuntosInteres()
     }

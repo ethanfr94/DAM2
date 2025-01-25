@@ -1172,6 +1172,12 @@ fun MapScreen(puntosInteres: List<PuntoInteres>, actividad: Actividad) {
             confirmButton = {
                 Button(onClick = {
                     markers = markers + Pair(newMarkerPosition!!, description)
+                    val puntoInteres = PuntoInteres(
+                        descripcion = description,
+                        latitud = newMarkerPosition!!.latitude.toString(),
+                        longitud = newMarkerPosition!!.longitude.toString(),
+                        actividad = actividad
+                    )
                     show = false
                 }) {
                     Text("Aceptar")

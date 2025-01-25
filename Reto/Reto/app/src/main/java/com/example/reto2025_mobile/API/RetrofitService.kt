@@ -72,6 +72,9 @@ interface RetrofitService {
     @GET("puntosinteres")
     suspend fun getPuntosInteres(): List<PuntoInteres>
 
+    @POST("puntosinteres")
+    suspend fun createPuntoInteres(@Body puntoInteres: PuntoInteres): Response<PuntoInteres>
+
     @GET("profesores/inicio")
     suspend fun login(
         @Query("correo") correo: String,
