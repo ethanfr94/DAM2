@@ -622,10 +622,10 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
                             onClick = {
                                 selectedImageUris.forEach { uri ->
                                     uri?.let {
-
+                                        fotoViewModel.uploadPhoto(context, idActividad, "descripcion", uri)
                                     }
                                 }
-
+                                onDismiss()
                             }
                         ) {
                             Box(
@@ -1181,7 +1181,7 @@ fun MapScreen(
                         Button(onClick = {
                             markers = markers.filterNot { it.first == position }
                             val puntoInteres = PuntoInteres(
-                                id = null,
+                                id = 9,
                                 descripcion = description,
                                 latitud = newMarkerPosition!!.latitude.toString(),
                                 longitud = newMarkerPosition!!.longitude.toString(),
