@@ -48,11 +48,13 @@ class PuntosInteresViewModel : ViewModel() {
     fun deletePuntoInteres(puntoInteres: PuntoInteres) {
         viewModelScope.launch {
             try {
-                val response = service.deletePuntoInteres(puntoInteres.id)
-                if (response.isSuccessful) {
-                    // Manejar respuesta exitosa
-                } else {
-                    // Manejar respuesta de error
+                val response = puntoInteres.id?.let { service.deletePuntoInteres(it) }
+                if (response != null) {
+                    if (response.isSuccessful) {
+                        // Manejar respuesta exitosa
+                    } else {
+                        // Manejar respuesta de error
+                    }
                 }
             } catch (e: Exception) {
                 // Manejar excepción

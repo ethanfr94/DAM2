@@ -336,7 +336,8 @@ fun BottomAppBar(navController: NavController) {
 fun BottomDetailBar(
     actividad: Actividad,
     profParticipantes: List<ProfParticipante>,
-    puntosInteresViewModel: PuntosInteresViewModel
+    puntosInteresViewModel: PuntosInteresViewModel,
+    participantes: MutableSet<String>
 ) {
     Row(
         modifier = Modifier
@@ -388,7 +389,7 @@ fun BottomDetailBar(
                 onClick = { showMap = true }
 
             ) {
-                if (showMap) Mapa(onDismiss = { showMap = false }, puntosInteresViewModel = puntosInteresViewModel, actividad = actividad)
+                if (showMap) Mapa(onDismiss = { showMap = false }, puntosInteresViewModel = puntosInteresViewModel, actividad = actividad, participantes = participantes)
                 Row {
                     Icon(
                         Icons.Default.LocationOn,
@@ -411,7 +412,12 @@ fun BottomDetailBar(
 
 
 @Composable
-fun Mapa(onDismiss: () -> Unit, puntosInteresViewModel: PuntosInteresViewModel, actividad: Actividad) {
+fun Mapa(
+    onDismiss: () -> Unit,
+    puntosInteresViewModel: PuntosInteresViewModel,
+    actividad: Actividad,
+    participantes: MutableSet<String>
+) {
     Dialog(onDismissRequest = onDismiss,
         properties = DialogProperties(usePlatformDefaultWidth = false)
     ) {
@@ -421,7 +427,7 @@ fun Mapa(onDismiss: () -> Unit, puntosInteresViewModel: PuntosInteresViewModel, 
                 .height(500.dp)
                 .background(Color.White) // Fondo blanco para el diálogo
         ) {
-            MapScreen(puntosInteresViewModel = puntosInteresViewModel, actividad = actividad)
+            MapScreen(puntosInteresViewModel = puntosInteresViewModel, actividad = actividad, participantes = participantes)
         }
     }
     /*AlertDialog(
@@ -616,10 +622,10 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
                             onClick = {
                                 selectedImageUris.forEach { uri ->
                                     uri?.let {
-                                        fotoViewModel.uploadPhoto(context, idActividad, "Actividad${idActividad}", it)
+
                                     }
                                 }
-                                onDismiss()
+
                             }
                         ) {
                             Box(
@@ -648,7 +654,7 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
         // Solicitar permisos
         val permissionLauncher = rememberLauncherForActivityResult(
             contract = ActivityResultContracts.RequestMultiplePermissions(),
-            onResult = { permissions ->
+            onResult = { /*permissions ->
             if (permissions[Manifest.permission.CAMERA] == true &&
                 permissions[Manifest.permission.WRITE_EXTERNAL_STORAGE] == true &&
                 permissions[Manifest.permission.READ_EXTERNAL_STORAGE] == true
@@ -658,7 +664,7 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
             } else {
                 // Permisos denegados
                 Toast.makeText(context, "Permisos denegados", Toast.LENGTH_SHORT).show()
-            }
+            }*/
             }
         )
 
@@ -1084,7 +1090,11 @@ fun ActivityDetails(
 // mapa
 
 @Composable
-fun MapScreen(puntosInteresViewModel: PuntosInteresViewModel, actividad: Actividad) {
+fun MapScreen(
+    puntosInteresViewModel: PuntosInteresViewModel,
+    actividad: Actividad,
+    participantes: MutableSet<String>
+) {
 
     val puntosInteres: List<PuntoInteres> by puntosInteresViewModel.puntosInteres.observeAsState( emptyList() )
     val porDefecto = LatLng(43.35257675380246, -4.062506714329061)// Ies Miguel Herrero
@@ -1102,15 +1112,25 @@ fun MapScreen(puntosInteresViewModel: PuntosInteresViewModel, actividad: Activid
     var newMarkerPosition by remember { mutableStateOf<LatLng?>(null) }
     var description by remember { mutableStateOf("") }
     var show by remember { mutableStateOf(false) }
+    var enable by remember { mutableStateOf(false) }
+
+    for(prof in participantes){
+        if(prof == Usuario.uuid){
+            enable = true
+        }
+    }
 
 
 
     GoogleMap(
         cameraPositionState = cameraPositionState,
         onMapLongClick = {
-            description = ""
-            newMarkerPosition = it
-            show = true
+            if(enable){
+                description = ""
+                newMarkerPosition = it
+                show = true
+            }
+
         }
     ) {
         markers.forEach { (position, description) ->
@@ -1119,7 +1139,9 @@ fun MapScreen(puntosInteresViewModel: PuntosInteresViewModel, actividad: Activid
                 title = actividad.titulo,
                 snippet = description,
                 onInfoWindowLongClick = {
-                    markerToDelete = Pair(position, description)
+                    if(enable){
+                        markerToDelete = Pair(position, description)
+                    }
                 }
             )
         }
@@ -1130,7 +1152,9 @@ fun MapScreen(puntosInteresViewModel: PuntosInteresViewModel, actividad: Activid
                 title = actividad.titulo,
                 snippet = puntoInteres.descripcion,
                 onInfoWindowLongClick = {
-                    markerToDelete = Pair(marker, puntoInteres.descripcion)
+                    if(enable){
+                        markerToDelete = Pair(marker, puntoInteres.descripcion)
+                    }
                 }
             )
         }
@@ -1156,7 +1180,14 @@ fun MapScreen(puntosInteresViewModel: PuntosInteresViewModel, actividad: Activid
                     Row {
                         Button(onClick = {
                             markers = markers.filterNot { it.first == position }
-
+                            val puntoInteres = PuntoInteres(
+                                id = null,
+                                descripcion = description,
+                                latitud = newMarkerPosition!!.latitude.toString(),
+                                longitud = newMarkerPosition!!.longitude.toString(),
+                                actividad = actividad
+                            )
+                            puntosInteresViewModel.deletePuntoInteres(puntoInteres)
                             markerToDelete = null
                         }) {
                             Text("Sí")
@@ -1177,6 +1208,7 @@ fun MapScreen(puntosInteresViewModel: PuntosInteresViewModel, actividad: Activid
                 Button(onClick = {
                     markers = markers + Pair(newMarkerPosition!!, description)
                     val puntoInteres = PuntoInteres(
+                        id = null,
                         descripcion = description,
                         latitud = newMarkerPosition!!.latitude.toString(),
                         longitud = newMarkerPosition!!.longitude.toString(),
@@ -1290,3 +1322,4 @@ fun clearLoginData(context: Context) {
     editor.clear()
     editor.apply()
 }
+

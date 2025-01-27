@@ -16,7 +16,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ea01c7-bb42-45a0-9066-e8ccf7aa7c38" name="Changes" comment="" />
+    <list default="true" id="a8ea01c7-bb42-45a0-9066-e8ccf7aa7c38" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../PMDM/Entregar/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PMDM/Entregar/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PMDM/Ud3/Ejercicios/Sesion3_01/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PMDM/Ud3/Ejercicios/Sesion3_01/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PMDM/Ud3/Ejercicios/Sesion3_01/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PMDM/Ud3/Ejercicios/Sesion3_01/.idea/other.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PMDM/Ud3/Ejercicios/Sesion3_01/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PMDM/Ud3/Ejercicios/Sesion3_01/.idea/vcs.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +30,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Usuario\.android\avd\Medium_Phone.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=D:\Usuarios\dam213\.android\avd\Medium_Phone_API_35.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -102,7 +107,7 @@
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Usuarios/dam213/Desktop/CameraX",
+    "last_opened_file_path": "D:/Usuarios/dam213/Desktop/DAM/PMDM/Entregar",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2",
@@ -131,8 +136,6 @@
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="specific_activity" />
-      <option name="RESTORE_ENABLED" value="false" />
-      <option name="RESTORE_FILE" value="" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />

@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62da51a7-966e-4114-b974-bd2a06b294da" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Ud3/Ejercicios/Sesion3_03_Base/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ud3/Ejercicios/Sesion3_03_Base/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ud3/Ejercicios/Sesion3_04/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ud3/Ejercicios/Sesion3_04/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ud3/Ejercicios/Sesion3_04/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ud3/Ejercicios/Sesion3_04/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Reto/GestorAPI/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../Reto/GestorAPI/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Reto/Reto/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../Reto/Reto/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Reto/Reto/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/../../Reto/Reto/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Reto/Reto/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Reto/Reto/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Reto/Reto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Reto/Reto/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Reto/Reto/app/src/main/java/com/example/reto2025_mobile/API/RetrofitService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Reto/Reto/app/src/main/java/com/example/reto2025_mobile/API/RetrofitService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Reto/Reto/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../Reto/Reto/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,9 +40,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2qLusCpxJv7zqpZKXSsmPm1TzAI" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -53,7 +58,7 @@
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Usuarios/Dam213/Desktop/DAM/PMDM/Entregar/app/src/main/java/com/example/sesion3_4"
+    "last_opened_file_path": "D:/Usuarios/dam213/Desktop/DAM/PMDM/Ud3/Ejercicios/Sesion3_01"
   },
   "keyToStringList": {
     "kotlin-gradle-user-dirs": [
@@ -129,9 +134,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
+      <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

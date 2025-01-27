@@ -70,18 +70,22 @@ fun DetailsView(
     val profParticipantes: List<ProfParticipante> by profParticipanteViewModel.profesoresParticipantes.observeAsState( emptyList() )
     val grupoParticipantes: List<GrupoParticipante> by grupoParticipanteViewModel.gruposParticipantes.observeAsState( emptyList() )
 
-
+//profParticipanteViewModel.getProfesoresParticipantes()
     val actividad: Actividad? by actividadViewModel.actividad.observeAsState()
     var enableUpdate by remember { mutableStateOf(false) }
     // datos de la actividad
     var incidencias by remember { mutableStateOf(actividad?.incidencias ?: "") }
+    var participantes: MutableSet<String> = mutableSetOf()
 
     for (prof in profParticipantes) {
         if (prof.actividad.id == actividad?.id && prof.profesor.uuid == Usuario.uuid) {
+            participantes.add(prof.profesor.uuid)
             enableUpdate = true
             break
         }
     }
+
+
     actividad?.let {
 
         Scaffold(
@@ -89,7 +93,7 @@ fun DetailsView(
                 DetailTopBar(navController = navController)
             },
             bottomBar = {
-                BottomDetailBar(actividad = actividad!!, profParticipantes = profParticipantes, puntosInteresViewModel = puntosInteresViewModel )
+                BottomDetailBar(actividad = actividad!!, profParticipantes = profParticipantes, puntosInteresViewModel = puntosInteresViewModel, participantes = participantes)
             }
         ) { innerPadding ->
             Box(

@@ -52,6 +52,9 @@ interface RetrofitService {
     @GET("profesoresParticipantes")
     suspend fun getProfesoresParticipantes(): List<ProfParticipante>
 
+    @GET("profesoresParticipantes/actividad/{id}")
+    suspend fun getProfesoresParticipantesByActividadId(@Path("id") id: Int): List<ProfParticipante>
+
     @GET("profesoresResponsables")
     suspend fun getProfesoresResponsables(): List<ProfResponsable>
 
@@ -98,20 +101,22 @@ interface RetrofitService {
     ): GrupoParticipante
 
     @Multipart
-    @POST("/fotos/{idActividad}/foto")
+    @POST("fotos/{idActividad}/foto")
     suspend fun uploadPhoto(
         @Path("idActividad") idActividad: Int,
         @Part("descripcion") descripcion: RequestBody,
         @Part fichero: MultipartBody.Part
     ): Response<Foto>
 
+
+
 }
 
 object RetrofitServiceFactory {
     fun makeRetrofitService(): RetrofitService {
         return Retrofit.Builder()
-            //.baseUrl("http://10.0.22.68:8080/acex/")
-            .baseUrl("http://192.168.1.134:8080/acex/")
+            .baseUrl("http://10.0.22.68:8080/acex/")
+            //.baseUrl("http://192.168.1.134:8080/acex/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(RetrofitService::class.java)
     }
