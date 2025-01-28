@@ -107,8 +107,10 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.compose.material3.*
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.viewinterop.AndroidView
 import coil.compose.rememberImagePainter
@@ -454,27 +456,18 @@ fun Mapa(
 }
 
 @Composable
-fun Pics(onDismiss: () -> Unit) {
-    Dialog(onDismissRequest = onDismiss) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(500.dp)
-                .background(Color.Transparent)
-        ) {
-            Icon(
-                modifier = Modifier.fillMaxSize(),
-                imageVector = ImageVector.vectorResource(R.drawable.photo),
-                contentDescription = "foto"
+fun Pics(bitmap: Bitmap?, onDismiss: () -> Unit) {
+    Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+        if (bitmap != null) {
+            Image(
+                bitmap = bitmap.asImageBitmap(),
+                contentDescription = "Foto de actividad",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.size(400.dp)
             )
-            /*AsyncImage(
-                model = imageUrl,
-                contentDescription = null,
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
-            )*/
         }
     }
+
 }
 
 fun prepareFilePart(context: Context, uri: Uri, description: String): MultipartBody.Part {
@@ -497,7 +490,7 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
         contract = ActivityResultContracts.PickMultipleVisualMedia(),
         onResult = { uris ->
             uris.forEach { uri ->
-                uri?.let { selectedImageUris.add(it) }
+                uri?.let { selectedImageUris.add(uri) }
             }
         }
     )
@@ -1121,7 +1114,10 @@ fun MapScreen(
             enable = true
         }
     }
-
+    puntosInteres.forEach() { puntoInteres ->
+        val marker = LatLng(puntoInteres.latitud.toDouble(), puntoInteres.longitud.toDouble())
+        markers = markers + Pair(marker, puntoInteres.descripcion)
+    }
 
 
     GoogleMap(
@@ -1147,19 +1143,6 @@ fun MapScreen(
                 }
             )
         }
-        puntosInteres.forEach() { puntoInteres ->
-            val marker = LatLng(puntoInteres.latitud.toDouble(), puntoInteres.longitud.toDouble())
-            Marker(
-                state = MarkerState(position = marker),
-                title = actividad.titulo,
-                snippet = puntoInteres.descripcion,
-                onInfoWindowLongClick = {
-                    if(enable){
-                        markerToDelete = Pair(marker, puntoInteres.descripcion)
-                    }
-                }
-            )
-        }
     }
     markerToDelete?.let { (position, description) ->
         Dialog(
@@ -1181,8 +1164,9 @@ fun MapScreen(
                     Spacer(modifier = Modifier.height(16.dp))
                     Row {
                         Button(onClick = {
-                            markers = markers.filterNot { it.first == position }
+
                             puntosInteres.forEach() { puntoInteres ->
+                                markers = markers.filterNot { it.first == position }
                                 val marker = LatLng(puntoInteres.latitud.toDouble(), puntoInteres.longitud.toDouble())
                                 if (marker == position) {
                                     val puntoInteres = PuntoInteres(
@@ -1195,6 +1179,11 @@ fun MapScreen(
                                     puntosInteresViewModel.deletePuntoInteres(puntoInteres)
                                 }
                             }
+                            puntosInteres.forEach() { puntoInteres ->
+                                val marker = LatLng(puntoInteres.latitud.toDouble(), puntoInteres.longitud.toDouble())
+                                markers = markers + Pair(marker, puntoInteres.descripcion)
+                            }
+
                             markerToDelete = null
                         }) {
                             Text("Sí")

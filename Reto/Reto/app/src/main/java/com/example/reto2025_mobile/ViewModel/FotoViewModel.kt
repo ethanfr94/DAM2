@@ -1,6 +1,8 @@
 package com.example.reto2025_mobile.ViewModel
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -9,6 +11,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.reto2025_mobile.API.RetrofitServiceFactory
 import com.example.reto2025_mobile.data.Foto
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -17,9 +20,38 @@ import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Response
 import java.io.File
+import java.io.InputStream
 
 
 class FotoViewModel: ViewModel() {
+
+    val bitmaps = MutableStateFlow<List<Bitmap>>(emptyList())
+
+    fun fetchFotos(idActividad: Int) {
+        // Limpiar fotos actuales antes de cargar nuevas
+        bitmaps.value = emptyList()
+
+        viewModelScope.launch {
+            try {
+                val fotos = RetrofitServiceFactory.makeRetrofitService().getFotos(idActividad)
+                val bitmapsList = fotos.mapNotNull { foto ->
+                    try {
+                        val response = RetrofitServiceFactory.makeRetrofitService().getFoto(idActividad, foto.id)
+                        val inputStream: InputStream = response.byteStream()
+                        BitmapFactory.decodeStream(inputStream)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        null
+                    }
+                }
+                bitmaps.value = bitmapsList
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+
     private val _foto = MutableLiveData<Response<ResponseBody>>()
     val foto: LiveData<Response<ResponseBody>> = _foto
     private val _fotos = MutableLiveData<List<Foto>>()
@@ -57,7 +89,7 @@ class FotoViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 // Prepara la parte del archivo
-                Log.d("foto", "uploadPhoto: ${uri.path}")
+                Log.d("foto", "uploadPhoto: ${uri}")
                 Log.d("foto", "uploadPhoto: $idActividad")
                 val filePart = prepareFilePart(context, uri)
                 // Llama al servicio para subir la foto

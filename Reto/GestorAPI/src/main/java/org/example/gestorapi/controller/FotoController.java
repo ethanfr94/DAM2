@@ -105,7 +105,7 @@ public class FotoController {
 
         // Verificación de que el archivo no está vacío
         if (multipartFile.isEmpty()) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.notFound().build();
         }
 
         // Limpia el nombre del archivo
@@ -117,7 +117,8 @@ public class FotoController {
 
 
             // Directorio donde se almacenará el archivo
-            String uploadDir = "actividades/" + idActividad + "_" + actividad.getTitulo().replaceAll(" ","_") + "/fotos/";
+            String uploadDir = "actividades/" + idActividad + "_" +
+                    actividad.getTitulo().replaceAll(" ","_") + "/fotos/";
 
             // Crear el directorio si no existe
             File directory = new File(uploadDir);
@@ -132,7 +133,7 @@ public class FotoController {
             boolean esImagen = extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png");
 
             if (!esImagen) {
-                return ResponseEntity.badRequest().build();
+                return ResponseEntity.notFound().build();
             }
 
             try {
@@ -149,13 +150,13 @@ public class FotoController {
                     return ResponseEntity.status(HttpStatus.CREATED).body(foto);
 
                 }
-                return ResponseEntity.status(500).build();
+                return ResponseEntity.notFound().build();
 
             } catch (IOException e) {
-                return ResponseEntity.status(500).build();
+                return ResponseEntity.notFound().build();
             }
         }else{
-            return ResponseEntity.status(500).build();
+            return ResponseEntity.notFound().build();
         }
     }
     @GetMapping("/fotos/{idActividad}/foto")
@@ -164,23 +165,25 @@ public class FotoController {
         // Buscar el proyecto por ID
         Foto foto = fotoService.findById(id);
         if (foto == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
         // Determinar qué archivo se quiere obtener
         String nombreArchivo = foto.getUrlFoto();
 
         if (nombreArchivo == null || nombreArchivo.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
         try {
             // Ruta al archivo almacenado
-            Path filePath = Paths.get("actividades/"+ idActividad +"_" + foto.getActividad().getTitulo().replaceAll(" ","_") + "/fotos/").resolve(nombreArchivo);
+            Path filePath = Paths.get("actividades/"+ idActividad +"_" +
+                    foto.getActividad().getTitulo().replaceAll(" ","_")
+                    + "/fotos/").resolve(nombreArchivo);
             Resource resource = new UrlResource(filePath.toUri());
             // Verificar si el archivo existe y es legible
             if (!resource.exists() || !resource.isReadable()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
 
             // Configurar los headers para descargar el archivo
@@ -190,7 +193,7 @@ public class FotoController {
                     .body(resource);
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }
