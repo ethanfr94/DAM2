@@ -40,6 +40,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -83,7 +84,8 @@ fun HomeView(
 
     Scaffold(
         topBar = { HomeAppBar(navController) },
-        bottomBar = { BottomAppBar(navController = navController) }
+        bottomBar = { BottomAppBar(navController = navController) },
+        containerColor = Color.LightGray
     ) { innerPadding ->
         Box(
             modifier = Modifier
@@ -98,15 +100,26 @@ fun HomeView(
                 Spacer(modifier = Modifier.size(30.dp))
                 // Sección de historias
 
-                Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
-                    Icon(imageVector = Icons.Default.Person, contentDescription = "Icono de usuario")
-                    Spacer(modifier = Modifier.width(10.dp))
-                    Text(
-                        text = "${Usuario.nombre} ${Usuario.apellidos}",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold
-                    )
+                Card(
+                    modifier = Modifier
+                        .padding(4.dp).fillMaxWidth().height(65.dp),                    shape = RoundedCornerShape(12.dp),
+                    colors = CardDefaults.cardColors(containerColor = Color.White),
+                    onClick = {
+                    }
+                ) {
+                    Row(modifier = Modifier.align(Alignment.CenterHorizontally).padding(16.dp)) {
+                        Icon(imageVector = Icons.Default.Person, contentDescription = "Icono de usuario", modifier = Modifier.size(30.dp))
+                        Spacer(modifier = Modifier.width(10.dp))
+                        Text(
+                            text = "${Usuario.nombre} ${Usuario.apellidos}",
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center
+                        )
+                    }
                 }
+
+
 
                 Spacer(modifier = Modifier.size(30.dp))
                 // Sección de historias

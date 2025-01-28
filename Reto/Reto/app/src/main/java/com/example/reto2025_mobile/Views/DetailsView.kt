@@ -124,7 +124,8 @@ fun DetailsView(
                     puntosInteresViewModel = puntosInteresViewModel,
                     participantes = participantes
                 )
-            }
+            },
+            containerColor = Color.LightGray
         ) { innerPadding ->
             Box(
                 modifier = Modifier
