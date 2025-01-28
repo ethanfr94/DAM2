@@ -143,55 +143,50 @@ fun DetailsView(
 
 
                         LazyColumn {
-                            item {
+                            if(fotos.isNotEmpty()){
+                                item {
 
-                                Column {
-                                    Row(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .height(100.dp)
-                                    ) {
-                                        if (fotos.isNotEmpty()) {
-                                            LazyRow {
-                                                items(fotos) { bm ->
-                                                    Card(
-                                                        modifier = Modifier
-                                                            .padding(3.dp)
-                                                            .fillMaxHeight()
-                                                            .width(60.dp),
-                                                        shape = RoundedCornerShape(12.dp),
-                                                        colors = CardDefaults.cardColors(
-                                                            containerColor = BlueContainer
-                                                        ),
-                                                        onClick = {
-                                                            showPic = true
-                                                            selectedBitmap = bm
-                                                        }
-                                                    ) {
-
-                                                        Box(
-                                                            modifier = Modifier.fillMaxSize(),
-                                                            contentAlignment = Alignment.Center
+                                    Column {
+                                        Row(
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .height(100.dp)
+                                        ) {
+                                            if (fotos.isNotEmpty()) {
+                                                LazyRow {
+                                                    items(fotos) { bm ->
+                                                        Card(
+                                                            modifier = Modifier
+                                                                .padding(3.dp)
+                                                                .fillMaxHeight()
+                                                                .width(60.dp),
+                                                            shape = RoundedCornerShape(12.dp),
+                                                            colors = CardDefaults.cardColors(
+                                                                containerColor = BlueContainer
+                                                            ),
+                                                            onClick = {
+                                                                showPic = true
+                                                                selectedBitmap = bm
+                                                            }
                                                         ) {
-                                                            Image(
-                                                                bitmap = bm.asImageBitmap(),
-                                                                contentDescription = "Foto de actividad",
-                                                                contentScale = ContentScale.Crop,
-                                                                modifier = Modifier.fillMaxSize()
-                                                            )
+
+                                                            Box(
+                                                                modifier = Modifier.fillMaxSize(),
+                                                                contentAlignment = Alignment.Center
+                                                            ) {
+                                                                Image(
+                                                                    bitmap = bm.asImageBitmap(),
+                                                                    contentDescription = "Foto de actividad",
+                                                                    contentScale = ContentScale.Crop,
+                                                                    modifier = Modifier.fillMaxSize()
+                                                                )
+                                                            }
                                                         }
                                                     }
                                                 }
                                             }
-                                        } else {
-                                            Text(
-                                                text = "No hay fotos para mostrar",
-                                                fontSize = 28.sp,
-                                                fontWeight = FontWeight.Bold,
-                                                color = MaterialTheme.colorScheme.onBackground,
-                                            )
-                                        }
 
+                                        }
                                     }
                                 }
                             }
