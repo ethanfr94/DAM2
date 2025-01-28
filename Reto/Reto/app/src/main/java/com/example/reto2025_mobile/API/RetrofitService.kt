@@ -106,8 +106,8 @@ interface RetrofitService {
     @POST("fotos/{idActividad}/foto")
     suspend fun uploadPhoto(
         @Path("idActividad") idActividad: Int,
-        @Query("descripcion") descripcion: String,
-        @Body fichero: MultipartBody.Part
+        @Part("descripcion") descripcion: RequestBody,
+        @Part fichero: MultipartBody.Part
     ): Response<Foto>
 
     @GET("/acex/fotos/{idActividad}/foto")

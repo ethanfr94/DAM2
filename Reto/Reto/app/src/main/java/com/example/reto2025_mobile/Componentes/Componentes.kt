@@ -102,6 +102,7 @@ import java.time.format.DateTimeFormatter
 import android.Manifest
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.Log
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.compose.material3.*
@@ -490,7 +491,7 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
         contract = ActivityResultContracts.PickMultipleVisualMedia(),
         onResult = { uris ->
             uris.forEach { uri ->
-                uri?.let { selectedImageUris.add(uri) }
+                uri?.let { selectedImageUris.add(it) }
             }
         }
     )
@@ -681,7 +682,7 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
 
         Dialog(onDismissRequest = { isCameraVisible = false },
             properties = DialogProperties(usePlatformDefaultWidth = false),
-            ) {
+        ) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -705,16 +706,29 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
                     contentAlignment = Alignment.BottomCenter
                 ) {
                     IconButton(onClick = {
-                        takePhoto(imageCapture, context) { uri ->
-                            photoUri = uri
-                            showDialog = true
-                        }
+                        takePhotoAndUpload(
+                            imageCapture = imageCapture,
+                            context = context,
+                            idActividad = idActividad,
+                            fotoViewModel = fotoViewModel,
+                            onUploadSuccess = { uri ->
+                                Toast.makeText(context, "Foto subida con éxito: $uri", Toast.LENGTH_SHORT).show()
+                            },
+                            onUploadError = { exception ->
+                                Toast.makeText(context, "Error al subir la foto: ${exception.message}", Toast.LENGTH_SHORT).show()
+                            }
+                        )
                     }) {
-                        Icon(imageVector = ImageVector.vectorResource(R.drawable.photo), contentDescription = "Tomar foto", modifier = Modifier.size(100.dp))
+                        Icon(
+                            imageVector = ImageVector.vectorResource(R.drawable.photo),
+                            contentDescription = "Tomar foto",
+                            modifier = Modifier.size(100.dp)
+                        )
                     }
 
                 }
             }
+            //probando camara
 
             // Mostrar el diálogo de confirmación con la foto
             if (showDialog && photoUri != null) {
@@ -791,46 +805,48 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
     }
 }
 
-fun takePhoto(
+fun takePhotoAndUpload(
     imageCapture: ImageCapture,
     context: Context,
-    onPhotoTaken: (Uri) -> Unit
+    idActividad: Int,
+    fotoViewModel: FotoViewModel,
+    onUploadSuccess: (Uri) -> Unit,
+    onUploadError: (Exception) -> Unit
 ) {
-    val contentValues = ContentValues().apply {
-        put(MediaStore.MediaColumns.DISPLAY_NAME, "photo_${System.currentTimeMillis()}")
-        put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
+    // Crear un archivo en el almacenamiento interno
+    val photoDir = File(context.filesDir, "fotos")
+    if (!photoDir.exists()) {
+        photoDir.mkdir()
     }
+    val photoFile = File(photoDir, "photo_${System.currentTimeMillis()}.jpg")
 
-    val imageUri = context.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+    val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
 
-    if (imageUri != null) {
-        val outputStream = context.contentResolver.openOutputStream(imageUri)
+    // Tomar la foto y guardarla en el archivo creado
+    imageCapture.takePicture(
+        outputOptions,
+        ContextCompat.getMainExecutor(context),
+        object : ImageCapture.OnImageSavedCallback {
+            override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                val savedUri = Uri.fromFile(photoFile)
 
-        if (outputStream != null) {
-            val outputOptions = ImageCapture.OutputFileOptions.Builder(outputStream).build()
-
-            // Tomamos la foto
-            imageCapture.takePicture(
-                outputOptions,
-                ContextCompat.getMainExecutor(context),
-                object : ImageCapture.OnImageSavedCallback {
-                    override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                        // Llamamos a la función `onPhotoTaken` con el URI de la foto tomada
-                        onPhotoTaken(imageUri)
-                    }
-
-                    override fun onError(exception: ImageCaptureException) {
-                        // En caso de error, mostramos un mensaje
-                        Toast.makeText(context, "Error al tomar la foto: ${exception.message}", Toast.LENGTH_SHORT).show()
+                // Subir la foto a la API
+                val descripcion = "Foto tomada con cámara"
+                fotoViewModel.uploadPhoto(context, idActividad, descripcion, savedUri).observeForever { result ->
+                    if (result.isSuccess) {
+                        onUploadSuccess(savedUri)
+                    } else {
+                        //onUploadError(result.exceptionOrNull() ?: Exception("Error desconocido"))
+                        Log.d("pruebasubida","Error al subir la foto")
                     }
                 }
-            )
-        } else {
-            Toast.makeText(context, "Error al abrir el OutputStream para guardar la imagen", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onError(exception: ImageCaptureException) {
+                onUploadError(exception)
+            }
         }
-    } else {
-        Toast.makeText(context, "Error al crear URI para la imagen", Toast.LENGTH_SHORT).show()
-    }
+    )
 }
 
 
