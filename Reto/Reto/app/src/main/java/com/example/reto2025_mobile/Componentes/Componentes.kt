@@ -120,6 +120,7 @@ import coil.compose.rememberImagePainter
 import com.example.reto2025_mobile.ViewModel.FotoViewModel
 import com.example.reto2025_mobile.ViewModel.PuntosInteresViewModel
 import com.example.reto2025_mobile.data.PuntoInteres
+import com.google.android.gms.maps.model.Marker
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -642,6 +643,7 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
                                         val descripcion = "Foto de la actividad ${idActividad}"
                                         fotoViewModel.uploadPhoto(context, idActividad, descripcion, savedUri).observeForever { result ->
                                             if (result.isSuccess) {
+                                                fotoViewModel.fetchFotos(idActividad)
                                                 //Toast.makeText(context, "Foto subida con éxito: $uri", Toast.LENGTH_LONG).show()
                                             } else {
 
@@ -1153,22 +1155,22 @@ fun MapScreen(
     actividad: Actividad,
     participantes: MutableSet<String>
 ) {
-
-    val puntosInteres: List<PuntoInteres> by puntosInteresViewModel.puntosInteres.observeAsState( emptyList() )
     val porDefecto = LatLng(43.35257675380246, -4.062506714329061)// Ies Miguel Herrero
     var localizacion: LatLng = porDefecto
 
     if(actividad.latitud != null && actividad.longitud != null){
         localizacion = LatLng(actividad.latitud.toDouble(), actividad.longitud.toDouble())
     }
-
-    var markers by remember { mutableStateOf(listOf<Pair<LatLng, String>>()) }
-
     val cameraPositionState = rememberCameraPositionState { position = CameraPosition.fromLatLngZoom(localizacion, 17f) }
 
+    val puntosInteres: List<PuntoInteres> by puntosInteresViewModel.puntosInteres.observeAsState( emptyList() )
+    //var markers by remember { mutableStateOf(listOf<Pair<LatLng, String>>()) }
+
     var markerToDelete by remember { mutableStateOf<Pair<LatLng, String>?>(null) }
+
     var newMarkerPosition by remember { mutableStateOf<LatLng?>(null) }
     var description by remember { mutableStateOf("") }
+
     var show by remember { mutableStateOf(false) }
     var enable by remember { mutableStateOf(false) }
 
@@ -1177,10 +1179,7 @@ fun MapScreen(
             enable = true
         }
     }
-    puntosInteres.forEach() { puntoInteres ->
-        val marker = LatLng(puntoInteres.latitud.toDouble(), puntoInteres.longitud.toDouble())
-        markers = markers + Pair(marker, puntoInteres.descripcion)
-    }
+
 
 
     GoogleMap(
@@ -1194,14 +1193,15 @@ fun MapScreen(
 
         }
     ) {
-        markers.forEach { (position, description) ->
+        puntosInteres.forEach{ pto ->
+            val pos = LatLng(pto.latitud.toDouble(), pto.longitud.toDouble())
             Marker(
-                state = MarkerState(position = position),
+                state = MarkerState(position = pos),
                 title = actividad.titulo,
-                snippet = description,
+                snippet = pto.descripcion,
                 onInfoWindowLongClick = {
                     if(enable){
-                        markerToDelete = Pair(position, description)
+                        markerToDelete = Pair(pos, pto.descripcion)
                     }
                 }
             )
@@ -1227,9 +1227,7 @@ fun MapScreen(
                     Spacer(modifier = Modifier.height(16.dp))
                     Row {
                         Button(onClick = {
-
                             puntosInteres.forEach() { puntoInteres ->
-                                markers = markers.filterNot { it.first == position }
                                 val marker = LatLng(puntoInteres.latitud.toDouble(), puntoInteres.longitud.toDouble())
                                 if (marker == position) {
                                     val puntoInteres = PuntoInteres(
@@ -1242,11 +1240,6 @@ fun MapScreen(
                                     puntosInteresViewModel.deletePuntoInteres(puntoInteres)
                                 }
                             }
-                            puntosInteres.forEach() { puntoInteres ->
-                                val marker = LatLng(puntoInteres.latitud.toDouble(), puntoInteres.longitud.toDouble())
-                                markers = markers + Pair(marker, puntoInteres.descripcion)
-                            }
-
                             markerToDelete = null
                         }) {
                             Text("Sí")
@@ -1265,7 +1258,6 @@ fun MapScreen(
             onDismissRequest = { },
             confirmButton = {
                 Button(onClick = {
-                    markers = markers + Pair(newMarkerPosition!!, description)
                     val puntoInteres = PuntoInteres(
                         id = null,
                         descripcion = description,
@@ -1274,6 +1266,7 @@ fun MapScreen(
                         actividad = actividad
                     )
                     puntosInteresViewModel.savePuntoInteres(puntoInteres)
+
                     show = false
                 }) {
                     Text("Aceptar")
@@ -1295,6 +1288,15 @@ fun MapScreen(
             }
         )
     }
+}
+
+fun pintaptos(puntosInteres: List<PuntoInteres>): List<Pair<LatLng, String>> {
+    val markers = mutableListOf<Pair<LatLng, String>>()
+    puntosInteres.forEach { puntoInteres ->
+        val pos = LatLng(puntoInteres.latitud.toDouble(), puntoInteres.longitud.toDouble())
+        markers.add(pos to puntoInteres.descripcion)
+    }
+    return markers
 }
 
 fun formatFecha(fecha: String): String {

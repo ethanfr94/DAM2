@@ -36,16 +36,17 @@ class FotoViewModel: ViewModel() {
 
     val bitmaps = MutableStateFlow<List<Bitmap>>(emptyList())
 
+
     fun fetchFotos(idActividad: Int) {
         // Limpiar fotos actuales antes de cargar nuevas
         bitmaps.value = emptyList()
 
         viewModelScope.launch {
             try {
-                val fotos = RetrofitServiceFactory.makeRetrofitService().getFotos(idActividad)
+                val fotos = service.getFotos(idActividad)
                 val bitmapsList = fotos.mapNotNull { foto ->
                     try {
-                        val response = RetrofitServiceFactory.makeRetrofitService().getFoto(idActividad, foto.id)
+                        val response = service.getFoto(idActividad, foto.id)
                         val inputStream: InputStream = response.byteStream()
                         BitmapFactory.decodeStream(inputStream)
                     } catch (e: Exception) {
@@ -94,6 +95,7 @@ class FotoViewModel: ViewModel() {
                 val response = RetrofitServiceFactory.makeRetrofitService().uploadPhoto(idActividad, descripcionPart, photoPart)
                 if (response.isSuccessful) {
                     liveData.postValue(Result.success(Unit))
+
                 } else {
                     liveData.postValue(Result.failure(Exception("Error en la respuesta: ${response.code()}")))
                 }

@@ -34,6 +34,7 @@ class PuntosInteresViewModel : ViewModel() {
             try {
                 val response = service.createPuntoInteres(puntoInteres)
                 if (response.isSuccessful) {
+                    getPuntosInteres()
                     // Manejar respuesta exitosa
                     val savedPuntoInteres = response.body()
                     // Hacer algo con el savedPuntoInteres
