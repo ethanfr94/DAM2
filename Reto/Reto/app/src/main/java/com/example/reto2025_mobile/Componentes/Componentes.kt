@@ -102,6 +102,8 @@ import java.time.format.DateTimeFormatter
 import android.Manifest
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
+import android.media.ExifInterface
 import android.util.Log
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
@@ -122,6 +124,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.FileOutputStream
+import java.io.InputStream
 
 //Top bar de la pantalla de Detalles de una actividad
 
@@ -617,9 +620,36 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
                             shape = RoundedCornerShape(12.dp),
                             colors = CardDefaults.cardColors(containerColor = BlueContainer),
                             onClick = {
+                                val photoDir = File(context.filesDir, "fotos")
+                                if (!photoDir.exists()) {
+                                    photoDir.mkdir()
+                                }
+                                //val photoFile = File(photoDir, "photo_${System.currentTimeMillis()}.jpg")
                                 selectedImageUris.forEach { uri ->
                                     uri?.let {
-                                        fotoViewModel.uploadPhoto(context, idActividad, "descripcion", uri)
+                                        val foto = getFileFromUri(context, uri)
+
+                                        val rotatedBitmap =
+                                            foto?.let { it1 -> rotateImageIfRequired(context, it1) }
+                                        val outputStream = FileOutputStream(foto)
+                                        if (rotatedBitmap != null) {
+                                            rotatedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+                                        }
+                                        outputStream.close()
+
+                                        val savedUri = Uri.fromFile(foto)
+                                        // Subir la foto a la API
+                                        val descripcion = "Foto de la actividad ${idActividad}"
+                                        fotoViewModel.uploadPhoto(context, idActividad, descripcion, savedUri).observeForever { result ->
+                                            if (result.isSuccess) {
+                                                //Toast.makeText(context, "Foto subida con éxito: $uri", Toast.LENGTH_LONG).show()
+                                            } else {
+
+                                                //Toast.makeText(context, "Error al subir la foto: ${uri}", Toast.LENGTH_SHORT).show()
+                                                //Log.d("pruebasubida","Error al subir la foto")
+                                            }
+                                        }
+
                                     }
                                 }
                                 onDismiss()
@@ -706,18 +736,46 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
                     contentAlignment = Alignment.BottomCenter
                 ) {
                     IconButton(onClick = {
-                        takePhotoAndUpload(
+                        showDialog = true
+                        val photoDir = File(context.filesDir, "fotos")
+                        if (!photoDir.exists()) {
+                            photoDir.mkdir()
+                        }
+                        val photoFile = File(photoDir, "photo_${System.currentTimeMillis()}.jpg")
+
+                        val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
+
+                        // Tomar la foto y guardarla en el archivo creado
+                        imageCapture.takePicture(
+                            outputOptions,
+                            ContextCompat.getMainExecutor(context),
+                            object : ImageCapture.OnImageSavedCallback {
+                                override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                                    val savedUri = Uri.fromFile(photoFile)
+
+                                    selectedImageUris.add(savedUri)
+                                }
+
+                                override fun onError(exception: ImageCaptureException) {
+                                    //Toast.makeText(context, "Error al subir la foto: ${exception.message}", Toast.LENGTH_SHORT).show()
+                                    //onUploadError(exception)
+                                }
+                            }
+                        )
+                        showDialog = true
+                        isCameraVisible = false
+                        /*takePhotoAndUpload(
                             imageCapture = imageCapture,
                             context = context,
                             idActividad = idActividad,
                             fotoViewModel = fotoViewModel,
                             onUploadSuccess = { uri ->
-                                Toast.makeText(context, "Foto subida con éxito: $uri", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "Foto subida con éxito: $uri", Toast.LENGTH_LONG).show()
                             },
                             onUploadError = { exception ->
                                 Toast.makeText(context, "Error al subir la foto: ${exception.message}", Toast.LENGTH_SHORT).show()
                             }
-                        )
+                        )*/
                     }) {
                         Icon(
                             imageVector = ImageVector.vectorResource(R.drawable.photo),
@@ -731,9 +789,10 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
             //probando camara
 
             // Mostrar el diálogo de confirmación con la foto
-            if (showDialog && photoUri != null) {
+           /* if (showDialog && photoUri != null) {
                 AlertDialog(
-                    onDismissRequest = { showDialog = false },
+                    onDismissRequest = { showDialog = false
+                                       isCameraVisible = true},
                     properties = DialogProperties(usePlatformDefaultWidth = false), modifier = Modifier.height(600.dp),
                     title = { Text("Añadir Foto") },
                     text = {
@@ -778,7 +837,7 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
                         }
                     }
                 )
-            }
+            }*/
 
             // Usamos LaunchedEffect para inicializar la cámara una vez que el composable se muestra
             LaunchedEffect(key1 = true) {
@@ -805,51 +864,39 @@ fun Fotos(onDismiss: () -> Unit, idActividad: Int, fotoViewModel: FotoViewModel)
     }
 }
 
-fun takePhotoAndUpload(
-    imageCapture: ImageCapture,
-    context: Context,
-    idActividad: Int,
-    fotoViewModel: FotoViewModel,
-    onUploadSuccess: (Uri) -> Unit,
-    onUploadError: (Exception) -> Unit
-) {
-    // Crear un archivo en el almacenamiento interno
-    val photoDir = File(context.filesDir, "fotos")
-    if (!photoDir.exists()) {
-        photoDir.mkdir()
+fun rotateImageIfRequired(context: Context, photoFile: File): Bitmap {
+    val bitmap = BitmapFactory.decodeFile(photoFile.path)
+    val exif = ExifInterface(photoFile.path)
+    val orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+
+    return when (orientation) {
+        ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(bitmap, 90f)
+        ExifInterface.ORIENTATION_ROTATE_180 -> rotateImage(bitmap, 180f)
+        ExifInterface.ORIENTATION_ROTATE_270 -> rotateImage(bitmap, 270f)
+        else -> bitmap
     }
-    val photoFile = File(photoDir, "photo_${System.currentTimeMillis()}.jpg")
-
-    val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
-
-    // Tomar la foto y guardarla en el archivo creado
-    imageCapture.takePicture(
-        outputOptions,
-        ContextCompat.getMainExecutor(context),
-        object : ImageCapture.OnImageSavedCallback {
-            override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                val savedUri = Uri.fromFile(photoFile)
-
-                // Subir la foto a la API
-                val descripcion = "Foto tomada con cámara"
-                fotoViewModel.uploadPhoto(context, idActividad, descripcion, savedUri).observeForever { result ->
-                    if (result.isSuccess) {
-                        onUploadSuccess(savedUri)
-                    } else {
-                        //onUploadError(result.exceptionOrNull() ?: Exception("Error desconocido"))
-                        Log.d("pruebasubida","Error al subir la foto")
-                    }
-                }
-            }
-
-            override fun onError(exception: ImageCaptureException) {
-                onUploadError(exception)
-            }
-        }
-    )
 }
 
+fun rotateImage(img: Bitmap, degree: Float): Bitmap {
+    val matrix = Matrix()
+    matrix.postRotate(degree)
+    return Bitmap.createBitmap(img, 0, 0, img.width, img.height, matrix, true)
+}
 
+fun getFileFromUri(context: Context, uri: Uri): File? {
+    return try {
+        val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
+        val tempFile = File(context.cacheDir, "temp_image_${System.currentTimeMillis()}.jpg")
+        val outputStream = FileOutputStream(tempFile)
+        inputStream?.copyTo(outputStream)
+        inputStream?.close()
+        outputStream.close()
+        return tempFile
+    } catch (e: Exception) {
+        e.printStackTrace()
+        null
+    }
+}
 
 // Calendario de actividades
 
