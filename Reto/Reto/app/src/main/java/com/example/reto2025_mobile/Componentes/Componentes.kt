@@ -1161,7 +1161,7 @@ fun MapScreen(
     if(actividad.latitud != null && actividad.longitud != null){
         localizacion = LatLng(actividad.latitud.toDouble(), actividad.longitud.toDouble())
     }
-    val cameraPositionState = rememberCameraPositionState { position = CameraPosition.fromLatLngZoom(localizacion, 17f) }
+    val cameraPositionState = rememberCameraPositionState { position = CameraPosition.fromLatLngZoom(localizacion, 16f) }
 
     val puntosInteres: List<PuntoInteres> by puntosInteresViewModel.puntosInteres.observeAsState( emptyList() )
     //var markers by remember { mutableStateOf(listOf<Pair<LatLng, String>>()) }
@@ -1228,6 +1228,7 @@ fun MapScreen(
                     Row {
                         Button(onClick = {
                             puntosInteres.forEach() { puntoInteres ->
+
                                 val marker = LatLng(puntoInteres.latitud.toDouble(), puntoInteres.longitud.toDouble())
                                 if (marker == position) {
                                     val puntoInteres = PuntoInteres(

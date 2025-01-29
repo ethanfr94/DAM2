@@ -407,7 +407,7 @@ fun DetailsView(
                                         )
                                     ) {
                                         Text(
-                                            text = "Añadir incidencia",
+                                            text = "Gardar incidencia",
                                             fontWeight = FontWeight.Bold
                                         )
                                     }
