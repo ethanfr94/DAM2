@@ -110,6 +110,8 @@ fun DetailsView(
         }
     }
 
+    val participan = profParticipantes.filter { it.actividad.id == id }
+
 
     actividad?.let {
 
@@ -144,7 +146,7 @@ fun DetailsView(
 
 
                         LazyColumn {
-                            if(fotos.isNotEmpty()){
+                            if (fotos.isNotEmpty()) {
                                 item {
 
                                     Column {
@@ -480,16 +482,13 @@ fun DetailsView(
                                         fontWeight = FontWeight.Bold,
                                         modifier = Modifier.padding(8.dp)
                                     )
-                                    for (prof in profParticipantes) {
-                                        if (prof.actividad.id == it.id) {
-                                            Text(
-                                                text = "${prof.profesor.nombre} ${prof.profesor.apellidos}",
-                                                fontWeight = FontWeight.Bold,
-                                                modifier = Modifier.padding(8.dp)
-                                            )
-                                        }
+                                    participan.forEach { prof ->
+                                        Text(
+                                            text = "${prof.profesor.nombre} ${prof.profesor.apellidos}",
+                                            fontWeight = FontWeight.Bold,
+                                            modifier = Modifier.padding(8.dp)
+                                        )
                                     }
-
                                 }
                             }
                             item {
