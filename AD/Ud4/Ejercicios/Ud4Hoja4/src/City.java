@@ -60,6 +60,7 @@ public class City {
 
     @Override
     public String toString() {
-        return "Nombre: " + name + ", País: " + country + ", Provincia: " + province + ", Población: " + population + ", Latitud: " + latitude + ", Longitud: " + longitude;
+        String city = String.format("Nombre: %-30s País: %-10s Provincia: %-30s Población: %-10d", name, country, province, population);
+        return city;
     }
 }
