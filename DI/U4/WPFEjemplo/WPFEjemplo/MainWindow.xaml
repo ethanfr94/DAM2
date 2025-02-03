@@ -1,0 +1,20 @@
+﻿<Window x:Class="WPFEjemplo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFEjemplo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="550">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="637*"/>
+            <ColumnDefinition Width="163*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Introduce tu nombre: " HorizontalAlignment="Left" Margin="33,31,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.535,0.503"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Margin="215,35,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnSaludar" Content="Saludar" Click="btnSaludar_Click" HorizontalAlignment="Center" Margin="0,33,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBlock x:Name="tbSaludo" HorizontalAlignment="Left" Margin="227,92,0,0" TextWrapping="Wrap" Text="Hola Desconocido" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

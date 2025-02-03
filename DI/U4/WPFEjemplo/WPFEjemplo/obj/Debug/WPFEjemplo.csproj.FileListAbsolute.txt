@@ -1,0 +1,15 @@
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\bin\Debug\WPFEjemplo.exe.config
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\bin\Debug\WPFEjemplo.exe
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\bin\Debug\WPFEjemplo.pdb
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\obj\Debug\WPFEjemplo.csproj.AssemblyReference.cache
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\obj\Debug\MainWindow.g.cs
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\obj\Debug\App.g.cs
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\obj\Debug\WPFEjemplo_MarkupCompile.cache
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\obj\Debug\WPFEjemplo_MarkupCompile.lref
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\obj\Debug\MainWindow.baml
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\obj\Debug\WPFEjemplo.g.resources
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\obj\Debug\WPFEjemplo.Properties.Resources.resources
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\obj\Debug\WPFEjemplo.csproj.GenerateResource.cache
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\obj\Debug\WPFEjemplo.csproj.CoreCompileInputs.cache
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\obj\Debug\WPFEjemplo.exe
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\WPFEjemplo\WPFEjemplo\obj\Debug\WPFEjemplo.pdb
