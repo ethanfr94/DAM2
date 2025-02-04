@@ -1,0 +1,53 @@
+﻿<Window x:Class="Ud4Hoja1Ej2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ud4Hoja1Ej2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="300" MinHeight="600" MinWidth="300" MaxHeight="600" MaxWidth="300">
+    <Grid Margin="0,0,0,-16">
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Margin="20,43,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="20,18,0,0" VerticalAlignment="Top"/>
+        <Label Content="Fecha" HorizontalAlignment="Left" Margin="20,68,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dtpFecha" HorizontalAlignment="Left" Margin="20,93,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nº de noches" HorizontalAlignment="Left" Margin="20,118,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmbNoches" HorizontalAlignment="Left" Margin="20,143,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Tag="1" IsSelected="True">1</ComboBoxItem>
+            <ComboBoxItem Tag="2">2</ComboBoxItem>
+            <ComboBoxItem Tag="3">3</ComboBoxItem>
+            <ComboBoxItem Tag="4">4</ComboBoxItem>
+            <ComboBoxItem Tag="5">5</ComboBoxItem>
+            <ComboBoxItem Tag="6">6</ComboBoxItem>
+            <ComboBoxItem Tag="7">7</ComboBoxItem>
+            <ComboBoxItem Tag="8">8</ComboBoxItem>
+            <ComboBoxItem Tag="9">9</ComboBoxItem>
+            <ComboBoxItem Tag="10">10</ComboBoxItem>
+            <ComboBoxItem Tag="11">11</ComboBoxItem>
+            <ComboBoxItem Tag="12">12</ComboBoxItem>
+            <ComboBoxItem Tag="13">13</ComboBoxItem>
+            <ComboBoxItem Tag="14">14</ComboBoxItem>
+        </ComboBox>
+        <Label Content="Tipo de habitación" HorizontalAlignment="Left" Margin="20,168,0,0" VerticalAlignment="Top"/>
+        <StackPanel HorizontalAlignment="Left" Margin="20,193,0,0" VerticalAlignment="Top" Orientation="Horizontal">
+            <RadioButton x:Name="rdoEstandar" Content="Estándar" GroupName="TipoHabitacion" IsChecked="True"/>
+            <RadioButton x:Name="rdoSuite" Content="Suite" GroupName="TipoHabitacion"/>
+            <RadioButton x:Name="rdoPremium" Content="Premium" GroupName="TipoHabitacion"/>
+        </StackPanel>
+        <Label Content="Servicios adicionales" HorizontalAlignment="Left" Margin="20,218,0,0" VerticalAlignment="Top"/>
+        <StackPanel HorizontalAlignment="Left" Margin="20,243,0,0" VerticalAlignment="Top">
+            <CheckBox Content="Desayuno (+10€/noche)" x:Name="chkDesayuno"/>
+            <CheckBox Content="Spa (+20€/noche)" x:Name="chkSpa"/>
+            <CheckBox Content="Aparcamiento (+5€/noche)" x:Name="chkAparcamiento"/>
+        </StackPanel>
+        <Label Content="Resumen de la reserva" HorizontalAlignment="Left" Margin="20,293,0,0" VerticalAlignment="Top"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Margin="20,318,0,0" VerticalAlignment="Top" Width="250">
+            <TextBlock x:Name="tbResumen" Height="207"/>
+        </Border>
+        <Button x:Name="btnConfirmar" Content="Confirmar reserva" IsDefault="True" Click="btnConfirmar_Click" HorizontalAlignment="Left" Margin="20,538,0,26" Width="145"/>
+        <Button x:Name="btnSalir" Content="Salir" IsCancel="True" Click="btnSalir_Click" HorizontalAlignment="Left" Margin="176,538,0,0" VerticalAlignment="Top" Width="94"/>
+
+
+
+    </Grid>
+</Window>
