@@ -212,7 +212,7 @@ public class Main {
                         while (index < lines.size() && lines.get(index).split(",")[0].compareToIgnoreCase(ciudad) < 0) {
                             index++;
                         }
-                        lines.add(index, city);
+                        lines.add(index-1, city);
                         Files.write(path, lines);
                         System.out.println("Ciudad añadida");
                         // lo añade una posicion despues de donde deberia ir
