@@ -4,26 +4,23 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 
-public class Servidor {
+public class Servidor extends Thread {
 
     static final int PUERTO = 2000;
     private static int registro = 1;
+    private byte[] recibe;
+    private byte[] envia;
+    private DatagramSocket server;
 
-    public static void main(String [] args){
+    public Servidor(byte[] recibe, byte[] envia, DatagramSocket server){
+        this.recibe = recibe;
+        this.envia = envia;
+        this.server = server;
+    }
+
+    public void run(){
         try{
-
-            // Se crea el socket del servidor
-            DatagramSocket server = new DatagramSocket(PUERTO);
-            // Crea el espacio para los mensajes
-            byte[] recibe = new byte[1000];
-            byte[] envia;
-
-            DatagramPacket mensaje = new DatagramPacket(recibe, recibe.length);
-
-            System.out.println("Servidor esperando mensajes en el puerto: "+PUERTO);
-
             while (true) {
 
                 // Recibe el mensaje
@@ -55,6 +52,28 @@ public class Servidor {
                 System.out.println("Enviado: "+p.toString());
 
             }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String [] args){
+        try{
+
+            // Se crea el socket del servidor
+            DatagramSocket server = new DatagramSocket(PUERTO);
+            // Crea el espacio para los mensajes
+            byte[] recibe = new byte[1000];
+            byte[] envia = null;
+
+            DatagramPacket mensaje = new DatagramPacket(recibe, recibe.length);
+
+            System.out.println("Servidor esperando mensajes en el puerto: "+PUERTO);
+
+            new Servidor(recibe, envia, server).start();
+
+
         }catch (Exception e){
             e.printStackTrace();
         }
