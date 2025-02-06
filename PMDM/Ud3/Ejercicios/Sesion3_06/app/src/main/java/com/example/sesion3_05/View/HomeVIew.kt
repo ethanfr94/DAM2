@@ -10,12 +10,18 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -40,6 +46,18 @@ fun HomeView(homeViewModel: HomeViewModel) {
     val animales = homeViewModel.animales.observeAsState(initial = emptyList())
 
     /*
+    4.2.- En HomeView necesitamos declarar dos variables de estado para controlar el animal
+    que se querrá eliminar y si el cuadro de diálogo está visible o no
+    */
+
+    // Estado para controlar la visibilidad del diálogo de eliminación
+// y estado para controlar el animal a eliminar
+    var animalAEliminar by remember { mutableStateOf<Animal?>(null) }
+    var showDialog by remember { mutableStateOf(false) }
+
+
+
+    /*
     2.3.- Ahora en HomeView debes crear un LazyColumn
      para representar la lista de animales usando para cada item el composable AnimalBox.
      */
@@ -53,15 +71,40 @@ fun HomeView(homeViewModel: HomeViewModel) {
                     Log.i("ROOM_PRUEBA","Editar: ${animalToEdit.nombre}")
                 },
                 onDeleteClick = { animalToDelete ->
-                    // Acción para eliminar (puedes mostrar una confirmación)
+                    /*
+                    4.5.- Ya por último tenemos que cambiar el código del parámetro onDeleteClick
+                     en la llamada a para que active el estado de mostrar el cuadro de diálogo
+                     y el estado del animal a eliminar
+                    */
+
+                    animalAEliminar = animalToDelete
+                    showDialog = true
                     Log.i("ROOM_PRUEBA","Eliminar: ${animalToDelete.nombre}")
                 }
             )
-
-
-
         }
     }
+
+    /*
+    4.4.- En la función composable HomeView debemos añadir después del LazyColumn el código para mostrar el cuadro
+    de diálogo cuando la variable de estado esté a true
+    */
+
+    // Mostrar cuadro de diálogo si `showDialog` es verdadero
+    if (showDialog ) {
+        ConfirmDeleteDialog(
+            //Confía en mi, esta variable no es nula
+            animal = animalAEliminar!!,
+            onConfirm = {
+                homeViewModel.eliminarAnimal(it)
+                showDialog = false
+            },
+            onDismiss = {
+                showDialog = false
+            }
+        )
+    }
+
     /*
       2.5.- Para que se pueda hacer un lanzamiento de la carga de los datos en la base de datos
       y de una consulta inicial, debemos llamar a la función iniciar del ViewModel dentro
@@ -129,4 +172,37 @@ fun AnimalBox(
             )
         }
     }
+}
+
+/*
+4.3.- En HomeView añadimos el composable para representar el cuadro de diálogo.
+No explicamos el código pues ya lo vimos en otra sesión anterior. La función recibe el animal a eliminar,
+la función que se realiza al confirmar y la que se realizaría al cancelar
+*/
+
+@Composable
+fun ConfirmDeleteDialog(
+    animal: Animal,
+    onConfirm: (Animal) -> Unit,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = { onDismiss() },
+        confirmButton = {
+            TextButton(onClick = { onConfirm(animal) }) {
+                Text(text = "Aceptar")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = { onDismiss() }) {
+                Text(text = "Cancelar")
+            }
+        },
+        title = {
+            Text(text = "Confirmar eliminación")
+        },
+        text = {
+            Text(text = "¿Estás seguro de que deseas eliminar a ${animal.nombre}?")
+        }
+    )
 }
