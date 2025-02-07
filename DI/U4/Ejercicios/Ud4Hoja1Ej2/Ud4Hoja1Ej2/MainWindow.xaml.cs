@@ -78,6 +78,8 @@ namespace Ud4Hoja1Ej2
                 adicionales += "Aparcamiento\n";
             }
 
+            tbResumen.Inlines.Clear();
+
             Run infoEntrada = new Run("Nombre del cliente: "+nombre+
                 "\n Fecha de reserva: "+fecha+
                 "\n Noches contratadas: "+noches+

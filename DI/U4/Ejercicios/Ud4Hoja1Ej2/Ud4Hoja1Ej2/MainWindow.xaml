@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ud4Hoja1Ej2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="300" MinHeight="600" MinWidth="300" MaxHeight="600" MaxWidth="300">
-    <Grid Margin="0,0,0,-16">
+        Title="Formulario de reservas" Height="620" Width="300" MinHeight="620" MinWidth="300" MaxHeight="620" MaxWidth="300">
+    <Grid Margin="0,0,0,1">
         <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Margin="20,43,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="20,18,0,0" VerticalAlignment="Top"/>
         <Label Content="Fecha" HorizontalAlignment="Left" Margin="20,68,0,0" VerticalAlignment="Top"/>
@@ -42,10 +42,10 @@
         </StackPanel>
         <Label Content="Resumen de la reserva" HorizontalAlignment="Left" Margin="20,293,0,0" VerticalAlignment="Top"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Margin="20,318,0,0" VerticalAlignment="Top" Width="250">
-            <TextBlock x:Name="tbResumen" Height="207"/>
+            <TextBlock x:Name="tbResumen" Height="202"/>
         </Border>
-        <Button x:Name="btnConfirmar" Content="Confirmar reserva" IsDefault="True" Click="btnConfirmar_Click" HorizontalAlignment="Left" Margin="20,538,0,26" Width="145"/>
-        <Button x:Name="btnSalir" Content="Salir" IsCancel="True" Click="btnSalir_Click" HorizontalAlignment="Left" Margin="176,538,0,0" VerticalAlignment="Top" Width="94"/>
+        <Button x:Name="btnConfirmar" Content="Confirmar" IsDefault="True" Click="btnConfirmar_Click" HorizontalAlignment="Left" Margin="20,538,0,0" Width="120" Height="20" VerticalAlignment="Top"/>
+        <Button x:Name="btnSalir" Content="Salir" IsCancel="True" Click="btnSalir_Click" HorizontalAlignment="Left" Margin="150,538,0,0" VerticalAlignment="Top" Width="120"/>
 
 
 
