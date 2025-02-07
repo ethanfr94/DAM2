@@ -1,22 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <futbolistas>
     <futbolista equipo="TRO">
         <num>295</num>
         <alias>Pardo</alias>
         <posicion>defensa</posicion>
-        <altura>1.80</altura>
+        <altura>1.8</altura>
     </futbolista>
     <futbolista equipo="LAR">
         <num>296</num>
         <alias>Borja Ares</alias>
         <posicion>defensa</posicion>
-        <altura>1.80</altura>
-    </futbolista>
-    <futbolista equipo="RAY">
-        <num>299</num>
-        <alias>Faouzi</alias>
-        <posicion>centrocampista</posicion>
-        <altura>1.75</altura>
+        <altura>1.8</altura>
     </futbolista>
     <futbolista equipo="RIB">
         <num>368</num>
@@ -34,7 +28,7 @@
         <num>370</num>
         <alias>Rubén Salamanca</alias>
         <posicion>defensa</posicion>
-        <altura>1.80</altura>
+        <altura>1.8</altura>
     </futbolista>
     <futbolista equipo="RIB">
         <num>373</num>

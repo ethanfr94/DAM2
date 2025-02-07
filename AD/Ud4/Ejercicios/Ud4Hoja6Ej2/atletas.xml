@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<atletas>
+    <atleta>
+        <dorsal>0</dorsal>
+        <nombre>dfgh</nombre>
+        <apellidos>dfah</apellidos>
+        <fechaNacimiento>adfh</fechaNacimiento>
+        <nacionalidad>ESP</nacionalidad>
+        <marca>4.48</marca>
+    </atleta>
+    <atleta>
+        <dorsal>1</dorsal>
+        <nombre>sdfah</nombre>
+        <apellidos>fadh</apellidos>
+        <fechaNacimiento>adf</fechaNacimiento>
+        <nacionalidad>ESP</nacionalidad>
+        <marca>1.88</marca>
+    </atleta>
+</atletas>

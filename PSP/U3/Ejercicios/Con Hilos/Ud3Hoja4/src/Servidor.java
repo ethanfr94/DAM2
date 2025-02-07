@@ -14,24 +14,15 @@ Escribe un programa cliente que haga preguntas al servidor para verificar su
 funcionamiento.
 Finalizará cuando el cliente envíe la palabra “fin
 */
-public class Servidor {
+public class Servidor extends Thread{
 
     static final int PUERTO = 2000;
+    private DatagramSocket server;
 
-    public static void main(String [] args){
+    public Servidor(DatagramPacket mensaje, DatagramSocket server, InetAddress ip){
         try{
-
-            // Se crea el socket del servidor
-            DatagramSocket server = new DatagramSocket(PUERTO);
-            InetAddress ip = InetAddress.getByName("localhost");
-            // Crea el espacio para los mensajes
-            byte[] recibe = new byte[1000];
-            DatagramPacket mensaje = new DatagramPacket(recibe, recibe.length);
             boolean fin = false;
-
-            System.out.println("Servidor esperando mensajes en el puerto: "+PUERTO);
-
-            do{
+            while(!fin){
                 // Recibe el mensaje
                 server.receive(mensaje);
                 // convierte el mensaje de byte a String
@@ -53,10 +44,29 @@ public class Servidor {
                 // envia la respuesta
                 server.send(respuestaPaquete);
 
-            }while(!fin);
 
-            // cuando se adivina el numero secreto se cierra el socket y se termina el programa
-            server.close();
+
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String [] args){
+        try{
+
+            // Se crea el socket del servidor
+            DatagramSocket server = new DatagramSocket(PUERTO);
+            InetAddress ip = InetAddress.getByName("localhost");
+            // Crea el espacio para los mensajes
+            byte[] recibe = new byte[1000];
+            DatagramPacket mensaje = new DatagramPacket(recibe, recibe.length);
+
+
+            System.out.println("Servidor esperando mensajes en el puerto: "+PUERTO);
+
+            new Servidor(mensaje, server, ip).start();
+
 
         }catch (Exception e){
             e.printStackTrace();
