@@ -63,11 +63,20 @@ dependencies {
     // Room runtime
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.runtime.android)
     ksp(libs.androidx.room.compiler)
     // Room KTX
     implementation(libs.androidx.room.ktx)
     // Corroutinas
     implementation(libs.kotlinx.coroutines.android)
+
+    // Glide for image loading
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation("com.github.bumptech.glide:compose:1.0.0-alpha.1")
+
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
 
 
     implementation(libs.androidx.core.ktx)

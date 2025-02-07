@@ -65,6 +65,13 @@ class HomeViewModel(private val appDatabase: AppDatabase) : ViewModel() {
 
     }
 
+    fun insertarAnimal(animalEd: Animal) {
+        viewModelScope.launch(Dispatchers.IO) {
+            appDatabase.animalDao().insertAnimal(animalEd)
+        }
+    }
+
+
     // 4.1.- Creamos una función para eliminar que llama a delete del DAO y vuelve a recargar la lista de animales
     // (esta recarga es necesaria porque si no se hace, el ViewModel no notifica su modificación y por ello
     // no se vería la lista de animales actualizada
