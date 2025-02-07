@@ -1,0 +1,15 @@
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\bin\Debug\Ud4Hoja2Ej1.exe.config
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\bin\Debug\Ud4Hoja2Ej1.exe
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\bin\Debug\Ud4Hoja2Ej1.pdb
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\obj\Debug\Ud4Hoja2Ej1.csproj.AssemblyReference.cache
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\obj\Debug\MainWindow.g.cs
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\obj\Debug\App.g.cs
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\obj\Debug\Ud4Hoja2Ej1_MarkupCompile.cache
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\obj\Debug\Ud4Hoja2Ej1_MarkupCompile.lref
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\obj\Debug\MainWindow.baml
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\obj\Debug\Ud4Hoja2Ej1.g.resources
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\obj\Debug\Ud4Hoja2Ej1.Properties.Resources.resources
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\obj\Debug\Ud4Hoja2Ej1.csproj.GenerateResource.cache
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\obj\Debug\Ud4Hoja2Ej1.csproj.CoreCompileInputs.cache
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\obj\Debug\Ud4Hoja2Ej1.exe
+D:\Usuarios\Dam213\Desktop\DAM\DI\U4\Ejercicios\Ud4Hoja2Ej1\Ud4Hoja2Ej1\obj\Debug\Ud4Hoja2Ej1.pdb
