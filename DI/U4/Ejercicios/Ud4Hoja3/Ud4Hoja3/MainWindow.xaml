@@ -1,0 +1,58 @@
+﻿<Window x:Class="Ud4Hoja3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ud4Hoja3"
+        mc:Ignorable="d"
+        Title="Visor de imagenes" Height="450" Width="800">
+    <DockPanel LastChildFill="False">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Archivo">
+                <MenuItem x:Name="mnArchivoAbrir"  Header="Abrir"/>
+                <Separator />
+                <MenuItem x:Name="mnArchivoSalir" Header="Salir"/>
+            </MenuItem>
+            <MenuItem x:Name="mnImagenes" Header="Imagenes">
+            </MenuItem>
+        </Menu>
+
+        <StatusBar DockPanel.Dock="Bottom" MinHeight="22">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+
+            <StatusBarItem Grid.Column="0">
+                <TextBlock x:Name="tbRuta" Text="Estado" />
+            </StatusBarItem>
+            <Separator Grid.Column="1"/>
+            <StatusBarItem Grid.Column="2">
+                <TextBlock x:Name="tbDimensiones"/>
+            </StatusBarItem>
+        </StatusBar>
+        <DockPanel Visibility="Visible">
+            <ToolBarTray DockPanel.Dock="Top">
+                <ToolBar>
+                    <ComboBox x:Name="cmbAjuste" MinWidth="100" Width="Auto" >
+                        <ComboBoxItem Tag="None" Content="Ninguno" IsSelected="True"/>
+                        <ComboBoxItem Tag="Fill" Content="Rellenar"/>
+                        <ComboBoxItem Tag="Uniform" Content="Uniforme"/>
+                        <ComboBoxItem Tag="UniformToFill" Content="UniformToFill"/>
+                    </ComboBox>
+                </ToolBar>
+            </ToolBarTray>
+            <TabControl x:Name="tcImagenes" Width="800">
+                
+            </TabControl>
+            
+        </DockPanel>
+    </DockPanel>        
+</Window>
