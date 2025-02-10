@@ -72,7 +72,8 @@ namespace Ud4Hoja2Ej1
                 MessageBox.Show("Debe seleccionar un producto", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if(!int.TryParse(tbCantidad.Text, out int cantidad) || cantidad <= 0)
+
+            if(!int.TryParse(txtVenta.Text, out int cantidad) || cantidad <= 0)
             {
                 MessageBox.Show("Introduzca una cantidad valida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -81,14 +82,29 @@ namespace Ud4Hoja2Ej1
             String producto = lstProductos.SelectedItem.ToString();
             String clave = producto.Split('-')[0].Trim();
 
-            if (!inventario.ContainsKey(clave))
+            if (inventario.ContainsKey(clave))
             {
-                if(inventario[clave] <= cantidad)
+                if (inventario[clave] < cantidad)
                 {
                     MessageBox.Show("No hay suficiente stock", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
-                }
+                }else
+                {
+                    inventario[clave] -= cantidad;
+                    lstProductos.Items[lstProductos.SelectedIndex] = $"{clave} - Stock: {inventario[clave]}";
 
+                    if(inventario[clave] == 0)
+                    {
+                        tbEstado.Text = $"{clave} sin Stock";
+                        tbEstado.Foreground = Brushes.Red;
+                    }
+                    else
+                    {
+
+                       tbEstado.Text = $"{clave} - Stock: {inventario[clave]}";
+                    }
+                }
+            }
         }
     }
 }

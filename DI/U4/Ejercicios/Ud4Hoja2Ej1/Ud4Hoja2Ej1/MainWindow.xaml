@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ud4Hoja2Ej1"
         mc:Ignorable="d"
-        Title="Inventario" Height="286" Width="659">
+        Title="Inventario" Height="300" Width="659">
     <Grid HorizontalAlignment="Left" Width="582" Margin="10,0,0,0" Height="410" VerticalAlignment="Top">
         <TextBlock HorizontalAlignment="Left" Margin="25,25,0,0" TextWrapping="Wrap" Text="Producto" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="203,25,0,0" TextWrapping="Wrap" Text="Categoria" VerticalAlignment="Top"/>
@@ -19,11 +19,12 @@
         </ComboBox>
         <TextBox x:Name="tbCantidad" HorizontalAlignment="Left" Margin="437,22,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="54" Height="26"/>
         <Button x:Name="btnAñadir" Content="Añadir" Margin="0,23,-38,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Right" Width="110" Click="btnAñadir_Click"/>
-        <Button x:Name="btnSalirr" Content="Salir" IsCancel="True" Margin="0,226,-38,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Right" Width="107" Click="btnSalirr_Click"/>
+        <Button x:Name="btnSalirr" Content="Salir" IsCancel="True" Margin="0,226,-38,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Right" Width="75" Click="btnSalirr_Click"/>
         <ListBox x:Name="lstProductos" Margin="25,63,-38,205"/>
         <TextBlock HorizontalAlignment="Left" Margin="25,231,0,0" TextWrapping="Wrap" Text="Cantidad a vender" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtNombre_Copiar" HorizontalAlignment="Left" Margin="138,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="91" Height="26"/>
-        <Button x:Name="btnRegistrar" Content="Registrar venta" IsCancel="True" Margin="0,226,206,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Right" Width="107" Click="btnRegistrar_Click"/>
+        <TextBox x:Name="txtVenta" HorizontalAlignment="Left" Margin="138,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="91" Height="26"/>
+        <Button x:Name="btnRegistrar" Content="Registrar venta" IsCancel="True" Margin="0,226,226,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Right" Width="107" Click="btnRegistrar_Click"/>
+        <TextBlock x:Name="tbEstado" HorizontalAlignment="Left" Margin="384,231,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
 
 
     </Grid>
