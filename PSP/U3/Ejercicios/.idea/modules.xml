@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Ejercicios.iml" filepath="$PROJECT_DIR$/.idea/Ejercicios.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PruebaTCPClienteServidor/PruebaTCPClienteServidor.iml" filepath="$PROJECT_DIR$/PruebaTCPClienteServidor/PruebaTCPClienteServidor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PruebaUDPEmisorReceptor/PruebaUDPEmisorReceptor.iml" filepath="$PROJECT_DIR$/PruebaUDPEmisorReceptor/PruebaUDPEmisorReceptor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sin Hilos/Ud3Hoja1/Ud3Hoja1.iml" filepath="$PROJECT_DIR$/Sin Hilos/Ud3Hoja1/Ud3Hoja1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Con Hilos/Ud3Hoja5/Ud3Hoja10.iml" filepath="$PROJECT_DIR$/Con Hilos/Ud3Hoja5/Ud3Hoja10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sin Hilos/Ud3Hoja2/Ud3Hoja2.iml" filepath="$PROJECT_DIR$/Sin Hilos/Ud3Hoja2/Ud3Hoja2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sin Hilos/Ud3Hoja3/Ud3Hoja3.iml" filepath="$PROJECT_DIR$/Sin Hilos/Ud3Hoja3/Ud3Hoja3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sin Hilos/Ud3Hoja4/Ud3Hoja4.iml" filepath="$PROJECT_DIR$/Sin Hilos/Ud3Hoja4/Ud3Hoja4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Con Hilos/Ud3Hoja2/Ud3Hoja5.iml" filepath="$PROJECT_DIR$/Con Hilos/Ud3Hoja2/Ud3Hoja5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Con Hilos/Ud3Hoja1/Ud3Hoja6.iml" filepath="$PROJECT_DIR$/Con Hilos/Ud3Hoja1/Ud3Hoja6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Con Hilos/Ud3Hoja4/Ud3Hoja7.iml" filepath="$PROJECT_DIR$/Con Hilos/Ud3Hoja4/Ud3Hoja7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Con Hilos/Ud3Hoja3/Ud3Hoja8.iml" filepath="$PROJECT_DIR$/Con Hilos/Ud3Hoja3/Ud3Hoja8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sin Hilos/Ud3Hoja5/Ud3Hoja9.iml" filepath="$PROJECT_DIR$/Sin Hilos/Ud3Hoja5/Ud3Hoja9.iml" />
+    </modules>
+  </component>
+</project>
