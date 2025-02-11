@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:Ud4Hoja3"
         mc:Ignorable="d"
         Title="Visor de imagenes" Height="450" Width="800">
-    <DockPanel LastChildFill="False">
+    <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Archivo">
-                <MenuItem x:Name="mnArchivoAbrir"  Header="Abrir"/>
+                <MenuItem x:Name="mnArchivoAbrir"  Header="Abrir" Click="mnArchivoAbrir_Click"/>
                 <Separator />
-                <MenuItem x:Name="mnArchivoSalir" Header="Salir"/>
+                <MenuItem x:Name="mnArchivoSalir" Header="Salir" Click="mnArchivoSalir_Click"/>
             </MenuItem>
             <MenuItem x:Name="mnImagenes" Header="Imagenes">
             </MenuItem>
@@ -42,17 +42,16 @@
             <ToolBarTray DockPanel.Dock="Top">
                 <ToolBar>
                     <ComboBox x:Name="cmbAjuste" MinWidth="100" Width="Auto" >
-                        <ComboBoxItem Tag="None" Content="Ninguno" IsSelected="True"/>
-                        <ComboBoxItem Tag="Fill" Content="Rellenar"/>
-                        <ComboBoxItem Tag="Uniform" Content="Uniforme"/>
-                        <ComboBoxItem Tag="UniformToFill" Content="UniformToFill"/>
+                        <ComboBoxItem x:Name="cbiNone" Tag="None" Content="Ninguno" IsSelected="True" DataContextChanged="cbi_DataContextChanged"/>
+                        <ComboBoxItem x:Name="cbiFill" Tag="Fill" Content="Rellenar" DataContextChanged="cbi_DataContextChanged"/>
+                        <ComboBoxItem x:Name="cbiUniform" Tag="Uniform" Content="Uniforme" DataContextChanged="cbi_DataContextChanged"/>
+                        <ComboBoxItem x:Name="cbiUniformToFill" Tag="UniformToFill" Content="UniformToFill" DataContextChanged="cbi_DataContextChanged"/>
                     </ComboBox>
                 </ToolBar>
             </ToolBarTray>
-            <TabControl x:Name="tcImagenes" Width="800">
+            <TabControl x:Name="tcImagenes" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 
             </TabControl>
-            
         </DockPanel>
     </DockPanel>        
 </Window>
