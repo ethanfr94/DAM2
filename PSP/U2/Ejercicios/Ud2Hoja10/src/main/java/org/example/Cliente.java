@@ -34,29 +34,38 @@ public class Cliente extends Thread {
     }
 
     public void ocuparBox() {
-        try {
-            semaforoBoxes.acquire();
-            taller.inBoxes();
-            System.out.println("Cliente" + id + " ocupa un box. quedan " + taller.getBoxes() + " huecos libres.");
-        } catch (InterruptedException e) {
-            System.out.println("Cliete" + id + " se marcha porque no hay boxes libres.");
+        if (taller.getLibres() == 0) {
+            System.out.println("Cliente" + id + " se marcha porque no hay boxes libres.");
+            return;
+        } else {
+            try {
+                semaforoBoxes.acquire();
+                taller.in();
+                System.out.println("Cliente" + id + " ocupa un box. quedan " + taller.getLibres() + " huecos libres.");
+                if(taller.getLibres() < 3) {
+                    semaforoMecanico.release();
+                }
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
     public void ocuparMecanico() {
         try {
+            if(taller.getLibres() == 3) {
+                semaforoMecanico.release();
+            }
             semaforoMecanico.acquire();
             semaforoBoxes.release();
-            taller.outBoxes();
-            System.out.println("Cliente" + id + " ocupa al mecánico. Quedan " + taller.getBoxes() + " huecos libres.");
+            taller.out();
+            System.out.println("Cliente" + id + " ocupa al mecánico. Quedan " + taller.getLibres() + " huecos libres.");
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }
     }
 
     public void run() {
-        ocuparBox();
-        ocuparMecanico();
     }
 
 

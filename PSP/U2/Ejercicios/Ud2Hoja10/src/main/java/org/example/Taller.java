@@ -25,24 +25,25 @@ public class Taller {
     private Semaphore semaforoMecanico;
     private Semaphore semaforoReparacion;
     private Semaphore semaforoBoxes;
-    private int boxes = 3;
+    private int plazas;
+    private int libres;
 
-    public Taller(Semaphore semaforoMecanico, Semaphore semaforoReparacion, Semaphore semaforoBoxes) {
+    public Taller(Semaphore semaforoMecanico, Semaphore semaforoReparacion, Semaphore semaforoBoxes, int plazas) {
         this.semaforoMecanico = semaforoMecanico;
         this.semaforoReparacion = semaforoReparacion;
         this.semaforoBoxes = semaforoBoxes;
+        this.plazas = plazas;
+        this.libres = plazas;
     }
 
-    public int inBoxes() {
-        boxes--;
-        return boxes;
+    public void in() {
+        libres--;
     }
-    public int outBoxes() {
-        boxes++;
-        return boxes;
+    public void out() {
+        libres++;
     }
-    public int getBoxes() {
-        return boxes;
+    public int getLibres() {
+        return libres;
     }
 
 

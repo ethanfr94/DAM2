@@ -25,10 +25,10 @@ public class Main {
     public static void main(String[] args) {
 
         Semaphore semaforoMecanico = new Semaphore(1);
-        Semaphore semaforoBoxes = new Semaphore(3);
+        Semaphore semaforoBoxes = new Semaphore(0);
         Semaphore semaforoReparacion = new Semaphore(0);
 
-        Taller taller = new Taller(semaforoMecanico, semaforoBoxes, semaforoReparacion);
+        Taller taller = new Taller(semaforoMecanico, semaforoBoxes, semaforoReparacion, 3);
         Mecanico mecanico = new Mecanico(taller, semaforoMecanico, semaforoReparacion, semaforoBoxes);
         mecanico.start();
         for(int i = 1; i <= 25; i++) {
