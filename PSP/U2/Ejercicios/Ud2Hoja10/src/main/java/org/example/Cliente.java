@@ -23,14 +23,45 @@ public class Cliente extends Thread {
     private Semaphore semaforoMecanico;
     private Semaphore semaforoReparacion;
     private Semaphore semaforoBoxes;
-    private int id = 1;
+    private int id;
 
-    public Cliente(Taller t, Semaphore semaforoMecanico, Semaphore semaforoReparacion, Semaphore semaforoBoxes) {
+    public Cliente(Taller t, Semaphore semaforoMecanico, Semaphore semaforoReparacion, Semaphore semaforoBoxes, int id) {
         taller = t;
-        id++;
+        this.id = id;
         this.semaforoMecanico = semaforoMecanico;
         this.semaforoReparacion = semaforoReparacion;
         this.semaforoBoxes = semaforoBoxes;
+    }
+
+    public void run() {
+        try {
+            Thread.sleep((long) (Math.random() * 50));  // Los clientes llegan aleatoriamente
+
+            System.out.println("Cliente " + id + " llega al taller.");
+
+            if (semaforoBoxes.tryAcquire()) {  // Intenta ocupar un box
+                taller.in();
+                System.out.println("Cliente " + id + " ocupa un box. Quedan " + taller.getLibres() + " boxes libres.");
+
+                // Si el mecánico está dormido, el cliente lo despierta
+                if (semaforoMecanico.tryAcquire()) {
+                    System.out.println("Cliente " + id + " despierta al mecánico.");
+                    semaforoReparacion.release();  // Despierta al mecánico
+                } else {
+                    System.out.println("Cliente " + id + " espera a que el mecánico termine.");
+                }
+
+                sleep(55);  // Simula el tiempo que el mecánico tarda en reparar el coche
+
+                semaforoBoxes.release();  // Libera el box
+                taller.out();
+                System.out.println("Cliente " + id + " ha terminado y libera su box. Quedan " + taller.getLibres() + " boxes libres.");
+            } else {
+                System.out.println("Cliente " + id + " se marcha porque no hay boxes libres.");
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     public void ocuparBox() {
@@ -65,8 +96,7 @@ public class Cliente extends Thread {
         }
     }
 
-    public void run() {
-    }
+
 
 
 }

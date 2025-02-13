@@ -23,18 +23,18 @@ public class Main {
     */
 
     public static void main(String[] args) {
+        Semaphore semaforoBoxes = new Semaphore(4); // 3 boxes disponibles
+        Semaphore semaforoReparacion = new Semaphore(0); // El mecánico está inicialmente dormido
+        Semaphore semaforoMecanico = new Semaphore(1); // Permite al mecánico dormir
 
-        Semaphore semaforoMecanico = new Semaphore(1);
-        Semaphore semaforoBoxes = new Semaphore(0);
-        Semaphore semaforoReparacion = new Semaphore(0);
-
-        Taller taller = new Taller(semaforoMecanico, semaforoBoxes, semaforoReparacion, 3);
+        Taller taller = new Taller(semaforoMecanico, semaforoBoxes, semaforoReparacion, 4);
         Mecanico mecanico = new Mecanico(taller, semaforoMecanico, semaforoReparacion, semaforoBoxes);
         mecanico.start();
+
         for(int i = 1; i <= 25; i++) {
             try {
                 sleep((int) (Math.random() * 50));
-                new Cliente(taller, semaforoMecanico, semaforoReparacion, semaforoBoxes).start();
+                new Cliente(taller, semaforoMecanico, semaforoReparacion, semaforoBoxes, i).start();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
