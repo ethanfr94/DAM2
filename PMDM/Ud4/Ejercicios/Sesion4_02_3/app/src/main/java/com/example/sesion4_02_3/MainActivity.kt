@@ -49,9 +49,9 @@ class MainActivity : ComponentActivity(), SensorEventListener {
     private var xSensor: Sensor? = null
     private var ySensor: Sensor? = null
     private var zSensor: Sensor? = null
-    private var xValue by mutableStateOf("No disponible")
-    private var yValue by mutableStateOf("No disponible")
-    private var zValue by mutableStateOf("No disponible")
+    private var xValue by mutableStateOf("")
+    private var yValue by mutableStateOf("")
+    private var zValue by mutableStateOf("")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,19 +64,32 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                         // 2.7.- Programar que en pantalla del dispositivo se muestre en un Text de letra
                         // grande el valor medido por el sensor.
                         Text(
-                            text = "Proximity Sensor",
+                            text = "Eje X: $xValue",
                             modifier = Modifier.fillMaxWidth(),
                             fontSize = 24.sp
                         )
-                        // 2.8.- Programar que cuando el sensor detecte menos de 2 cm. la pantalla
-                        // se ponga en color negro y cuando detecte más de 2 cm tenga la pantalla el color rojo.
-
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            text = "Eje Y: $yValue",
+                            modifier = Modifier.fillMaxWidth(),
+                            fontSize = 24.sp
+                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            text = "Eje Z: $zValue",
+                            modifier = Modifier.fillMaxWidth(),
+                            fontSize = 24.sp
+                        )
                     }
-
-
                 }
             }
         }
+
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        xSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        ySensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        zSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+
     }
 
     override fun onResume() {
@@ -101,6 +114,13 @@ class MainActivity : ComponentActivity(), SensorEventListener {
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
+        event?.let {
+            if (it.sensor.type == Sensor.TYPE_ACCELEROMETER) {
+                xValue = it.values[0].toString()
+                yValue = it.values[1].toString()
+                zValue = it.values[2].toString()
+            }
+        }
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
