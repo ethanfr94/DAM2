@@ -25,7 +25,7 @@ namespace Ud4Hoja4
         public bool Bar { get; set; }
         public bool Montaje { get; set; }
         public bool Sanitarios { get; set; }
-        public bool Promotor { get; set; }
+        public string Promotor { get; set; }
 
         
 
