@@ -225,13 +225,96 @@ public class Main {
 
                         }
                         case 7 -> {
+                            System.out.println("introduce codigo de comunidad autónoma");
+                            String cod = t.nextLine();
 
+                            Bson filter = eq("codigo", cod);
+                            Document doc = collection.find(filter).first();
+
+                            if (doc == null) {
+                                System.out.println("Comunidad Autónoma no encontrada.");
+                            } else {
+                                if(doc.get("capital", Document.class) == null) {
+                                    System.out.println("introduce capital de comunidad autónoma");
+                                    String cap = t.nextLine();
+                                    System.out.println("introduce habitantes de la capital de comunidad autónoma");
+                                    int pobCap = Integer.parseInt(t.nextLine());
+
+                                    Document docCap = new Document();
+                                    docCap.append("nombre", cap);
+                                    docCap.append("habitantes", pobCap);
+
+                                    try {
+                                        UpdateResult ok = collection.updateOne(eq("codigo", cod), set("capital", docCap));
+                                        if (ok.getModifiedCount() > 0) {
+                                            System.out.println("Capital añadida correctamente.");
+                                        } else {
+                                            System.out.println("Error al añadir capital.");
+                                        }
+                                    } catch (Exception e) {
+                                        e.getMessage();
+                                    }
+                                } else {
+                                    System.out.println("Capital ya asignada.");
+                                }
+                            }
                         }
                         case 8 -> {
+                            System.out.println("introduce codigo de comunidad autónoma");
+                            String cod = t.nextLine();
 
+                            Bson filter = eq("codigo", cod);
+                            Document doc = collection.find(filter).first();
+
+                            if (doc == null) {
+                                System.out.println("Comunidad Autónoma no encontrada.");
+                            } else {
+                                System.out.println("introduce fecha de Estatuto de Autonomía");
+                                System.out.print("Dia:");
+                                int dia = Integer.parseInt(t.nextLine());
+                                System.out.print("\nMes:");
+                                int mes = Integer.parseInt(t.nextLine());
+                                System.out.print("\nAño:");
+                                int anyo = Integer.parseInt(t.nextLine());
+
+                                String fecha = dia + "/" + mes + "/" + anyo;
+
+                                try {
+                                    UpdateResult ok = collection.updateOne(eq("codigo", cod), set("fecha-estatuto", fecha));
+                                    if (ok.getModifiedCount() > 0) {
+                                        System.out.println("Fecha añadida correctamente.");
+                                    } else {
+                                        System.out.println("Error al añadir fecha.");
+                                    }
+                                } catch (Exception e) {
+                                    e.getMessage();
+                                }
+                            }
                         }
                         case 9 -> {
+                            System.out.println("introduce codigo de comunidad autónoma");
+                            String cod = t.nextLine();
 
+                            Bson filter = eq("codigo", cod);
+                            Document doc = collection.find(filter).first();
+
+                            if (doc == null) {
+                                System.out.println("Comunidad Autónoma no encontrada.");
+                            } else {
+                                System.out.println(doc.toJson());
+
+                                System.out.println("¿Eliminar la Comunidad Autónoma? (S/N)");
+                                String resp = t.nextLine();
+
+                                if (resp.equalsIgnoreCase("S")) {
+                                    try {
+                                        collection.deleteOne(eq("codigo", cod));
+                                        System.out.println("Comunidad Autónoma eliminada correctamente.");
+                                    } catch (Exception e) {
+                                        System.out.println("Error al eliminar Comunidad Autónoma.");
+                                    }
+                                }
+                            }
                         }
                         case 0 -> {
                             System.out.println("Saliendo...");
