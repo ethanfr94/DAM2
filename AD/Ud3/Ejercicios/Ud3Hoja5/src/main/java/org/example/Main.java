@@ -224,7 +224,7 @@ public class Main {
                                 }
 
                                 // Escribir en el fichero con formato JSON en una sola línea
-                                Files.write(path, docs.toString().getBytes());
+                                //Files.write(path, docs.toString().getBytes());
 
                                 // Escribir en el fichero con formato JSON sangrado e indentado
                                 /*docs.forEach(doc -> {
@@ -234,6 +234,21 @@ public class Main {
                                         e.printStackTrace();
                                     }
                                 });*/
+
+                                // Escribir en el fichero con formato JSON sangrado e indentado sobreescribiendo el fichero con el primero y añaadiendo los siguientes documentos
+                                for(int i = 0; i < docs.size(); i++) {
+                                    try{
+                                        if(i == 0) {
+                                            Files.write(path, docs.get(i).toJson(settings).getBytes());
+                                            Files.write(path, ",".getBytes(), StandardOpenOption.APPEND);
+                                        } else {
+                                            Files.write(path, docs.get(i).toJson(settings).getBytes(), StandardOpenOption.APPEND);
+                                            Files.write(path, ",".getBytes(), StandardOpenOption.APPEND);
+                                        }
+                                    }catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
 
                             } catch (IOException e) {
                                 e.printStackTrace();
