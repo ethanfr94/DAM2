@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NeumaticosModelStoreContainer" CdmEntityContainer="NeumaticosEntities">
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="NeumaticosModel.Cliente">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="clienteId" ColumnName="clienteId" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetallesFacturas">
+      <EntityTypeMapping TypeName="NeumaticosModel.DetallesFactura">
+        <MappingFragment StoreEntitySet="DetallesFacturas">
+          <ScalarProperty Name="detalleFacturaId" ColumnName="detalleFacturaId" />
+          <ScalarProperty Name="facturaId" ColumnName="facturaId" />
+          <ScalarProperty Name="concepto" ColumnName="concepto" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="precioUnidad" ColumnName="precioUnidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facturas">
+      <EntityTypeMapping TypeName="NeumaticosModel.Factura">
+        <MappingFragment StoreEntitySet="Facturas">
+          <ScalarProperty Name="facturaId" ColumnName="facturaId" />
+          <ScalarProperty Name="clienteId" ColumnName="clienteId" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="importeBase" ColumnName="importeBase" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="importeTotal" ColumnName="importeTotal" />
+          <ScalarProperty Name="pagada" ColumnName="pagada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productos">
+      <EntityTypeMapping TypeName="NeumaticosModel.Producto">
+        <MappingFragment StoreEntitySet="Productos">
+          <ScalarProperty Name="productoId" ColumnName="productoId" />
+          <ScalarProperty Name="fabricante" ColumnName="fabricante" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="ancho" ColumnName="ancho" />
+          <ScalarProperty Name="alto" ColumnName="alto" />
+          <ScalarProperty Name="radial" ColumnName="radial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NeumaticosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="clienteId" />
+    </Key>
+    <Property Name="clienteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dni" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="direccion" Type="String" MaxLength="180" FixedLength="false" Unicode="true" />
+    <Property Name="telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DetallesFactura">
+    <Key>
+      <PropertyRef Name="detalleFacturaId" />
+    </Key>
+    <Property Name="detalleFacturaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="facturaId" Type="Int32" Nullable="false" />
+    <Property Name="concepto" Type="String" MaxLength="180" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="precioUnidad" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="facturaId" />
+    </Key>
+    <Property Name="facturaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="clienteId" Type="Int32" Nullable="false" />
+    <Property Name="numero" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="importeBase" Type="Double" Nullable="false" />
+    <Property Name="iva" Type="Int32" Nullable="false" />
+    <Property Name="importeTotal" Type="Double" Nullable="false" />
+    <Property Name="pagada" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="productoId" />
+    </Key>
+    <Property Name="productoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fabricante" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="precio" Type="Double" Nullable="false" />
+    <Property Name="ancho" Type="Int32" Nullable="false" />
+    <Property Name="alto" Type="Int32" Nullable="false" />
+    <Property Name="radial" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Facturas_Clientes">
+    <End Role="Clientes" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Facturas" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="clienteId" />
+      </Principal>
+      <Dependent Role="Facturas">
+        <PropertyRef Name="clienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetallesFacturas_Facturas">
+    <End Role="Facturas" Type="Self.Factura" Multiplicity="1" />
+    <End Role="DetallesFacturas" Type="Self.DetallesFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facturas">
+        <PropertyRef Name="facturaId" />
+      </Principal>
+      <Dependent Role="DetallesFacturas">
+        <PropertyRef Name="facturaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NeumaticosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+    <EntitySet Name="DetallesFacturas" EntityType="Self.DetallesFactura" />
+    <EntitySet Name="Facturas" EntityType="Self.Factura" />
+    <EntitySet Name="Productos" EntityType="Self.Producto" />
+    <AssociationSet Name="FK_Facturas_Clientes" Association="Self.FK_Facturas_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Facturas" EntitySet="Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetallesFacturas_Facturas" Association="Self.FK_DetallesFacturas_Facturas">
+      <End Role="Facturas" EntitySet="Facturas" />
+      <End Role="DetallesFacturas" EntitySet="DetallesFacturas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
