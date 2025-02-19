@@ -264,6 +264,20 @@ public class Main {
                                 Se pide por teclado el id de un curso y, si existe, se obtiene y escribe la nota media en el
                                 curso, es decir, la nota media de las notas medias de los alumnos del curso.
                              */
+                                System.out.println("Introduce el id del curso: ");
+                                String idCurso = t.nextLine();
+
+                                Bson filtro = Filters.eq("_id", idCurso);
+                                Document doc = colCursos.find(filtro).first();
+
+                                if(doc != null) {
+                                    double media = colAlumnos.aggregate(List.of(
+                                            match(Filters.eq("curso", idCurso)),
+                                            group("$curso", Accumulators.avg("media", "$nota_media"))
+                                    )).first().getDouble("media");
+
+                                    System.out.println("Nota media: " + media);
+                                }
 
                             }
                             case 9 -> {
@@ -271,7 +285,20 @@ public class Main {
                                 A todos los alumnos del curso que se indique por teclado se les sube la nota media 0.1
                                 puntos.
                              */
+                                System.out.println("Introduce el id del curso: ");
+                                String idCurso = t.nextLine();
 
+                                Bson filtro = Filters.eq("curso", idCurso);
+                                MongoCursor<Document> cursor = colAlumnos.find(filtro).iterator();
+
+                                while(cursor.hasNext()){
+                                    Document doc = cursor.next();
+                                    double media = doc.getDouble("nota_media") + 0.1;
+
+                                    Bson filtro2 = Filters.eq("_id", doc.getString("_id"));
+                                    Bson update = Updates.set("nota_media", media);
+                                    colAlumnos.updateOne(filtro2, update);
+                                }
                             }
                             case 0 -> {
                                 System.out.println("Saliendo...");
