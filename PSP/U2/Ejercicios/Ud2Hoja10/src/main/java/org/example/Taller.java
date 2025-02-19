@@ -22,29 +22,22 @@ import static java.lang.Thread.sleep;
 
 public class Taller {
 
-    private Semaphore semaforoMecanico;
-    private Semaphore semaforoReparacion;
-    private Semaphore semaforoBoxes;
-    private int plazas;
+    private int clientes;
     private int libres;
 
-    public Taller(Semaphore semaforoMecanico, Semaphore semaforoReparacion, Semaphore semaforoBoxes, int plazas) {
-        this.semaforoMecanico = semaforoMecanico;
-        this.semaforoReparacion = semaforoReparacion;
-        this.semaforoBoxes = semaforoBoxes;
-        this.plazas = plazas;
+    public Taller(int plazas) {
+        this.clientes = 0;
         this.libres = plazas;
     }
 
     public void in() {
         libres--;
     }
-    public void out() {
-        libres++;
-    }
-    public int getLibres() {
-        return libres;
-    }
+    public void out() { libres++; }
+    public int getLibres() { return libres; }
+
+    public void sumCliente() { clientes++; }
+    public int getClientes() { return clientes; }
 
 
 }

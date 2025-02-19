@@ -20,40 +20,38 @@ import java.util.concurrent.Semaphore;
 
 public class Mecanico extends Thread {
     private Taller taller;
-    private Semaphore semaforoMecanico;
-    private Semaphore semaforoReparacion;
-    private Semaphore semaforoBoxes;
+    private Semaphore sMecanico;
+    private Semaphore sCliente;
+    private Semaphore mutex;
 
 
-    public Mecanico(Taller t, Semaphore semaforoMecanico, Semaphore semaforoReparacion, Semaphore semaforoBoxes) {
+    public Mecanico(Taller t, Semaphore sCliente, Semaphore sMecanico, Semaphore mutex) {
         taller = t;
-        this.semaforoMecanico = semaforoMecanico;
-        this.semaforoReparacion = semaforoReparacion;
-        this.semaforoBoxes = semaforoBoxes;
+        this.sCliente = sCliente;
+        this.sMecanico = sMecanico;
+        this.mutex = mutex;
     }
 
     public void run() {
-        while (true) {
-            reparar();
-        }
-    }
-
-    public void reparar() {
         try {
-            semaforoReparacion.acquire();  // Espera a que un cliente lo despierte
-            System.out.println("Mecánico atiende a un cliente. Quedan " + taller.getLibres() + " boxes libres.");
+            while(taller.getClientes() < 25) {
+                sMecanico.acquire(); // Espera a que un cliente le requiera
+                System.out.println("Mecánico en espera.");
 
-            // Simula el trabajo del mecánico por un tiempo aleatorio
-            sleep(50);
 
-            semaforoMecanico.release();  // El mecánico vuelve a dormir
-            System.out.println("Mecánico termina de atender a un cliente.");
 
+                System.out.println("Mecánico atiende a un cliente. Quedan " + taller.getLibres() + " boxes libres.");
+
+                sleep(100);
+
+                sCliente.release();// termina de atender al cliente
+                System.out.println("Mecánico termina de atender al cliente. Quedan " + taller.getLibres() + " boxes libres.");
+
+            }
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }
     }
-
 }
 
 

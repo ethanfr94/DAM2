@@ -20,86 +20,43 @@ import java.util.concurrent.Semaphore;
 
 public class Cliente extends Thread {
     private Taller taller;
-    private Semaphore semaforoMecanico;
-    private Semaphore semaforoReparacion;
-    private Semaphore semaforoBoxes;
+    private Semaphore sMecanico;
+    private Semaphore sCliente;
+    private Semaphore mutex;
     private int id;
 
-    public Cliente(Taller t, Semaphore semaforoMecanico, Semaphore semaforoReparacion, Semaphore semaforoBoxes, int id) {
+    public Cliente(Taller t, Semaphore sCliente, Semaphore sMecanico, Semaphore mutex, int id) {
         taller = t;
+        this.sCliente = sCliente;
+        this.sMecanico = sMecanico;
+        this.mutex = mutex;
         this.id = id;
-        this.semaforoMecanico = semaforoMecanico;
-        this.semaforoReparacion = semaforoReparacion;
-        this.semaforoBoxes = semaforoBoxes;
     }
 
     public void run() {
         try {
-            Thread.sleep((long) (Math.random() * 50));  // Los clientes llegan aleatoriamente
+            mutex.acquire();
+            if (taller.getLibres() > 0) {
 
-            System.out.println("Cliente " + id + " llega al taller.");
+                taller.in(); // Decrementa el número de boxes libres
+                taller.sumCliente(); // Aumenta el número de clientes
+                System.out.println("Cliente" + id + " ocupa un box. Quedan " + taller.getLibres() + " boxes libres.");
+                mutex.release(); // Libera el mutex para que otro cliente pueda entrar
 
-            if (semaforoBoxes.tryAcquire()) {  // Intenta ocupar un box
-                taller.in();
-                System.out.println("Cliente " + id + " ocupa un box. Quedan " + taller.getLibres() + " boxes libres.");
+                sMecanico.release();// Genera una orden para que el mecánico atienda al cliente
 
-                // Si el mecánico está dormido, el cliente lo despierta
-                if (semaforoMecanico.tryAcquire()) {
-                    System.out.println("Cliente " + id + " despierta al mecánico.");
-                    semaforoReparacion.release();  // Despierta al mecánico
+                sCliente.acquire(); // Espera a que el mecánico termine de atender al cliente
 
-                    sleep(50);
-                    semaforoBoxes.release();  // Libera el box
-                    taller.out();
-                    System.out.println("Cliente " + id + " ha terminado y libera su box. Quedan " + taller.getLibres() + " boxes libres.");
-                } else {
-                    System.out.println("Cliente " + id + " espera a que el mecánico termine.");
-                }
-
-
-
+                System.out.println("Cliente" + id + " termina de ser atendido. Quedan " + taller.getLibres() + " boxes libres.");
+                taller.out(); // Incrementa el número de boxes libres
 
             } else {
-                System.out.println("Cliente " + id + " se marcha porque no hay boxes libres.");
+                System.out.println("Cliente" + id + " se marcha porque no hay boxes libres.");
+                mutex.release(); // Libera el mutex para que otro cliente pueda entrar
             }
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
 
-    public void ocuparBox() {
-        if (taller.getLibres() == 0) {
-            System.out.println("Cliente" + id + " se marcha porque no hay boxes libres.");
-            return;
-        } else {
-            try {
-                semaforoBoxes.acquire();
-                taller.in();
-                System.out.println("Cliente" + id + " ocupa un box. quedan " + taller.getLibres() + " huecos libres.");
-                if(taller.getLibres() < 3) {
-                    semaforoMecanico.release();
-                }
-            } catch (InterruptedException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-
-    public void ocuparMecanico() {
-        try {
-            if(taller.getLibres() == 3) {
-                semaforoMecanico.release();
-            }
-            semaforoMecanico.acquire();
-            semaforoBoxes.release();
-            taller.out();
-            System.out.println("Cliente" + id + " ocupa al mecánico. Quedan " + taller.getLibres() + " huecos libres.");
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }
     }
-
-
-
-
 }
