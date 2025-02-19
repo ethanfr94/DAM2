@@ -47,15 +47,18 @@ public class Cliente extends Thread {
                 if (semaforoMecanico.tryAcquire()) {
                     System.out.println("Cliente " + id + " despierta al mecánico.");
                     semaforoReparacion.release();  // Despierta al mecánico
+
+                    sleep(50);
+                    semaforoBoxes.release();  // Libera el box
+                    taller.out();
+                    System.out.println("Cliente " + id + " ha terminado y libera su box. Quedan " + taller.getLibres() + " boxes libres.");
                 } else {
                     System.out.println("Cliente " + id + " espera a que el mecánico termine.");
                 }
 
-                sleep(55);  // Simula el tiempo que el mecánico tarda en reparar el coche
 
-                semaforoBoxes.release();  // Libera el box
-                taller.out();
-                System.out.println("Cliente " + id + " ha terminado y libera su box. Quedan " + taller.getLibres() + " boxes libres.");
+
+
             } else {
                 System.out.println("Cliente " + id + " se marcha porque no hay boxes libres.");
             }

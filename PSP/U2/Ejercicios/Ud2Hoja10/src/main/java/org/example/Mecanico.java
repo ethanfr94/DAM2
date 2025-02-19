@@ -33,30 +33,22 @@ public class Mecanico extends Thread {
     }
 
     public void run() {
-        try {
-            while (true) {
-                semaforoReparacion.acquire();  // Espera a que un cliente lo despierte
-                System.out.println("Mecánico atiende a un cliente. Quedan "+taller.getLibres()+" boxes libres.");
-
-                // Simula el trabajo del mecánico por un tiempo aleatorio
-                sleep(50);
-
-                System.out.println("Mecánico termina de atender a un cliente.");
-                semaforoMecanico.release();  // El mecánico vuelve a dormir
-            }
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+        while (true) {
+            reparar();
         }
     }
 
-    public void reparar(){
+    public void reparar() {
         try {
-            semaforoReparacion.acquire();
-            System.out.println("Mecánico atiende a un cliente.");
+            semaforoReparacion.acquire();  // Espera a que un cliente lo despierte
+            System.out.println("Mecánico atiende a un cliente. Quedan " + taller.getLibres() + " boxes libres.");
+
+            // Simula el trabajo del mecánico por un tiempo aleatorio
             sleep(50);
-            semaforoReparacion.release();
-            semaforoMecanico.release();
-            System.out.println("Cliente atendido.");
+
+            semaforoMecanico.release();  // El mecánico vuelve a dormir
+            System.out.println("Mecánico termina de atender a un cliente.");
+
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }
