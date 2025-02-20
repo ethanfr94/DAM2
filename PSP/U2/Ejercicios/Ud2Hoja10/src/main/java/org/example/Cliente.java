@@ -36,27 +36,33 @@ public class Cliente extends Thread {
     public void run() {
         try {
             mutex.acquire();
+            taller.sumCliente(); // Aumenta el número de clientes
             if (taller.getLibres() > 0) {
 
                 taller.in(); // Decrementa el número de boxes libres
-                taller.sumCliente(); // Aumenta el número de clientes
+
                 System.out.println("Cliente" + id + " ocupa un box. Quedan " + taller.getLibres() + " boxes libres.");
+                sCliente.release();// Genera una orden para que el mecánico atienda al cliente
                 mutex.release(); // Libera el mutex para que otro cliente pueda entrar
 
-                sMecanico.release();// Genera una orden para que el mecánico atienda al cliente
 
-                sCliente.acquire(); // Espera a que el mecánico termine de atender al cliente
 
-                System.out.println("Cliente" + id + " termina de ser atendido. Quedan " + taller.getLibres() + " boxes libres.");
-                taller.out(); // Incrementa el número de boxes libres
+                if(taller.getClientes() == 25) {
+                    System.out.println("se va el ultimo cliente");
+                }
+                sMecanico.acquire(); // Espera a que el mecánico termine de atender al cliente
 
             } else {
                 System.out.println("Cliente" + id + " se marcha porque no hay boxes libres.");
                 mutex.release(); // Libera el mutex para que otro cliente pueda entrar
             }
+            System.out.println("cliente "+id);
+
 
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }
+
+
     }
 }

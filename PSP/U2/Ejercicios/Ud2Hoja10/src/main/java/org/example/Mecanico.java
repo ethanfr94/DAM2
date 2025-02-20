@@ -25,7 +25,7 @@ public class Mecanico extends Thread {
     private Semaphore mutex;
 
 
-    public Mecanico(Taller t, Semaphore sCliente, Semaphore sMecanico, Semaphore mutex) {
+    public Mecanico(Taller t, Semaphore sMecanico, Semaphore sCliente, Semaphore mutex) {
         taller = t;
         this.sCliente = sCliente;
         this.sMecanico = sMecanico;
@@ -34,20 +34,24 @@ public class Mecanico extends Thread {
 
     public void run() {
         try {
-            while(taller.getClientes() < 25) {
-                sMecanico.acquire(); // Espera a que un cliente le requiera
-                System.out.println("Mecánico en espera.");
-
-
-
-                System.out.println("Mecánico atiende a un cliente. Quedan " + taller.getLibres() + " boxes libres.");
+            do {
+                System.out.println("   ");
+                sCliente.acquire(); // Espera a que un cliente le requiera
+                mutex.acquire();
+                System.out.println("Mecánico atiende a un cliente.");
 
                 sleep(100);
 
-                sCliente.release();// termina de atender al cliente
-                System.out.println("Mecánico termina de atender al cliente. Quedan " + taller.getLibres() + " boxes libres.");
+                taller.out(); // Incrementa el número de boxes libres
 
-            }
+                System.out.println("Cliente termina de ser atendido. Quedan " + taller.getLibres() + " boxes libres.");
+
+                sMecanico.release();// termina de atender al cliente
+                mutex.release();
+                System.out.println(taller.getClientes());
+            }while(taller.getClientes() < 25);
+            System.out.println("Fin de la jornada laboral");
+
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }
