@@ -37,7 +37,7 @@ public class Mecanico extends Thread {
             do {
                 System.out.println("   ");
                 sCliente.acquire(); // Espera a que un cliente le requiera
-                mutex.acquire();
+                //mutex.acquire();
                 System.out.println("Mecánico atiende a un cliente.");
 
                 sleep(100);
@@ -47,9 +47,9 @@ public class Mecanico extends Thread {
                 System.out.println("Cliente termina de ser atendido. Quedan " + taller.getLibres() + " boxes libres.");
 
                 sMecanico.release();// termina de atender al cliente
-                mutex.release();
-                System.out.println(taller.getClientes());
+                //mutex.release();
             }while(taller.getClientes() < 25);
+
             System.out.println("Fin de la jornada laboral");
 
         } catch (InterruptedException e) {

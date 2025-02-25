@@ -30,7 +30,7 @@ public class Main {
         Taller taller = new Taller(4);
         new Mecanico(taller, sMecanico, sCliente, mutex).start();
 
-        for(int i = 0; i < 25; i++) {
+        for(int i = 1; i <= 25; i++) {
             try {
 
                 sleep((int) (Math.random() * 50));
