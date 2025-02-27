@@ -12,14 +12,17 @@ public class Cliente extends Thread{
     public synchronized void run(){
         try{
             do{
-                System.out.println("Cliente "+id+" esperando a que se sirva la paella");
-
-                f.sirveRacion();
-                System.out.println("Cliente "+id+" se ha servido una racion quedan "+f.getRacionesTotales()+" raciones");
+                while(f.getRacionPaella()==0) {
+                    try {
+                        wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                f.sirveRacion(id);
                 sleep(40);
                 System.out.println("Cliente "+id+" ha terminado de comer");
             }while(f.getRacionesTotales()>0);
-
         }catch (InterruptedException e){
             e.printStackTrace();
         }

@@ -5,8 +5,8 @@ public class Fiesta extends Thread{
     private int racionPaella;
 
     public Fiesta(){
-        this.racionesTotales = 40;
-        this.racionPaella = 10;
+        this.racionesTotales = 120;
+        this.racionPaella = 40;
     }
 
     public synchronized void run(){
@@ -18,12 +18,12 @@ public class Fiesta extends Thread{
         }
     }
 
-    private void recargaPaella(){
+    private synchronized void recargaPaella(){
         try{
             if(racionesTotales>0){
                 System.out.println("Llenando la paellera hay "+racionesTotales+" raciones");
                 sleep(25);
-                racionPaella = 10;
+                racionPaella = 40;
             }else{
                 System.out.println("No hay suficientes raciones para cambiar la paellera");
             }
@@ -34,13 +34,17 @@ public class Fiesta extends Thread{
     }
 
 
-    public synchronized void sirveRacion(){
+    public synchronized void sirveRacion(int id){
         try{
-            //wait();
-            if(racionPaella>0 && racionesTotales>0){
+            if(racionPaella>1 && racionesTotales>0){
                 racionPaella--;
                 racionesTotales--;
-            }else{
+                System.out.println("Cliente "+id+" se sirve una racion - "+racionPaella+"/"+racionesTotales);
+
+            }else if(racionPaella>0 && racionesTotales>0) {
+                racionPaella--;
+                racionesTotales--;
+                System.out.println("Cliente "+id+" se sirve una racion - "+racionPaella+"/"+racionesTotales);
                 System.out.println("la paellera esta vacia llamando al cocinero para cambiuarla");
                 recargaPaella();
             }
@@ -48,11 +52,14 @@ public class Fiesta extends Thread{
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
     }
 
     public int getRacionesTotales() {
         return racionesTotales;
     }
+
+    public int getRacionPaella() {
+        return racionPaella;
+    }
+
 }

@@ -1,0 +1,74 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Escritorio\\DAM\\TiendaVideojuegos\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4B7B32B6-E61E-484E-BD1F-2221B996E72A}|TiendaVideojuegos\\TiendaVideojuegos.csproj|d:\\escritorio\\dam\\tiendavideojuegos\\tiendavideojuegos\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B7B32B6-E61E-484E-BD1F-2221B996E72A}|TiendaVideojuegos\\TiendaVideojuegos.csproj|solutionrelative:tiendavideojuegos\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B7B32B6-E61E-484E-BD1F-2221B996E72A}|TiendaVideojuegos\\TiendaVideojuegos.csproj|d:\\escritorio\\dam\\tiendavideojuegos\\tiendavideojuegos\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4B7B32B6-E61E-484E-BD1F-2221B996E72A}|TiendaVideojuegos\\TiendaVideojuegos.csproj|solutionrelative:tiendavideojuegos\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B7B32B6-E61E-484E-BD1F-2221B996E72A}|TiendaVideojuegos\\TiendaVideojuegos.csproj|d:\\escritorio\\dam\\tiendavideojuegos\\tiendavideojuegos\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B7B32B6-E61E-484E-BD1F-2221B996E72A}|TiendaVideojuegos\\TiendaVideojuegos.csproj|solutionrelative:tiendavideojuegos\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 206,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "D:\\Escritorio\\DAM\\TiendaVideojuegos\\TiendaVideojuegos\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "TiendaVideojuegos\\Form1.Designer.cs",
+              "ToolTip": "D:\\Escritorio\\DAM\\TiendaVideojuegos\\TiendaVideojuegos\\Form1.Designer.cs*",
+              "RelativeToolTip": "TiendaVideojuegos\\Form1.Designer.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T01:11:14.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\Escritorio\\DAM\\TiendaVideojuegos\\TiendaVideojuegos\\Form1.cs",
+              "RelativeDocumentMoniker": "TiendaVideojuegos\\Form1.cs",
+              "ToolTip": "D:\\Escritorio\\DAM\\TiendaVideojuegos\\TiendaVideojuegos\\Form1.cs*",
+              "RelativeToolTip": "TiendaVideojuegos\\Form1.cs*",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAmwIQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T01:09:25.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\Escritorio\\DAM\\TiendaVideojuegos\\TiendaVideojuegos\\Form1.cs",
+              "RelativeDocumentMoniker": "TiendaVideojuegos\\Form1.cs",
+              "ToolTip": "D:\\Escritorio\\DAM\\TiendaVideojuegos\\TiendaVideojuegos\\Form1.cs [Dise\u00F1o]*",
+              "RelativeToolTip": "TiendaVideojuegos\\Form1.cs [Dise\u00F1o]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T00:59:27.367Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

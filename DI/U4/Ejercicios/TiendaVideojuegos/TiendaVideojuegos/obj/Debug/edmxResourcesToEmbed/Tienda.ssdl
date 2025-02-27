@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TiendaVideojuegosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Estudios">
+    <Key>
+      <PropertyRef Name="nombre" />
+    </Key>
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="inicio_actividad" Type="int" />
+    <Property Name="sede" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Videojuegos">
+    <Key>
+      <PropertyRef Name="titulo" />
+    </Key>
+    <Property Name="titulo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="estudio" Type="nvarchar" MaxLength="50" />
+    <Property Name="fecha_lanzamiento" Type="date" />
+    <Property Name="precio" Type="float" />
+  </EntityType>
+  <Association Name="FK_Estudios_Estudios1">
+    <End Role="Estudios" Type="Self.Estudios" Multiplicity="1" />
+    <End Role="Estudios1" Type="Self.Estudios" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Estudios">
+        <PropertyRef Name="nombre" />
+      </Principal>
+      <Dependent Role="Estudios1">
+        <PropertyRef Name="nombre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Videojuegos_Estudios">
+    <End Role="Estudios" Type="Self.Estudios" Multiplicity="1" />
+    <End Role="Videojuegos" Type="Self.Videojuegos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Estudios">
+        <PropertyRef Name="nombre" />
+      </Principal>
+      <Dependent Role="Videojuegos">
+        <PropertyRef Name="titulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TiendaVideojuegosModelStoreContainer">
+    <EntitySet Name="Estudios" EntityType="Self.Estudios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Videojuegos" EntityType="Self.Videojuegos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Estudios_Estudios1" Association="Self.FK_Estudios_Estudios1">
+      <End Role="Estudios" EntitySet="Estudios" />
+      <End Role="Estudios1" EntitySet="Estudios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Videojuegos_Estudios" Association="Self.FK_Videojuegos_Estudios">
+      <End Role="Estudios" EntitySet="Estudios" />
+      <End Role="Videojuegos" EntitySet="Videojuegos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

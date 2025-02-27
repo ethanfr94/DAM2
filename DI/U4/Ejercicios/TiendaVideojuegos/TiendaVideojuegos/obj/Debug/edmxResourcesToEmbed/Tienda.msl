@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TiendaVideojuegosModelStoreContainer" CdmEntityContainer="TiendaVideojuegosEntities">
+    <EntitySetMapping Name="Estudios">
+      <EntityTypeMapping TypeName="TiendaVideojuegosModel.Estudio">
+        <MappingFragment StoreEntitySet="Estudios">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="inicio_actividad" ColumnName="inicio_actividad" />
+          <ScalarProperty Name="sede" ColumnName="sede" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Videojuegos">
+      <EntityTypeMapping TypeName="TiendaVideojuegosModel.Videojuego">
+        <MappingFragment StoreEntitySet="Videojuegos">
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="estudio" ColumnName="estudio" />
+          <ScalarProperty Name="fecha_lanzamiento" ColumnName="fecha_lanzamiento" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

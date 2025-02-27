@@ -1,0 +1,18 @@
+﻿<Window x:Class="Ud4Hoja6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ud4Hoja6"
+        mc:Ignorable="d"
+        Title="Gestion de reservas" Height="450" Width="800"
+        Name="ventanaFrm"
+        ResizeMode="CanResizeWithGrip"
+        SizeChanged="ventanaFrm_SizeChanged" MinWidth="440" StateChanged="ventanaFrm_StateChanged">
+    <Window.Resources>
+        <local:AsisteConverter x:Key="AsisteConverter"></local:AsisteConverter>
+    </Window.Resources>
+    <DockPanel>
+        
+    </DockPanel>
+</Window>

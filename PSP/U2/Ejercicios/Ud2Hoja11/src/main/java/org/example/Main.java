@@ -9,16 +9,15 @@ public class Main {
 
         Fiesta f = new Fiesta();
 
-        f.start();
-
         try {
-            sleep(10);
             for(int i=1; i<=10; i++){
+                sleep(10);
                 new Cliente(f, i).start();
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
 
     }
 }

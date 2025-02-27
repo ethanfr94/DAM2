@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TiendaVideojuegosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Estudios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Videojuegos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="estudio" Type="int" />
+          <Property Name="precio" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <Association Name="FK_Videojuegos_Estudios">
+          <End Role="Estudios" Type="Self.Estudios" Multiplicity="1" />
+          <End Role="Videojuegos" Type="Self.Videojuegos" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Estudios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Videojuegos">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TiendaVideojuegosModelStoreContainer">
+          <EntitySet Name="Estudios" EntityType="Self.Estudios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Videojuegos" EntityType="Self.Videojuegos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Videojuegos_Estudios" Association="Self.FK_Videojuegos_Estudios">
+            <End Role="Estudios" EntitySet="Estudios" />
+            <End Role="Videojuegos" EntitySet="Videojuegos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TiendaVideojuegosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Estudio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Videojuego">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="estudio" Type="Int32" />
+          <Property Name="precio" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <Association Name="FK_Videojuegos_Estudios">
+          <End Role="Estudios" Type="Self.Estudio" Multiplicity="1" />
+          <End Role="Videojuegos" Type="Self.Videojuego" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Estudios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Videojuegos">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TiendaVideojuegosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Estudios" EntityType="Self.Estudio" />
+          <EntitySet Name="Videojuegos" EntityType="Self.Videojuego" />
+          <AssociationSet Name="FK_Videojuegos_Estudios" Association="Self.FK_Videojuegos_Estudios">
+            <End Role="Estudios" EntitySet="Estudios" />
+            <End Role="Videojuegos" EntitySet="Videojuegos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TiendaVideojuegosModelStoreContainer" CdmEntityContainer="TiendaVideojuegosEntities">
+          <EntitySetMapping Name="Estudios">
+            <EntityTypeMapping TypeName="TiendaVideojuegosModel.Estudio">
+              <MappingFragment StoreEntitySet="Estudios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Videojuegos">
+            <EntityTypeMapping TypeName="TiendaVideojuegosModel.Videojuego">
+              <MappingFragment StoreEntitySet="Videojuegos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="estudio" ColumnName="estudio" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

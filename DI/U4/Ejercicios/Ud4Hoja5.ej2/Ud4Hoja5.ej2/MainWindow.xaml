@@ -1,0 +1,30 @@
+﻿<Window x:Class="Ud4Hoja5.ej2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ud4Hoja5.ej2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ListView x:Name="listviewusuario" ItemsSource="{Binding Usuarios}" Margin="0,83,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nombre" Width="150" DisplayMemberBinding="{Binding Nombre}"/>
+                    <GridViewColumn Header="Edad" Width="70" DisplayMemberBinding="{Binding Edad}"/>
+                    <GridViewColumn Header="Ciudad" Width="150"  DisplayMemberBinding="{Binding Ciudad}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox x:Name="tbFiltro" HorizontalAlignment="Left" Margin="107,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" TextChanged="TextBox_TextChanged"/>
+        <Label Content="Buscar Nombre" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.457,-0.115"/>
+        <Button x:Name="btnAdd" Content="Añadir Usuario" HorizontalAlignment="Left" Margin="698,22,0,0" VerticalAlignment="Top" Width="92" Click="btnAdd_Click"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Margin="62,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168"/>
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.457,-0.115"/>
+        <TextBox x:Name="txtEdad" HorizontalAlignment="Left" Margin="287,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168"/>
+        <Label Content="Edad" HorizontalAlignment="Left" Margin="235,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.457,-0.115"/>
+        <TextBox x:Name="txtCiudad" HorizontalAlignment="Left" Margin="512,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168"/>
+        <Label Content="Ciudad" HorizontalAlignment="Left" Margin="460,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.457,-0.115"/>
+
+    </Grid>
+</Window>

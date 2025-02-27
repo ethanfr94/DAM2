@@ -1,0 +1,51 @@
+﻿<Window x:Class="Ud4Hoja5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ud4Hoja5"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Categorias">
+                <Grid Background="#FFE5E5E5" Margin="-171,0,0,0">
+                    <TreeView x:Name="treeview" Margin="169,0,0,0" SelectedItemChanged="treeview_SelectedItemChanged">
+                        <TreeView.Resources>
+                            <Style TargetType="{x:Type TreeViewItem}">
+                                <Setter Property="IsExpanded" Value="True"/>
+                            </Style>
+                        </TreeView.Resources>
+                        <TreeViewItem Header="Electronica">
+                            <TreeViewItem x:Name="tvTelefonos" Header="Telefonos"/>
+                            <TreeViewItem x:Name="tvOrdenadores" Header="Ordenadores"/>
+                        </TreeViewItem>
+                        <TreeViewItem Header="Ropa">
+                            <TreeViewItem x:Name="tvHombres" Header="Hombres"/>
+                            <TreeViewItem x:Name="tvMujeres" Header="Mujeres"/>
+                        </TreeViewItem>
+                        <TreeViewItem Header="Hogar">
+                            <TreeViewItem x:Name="tvMuebles" Header="Muebles"/>
+                            <TreeViewItem x:Name="tvCocina" Header="Cocina"/>
+                        </TreeViewItem>
+                    </TreeView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Detalles">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock x:Name="tbDetalles" Text="Ningun elemento seleccionado" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Acerca de">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="89*"/>
+                        <ColumnDefinition Width="705*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Text="Explorador de categorias" Grid.Column="1" Margin="191,0,0,0"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

@@ -1,0 +1,15 @@
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\obj\Debug\Ud4Hoja5.ej2.csproj.AssemblyReference.cache
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\obj\Debug\MainWindow.g.cs
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\obj\Debug\App.g.cs
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\obj\Debug\Ud4Hoja5.ej2_MarkupCompile.cache
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\obj\Debug\Ud4Hoja5.ej2_MarkupCompile.lref
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\bin\Debug\Ud4Hoja5.ej2.exe.config
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\bin\Debug\Ud4Hoja5.ej2.exe
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\bin\Debug\Ud4Hoja5.ej2.pdb
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\obj\Debug\MainWindow.baml
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\obj\Debug\Ud4Hoja5.ej2.g.resources
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\obj\Debug\Ud4Hoja5.ej2.Properties.Resources.resources
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\obj\Debug\Ud4Hoja5.ej2.csproj.GenerateResource.cache
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\obj\Debug\Ud4Hoja5.ej2.csproj.CoreCompileInputs.cache
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\obj\Debug\Ud4Hoja5.ej2.exe
+D:\Escritorio\DAM\DI\U4\Ejercicios\Ud4Hoja5.ej2\Ud4Hoja5.ej2\obj\Debug\Ud4Hoja5.ej2.pdb

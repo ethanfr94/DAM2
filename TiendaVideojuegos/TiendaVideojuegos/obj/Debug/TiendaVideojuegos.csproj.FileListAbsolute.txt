@@ -1,0 +1,15 @@
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\bin\Debug\TiendaVideojuegos.exe.config
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\bin\Debug\TiendaVideojuegos.exe
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\bin\Debug\TiendaVideojuegos.pdb
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\bin\Debug\EntityFramework.dll
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\bin\Debug\EntityFramework.SqlServer.dll
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\bin\Debug\EntityFramework.xml
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\bin\Debug\EntityFramework.SqlServer.xml
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\obj\Debug\TiendaVideojuegos.csproj.AssemblyReference.cache
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\obj\Debug\TiendaVideojuegos.Form1.resources
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\obj\Debug\TiendaVideojuegos.Properties.Resources.resources
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\obj\Debug\TiendaVideojuegos.csproj.GenerateResource.cache
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\obj\Debug\TiendaVideojuegos.csproj.CoreCompileInputs.cache
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\obj\Debug\TiendaVi.512FA820.Up2Date
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\obj\Debug\TiendaVideojuegos.exe
+D:\Escritorio\DAM\TiendaVideojuegos\TiendaVideojuegos\obj\Debug\TiendaVideojuegos.pdb
