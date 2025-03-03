@@ -1,0 +1,7 @@
+Ud4Hoja1 - comprobacion ficheros
+Ud4Hoja2 - operaciones con flujos de bytes
+Ud4Hoja3 - opepraciones con ficheros de texto
+Ud4Hoja4 - operaciones sobre ficheros csv
+Ud4Hoja6.1 - lectura ficheros xml
+Ud4Hoja6.2 - añadir datos a fichero xml
+Ud4Hoja6.3 - modificar/eliminar datos fichero xml

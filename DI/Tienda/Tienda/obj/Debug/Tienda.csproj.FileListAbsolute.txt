@@ -1,0 +1,16 @@
+E:\DAM\DI\Tienda\Tienda\bin\Debug\Tienda.exe.config
+E:\DAM\DI\Tienda\Tienda\bin\Debug\Tienda.exe
+E:\DAM\DI\Tienda\Tienda\bin\Debug\Tienda.pdb
+E:\DAM\DI\Tienda\Tienda\bin\Debug\EntityFramework.dll
+E:\DAM\DI\Tienda\Tienda\bin\Debug\EntityFramework.SqlServer.dll
+E:\DAM\DI\Tienda\Tienda\bin\Debug\EntityFramework.xml
+E:\DAM\DI\Tienda\Tienda\bin\Debug\EntityFramework.SqlServer.xml
+E:\DAM\DI\Tienda\Tienda\obj\Debug\Tienda.csproj.AssemblyReference.cache
+E:\DAM\DI\Tienda\Tienda\obj\Debug\Tienda.Properties.Resources.resources
+E:\DAM\DI\Tienda\Tienda\obj\Debug\Tienda.csproj.GenerateResource.cache
+E:\DAM\DI\Tienda\Tienda\obj\Debug\Tienda.csproj.CoreCompileInputs.cache
+E:\DAM\DI\Tienda\Tienda\obj\Debug\Tienda.csproj.Up2Date
+E:\DAM\DI\Tienda\Tienda\obj\Debug\Tienda.exe
+E:\DAM\DI\Tienda\Tienda\obj\Debug\Tienda.pdb
+E:\DAM\DI\Tienda\Tienda\obj\Debug\Tienda.FormEstudio.resources
+E:\DAM\DI\Tienda\Tienda\obj\Debug\Tienda.FormVideojuego.resources
