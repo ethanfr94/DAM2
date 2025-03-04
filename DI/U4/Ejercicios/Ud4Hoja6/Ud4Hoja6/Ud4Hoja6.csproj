@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2C1F9A69-7465-4C6D-BD97-FC2EDA4B986A}</ProjectGuid>
+    <ProjectGuid>{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Ud4Hoja6</RootNamespace>
     <AssemblyName>Ud4Hoja6</AssemblyName>
@@ -55,7 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AsisteConverter.cs" />
     <Compile Include="Reserva.cs" />
+    <Compile Include="ReservaFrm.xaml.cs">
+      <DependentUpon>ReservaFrm.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -64,11 +68,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AsisteConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ReservaFrm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Negocio.cs" />
@@ -96,6 +103,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagenes\add.png" />
+    <Resource Include="imagenes\cancel.png" />
+    <Resource Include="imagenes\check.png" />
+    <Resource Include="imagenes\procedure.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

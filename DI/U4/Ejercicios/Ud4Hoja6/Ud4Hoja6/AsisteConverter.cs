@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,14 +7,15 @@ using System.Windows.Data;
 
 namespace Ud4Hoja6
 {
-    public class AsisteConverter : IValueConverter
+    internal class AsisteConverter : IValueConverter
     {
+    
         private const string ReservaAtendida = "Presente";
         private const string ReservaNoAtendida = "No";
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            switch ((bool)value)
+            switch((bool)value)
             {
                 case true:
                     return ReservaAtendida;
@@ -26,17 +26,18 @@ namespace Ud4Hoja6
             }
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value is string)
+            if(value is string)
             {
-                if (((string)value).Equals(ReservaAtendida))
+               if(((string)value).Equals(ReservaAtendida))
                 {
                     return true;
-                }
-                return false;
+                }                
+                return false;                
             }
             return false;
         }
-    }
+
+    }    
 }

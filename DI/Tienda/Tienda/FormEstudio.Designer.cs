@@ -170,7 +170,9 @@
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dgEstudios);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormEstudio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEstudio";
             ((System.ComponentModel.ISupportInitialize)(this.dgEstudios)).EndInit();
             this.ResumeLayout(false);

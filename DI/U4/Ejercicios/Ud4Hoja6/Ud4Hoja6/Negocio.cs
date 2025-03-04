@@ -3,52 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Ud4Hoja6
 {
     internal class Negocio
     {
-        private int _reservaId = 0;
-        private List<Reserva> reservas;
+
+        public int _reservaId { get; set; }
+        public List<Reserva> _reservas { get; set; }
+
 
         public Negocio()
         {
-            this.reservas = new List<Reserva>();
+            _reservas = new List<Reserva>();
+            _reservaId = 0;
         }
 
-        private int SiguienteReservaId()
+        public void BorrarReserva(int reservaId)
         {
-            return ++_reservaId;
-        }
-
-        public Reserva[] ObtenerReservas()
-        {
-            return this.reservas.ToArray();
-        }
-
-        public Reserva ObtenerReserva(int reservaId)
-        {
-            return reservas.FirstOrDefault(x => x.ReservaId == reservaId);
+            Reserva reserva = _reservas.Find(r => r.ReservaId == reservaId);
+            _reservas.Remove(reserva);
         }
 
         public void CrearReserva(Reserva reserva)
         {
             reserva.ReservaId = SiguienteReservaId();
-            reservas.Add(reserva);
+            _reservas.Add(reserva);
         }
 
-        //public void ActualizarReserva(Reserva reserva)
-        //{
-        //    Reserva 
-        //}
-
-        public void BorrarReserva(int reservaId)
+        public Reserva ObtenerReserva(int reservaId)
         {
-            Reserva borrar = this.ObtenerReserva(reservaId);
-            if (borrar != null)
-            {
-                this.reservas.Remove(borrar);
-            }
+            return _reservas.Find(r => r.ReservaId == reservaId);
+        }
+
+        public List<Reserva> ObtenerReservas()
+        {
+            return _reservas;
+        }
+
+        private int SiguienteReservaId()
+        {
+            return ++_reservaId;
         }
     }
 }

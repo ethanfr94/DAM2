@@ -29,9 +29,16 @@
         private void InitializeComponent()
         {
             this.dgVideojuegos = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaLanzamiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estudio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmEstudios = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmInformes = new System.Windows.Forms.ToolStripMenuItem();
+            this.videojuegosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estudiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -42,14 +49,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.videojuegosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtEstudio = new System.Windows.Forms.TextBox();
-            this.estudiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaLanzamiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estudio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgVideojuegos)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +72,41 @@
             this.dgVideojuegos.Size = new System.Drawing.Size(891, 289);
             this.dgVideojuegos.TabIndex = 0;
             this.dgVideojuegos.SelectionChanged += new System.EventHandler(this.dgVideojuegos_SelectionChanged);
+            // 
+            // Id
+            // 
+            this.Id.FillWeight = 26.52094F;
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // Titulo
+            // 
+            this.Titulo.FillWeight = 123.9854F;
+            this.Titulo.HeaderText = "Titulo";
+            this.Titulo.Name = "Titulo";
+            this.Titulo.ReadOnly = true;
+            // 
+            // FechaLanzamiento
+            // 
+            this.FechaLanzamiento.FillWeight = 101.5228F;
+            this.FechaLanzamiento.HeaderText = "Fecha de lanzamiento";
+            this.FechaLanzamiento.Name = "FechaLanzamiento";
+            this.FechaLanzamiento.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            this.Precio.FillWeight = 123.9854F;
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            // 
+            // Estudio
+            // 
+            this.Estudio.FillWeight = 123.9854F;
+            this.Estudio.HeaderText = "Estudio";
+            this.Estudio.Name = "Estudio";
+            this.Estudio.ReadOnly = true;
             // 
             // menuStrip1
             // 
@@ -99,6 +134,18 @@
             this.tsmInformes.Name = "tsmInformes";
             this.tsmInformes.Size = new System.Drawing.Size(66, 20);
             this.tsmInformes.Text = "Informes";
+            // 
+            // videojuegosToolStripMenuItem
+            // 
+            this.videojuegosToolStripMenuItem.Name = "videojuegosToolStripMenuItem";
+            this.videojuegosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.videojuegosToolStripMenuItem.Text = "Videojuegos";
+            // 
+            // estudiosToolStripMenuItem
+            // 
+            this.estudiosToolStripMenuItem.Name = "estudiosToolStripMenuItem";
+            this.estudiosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.estudiosToolStripMenuItem.Text = "Estudios";
             // 
             // btnAgregar
             // 
@@ -191,59 +238,12 @@
             this.dtpFecha.Size = new System.Drawing.Size(208, 20);
             this.dtpFecha.TabIndex = 17;
             // 
-            // videojuegosToolStripMenuItem
-            // 
-            this.videojuegosToolStripMenuItem.Name = "videojuegosToolStripMenuItem";
-            this.videojuegosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.videojuegosToolStripMenuItem.Text = "Videojuegos";
-            // 
             // txtEstudio
             // 
             this.txtEstudio.Location = new System.Drawing.Point(698, 375);
             this.txtEstudio.Name = "txtEstudio";
             this.txtEstudio.Size = new System.Drawing.Size(205, 20);
             this.txtEstudio.TabIndex = 15;
-            // 
-            // estudiosToolStripMenuItem
-            // 
-            this.estudiosToolStripMenuItem.Name = "estudiosToolStripMenuItem";
-            this.estudiosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.estudiosToolStripMenuItem.Text = "Estudios";
-            // 
-            // Id
-            // 
-            this.Id.FillWeight = 26.52094F;
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // Titulo
-            // 
-            this.Titulo.FillWeight = 123.9854F;
-            this.Titulo.HeaderText = "Titulo";
-            this.Titulo.Name = "Titulo";
-            this.Titulo.ReadOnly = true;
-            // 
-            // FechaLanzamiento
-            // 
-            this.FechaLanzamiento.FillWeight = 101.5228F;
-            this.FechaLanzamiento.HeaderText = "Fecha de lanzamiento";
-            this.FechaLanzamiento.Name = "FechaLanzamiento";
-            this.FechaLanzamiento.ReadOnly = true;
-            // 
-            // Precio
-            // 
-            this.Precio.FillWeight = 123.9854F;
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            // 
-            // Estudio
-            // 
-            this.Estudio.FillWeight = 123.9854F;
-            this.Estudio.HeaderText = "Estudio";
-            this.Estudio.Name = "Estudio";
-            this.Estudio.ReadOnly = true;
             // 
             // FormVideojuego
             // 

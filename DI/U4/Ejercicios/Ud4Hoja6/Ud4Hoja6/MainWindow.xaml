@@ -8,11 +8,92 @@
         Title="Gestion de reservas" Height="450" Width="800"
         Name="ventanaFrm"
         ResizeMode="CanResizeWithGrip"
-        SizeChanged="ventanaFrm_SizeChanged" MinWidth="440" StateChanged="ventanaFrm_StateChanged">
+        SizeChanged="ventanaFrm_SizeChanged" MinWidth="440" StateChanged="ventanaFrm_StateChanged"         
+        >
     <Window.Resources>
-        <local:AsisteConverter x:Key="AsisteConverter"></local:AsisteConverter>
+        <local:AsisteConverter x:Key="AsisteConverter1"/>
     </Window.Resources>
     <DockPanel>
-        
+        <Grid DockPanel.Dock="Top" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="txtFiltro"/>
+            <Button x:Name="btnFiltrar" Click="btnFiltrar_Click" Grid.Column="1" Content="Filtrar"  Width="80" IsDefault="True"/>
+            <Button x:Name="btnNueva" Click="btnNueva_Click " Grid.Column="3" Content="Nueva" Width="80"/>            
+        </Grid>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem Grid.Column="0">
+                <TextBlock Name="tbFiltro" Text="Sin filtro"/>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="1">
+                <TextBlock Name="tbRegistros" Text="0 Registros"/>
+            </StatusBarItem>
+        </StatusBar>
+        <ScrollViewer Margin="5">
+            <ListView Name="lvReservas" ContextMenuOpening="lvReservas_ContextMenuOpening" SelectionMode="Single" MouseDoubleClick="lvReservas_MouseDoubleClick">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="100" DisplayMemberBinding="{Binding Fecha, StringFormat='dd/MM/yyyy'}">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Click="GridViewColumnHeader_Click" Tag="Fecha">Fecha</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn Width="440" x:Name="gvcNombre" DisplayMemberBinding="{Binding Nombre}">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Click="GridViewColumnHeader_Click" Tag="Nombre">Nombre</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn Width="100" DisplayMemberBinding="{Binding Comensales}">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Click="GridViewColumnHeader_Click" Tag="Comensales">Comensales</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn Width="100" DisplayMemberBinding="{Binding Asiste, Converter={StaticResource AsisteConverter1}}">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Click="GridViewColumnHeader_Click" Tag="Asiste">Asiste</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="cmiNueva" Header="Nueva" Click="cmiNueva_Click">
+                            <MenuItem.Icon>
+                                <Image Source=".\imegenes\add.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name="cmiVer" Header="Ver" Click="cmiVer_Click">
+                            <MenuItem.Icon>
+                                <Image Source=".\imegenes\procedure.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name="cmiBorrar" Header="Borrar" Click="cmiBorrar_Click">
+                            <MenuItem.Icon>
+                                <Image Source=".\imegenes\cancel.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name="cmiConfirmar" Header="Confirmar" Click="cmiConfirmar_Click">
+                            <MenuItem.Icon>
+                                <Image Source=".\imegenes\check.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+            </ListView>
+        </ScrollViewer>
     </DockPanel>
 </Window>
