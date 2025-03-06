@@ -57,6 +57,7 @@
             // dgVideojuegos
             // 
             this.dgVideojuegos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgVideojuegos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgVideojuegos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgVideojuegos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -69,7 +70,7 @@
             this.dgVideojuegos.Name = "dgVideojuegos";
             this.dgVideojuegos.ReadOnly = true;
             this.dgVideojuegos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgVideojuegos.Size = new System.Drawing.Size(891, 289);
+            this.dgVideojuegos.Size = new System.Drawing.Size(891, 205);
             this.dgVideojuegos.TabIndex = 0;
             this.dgVideojuegos.SelectionChanged += new System.EventHandler(this.dgVideojuegos_SelectionChanged);
             // 
@@ -138,8 +139,9 @@
             // videojuegosToolStripMenuItem
             // 
             this.videojuegosToolStripMenuItem.Name = "videojuegosToolStripMenuItem";
-            this.videojuegosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.videojuegosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.videojuegosToolStripMenuItem.Text = "Videojuegos";
+            this.videojuegosToolStripMenuItem.Click += new System.EventHandler(this.videojuegosToolStripMenuItem_Click);
             // 
             // estudiosToolStripMenuItem
             // 
@@ -149,7 +151,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(666, 433);
+            this.btnAgregar.Location = new System.Drawing.Point(666, 332);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 2;
@@ -160,7 +162,7 @@
             // btnEditar
             // 
             this.btnEditar.Enabled = false;
-            this.btnEditar.Location = new System.Drawing.Point(747, 433);
+            this.btnEditar.Location = new System.Drawing.Point(747, 332);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
             this.btnEditar.TabIndex = 3;
@@ -171,7 +173,7 @@
             // btnEliminar
             // 
             this.btnEliminar.Enabled = false;
-            this.btnEliminar.Location = new System.Drawing.Point(828, 433);
+            this.btnEliminar.Location = new System.Drawing.Point(828, 332);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 4;
@@ -181,7 +183,7 @@
             // 
             // txtTitulo
             // 
-            this.txtTitulo.Location = new System.Drawing.Point(15, 375);
+            this.txtTitulo.Location = new System.Drawing.Point(15, 274);
             this.txtTitulo.Name = "txtTitulo";
             this.txtTitulo.Size = new System.Drawing.Size(208, 20);
             this.txtTitulo.TabIndex = 5;
@@ -189,7 +191,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 348);
+            this.label1.Location = new System.Drawing.Point(12, 247);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 9;
@@ -198,7 +200,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(695, 348);
+            this.label2.Location = new System.Drawing.Point(695, 247);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(107, 13);
             this.label2.TabIndex = 10;
@@ -207,7 +209,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(240, 348);
+            this.label3.Location = new System.Drawing.Point(240, 247);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 13);
             this.label3.TabIndex = 11;
@@ -216,7 +218,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(468, 348);
+            this.label4.Location = new System.Drawing.Point(468, 247);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 12;
@@ -224,7 +226,7 @@
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(471, 375);
+            this.txtPrecio.Location = new System.Drawing.Point(471, 274);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(208, 20);
             this.txtPrecio.TabIndex = 16;
@@ -233,14 +235,14 @@
             // 
             this.dtpFecha.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(243, 375);
+            this.dtpFecha.Location = new System.Drawing.Point(243, 274);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(208, 20);
             this.dtpFecha.TabIndex = 17;
             // 
             // txtEstudio
             // 
-            this.txtEstudio.Location = new System.Drawing.Point(698, 375);
+            this.txtEstudio.Location = new System.Drawing.Point(698, 274);
             this.txtEstudio.Name = "txtEstudio";
             this.txtEstudio.Size = new System.Drawing.Size(205, 20);
             this.txtEstudio.TabIndex = 15;
@@ -249,7 +251,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(918, 468);
+            this.ClientSize = new System.Drawing.Size(918, 380);
             this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtEstudio);

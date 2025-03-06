@@ -19,6 +19,7 @@ namespace Tienda
         public FormEstudio()
         {
             InitializeComponent();
+            
             cargaDatos();
         }
 
@@ -26,6 +27,8 @@ namespace Tienda
         {
             estudios = db.Estudios.ToList();
             dgEstudios.DataSource = estudios;
+            dgEstudios.Columns["id"].Visible = false;
+            dgEstudios.ClearSelection();
         }
 
         public void limpiarCampos()
@@ -55,7 +58,12 @@ namespace Tienda
             }
 
             estudio.nombre = txtNombre.Text;
-            estudio.fundacion = Convert.ToInt32(txtFundacion.Text);
+
+            if (!string.IsNullOrEmpty(txtFundacion.Text)) { 
+                int n = Convert.ToInt32(txtFundacion.Text);
+                estudio.fundacion = n;
+            }
+
             estudio.pais = txtPais.Text;
             estudio.descripcion = txtDescripcion.Text;
 
@@ -87,6 +95,12 @@ namespace Tienda
                 if(dialogResult == DialogResult.Yes) {
                     int id = Convert.ToInt32(dgEstudios.SelectedRows[0].Cells[0].Value);
                     Estudio estudio = db.Estudios.Where(v => v.id == id).FirstOrDefault();
+                    Videojuego videojuego = db.Videojuegos.Where(v => v.estudio == id).FirstOrDefault();
+                    if (videojuego != null)
+                    {
+                        MessageBox.Show("No puedes eliminar un estudio que tenga videojuegos asociados");
+                        return;
+                    }
                     if (estudio != null)
                     {
                         db.Estudios.Remove(estudio);

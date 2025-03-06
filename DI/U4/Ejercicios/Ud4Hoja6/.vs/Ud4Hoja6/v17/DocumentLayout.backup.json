@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|d:\\escritorio\\dam\\di\\u4\\ejercicios\\ud4hoja6\\ud4hoja6\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|d:\\escritorio\\dam\\di\\u4\\ejercicios\\ud4hoja6\\ud4hoja6\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|d:\\escritorio\\dam\\di\\u4\\ejercicios\\ud4hoja6\\ud4hoja6\\reservafrm.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\reservafrm.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|d:\\escritorio\\dam\\di\\u4\\ejercicios\\ud4hoja6\\ud4hoja6\\reserva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\reserva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|d:\\escritorio\\dam\\di\\u4\\ejercicios\\ud4hoja6\\ud4hoja6\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|d:\\escritorio\\dam\\di\\u4\\ejercicios\\ud4hoja6\\ud4hoja6\\reservafrm.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\reservafrm.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|d:\\escritorio\\dam\\di\\u4\\ejercicios\\ud4hoja6\\ud4hoja6\\reservafrm.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 278,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,7 +42,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ReservaFrm.xaml.cs",
               "DocumentMoniker": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\ReservaFrm.xaml.cs",
               "RelativeDocumentMoniker": "Ud4Hoja6\\ReservaFrm.xaml.cs",
@@ -67,7 +67,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Reserva.cs",
               "DocumentMoniker": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\Reserva.cs",
               "RelativeDocumentMoniker": "Ud4Hoja6\\Reserva.cs",
@@ -93,25 +93,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Ud4Hoja6\\MainWindow.xaml",
-              "ToolTip": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\MainWindow.xaml*",
-              "RelativeToolTip": "Ud4Hoja6\\MainWindow.xaml*",
+              "ToolTip": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\MainWindow.xaml",
+              "RelativeToolTip": "Ud4Hoja6\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-03-03T20:13:49.371Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Ud4Hoja6\\MainWindow.xaml.cs",
               "ToolTip": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\MainWindow.xaml.cs",
               "RelativeToolTip": "Ud4Hoja6\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB4AAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAJEAAAAAAAAAAAAYwB4AAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-03T20:13:48.791Z",
               "EditorCaption": ""

@@ -17,7 +17,12 @@ namespace Tienda
         public FormVideojuego()
         {
             InitializeComponent();
+
+            // Cargar ensamblados nativos para evitar errores en ReportViewer
+            SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
+
             cargarDatos();
+
         }
 
         private void cargarDatos()
@@ -32,6 +37,10 @@ namespace Tienda
                 string nombreEstudio = db.Estudios.Where(v => v.id == videojuego.estudio).Select(v => v.nombre).FirstOrDefault();
                 dgVideojuegos.Rows.Add(videojuego.id, videojuego.titulo, fechaLanzamiento.ToShortDateString(), videojuego.precio, nombreEstudio);
             }
+            dgVideojuegos.Columns["id"].Visible = false;
+            dgVideojuegos.ClearSelection();
+            
+
         }
 
         public void limpiarCampos()
@@ -145,19 +154,6 @@ namespace Tienda
             };
         }
 
-        private void dgVideojuegos_SelectionChanged(object sender, EventArgs e)
-        {
-            // metodo para cargar los campos de texto segun el videojuego seleccionado en el datagridview
-
-            if (dgVideojuegos.SelectedRows.Count > 0)
-            {
-                btnEditar.Enabled = true;
-                btnEliminar.Enabled = true;
-
-                Videojuego videojuego = videojuegos[dgVideojuegos.SelectedRows[0].Index];
-                cargarCampos(videojuego);
-            }
-        }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -215,10 +211,46 @@ namespace Tienda
 
         private void tsmEstudios_Click(object sender, EventArgs e)
         {
-            // metodo para abrir el formulario de estudios
+                // metodo para abrir el formulario de estudios
+                FormEstudio formEstudio = new FormEstudio();
+        
+                formEstudio.Show();
+        }
 
-            FormEstudio formEstudio = new FormEstudio();
-            formEstudio.Show();
+        private void dgVideojuegos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgVideojuegos.SelectedRows.Count > 0)
+            {
+                // habilitamos los botones de editar y eliminar y cargamos los campos de texto con los datos del videojuego seleccionado
+                btnEditar.Enabled = true;
+                btnEliminar.Enabled = true;
+                int index = dgVideojuegos.SelectedRows[0].Index;
+                if (index >= 0 && index < videojuegos.Count)
+                {
+                    Videojuego videojuego = videojuegos[index];
+                    cargarCampos(videojuego);
+                }
+                else
+                {
+                    btnEditar.Enabled = false;
+                    btnEliminar.Enabled = false;
+                    limpiarCampos();
+                    dgVideojuegos.ClearSelection();
+                }
+            }
+            else
+            {
+                btnEditar.Enabled = false;
+                btnEliminar.Enabled = false;
+                limpiarCampos();
+                dgVideojuegos.ClearSelection();
+            }
+        }
+
+        private void videojuegosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InformeVideojuegos formInforme = new InformeVideojuegos();
+            formInforme.Show();
         }
     }
 }

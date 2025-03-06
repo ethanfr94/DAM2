@@ -45,14 +45,14 @@
             // 
             // txtPais
             // 
-            this.txtPais.Location = new System.Drawing.Point(470, 339);
+            this.txtPais.Location = new System.Drawing.Point(470, 289);
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(208, 20);
             this.txtPais.TabIndex = 29;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(12, 394);
+            this.txtDescripcion.Location = new System.Drawing.Point(12, 344);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(619, 56);
@@ -61,7 +61,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(467, 312);
+            this.label4.Location = new System.Drawing.Point(467, 262);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(27, 13);
             this.label4.TabIndex = 27;
@@ -70,7 +70,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(239, 312);
+            this.label3.Location = new System.Drawing.Point(239, 262);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 26;
@@ -79,7 +79,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 367);
+            this.label2.Location = new System.Drawing.Point(9, 317);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 25;
@@ -88,7 +88,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 312);
+            this.label1.Location = new System.Drawing.Point(11, 262);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 24;
@@ -96,7 +96,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(14, 339);
+            this.txtNombre.Location = new System.Drawing.Point(14, 289);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(208, 20);
             this.txtNombre.TabIndex = 23;
@@ -104,7 +104,7 @@
             // btnEliminar
             // 
             this.btnEliminar.Enabled = false;
-            this.btnEliminar.Location = new System.Drawing.Point(828, 427);
+            this.btnEliminar.Location = new System.Drawing.Point(828, 377);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 22;
@@ -115,7 +115,7 @@
             // btnEditar
             // 
             this.btnEditar.Enabled = false;
-            this.btnEditar.Location = new System.Drawing.Point(747, 427);
+            this.btnEditar.Location = new System.Drawing.Point(747, 377);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
             this.btnEditar.TabIndex = 21;
@@ -125,7 +125,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(666, 427);
+            this.btnAgregar.Location = new System.Drawing.Point(666, 377);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 20;
@@ -142,13 +142,13 @@
             this.dgEstudios.Name = "dgEstudios";
             this.dgEstudios.ReadOnly = true;
             this.dgEstudios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgEstudios.Size = new System.Drawing.Size(891, 289);
+            this.dgEstudios.Size = new System.Drawing.Size(891, 237);
             this.dgEstudios.TabIndex = 18;
             this.dgEstudios.SelectionChanged += new System.EventHandler(this.dgEstudios_SelectionChanged);
             // 
             // txtFundacion
             // 
-            this.txtFundacion.Location = new System.Drawing.Point(242, 339);
+            this.txtFundacion.Location = new System.Drawing.Point(242, 289);
             this.txtFundacion.Name = "txtFundacion";
             this.txtFundacion.Size = new System.Drawing.Size(208, 20);
             this.txtFundacion.TabIndex = 30;
@@ -157,7 +157,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 462);
+            this.ClientSize = new System.Drawing.Size(913, 412);
             this.Controls.Add(this.txtFundacion);
             this.Controls.Add(this.txtPais);
             this.Controls.Add(this.txtDescripcion);

@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\ud4hoja6\\reservafrm.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\reservafrm.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\ud4hoja6\\reservafrm.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\reservafrm.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|d:\\escritorio\\dam\\di\\u4\\ejercicios\\ud4hoja6\\ud4hoja6\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|d:\\escritorio\\dam\\di\\u4\\ejercicios\\ud4hoja6\\ud4hoja6\\reserva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\ud4hoja6\\negocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\negocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\ud4hoja6\\reserva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\reserva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|d:\\escritorio\\dam\\di\\u4\\ejercicios\\ud4hoja6\\ud4hoja6\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\ud4hoja6\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|d:\\escritorio\\dam\\di\\u4\\ejercicios\\ud4hoja6\\ud4hoja6\\reservafrm.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\reservafrm.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|d:\\escritorio\\dam\\di\\u4\\ejercicios\\ud4hoja6\\ud4hoja6\\reservafrm.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\reservafrm.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|d:\\escritorio\\dam\\di\\u4\\ejercicios\\ud4hoja6\\ud4hoja6\\negocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5ED12F70-94AC-42A6-A3B7-143B9CF85E27}|Ud4Hoja6\\Ud4Hoja6.csproj|solutionrelative:ud4hoja6\\negocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 278,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,7 +42,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "ReservaFrm.xaml.cs",
               "DocumentMoniker": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\ReservaFrm.xaml.cs",
               "RelativeDocumentMoniker": "Ud4Hoja6\\ReservaFrm.xaml.cs",
@@ -55,7 +55,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "ReservaFrm.xaml",
               "DocumentMoniker": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\ReservaFrm.xaml",
               "RelativeDocumentMoniker": "Ud4Hoja6\\ReservaFrm.xaml",
@@ -67,7 +67,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Reserva.cs",
               "DocumentMoniker": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\Reserva.cs",
               "RelativeDocumentMoniker": "Ud4Hoja6\\Reserva.cs",
@@ -75,43 +75,41 @@
               "RelativeToolTip": "Ud4Hoja6\\Reserva.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T23:40:35.101Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-03T23:40:35.101Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Negocio.cs",
               "DocumentMoniker": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\Negocio.cs",
               "RelativeDocumentMoniker": "Ud4Hoja6\\Negocio.cs",
               "ToolTip": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\Negocio.cs",
               "RelativeToolTip": "Ud4Hoja6\\Negocio.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAnwCcAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAewCcAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-03T23:39:20.965Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Ud4Hoja6\\MainWindow.xaml",
               "ToolTip": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\MainWindow.xaml",
               "RelativeToolTip": "Ud4Hoja6\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-03T20:13:49.371Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-03T20:13:49.371Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Ud4Hoja6\\MainWindow.xaml.cs",
               "ToolTip": "D:\\Escritorio\\DAM\\DI\\U4\\Ejercicios\\Ud4Hoja6\\Ud4Hoja6\\MainWindow.xaml.cs",
               "RelativeToolTip": "Ud4Hoja6\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAJEAAAAAAAAAAAAYwB4AAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAANkAAAAAAAAAAAAUwLUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-03T20:13:48.791Z",
               "EditorCaption": ""

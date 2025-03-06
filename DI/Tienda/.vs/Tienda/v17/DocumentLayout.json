@@ -1,24 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Escritorio\\DAM\\DI\\Tienda\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{0ADF160F-7CF5-4B23-9F4E-92C199524FA2}|Tienda\\Tienda.csproj|D:\\Escritorio\\DAM\\DI\\Tienda\\tienda\\formvideojuego.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0ADF160F-7CF5-4B23-9F4E-92C199524FA2}|Tienda\\Tienda.csproj|solutionrelative:tienda\\formvideojuego.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0ADF160F-7CF5-4B23-9F4E-92C199524FA2}|Tienda\\Tienda.csproj|d:\\escritorio\\dam\\di\\tienda\\tienda\\formvideojuego.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ADF160F-7CF5-4B23-9F4E-92C199524FA2}|Tienda\\Tienda.csproj|solutionrelative:tienda\\formvideojuego.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0ADF160F-7CF5-4B23-9F4E-92C199524FA2}|Tienda\\Tienda.csproj|D:\\Escritorio\\DAM\\DI\\Tienda\\tienda\\formestudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0ADF160F-7CF5-4B23-9F4E-92C199524FA2}|Tienda\\Tienda.csproj|solutionrelative:tienda\\formestudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0ADF160F-7CF5-4B23-9F4E-92C199524FA2}|Tienda\\Tienda.csproj|D:\\Escritorio\\DAM\\DI\\Tienda\\tienda\\formestudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0ADF160F-7CF5-4B23-9F4E-92C199524FA2}|Tienda\\Tienda.csproj|solutionrelative:tienda\\formestudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -26,61 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 278,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FormEstudio.cs",
-              "DocumentMoniker": "D:\\Escritorio\\DAM\\DI\\Tienda\\Tienda\\FormEstudio.cs",
-              "RelativeDocumentMoniker": "Tienda\\FormEstudio.cs",
-              "ToolTip": "D:\\Escritorio\\DAM\\DI\\Tienda\\Tienda\\FormEstudio.cs",
-              "RelativeToolTip": "Tienda\\FormEstudio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEEAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T15:03:02.695Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormEstudio.cs [Dise\u00F1o]",
-              "DocumentMoniker": "D:\\Escritorio\\DAM\\DI\\Tienda\\Tienda\\FormEstudio.cs",
-              "RelativeDocumentMoniker": "Tienda\\FormEstudio.cs",
-              "ToolTip": "D:\\Escritorio\\DAM\\DI\\Tienda\\Tienda\\FormEstudio.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Tienda\\FormEstudio.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T14:53:41.559Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FormVideojuego.cs",
-              "DocumentMoniker": "D:\\Escritorio\\DAM\\DI\\Tienda\\Tienda\\FormVideojuego.cs",
-              "RelativeDocumentMoniker": "Tienda\\FormVideojuego.cs",
-              "ToolTip": "D:\\Escritorio\\DAM\\DI\\Tienda\\Tienda\\FormVideojuego.cs",
-              "RelativeToolTip": "Tienda\\FormVideojuego.cs",
-              "ViewState": "AgIAAMoAAAAAAAAAAADwv9wAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T14:21:22.973Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FormVideojuego.cs [Dise\u00F1o]",
-              "DocumentMoniker": "D:\\Escritorio\\DAM\\DI\\Tienda\\Tienda\\FormVideojuego.cs",
-              "RelativeDocumentMoniker": "Tienda\\FormVideojuego.cs",
-              "ToolTip": "D:\\Escritorio\\DAM\\DI\\Tienda\\Tienda\\FormVideojuego.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Tienda\\FormVideojuego.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T14:18:08.028Z",
-              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }
