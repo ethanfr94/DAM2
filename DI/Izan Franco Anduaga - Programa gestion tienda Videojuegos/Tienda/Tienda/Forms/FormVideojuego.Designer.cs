@@ -1,0 +1,328 @@
+﻿namespace Tienda
+{
+    partial class FormVideojuego
+    {
+        /// <summary>
+        /// Variable del diseñador necesaria.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Limpiar los recursos que se estén usando.
+        /// </summary>
+        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Código generado por el Diseñador de Windows Forms
+
+        /// <summary>
+        /// Método necesario para admitir el Diseñador. No se puede modificar
+        /// el contenido de este método con el editor de código.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVideojuego));
+            this.dgVideojuegos = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaLanzamiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estudio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tsmEstudios = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmInformes = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.txtTitulo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.txtEstudio = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgVideojuegos)).BeginInit();
+            this.menuStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // dgVideojuegos
+            // 
+            this.dgVideojuegos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgVideojuegos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgVideojuegos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgVideojuegos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Titulo,
+            this.FechaLanzamiento,
+            this.Precio,
+            this.Estudio});
+            this.dgVideojuegos.Location = new System.Drawing.Point(12, 27);
+            this.dgVideojuegos.MultiSelect = false;
+            this.dgVideojuegos.Name = "dgVideojuegos";
+            this.dgVideojuegos.ReadOnly = true;
+            this.dgVideojuegos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgVideojuegos.Size = new System.Drawing.Size(891, 205);
+            this.dgVideojuegos.TabIndex = 0;
+            this.dgVideojuegos.SelectionChanged += new System.EventHandler(this.dgVideojuegos_SelectionChanged);
+            // 
+            // Id
+            // 
+            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Id.FillWeight = 26.52094F;
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 45;
+            // 
+            // Titulo
+            // 
+            this.Titulo.FillWeight = 123.9854F;
+            this.Titulo.HeaderText = "Titulo";
+            this.Titulo.Name = "Titulo";
+            this.Titulo.ReadOnly = true;
+            // 
+            // FechaLanzamiento
+            // 
+            this.FechaLanzamiento.FillWeight = 101.5228F;
+            this.FechaLanzamiento.HeaderText = "Fecha de lanzamiento";
+            this.FechaLanzamiento.Name = "FechaLanzamiento";
+            this.FechaLanzamiento.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            this.Precio.FillWeight = 123.9854F;
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            // 
+            // Estudio
+            // 
+            this.Estudio.FillWeight = 123.9854F;
+            this.Estudio.HeaderText = "Estudio";
+            this.Estudio.Name = "Estudio";
+            this.Estudio.ReadOnly = true;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmEstudios,
+            this.tsmInformes});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(918, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // tsmEstudios
+            // 
+            this.tsmEstudios.Name = "tsmEstudios";
+            this.tsmEstudios.Size = new System.Drawing.Size(63, 20);
+            this.tsmEstudios.Text = "Estudios";
+            this.tsmEstudios.Click += new System.EventHandler(this.tsmEstudios_Click);
+            // 
+            // tsmInformes
+            // 
+            this.tsmInformes.Name = "tsmInformes";
+            this.tsmInformes.Size = new System.Drawing.Size(66, 20);
+            this.tsmInformes.Text = "Informes";
+            this.tsmInformes.Click += new System.EventHandler(this.tsmInformes_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregar.Location = new System.Drawing.Point(666, 332);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.TabIndex = 2;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditar.Enabled = false;
+            this.btnEditar.Location = new System.Drawing.Point(747, 332);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 3;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.Enabled = false;
+            this.btnEliminar.Location = new System.Drawing.Point(828, 332);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 4;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // txtTitulo
+            // 
+            this.txtTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTitulo.Location = new System.Drawing.Point(15, 274);
+            this.txtTitulo.Name = "txtTitulo";
+            this.txtTitulo.Size = new System.Drawing.Size(208, 20);
+            this.txtTitulo.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 247);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Titulo*";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(695, 247);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(107, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Estudio Desarrollador";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(240, 247);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(111, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Fecha de lanzamiento";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(468, 247);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Precio";
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPrecio.Location = new System.Drawing.Point(471, 274);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(208, 20);
+            this.txtPrecio.TabIndex = 16;
+            // 
+            // dtpFecha
+            // 
+            this.dtpFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpFecha.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFecha.Location = new System.Drawing.Point(243, 274);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(208, 20);
+            this.dtpFecha.TabIndex = 17;
+            // 
+            // txtEstudio
+            // 
+            this.txtEstudio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEstudio.Location = new System.Drawing.Point(698, 274);
+            this.txtEstudio.Name = "txtEstudio";
+            this.txtEstudio.Size = new System.Drawing.Size(205, 20);
+            this.txtEstudio.TabIndex = 15;
+            // 
+            // FormVideojuego
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(918, 380);
+            this.Controls.Add(this.dtpFecha);
+            this.Controls.Add(this.txtPrecio);
+            this.Controls.Add(this.txtEstudio);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtTitulo);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.dgVideojuegos);
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.Name = "FormVideojuego";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Video Game Store S.L.";
+            ((System.ComponentModel.ISupportInitialize)(this.dgVideojuegos)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.DataGridView dgVideojuegos;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmEstudios;
+        private System.Windows.Forms.ToolStripMenuItem tsmInformes;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.TextBox txtTitulo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.TextBox txtEstudio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaLanzamiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estudio;
+    }
+}
+
