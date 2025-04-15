@@ -1,0 +1,11 @@
+D:\Escritorio\DAM\Proyecto\AcademyGestor\AcademyGestor\bin\Debug\AcademyGestor.exe.config
+D:\Escritorio\DAM\Proyecto\AcademyGestor\AcademyGestor\bin\Debug\AcademyGestor.exe
+D:\Escritorio\DAM\Proyecto\AcademyGestor\AcademyGestor\bin\Debug\AcademyGestor.pdb
+D:\Escritorio\DAM\Proyecto\AcademyGestor\AcademyGestor\obj\Debug\AcademyGestor.csproj.AssemblyReference.cache
+D:\Escritorio\DAM\Proyecto\AcademyGestor\AcademyGestor\obj\Debug\AcademyGestor.Loggin.resources
+D:\Escritorio\DAM\Proyecto\AcademyGestor\AcademyGestor\obj\Debug\AcademyGestor.Properties.Resources.resources
+D:\Escritorio\DAM\Proyecto\AcademyGestor\AcademyGestor\obj\Debug\AcademyGestor.csproj.GenerateResource.cache
+D:\Escritorio\DAM\Proyecto\AcademyGestor\AcademyGestor\obj\Debug\AcademyGestor.csproj.CoreCompileInputs.cache
+D:\Escritorio\DAM\Proyecto\AcademyGestor\AcademyGestor\obj\Debug\AcademyGestor.exe
+D:\Escritorio\DAM\Proyecto\AcademyGestor\AcademyGestor\obj\Debug\AcademyGestor.pdb
+D:\Escritorio\DAM\Proyecto\AcademyGestor\AcademyGestor\obj\Debug\AcademyGestor.Main.resources
